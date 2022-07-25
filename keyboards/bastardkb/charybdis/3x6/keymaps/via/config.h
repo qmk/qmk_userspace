@@ -1,5 +1,5 @@
 /**
- * Copyright 2021 Charly Delay <charly@codesink.dev> (@0xcharly)
+ * Copyright 2022 Charly Delay <charly@codesink.dev> (@0xcharly)
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -47,6 +47,10 @@
 /* RGB Matrix. */
 
 #ifdef RGB_MATRIX_ENABLE
+// Disable control of RGB matrix by keycodes (must use firmware implementation
+// to control the feature).
+#    define RGB_MATRIX_DISABLE_KEYCODES
+
 // Limit maximum brightness to keep power consumption reasonable, and avoid
 // disconnects.
 #    undef RGB_MATRIX_MAXIMUM_BRIGHTNESS
