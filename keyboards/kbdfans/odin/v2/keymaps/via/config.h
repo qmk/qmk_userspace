@@ -1,4 +1,4 @@
-/* Copyright 2022 ML
+/* Copyright 2022 lexbrugman
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -15,9 +15,4 @@
  */
 
 #pragma once
-
 #define DYNAMIC_KEYMAP_LAYER_COUNT 2
-
-#ifdef RGB_MATRIX_ENABLE
-    #define VIA_QMK_RGBLIGHT_ENABLE
-#endif
