@@ -1,4 +1,4 @@
-/* Copyright 2023 Emrik Östling
+/* Copyright 2022 Harrison Chan (Xelus)
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -15,4 +15,5 @@
  */
 #pragma once
 
-#define DYNAMIC_KEYMAP_LAYER_COUNT 2
+// More layers
+#define DYNAMIC_KEYMAP_LAYER_COUNT 8

@@ -1,4 +1,4 @@
-/* Copyright 2021 HorrorTroll <https://github.com/HorrorTroll>
+/* Copyright 2020 Ramon Imbao
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -13,10 +13,6 @@
  * You should have received a copy of the GNU General Public License
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
+#pragma once
 
-static HSV DIAGONAL_math(HSV hsv, uint8_t i, uint8_t time) {
-    hsv.h = g_led_config.point[i].x - g_led_config.point[i].y - time;
-    return hsv;
-}
-
-bool DIAGONAL(effect_params_t* params) { return effect_runner_i(params, &DIAGONAL_math); }
+#define DYNAMIC_KEYMAP_EEPROM_MAX_ADDR 2047
