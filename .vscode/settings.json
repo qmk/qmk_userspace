@@ -1,0 +1,42 @@
+{
+    "editor.minimap.enabled": false,
+    "terminal.integrated.copyOnSelection": true,
+    "terminal.integrated.defaultProfile.windows": "Git Bash",
+    "explorer.confirmDelete": false,
+    "remote.SSH.remotePlatform": {
+        "192.168.1.250": "linux",
+        "192.168.1.206": "linux"
+    },
+    "git.enableSmartCommit": true,
+    "extensions.ignoreRecommendations": true,
+    "terminal.integrated.automationProfile.windows": {},
+    "terminal.integrated.automationProfile.linux": {},
+    "terminal.integrated.profiles.windows": {
+
+        "PowerShell": {
+            "source": "PowerShell",
+            "icon": "terminal-powershell"
+        },
+        "Command Prompt": {
+            "path": [
+                "${env:windir}\\Sysnative\\cmd.exe",
+                "${env:windir}\\System32\\cmd.exe"
+            ],
+            "args": [],
+            "icon": "terminal-cmd"
+        },
+        "Git Bash": {
+            "source": "Git Bash"
+        },
+        "QMK_MSYS": {
+            "path": "C:/QMK_MSYS/usr/bin/bash.exe",
+            "env": {
+                "MSYSTEM": "MINGW64",
+                "CHERE_INVOKING": "1"
+            },
+            "args": ["--login"]
+        },
+        "terminal.integrated.cursorStyle": "line"
+    },
+    "git.confirmSync": false
+}
