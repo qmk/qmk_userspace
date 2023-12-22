@@ -27,12 +27,6 @@
 // #define MASTER_RIGHT
 // #define EE_HANDS
 
-// By default, when holding a dual-function key shortly after tapping it, the
-// tapped key will begin repeating. This is handy for fast typists when typing
-// words with double letters, such as "happy". If you turn this setting ON, it
-// will be counted as a held modifier instead.
-//#define TAPPING_FORCE_HOLD
-
 // Customized by markstos
 #define TAPPING_TERM 200
 #define TAPPING_TERM_PER_KEY
