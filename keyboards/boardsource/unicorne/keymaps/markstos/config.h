@@ -40,7 +40,7 @@
 #define HOLD_ON_OTHER_KEY_PRESS
 
 // markstos: prevent keydown and keyup from firing on different layers
-#define PREVENT_STUCK_MODIFERS
+#define PREVENT_STUCK_MODIFER
 
 // When enabled, typing a mod-tap plus second within term will register as the mod-combo
 // Ref: https://beta.docs.qmk.fm/using-qmk/software-features/tap_hold#permissive-hold 

@@ -7,7 +7,8 @@ enum custom_keycodes {
     DEFAULT = SAFE_RANGE,
     LOWER,
     RAISE,
-    FUNC
+    FUNC,
+    SYSTEM
 };
 
 enum combos {
@@ -41,6 +42,7 @@ combo_t key_combos[COMBO_COUNT] = {
 #define LOW_TAB  LT(_LOWER, KC_TAB)
 #define RSE_BSP  LT(_RAISE, KC_BSPC)
 #define OSM_SFT  OSM(MOD_LSFT)
+#define SYS_SFT LT(OSL(_SYSTEM), OSM_SFT)
 
 
 // For _RAISE layer
@@ -53,11 +55,11 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
 [_QWERTY] = LAYOUT_split_3x6_3( \
   //,-----------------------------------------------------.                    ,-----------------------------------------------------.
-       KC_TAB,    KC_Q,    KC_W,    KC_E,    KC_R,    KC_T,                     KC_Y    ,KC_U    ,KC_I    ,KC_O    ,KC_P    ,KC_DEL,    \
+       KC_TAB,    KC_Q,    KC_W,    KC_E,    KC_R,    KC_T,                     KC_Y    ,KC_U    ,KC_I    ,KC_O    ,KC_P    ,KC_DEL, \
   //|--------+--------+--------+--------+--------+--------|                    |--------+--------+--------+--------+--------+--------|
  OSM(MOD_LALT),   KC_A,    KC_S,    KC_D,    KC_F,    KC_G,                     KC_H    ,KC_J    ,KC_K    ,KC_L    ,KC_QUOT ,OSM_AGR,\
-  //|--------+--------+--------+--------+--------+--------|                    |--------+--------+--------+--------+--------+--------|
- OSM(MOD_LSFT),   KC_Z,    KC_X,    KC_C,    KC_V,    KC_B,                     KC_N    ,KC_M    ,KC_COMM ,KC_DOT  ,KC_SLSH ,OSL_FUN,\
+  //|---- ----+--------+--------+--------+--------+--------|                    |--------+--------+--------+--------+--------+--------|
+ SYS_SFT,   KC_Z,    KC_X,    KC_C,    KC_V,    KC_B,                     KC_N    ,KC_M    ,KC_COMM ,KC_DOT  ,KC_SLSH ,OSL_FUN,\
   //|--------+--------+--------+--------+--------+--------+--------|  |--------+--------+--------+--------+--------+--------+--------|
                                          OSM_LCTL, GUI_ENT, LOW_TAB,   RSE_BSP ,KC_SPC  ,OSM_SFT \
                                       //`--------------------------'  `--------------------------'
@@ -81,7 +83,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   //|--------+--------+--------+--------+--------+--------|                    |--------+--------+--------+--------+--------+--------|
       _______, KC_HOME, KC_END , KC_MINS, KC_EQL , KC_PGDN,                      KC_LEFT, KC_DOWN, KC_UP  , KC_RGHT, KC_APP ,_______,\
   //|--------+--------+--------+--------+--------+--------|                    |--------+--------+--------+--------+--------+--------|
-      _______, KC_LT  , KC_GT  , CTL_COPY,CTL_PSTE, KC_SCLN,                      KC_MPLY, KC_MPRV, KC_MNXT, KC_VOLD, KC_VOLU,_______,\
+      _______, KC_LT  , KC_GT  , CTL_COPY,CTL_PSTE, KC_SCLN,                     KC_MPLY, KC_MPRV, KC_MNXT, KC_VOLD, KC_VOLU,_______,\
   //|--------+--------+--------+--------+--------+--------+--------|  |--------+--------+--------+--------+--------+--------+--------|
                                           CTL_ESC, KC_TRNS, XXXXXXX,    RAISE  , KC_TRNS, KC_TRNS\
                                       //`--------------------------'  `--------------------------'
@@ -117,6 +119,8 @@ uint16_t get_tapping_term(uint16_t keycode, keyrecord_t *record) {
       case LT(_RAISE, KC_BSPC):
             return TAPPING_TERM_THUMB;
       case LT(_LOWER, KC_TAB):
+            return TAPPING_TERM_THUMB;
+      case LT(_SYSTEM, OSM(MOD_LSFT)):
             return TAPPING_TERM_THUMB;
       default:
             return TAPPING_TERM;

@@ -11,26 +11,48 @@ oled_rotation_t oled_init_kb(oled_rotation_t rotation) {
 }
 
 bool oled_task_kb(void) {
-    if (!oled_task_user()) {
-        return false;
-    }
+    // if (!oled_task_user()) {
+    //     return false;
+    // }
     if (is_keyboard_master()) {
+    //     switch (get_highest_layer(layer_state)) {
+    //         case 0:
+    //             oled_write_raw(layer_zero, sizeof(layer_zero));
+    //             break;
+    //         case 1:
+    //             oled_write_raw(layer_one, sizeof(layer_one));
+    //             break;
+    //         case 2:
+    //             oled_write_raw(layer_two, sizeof(layer_two));
+    //             break;
+    //         case 3:
+    //             oled_write_raw(layer_three, sizeof(layer_three));
+    //             break;
+    //     }
+    
+
         switch (get_highest_layer(layer_state)) {
             case 0:
-                oled_write_raw(layer_zero, sizeof(layer_zero));
+                oled_write_P(PSTR("Default\n"), false);
                 break;
             case 1:
-                oled_write_raw(layer_one, sizeof(layer_one));
+                oled_write_P(PSTR("NUMS & SYMS\n"), false);
                 break;
             case 2:
-                oled_write_raw(layer_two, sizeof(layer_two));
+                oled_write_P(PSTR("NAV\n"), false);
                 break;
             case 3:
-                oled_write_raw(layer_three, sizeof(layer_three));
+                oled_write_P(PSTR("FKEYS\n"), false);
                 break;
+            case 4:
+                oled_write_P(PSTR("SYS\n"), false);
+                break;
+            default:
+                // Or use the write_ln shortcut over adding '\n' to the end of your string
+                oled_write_ln_P(PSTR("Undefined"), false);
         }
     } else {
-        oled_write_raw(logo, sizeof(logo));
+    oled_write_raw(logo, sizeof(logo));
     }
     return false;
 }
