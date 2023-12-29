@@ -5,7 +5,7 @@ void keyboard_post_init_user(void) {
 #ifdef RGB_MATRIX_ENABLE
     rgb_matrix_enable();
     rgb_matrix_set_speed(RGB_MATRIX_DEFAULT_SPD);
-    rgb_matrix_mode(RGB_MATRIX_SOLID_REACTIVE);
+    //rgb_matrix_mode(RGB_MATRIX_SOLID_REACTIVE);
     rgb_matrix_sethsv(HSV_PURPLE);
 #endif
 }
@@ -139,3 +139,33 @@ const uint16_t PROGMEM encoder_map[][NUM_ENCODERS][NUM_DIRECTIONS] = {
 
 };
 #endif // defined(ENCODER_ENABLE) && defined(ENCODER_MAP_ENABLE)
+
+#ifdef OLED_ENABLE
+bool oled_task_user(void) {
+    // Host Keyboard Layer Status
+    // oled_write_P(PSTR("Layer: "), false);
+
+    if (is_keyboard_master()) {
+        switch (get_highest_layer(layer_state)) {
+            case _QWERTY:
+                oled_write_P(PSTR("Default\n"), false);
+                break;
+            case _LOWER:
+                oled_write_P(PSTR("Lower\n"), false);
+                break;
+            case _RAISE:
+                oled_write_P(PSTR("Raise\n"), false);
+                break;
+            case _FUNC:
+                oled_write_P(PSTR("FN\n"), false);
+                break;
+            default:
+                // Or use the write_ln shortcut over adding '\n' to the end of your string
+                oled_write_ln_P(PSTR("Undefined"), false);
+        }
+    } else {
+        oled_write_raw(logo, sizeof(logo));
+    }
+    return false;
+}
+#endif
