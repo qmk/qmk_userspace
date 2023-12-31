@@ -4,6 +4,7 @@ POINTING_DEVICE_DRIVER = analog_joystick
 VIA_ENABLE = yes
 OLED_ENABLE = yes
 AUDIO_ENABLE = yes
+MOUSEKEY_ENABLE = yes
 
 # markstos: enable media keys
 EXTRAKEY_ENABLE = yes
