@@ -1,7 +1,6 @@
 SERIAL_DRIVER = vendor
 AUDIO_DRIVER = pwm_hardware
 POINTING_DEVICE_DRIVER = analog_joystick
-VIA_ENABLE = yes
 OLED_ENABLE = yes
 AUDIO_ENABLE = yes
 MOUSEKEY_ENABLE = yes

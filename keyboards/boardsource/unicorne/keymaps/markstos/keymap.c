@@ -118,7 +118,7 @@ void matrix_scan_user(void) {
 #define OSL_FUN  OSL(_FUNC)
 #define LOW_TAB  LT(_LOWER, KC_TAB)
 #define RSE_BSP  LT(_RAISE, KC_BSPC)
-#define MOU_GUI  LT(_MOUSE, KC_GUI)
+#define MOU_GUI  LT(_MOUSE, KC_LGUI)
 #define SHR_SFT  LT(_SHORTCUT, OSM_SFT)
 #define OSM_SFT  OSM(MOD_LSFT)
 #define OSM_ALT  OSM(MOD_LALT)
@@ -180,9 +180,9 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
 [_MOUSE] = LAYOUT_split_3x6_3( \
   //,-----------------------------------------------------.                    ,-----------------------------------------------------.
-      _______, KC_MS_L, KC_MS_U, KC_MS_D, KC_MS_R, XXXXXXX,                     XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, _______,\
+      _______, KC_MS_L, KC_MS_U, KC_MS_D, KC_MS_R, XXXXXXX,                     XXXXXXX, KC_BTN1, KC_BTN2, XXXXXXX, XXXXXXX, _______,\
   //|--------+--------+--------+--------+--------+--------|                    |--------+--------+--------+--------+--------+--------|
-      _______, XXXXXXX, XXXXXXX, XXXXXXX, KC_CALC,  KC_F12,                     XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, _______,\
+      _______, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,                     XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, _______,\
   //|--------+--------+--------+--------+--------+--------|                    |--------+--------+--------+--------+--------+--------|
       _______, XXXXXXX, XXXXXXX,XXXXXXX, XXXXXXX, XXXXXXX,                      XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, _______,\
   //|--------+--------+--------+--------+--------+--------+--------|  |--------+--------+--------+--------+--------+--------+--------|
@@ -196,7 +196,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   //|--------+--------+--------+--------+--------+--------|                    |--------+--------+--------+--------+--------+--------|
       _______, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,                     XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, _______,\
   //|--------+--------+--------+--------+--------+--------|                    |--------+--------+--------+--------+--------+--------|
-      _______, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX                      XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, _______,\
+      _______,XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,                      XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, _______,\
   //|--------+--------+--------+--------+--------+--------+--------|  |--------+--------+--------+--------+--------+--------+--------|
                                           KC_TRNS, KC_TRNS, KC_TRNS,    KC_TRNS, KC_TRNS, KC_TRNS\
                                       //`--------------------------'  `--------------------------'
@@ -209,7 +209,7 @@ uint16_t get_tapping_term(uint16_t keycode, keyrecord_t *record) {
             return TAPPING_TERM_THUMB;
       case LT(_LOWER, KC_TAB):
             return TAPPING_TERM_THUMB;
-      case LT(_MOUSE, KC_GUI):
+      case LT(_MOUSE, KC_LGUI):
             return TAPPING_TERM_THUMB;
       case LT(_SHORTCUT, OSM_SFT):
             return TAPPING_TERM_THUMB;
@@ -243,10 +243,10 @@ bool oled_task_user(void) {
                 oled_write_P(PSTR("FN\n"), false);
                 break;
             case _MOUSE:
-                oled_write_P(PSTR("FN\n"), false);
+                oled_write_P(PSTR("Mouse\n"), false);
                 break;
             case _SHORTCUT:
-                oled_write_P(PSTR("FN\n"), false);
+                oled_write_P(PSTR("Shortcuts\n"), false);
                 break;
             default:
                 // Or use the write_ln shortcut over adding '\n' to the end of your string
