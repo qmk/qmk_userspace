@@ -5,6 +5,7 @@ OLED_ENABLE = yes
 AUDIO_ENABLE = yes
 MOUSEKEY_ENABLE = yes
 ENCODER_ENABLE = yes
+VIA_ENABLE = yes
 
 # markstos: enable media keys
 EXTRAKEY_ENABLE = yes

@@ -24,11 +24,9 @@ enum custom_keycodes {
     LOWER,
     RAISE,
     FUNC,
-    MOUSE,
-    SHORTCUT,
     LOCKWIN,
     M_JIGL,
-    CTL_ATL_DEL,
+    C_ALT_D,
     SNAP_LFT,
     SNAP_RT,
     SNAP_TOP,
@@ -67,7 +65,7 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
                 is_mouse_jiggle_active = !is_mouse_jiggle_active;
             }
           break;
-        case CTL_ATL_DEL:
+        case C_ALT_D:
             if(record->event.pressed) {
                 register_code(KC_LCTL);
                 register_code(KC_LALT);
@@ -156,18 +154,15 @@ void matrix_scan_user(void) {
 #define _LOWER  1
 #define _RAISE  2
 #define _FUNC   3
-#define _MOUSE  4
-#define _SHORTCUT  5
 
 // For _QWERTY layer
 #define OSL_FUN  OSL(_FUNC)
 #define LOW_TAB  LT(_LOWER, KC_TAB)
 #define RSE_BSP  LT(_RAISE, KC_BSPC)
-#define MOU_GUI  LT(_MOUSE, KC_LGUI)
-#define SHR_SFT  LT(_SHORTCUT, KC_LSFT)
 #define OSM_SFT  OSM(MOD_LSFT)
 #define OSM_ALT  OSM(MOD_LALT)
 #define OSM_CTL  OSM(MOD_LCTL)
+#define OSM_GUI  OSM(MOD_LGUI)
 
 // For _LOWER layer
 #define ALT_TAB LALT(KC_TAB)
@@ -183,7 +178,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   //|---- ----+--------+--------+--------+--------+-------|                    |--------+--------+--------+--------+--------+--------|
      OSM_CTL,   KC_Z,    KC_X,    KC_C,    KC_V,    KC_B,                       KC_N    ,KC_M    ,KC_COMM ,KC_DOT  ,KC_SLSH ,OSL_FUN,\
   //|--------+--------+--------+--------+--------+--------+--------|  |--------+--------+--------+--------+--------+--------+--------|
-                                         MOU_GUI,LOW_TAB, KC_SPC,      KC_ENT, RSE_BSP, SHR_SFT \
+                                         OSM_GUI, LOW_TAB, KC_SPC,     KC_ENT, RSE_BSP, OSM_SFT \
                                       //`--------------------------'  `--------------------------'
   ),
 
@@ -213,35 +208,11 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
 [_FUNC] = LAYOUT_split_3x6_3( \
   //,-----------------------------------------------------.                    ,-----------------------------------------------------.
-      _______, KC_F1  , KC_F2  , KC_F3   , KC_F4 ,  KC_F5 ,                     RGB_VAI, RGB_HUI, RGB_SAI, RGB_MOD, RGB_TOG, _______,\
+      _______, KC_F1  , KC_F2  , KC_F3   , KC_F4 ,  KC_F5 ,                     KVM_SW, XXXXXXX, SNAP_TOP, XXXXXXX, RGB_TOG, _______,\
   //|--------+--------+--------+--------+--------+--------|                    |--------+--------+--------+--------+--------+--------|
-      _______, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,  KC_F12,                     RGB_VAD, RGB_HUD, RGB_SAD, RGB_RMOD,XXXXXXX, _______,\
+      C_ALT_D, KC_MS_L, KC_MS_U, KC_MS_D, KC_MS_R,  KC_F12,                     M_JIGL,SNAP_LFT, SNAP_BTM, SNAP_RT, KC_CALC, _______,\
   //|--------+--------+--------+--------+--------+--------|                    |--------+--------+--------+--------+--------+--------|
-      _______, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,  KC_NUM,                     LOCKWIN, QK_RBT,  QK_BOOT, EE_CLR,  KC_SLEP, _______,\
-  //|--------+--------+--------+--------+--------+--------+--------|  |--------+--------+--------+--------+--------+--------+--------|
-                                          KC_TRNS, KC_TRNS, KC_TRNS,    KC_TRNS, KC_TRNS, KC_TRNS\
-                                      //`--------------------------'  `--------------------------'
-  ),
-
-[_MOUSE] = LAYOUT_split_3x6_3( \
-  //,-----------------------------------------------------.                    ,-----------------------------------------------------.
-      _______, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,                     XXXXXXX, KC_MS_L, KC_MS_U, KC_MS_D, KC_MS_R, _______,\
-  //|--------+--------+--------+--------+--------+--------|                    |--------+--------+--------+--------+--------+--------|
-      _______, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,                     XXXXXXX, KC_BTN1, KC_BTN2, XXXXXXX, XXXXXXX, _______,\
-  //|--------+--------+--------+--------+--------+--------|                    |--------+--------+--------+--------+--------+--------|
-      _______, XXXXXXX, XXXXXXX,XXXXXXX, XXXXXXX, XXXXXXX,                      XXXXXXX, KC_APP,  XXXXXXX, XXXXXXX, XXXXXXX, _______,\
-  //|--------+--------+--------+--------+--------+--------+--------|  |--------+--------+--------+--------+--------+--------+--------|
-                                          KC_TRNS, KC_TRNS, KC_TRNS,    KC_TRNS, KC_TRNS, KC_TRNS\
-                                      //`--------------------------'  `--------------------------'
-  ),
-  
-[_SHORTCUT] = LAYOUT_split_3x6_3( \
-  //,-----------------------------------------------------.                    ,-----------------------------------------------------.
-    CTL_ATL_DEL, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,XXXXXXX,                     KVM_SW, XXXXXXX, SNAP_TOP, XXXXXXX, M_JIGL, _______,\
-  //|--------+--------+--------+--------+--------+--------|                    |--------+--------+--------+--------+--------+--------|
-      _______,XXXXXXX, XXXXXXX, XXXXXXX,XXXXXXX,XXXXXXX,                        XXXXXXX,SNAP_LFT, SNAP_BTM, SNAP_RT,XXXXXXX, _______,\
-  //|--------+--------+--------+--------+--------+--------|                    |--------+--------+--------+--------+--------+--------|
-      _______,XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,                      XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, _______,\
+      _______, KC_BTN1, KC_BTN2, KC_BTN3, XXXXXXX,  KC_NUM,                     LOCKWIN, QK_RBT,  QK_BOOT, EE_CLR,  KC_SLEP, _______,\
   //|--------+--------+--------+--------+--------+--------+--------|  |--------+--------+--------+--------+--------+--------+--------|
                                           KC_TRNS, KC_TRNS, KC_TRNS,    KC_TRNS, KC_TRNS, KC_TRNS\
                                       //`--------------------------'  `--------------------------'
@@ -253,10 +224,6 @@ uint16_t get_tapping_term(uint16_t keycode, keyrecord_t *record) {
       case LT(_RAISE, KC_BSPC):
             return TAPPING_TERM_THUMB;
       case LT(_LOWER, KC_TAB):
-            return TAPPING_TERM_THUMB;
-      case LT(_MOUSE, KC_LGUI):
-            return TAPPING_TERM_THUMB;
-      case LT(_SHORTCUT, OSM_SFT):
             return TAPPING_TERM_THUMB;
       default:
             return TAPPING_TERM;
@@ -272,6 +239,7 @@ const uint16_t PROGMEM encoder_map[][NUM_ENCODERS][NUM_DIRECTIONS] = {
 #ifdef OLED_ENABLE
 bool oled_task_user(void) {
     // Host Keyboard Layer Status
+    // Set cursor position
 
     if (is_keyboard_master()) {
         switch (get_highest_layer(layer_state)) {
@@ -286,12 +254,6 @@ bool oled_task_user(void) {
                 break;
             case _FUNC:
                 oled_write_P(PSTR("FN\n"), false);
-                break;
-            case _MOUSE:
-                oled_write_P(PSTR("Mouse\n"), false);
-                break;
-            case _SHORTCUT:
-                oled_write_P(PSTR("Shortcuts\n"), false);
                 break;
             default:
                 // Or use the write_ln shortcut over adding '\n' to the end of your string
