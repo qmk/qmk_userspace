@@ -26,7 +26,7 @@ enum custom_keycodes {
     FUNC,
     LOCKWIN,
     M_JIGL,
-    CTL_ATL_DEL,
+    C_ALT_D,
     SNAP_LFT,
     SNAP_RT,
     SNAP_TOP,
@@ -65,7 +65,7 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
                 is_mouse_jiggle_active = !is_mouse_jiggle_active;
             }
           break;
-        case CTL_ATL_DEL:
+        case C_ALT_D:
             if(record->event.pressed) {
                 register_code(KC_LCTL);
                 register_code(KC_LALT);
@@ -275,12 +275,6 @@ bool oled_task_user(void) {
                 break;
             case _FUNC:
                 oled_write_P(PSTR("FN\n"), false);
-                break;
-            case _MOUSE:
-                oled_write_P(PSTR("Mouse\n"), false);
-                break;
-            case _SHORTCUT:
-                oled_write_P(PSTR("Shortcuts\n"), false);
                 break;
             default:
                 // Or use the write_ln shortcut over adding '\n' to the end of your string
