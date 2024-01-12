@@ -1,8 +1,8 @@
 {
     "userspace_version": "1.0",
     "build_targets": [
-        ["boardsource/unicorne", "jsears"],
-        ["boardsource/unicorne", "my_default"],
+        ["boardsource/unicorne", "unicorne_choc"],
+        ["boardsource/unicorne", "unicorne_mx"],
         ["boardsource/unicorne", "markstos"]
     ]
 }
