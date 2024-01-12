@@ -24,8 +24,6 @@ enum custom_keycodes {
     LOWER,
     RAISE,
     FUNC,
-    MOUSE,
-    SHORTCUT,
     LOCKWIN,
     M_JIGL,
     CTL_ATL_DEL,
@@ -156,18 +154,15 @@ void matrix_scan_user(void) {
 #define _LOWER  1
 #define _RAISE  2
 #define _FUNC   3
-#define _MOUSE  4
-#define _SHORTCUT  5
 
 // For _QWERTY layer
 #define OSL_FUN  OSL(_FUNC)
 #define LOW_TAB  LT(_LOWER, KC_TAB)
 #define RSE_BSP  LT(_RAISE, KC_BSPC)
-#define MOU_GUI  LT(_MOUSE, KC_LGUI)
-#define SHR_SFT  LT(_SHORTCUT, KC_LSFT)
 #define OSM_SFT  OSM(MOD_LSFT)
 #define OSM_ALT  OSM(MOD_LALT)
 #define OSM_CTL  OSM(MOD_LCTL)
+#define OSM_GUI  OSM(MOD_LGUI)
 
 // For _LOWER layer
 #define ALT_TAB LALT(KC_TAB)
@@ -183,7 +178,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   //|---- ----+--------+--------+--------+--------+-------|                    |--------+--------+--------+--------+--------+--------|
      OSM_CTL,   KC_Z,    KC_X,    KC_C,    KC_V,    KC_B,                       KC_N    ,KC_M    ,KC_COMM ,KC_DOT  ,KC_SLSH ,OSL_FUN,\
   //|--------+--------+--------+--------+--------+--------+--------|  |--------+--------+--------+--------+--------+--------+--------|
-                                         MOU_GUI,LOW_TAB, KC_SPC,      KC_ENT, RSE_BSP, SHR_SFT \
+                                         OSM_GUI, LOW_TAB, KC_SPC,     KC_ENT, RSE_BSP, OSM_SFT \
                                       //`--------------------------'  `--------------------------'
   ),
 
@@ -213,35 +208,11 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
 [_FUNC] = LAYOUT_split_3x6_3( \
   //,-----------------------------------------------------.                    ,-----------------------------------------------------.
-      _______, KC_F1  , KC_F2  , KC_F3   , KC_F4 ,  KC_F5 ,                     XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, RGB_TOG, _______,\
+      _______, KC_F1  , KC_F2  , KC_F3   , KC_F4 ,  KC_F5 ,                     KVM_SW, XXXXXXX, SNAP_TOP, XXXXXXX, RGB_TOG, _______,\
   //|--------+--------+--------+--------+--------+--------|                    |--------+--------+--------+--------+--------+--------|
-      _______, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,  KC_F12,                     QK_MAKE, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, _______,\
+      C_ALT_D, KC_MS_L, KC_MS_U, KC_MS_D, KC_MS_R,  KC_F12,                     M_JIGL,SNAP_LFT, SNAP_BTM, SNAP_RT, KC_CALC, _______,\
   //|--------+--------+--------+--------+--------+--------|                    |--------+--------+--------+--------+--------+--------|
-      _______, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,  KC_NUM,                     LOCKWIN, QK_RBT,  QK_BOOT, EE_CLR,  KC_SLEP, _______,\
-  //|--------+--------+--------+--------+--------+--------+--------|  |--------+--------+--------+--------+--------+--------+--------|
-                                          KC_TRNS, KC_TRNS, KC_TRNS,    KC_TRNS, KC_TRNS, KC_TRNS\
-                                      //`--------------------------'  `--------------------------'
-  ),
-
-[_MOUSE] = LAYOUT_split_3x6_3( \
-  //,-----------------------------------------------------.                    ,-----------------------------------------------------.
-      _______, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,                     XXXXXXX, KC_MS_L, KC_MS_U, KC_MS_D, KC_MS_R, _______,\
-  //|--------+--------+--------+--------+--------+--------|                    |--------+--------+--------+--------+--------+--------|
-      _______, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,                     XXXXXXX, KC_BTN1, KC_BTN2, KC_BTN3, XXXXXXX, _______,\
-  //|--------+--------+--------+--------+--------+--------|                    |--------+--------+--------+--------+--------+--------|
-      _______, XXXXXXX, XXXXXXX,XXXXXXX, XXXXXXX, XXXXXXX,                      XXXXXXX, KC_APP,  XXXXXXX, XXXXXXX, XXXXXXX, _______,\
-  //|--------+--------+--------+--------+--------+--------+--------|  |--------+--------+--------+--------+--------+--------+--------|
-                                          KC_TRNS, KC_TRNS, KC_TRNS,    KC_TRNS, KC_TRNS, KC_TRNS\
-                                      //`--------------------------'  `--------------------------'
-  ),
-  
-[_SHORTCUT] = LAYOUT_split_3x6_3( \
-  //,-----------------------------------------------------.                    ,-----------------------------------------------------.
-    CTL_ATL_DEL, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,XXXXXXX,                     KVM_SW, XXXXXXX, SNAP_TOP, XXXXXXX, M_JIGL, _______,\
-  //|--------+--------+--------+--------+--------+--------|                    |--------+--------+--------+--------+--------+--------|
-      _______,XXXXXXX, XXXXXXX, XXXXXXX,XXXXXXX,XXXXXXX,                        XXXXXXX,SNAP_LFT, SNAP_BTM, SNAP_RT,XXXXXXX, _______,\
-  //|--------+--------+--------+--------+--------+--------|                    |--------+--------+--------+--------+--------+--------|
-      _______,XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,                      XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, _______,\
+      _______, KC_BTN1, KC_BTN2, KC_BTN3, XXXXXXX,  KC_NUM,                     LOCKWIN, QK_RBT,  QK_BOOT, EE_CLR,  KC_SLEP, _______,\
   //|--------+--------+--------+--------+--------+--------+--------|  |--------+--------+--------+--------+--------+--------+--------|
                                           KC_TRNS, KC_TRNS, KC_TRNS,    KC_TRNS, KC_TRNS, KC_TRNS\
                                       //`--------------------------'  `--------------------------'
@@ -254,23 +225,36 @@ uint16_t get_tapping_term(uint16_t keycode, keyrecord_t *record) {
             return TAPPING_TERM_THUMB;
       case LT(_LOWER, KC_TAB):
             return TAPPING_TERM_THUMB;
-      case LT(_MOUSE, KC_LGUI):
-            return TAPPING_TERM_THUMB;
-      case LT(_SHORTCUT, OSM_SFT):
-            return TAPPING_TERM_THUMB;
       default:
             return TAPPING_TERM;
     }
 }
 
+layer_state_t layer_state_set_user(layer_state_t state) {
+    switch (get_highest_layer(state)) {
+    case _QWERTY:
+        rgb_matrix_sethsv(HSV_PURPLE);
+        break;
+    case _LOWER:
+        rgb_matrix_sethsv(HSV_BLUE);
+        break;
+    case _RAISE:
+        rgb_matrix_sethsv(HSV_GREEN);
+        break;
+    case _FUNC:
+        rgb_matrix_sethsv(HSV_RED);
+        break;
+    }
+  return state;
+}
+
+
 #if defined(ENCODER_ENABLE) && defined(ENCODER_MAP_ENABLE)
 const uint16_t PROGMEM encoder_map[][NUM_ENCODERS][NUM_DIRECTIONS] = {
-    [_QWERTY] =   { ENCODER_CCW_CW(KC_MS_WH_UP, KC_MS_WH_DOWN), ENCODER_CCW_CW(KC_VOLD, KC_VOLU)  },
-    [_FUNC] =  { ENCODER_CCW_CW(RGB_HUD, RGB_HUI),              ENCODER_CCW_CW(RGB_RMOD, RGB_MOD)  },
+    [_QWERTY] = { ENCODER_CCW_CW(KC_WH_U, KC_WH_D),              ENCODER_CCW_CW(KC_WH_R, KC_WH_L)},
+    [_FUNC] =   { ENCODER_CCW_CW(RGB_HUD, RGB_HUI),              ENCODER_CCW_CW(RGB_RMOD, RGB_MOD)  },
     [_RAISE] =  { ENCODER_CCW_CW(KC_VOLD, KC_VOLU),             ENCODER_CCW_CW(KC_VOLD, KC_VOLU)  },
-    [_LOWER] = { ENCODER_CCW_CW(KC_VOLD, KC_VOLU),             ENCODER_CCW_CW(KC_VOLD, KC_VOLU) },
-    [_MOUSE] = { ENCODER_CCW_CW(KC_WH_U, KC_WH_D),              ENCODER_CCW_CW(KC_WH_R, KC_WH_L) },
-    [_SHORTCUT] =  { ENCODER_CCW_CW(KC_VOLD, KC_VOLU),             ENCODER_CCW_CW(KC_VOLD, KC_VOLU)  },
+    [_LOWER] =  { ENCODER_CCW_CW(KC_VOLD, KC_VOLU),             ENCODER_CCW_CW(KC_VOLD, KC_VOLU) },
 };
 #endif // defined(ENCODER_ENABLE) && defined(ENCODER_MAP_ENABLE)
 
