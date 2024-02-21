@@ -11,7 +11,7 @@
 			]
 		}
 	},
-	"postCreateCommand": "git config --global --add safe.directory /workspaces/qmk_userspace && git submodule update --init --recursive && { [ -d /workspaces/qmk_userspace/qmk_firmware ] || git clone https://github.com/qmk/qmk_firmware.git /workspaces/qmk_userspace/qmk_firmware; } && git config --global --add safe.directory /workspaces/qmk_userspace/qmk_firmware && qmk config user.qmk_home=/workspaces/qmk_userspace/qmk_firmware && qmk config user.overlay_dir=/workspaces/qmk_userspace && qmk git-submodule"
+	"postCreateCommand": "/workspaces/qmk_userspace/.devcontainer/setup.sh"
 
 	// Features to add to the dev container. More info: https://containers.dev/features.
 	// "features": {},
