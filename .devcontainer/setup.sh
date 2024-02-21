@@ -7,6 +7,8 @@ python3 get-pip.py
 python3 -m pip install qmk
 rm get-pip.py
 
+python3 -m pip install --upgrade milc
+
 git config --global --add safe.directory /workspaces/qmk_userspace
 git submodule update --init --recursive
 
