@@ -19,18 +19,3 @@ qmk config user.qmk_home=/workspaces/qmk_firmware
 qmk config user.overlay_dir=/workspaces/qmk_userspace
 
 qmk git-submodule
-
-cat << __EOF__ > /workspaces/qmk_userspace/devcontainer.code-workspace
-{
-    "folders": [
-        {
-            "name": "qmk_userspace",
-            "path": "/workspaces/qmk_userspace"
-        },
-        {
-            "name": "qmk_firmware",
-            "path": "/workspaces/qmk_firmware"
-        },
-    ],
-}
-__EOF__
