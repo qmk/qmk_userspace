@@ -1,0 +1,33 @@
+// For format details, see https://aka.ms/devcontainer.json. For config options, see the
+// README at: https://github.com/devcontainers/templates/tree/main/src/debian
+{
+    "name": "QMK CLI",
+    // Or use a Dockerfile or Docker Compose file. More info: https://containers.dev/guide/dockerfile
+    "image": "ghcr.io/qmk/qmk_cli",
+    "customizations": {
+        "vscode": {
+            "extensions": [
+                "amodio.toggle-excluded-files",
+                "EditorConfig.EditorConfig",
+                "xaver.clang-format",
+                "llvm-vs-code-extensions.vscode-clangd",
+                "bierner.github-markdown-preview",
+                "donjayamanne.git-extension-pack",
+                "ms-vscode-remote.remote-containers"
+            ]
+        }
+    },
+    "postCreateCommand": "/workspaces/qmk_userspace/.devcontainer/setup.sh"
+
+    // Features to add to the dev container. More info: https://containers.dev/features.
+    // "features": {},
+
+    // Use 'forwardPorts' to make a list of ports inside the container available locally.
+    // "forwardPorts": [],
+
+    // Configure tool-specific properties.
+    // "customizations": {},
+
+    // Uncomment to connect as root instead. More info: https://aka.ms/dev-containers-non-root.
+    // "remoteUser": "root"
+}
