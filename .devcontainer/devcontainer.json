@@ -12,7 +12,8 @@
                 "xaver.clang-format",
                 "llvm-vs-code-extensions.vscode-clangd",
                 "bierner.github-markdown-preview",
-                "donjayamanne.git-extension-pack"
+                "donjayamanne.git-extension-pack",
+                "ms-vscode-remote.remote-containers"
             ]
         }
     },
