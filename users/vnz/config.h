@@ -1,0 +1,5 @@
+#if defined(UNICODE_ENABLE) || defined(UNICODEMAP_ENABLE)
+    #define UNICODE_SELECTED_MODES UNICODE_MODE_LINUX
+#endif
+
+#define FORCE_NKRO

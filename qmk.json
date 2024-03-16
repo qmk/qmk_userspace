@@ -1,4 +1,13 @@
 {
     "userspace_version": "1.0",
-    "build_targets": []
+    "build_targets": [
+        ["cannonkeys/atlas", "vnz"],
+        ["preonic/rev3", "vnz"],
+        ["gizmo_engineering/gk6", "vnz"],
+        ["xiudi/xd75", "vnz"],
+        ["capsunlocked/cu7", "vnz"],
+        ["treasure/type9s2", "vnz"],
+        ["bolsa/damapad", "vnz"],
+        ["boardsource/lulu/rp2040", "vnz"]
+    ]
 }
