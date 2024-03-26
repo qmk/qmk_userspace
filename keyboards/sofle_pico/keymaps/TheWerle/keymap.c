@@ -33,23 +33,22 @@ enum custom_keycodes {
 	/*
 	 * QWERTY
 	 * ,-----------------------------------------.                    ,-----------------------------------------.
-	 * |  `   |   1  |   2  |   3  |   4  |   5  |                    |   6  |   7  |   8  |   9  |   0  |  `   |
+	 * |  `   |   1  |   2  |   3  |   4  |   5  |                    |   6  |   7  |   8  |   9  |   0  |  BPSC|
 	 * |------+------+------+------+------+------|                    |------+------+------+------+------+------|
-	 * | TAB |   Q  |   W  |   E  |   R  |   T  |                    |   Y  |   U  |   I  |   O  |   P  | Bspc |
+	 * | TAB |   Q  |   W  |   E  |   R  |   T  |                    |   Y  |   U  |   I  |   O  |   P   |   -	|
 	 * |------+------+------+------+------+------|                    |------+------+------+------+------+------|
-	 * | caps  |   A  |   S  |   D  |   F  |   G -------.    ,-------|   H  |   J  |   K  |   L  |   ;  |  '   |
+	 * |LSHFT|   A  |   S  |   D  |   F  |   G   -------.    ,-------|   H  |   J  |   K  |   L  |   ;  |  '   |
 	 * |------+------+------+------+------+------|  GESC |    |       |------+------+------+------+------+------|
-	 * |LShift|   Z  |   X  |   C  |   V  |   B  |-------|    |-------|   N  |   M  |   ,  |   .  |   /  |RShift|
+	 * |LCTR|   Z  |   X  |   C  |   V  |   B  |-------|    |-------|   N  |   M  |   ,  |   .  |   /  |  \ 	|
 	 * --------------------+++-------------------/       /     \      \-----------------------------------------'
-	 *            | LGUI | LAlt | LCTR |Space | / LOWER /       \RAISE \  |Enter | [ | ] | RGUI |		|
-	 *            |      |      |      |      |/       /         \      \ |      |       |      |      	|
+	 *            | LGUI | LAlt | LCTR | Enter  / Space /       \RAISE \  |Enter |   [   |   ] | RGUI |		
 	 */
 
 	[_QWERTY] = LAYOUT(
-	  QK_GESC,   KC_1,   KC_2,    KC_3,    KC_4,    KC_5,                   KC_6,    KC_7,    KC_8,    KC_9,    KC_0,  KC_MINS,
-	  KC_TAB,   KC_Q,   KC_W,    KC_E,    KC_R,    KC_T,                     KC_Y,    KC_U,    KC_I,    KC_O,    KC_P,  KC_BSPC,
-	  KC_CAPS,   KC_A,   KC_S,    KC_D,    KC_F,    KC_G,                     KC_H,    KC_J,    KC_K,    KC_L, KC_SCLN,  KC_QUOT,
-	  KC_LSFT,  KC_Z,   KC_X,    KC_C,    KC_V,    KC_B, QK_GESC,     XXXXXXX,KC_N,    KC_M, KC_COMM,  KC_DOT, KC_SLSH,  KC_RSFT,
+	  QK_GESC,   KC_1,   KC_2,    KC_3,    KC_4,    KC_5,                   KC_6,    KC_7,    KC_8,    KC_9,    KC_0,  KC_BSPC,
+	  KC_TAB,   KC_Q,   KC_W,    KC_E,    KC_R,    KC_T,                     KC_Y,    KC_U,    KC_I,    KC_O,    KC_P,  KC_MINS,
+	  KC_LSFT,   KC_A,   KC_S,    KC_D,    KC_F,    KC_G,                     KC_H,    KC_J,    KC_K,    KC_L, KC_SCLN,  KC_QUOT,
+	  KC_LCTL,  KC_Z,   KC_X,    KC_C,    KC_V,    KC_B, QK_GESC,     XXXXXXX,KC_N,    KC_M, KC_COMM,  KC_DOT, KC_SLSH,  KC_BSLS,
 			KC_LGUI,KC_LALT,KC_LCTL,  MO(_LOWER), KC_SPC,      		   KC_ENT, MO(_RAISE), KC_LBRC, KC_RBRC, KC_RGUI
 	),
 	/* LOWER  
@@ -69,7 +68,7 @@ enum custom_keycodes {
 	  QK_GESC,   KC_F1,   KC_F2,   KC_F3,   KC_F4,   KC_F5,                       KC_F6,   KC_F7,   KC_F8,   KC_F9,  KC_F10,  KC_F11,
 	  _______,    KC_1,    KC_2,    KC_3,    KC_4,    KC_5,                       KC_6,    KC_7,    KC_8,    KC_9,    KC_0,  KC_F12,
 	  _______, KC_EXLM,   KC_AT, KC_HASH,  KC_DLR, KC_PERC,                       KC_CIRC, KC_AMPR, KC_ASTR, KC_LPRN, KC_RPRN, KC_PIPE,
-	  _______,  KC_EQL, KC_MINS, KC_PLUS, KC_LCBR, KC_RCBR, RGB_TOG,       _______, KC_LBRC, KC_RBRC, KC_SCLN, KC_COLN, KC_BSLS, _______,
+	  _______,  KC_EQL, KC_MINS, KC_PLUS, KC_LCBR, KC_RCBR, RGB_TOG,       _______, KC_LBRC, KC_RBRC, KC_SCLN, KC_COLN, _______, _______,
 						   _______, _______, _______, _______, _______,       _______, _______, _______, _______, _______
 	),
 	/* RAISE
@@ -78,7 +77,7 @@ enum custom_keycodes {
 	 * |------+------+------+------+------+------|                    |------+------+------+------+------+------|
 	 * | Esc  | Ins  | Pscr | Menu |      |DB_TOGG|                    |      | PWrd |  Up  | NWrd | DLine| Bspc |
 	 * |------+------+------+------+------+------|                    |------+------+------+------+------+------|
-	 * | Tab  | LAt  | LCtl |LShift|      | Caps |-------.    ,-------|      | Left | Down | Rigth|  Del | Bspc |
+	 * | Tab  | LAt  | LCtl |LShift|      | Caps |-------.    ,-------|      | Left | Down | Right |  Del | Bspc |
 	 * |------+------+------+------+------+------|  MUTE  |    |       |------+------+------+------+------+------|
 	 * |Shift | Undo |  Cut | Copy | Paste|      |-------|    |-------|      | LStr |      | LEnd |      | Shift|
 	 * `-----------------------------------------/       /     \      \-----------------------------------------'
@@ -116,10 +115,9 @@ enum custom_keycodes {
 	#ifdef ENCODER_MAP_ENABLE
 		const uint16_t PROGMEM encoder_map[][NUM_ENCODERS][NUM_DIRECTIONS] = {
 		   [0] = { ENCODER_CCW_CW(KC_VOLD, KC_VOLU) },
-		   [1] = { ENCODER_CCW_CW(KC_PGUP, KC_PGDN) },
-		   [2] = { ENCODER_CCW_CW(RGB_MOD, RGB_RMOD)},
-		   [3] = { ENCODER_CCW_CW(_______, _______) }//,
-		   //[4] = { ENCODER_CCW_CW(_______, _______) }
+		   [1] = { ENCODER_CCW_CW(RGB_MOD, RGB_RMOD) },
+		   [2] = { ENCODER_CCW_CW(KC_PGDN, KC_PGUP ) },
+		   [3] = { ENCODER_CCW_CW(_______, _______) }
 		  };
 	#endif
 	
@@ -323,6 +321,9 @@ enum custom_keycodes {
             case _RAISE:
                 oled_write_P(PSTR("NAVI	  "), false);
                 break;
+			case _ADJUST: 
+				oled_write_P(PSTR("ADJUST "), false);
+				break;
             default:
                 oled_write_P(PSTR("UNK    "), false);
                 break;
@@ -522,31 +523,3 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
     }
     return true;
 }
-
-// #ifdef POINTING_DEVICE_ENABLE
-// #    ifdef DILEMMA_AUTO_POINTER_LAYER_TRIGGER_ENABLE
-// report_mouse_t pointing_device_task_user(report_mouse_t mouse_report) {
-    // if (abs(mouse_report.x) > DILEMMA_AUTO_POINTER_LAYER_TRIGGER_THRESHOLD || abs(mouse_report.y) > DILEMMA_AUTO_POINTER_LAYER_TRIGGER_THRESHOLD) {
-        // if (auto_pointer_layer_timer == 0) {
-            // layer_on(LAYER_POINTER);
-        // }
-        // auto_pointer_layer_timer = timer_read();
-    // }
-    // return mouse_report;
-// }
-
-// void matrix_scan_user(void) {
-    // if (auto_pointer_layer_timer != 0 && TIMER_DIFF_16(timer_read(), auto_pointer_layer_timer) >= DILEMMA_AUTO_POINTER_LAYER_TRIGGER_TIMEOUT_MS) {
-        // auto_pointer_layer_timer = 0;
-        // layer_off(LAYER_POINTER);
-    // }
-// }
-// #    endif // DILEMMA_AUTO_POINTER_LAYER_TRIGGER_ENABLE
-
-// #    ifdef DILEMMA_AUTO_SNIPING_ON_LAYER
-// layer_state_t layer_state_set_user(layer_state_t state) {
-    // dilemma_set_pointer_sniping_enabled(layer_state_cmp(state, DILEMMA_AUTO_SNIPING_ON_LAYER));
-    // return state;
-// }
-// #    endif // DILEMMA_AUTO_SNIPING_ON_LAYER
-// #endif     // POINTING_DEVICE_ENABLE
