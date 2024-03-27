@@ -86,7 +86,7 @@ bool showed_jump = true;
 #define MED_ESC LT(_MEDIA, KC_ESC)
 #define NAV_SPC LT(_NAV, KC_SPC)
 #define MOU_TAB LT(_MOUSE, KC_TAB)
-#define SYM_ENT LT(_SYM, KC_ENT)
+#define SYM_ENT LT(_SYM, KC_SPC)
 #define NUM_BSP LT(_NUM, KC_BSPC)
 #define FUN_DEL LT(_FUN, KC_DEL)
 

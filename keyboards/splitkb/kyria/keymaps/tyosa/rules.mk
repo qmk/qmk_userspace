@@ -7,6 +7,7 @@ MOUSEKEY_ENABLE  = yes # Mouse keys(+4700)
 LTO_ENABLE = yes
 WPM_ENABLE = yes
 TAP_DANCE_ENABLE = yes
+REPEAT_KEY_ENABLE = yes
 
 # AVR optimizations
 RGB_MATRIX_ENABLE = no     # Disable keyboard RGB matrix, as it is enabled by default on rev3
