@@ -3,7 +3,6 @@ BOOTLOADER=caterina
 OLED_ENABLE = yes
 ENCODER_ENABLE = yes
 EXTRAFLAGS += -flto
-MOUSEKEY_ENABLE = yes # Mouse keys(+4700)
 LTO_ENABLE = yes
 WPM_ENABLE = yes
 TAP_DANCE_ENABLE = yes

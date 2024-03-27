@@ -7,7 +7,6 @@ enum layers {
     _SYM,
     _FUN,
     _MEDIA,
-    _MOUSE,
     _NUM
 };
 
@@ -22,7 +21,7 @@ enum custom_keycodes {
     KC_LEFT_ENC_MODE,           // left encoder mode
     KC_RIGHT_ENC_MODE,          // right encoder mode
     ALT_TAB,                    // alt-tab
-    QC_QUOT                    // non-dead quotes
+    QC_QUOT                     // non-dead quotes
 };
 
 enum left_encoder_mode {
@@ -33,7 +32,6 @@ enum left_encoder_mode {
 
 enum right_encoder_mode {
     RENC_TAB,                    // alt tabbing
-    RENC_SCROLL,                 // mouse scroll
     RENC_PAGE,                   // scroll half pages
     RENC_NOOP
 };
@@ -56,61 +54,60 @@ bool is_sneaking = false;
 bool is_jumping = false;
 bool showed_jump = true;
 
-#define CTL_ESC MT(MOD_LCTL, KC_ESC)
-#define LALT_ENT MT(MOD_LALT, KC_ENT)
-#define RALT_ENT MT(MOD_RALT, KC_ENT)
-#define KC_LENC LT(0, KC_LEFT_ENC_MODE)
-#define KC_RENC KC_RIGHT_ENC_MODE
-#define SPC_SYM LT(_SYM, KC_SPC)
-#define CUS_MEH MEH_T(MEH(KC_SPC))
+#define  CTL_ESC    MT(MOD_LCTL, KC_ESC)
+#define LALT_ENT    MT(MOD_LALT, KC_ENT)
+#define RALT_ENT    MT(MOD_RALT, KC_ENT)
+#define  KC_LENC    LT(0, KC_LEFT_ENC_MODE)
+#define  KC_RENC    KC_RIGHT_ENC_MODE
 
 // Custom actions
-#define KC_COPY LCTL(KC_C)
-#define KC_PAST LCTL(KC_V)
-#define KC_CUT LCTL(KC_X)
-#define KC_REDO LCTL(KC_Y)
-#define KC_UNDO LCTL(KC_Z)
+#define     COPY    LCTL(KC_C)
+#define    PASTE    LCTL(KC_V)
+#define      CUT    LCTL(KC_X)
+#define  KC_REDO    LCTL(KC_Y)
+#define  KC_UNDO    LCTL(KC_Z)
 
 // Home row mods
-#define HR_GA LGUI_T(KC_A)
-#define HR_AR LALT_T(KC_R)
-#define HR_CS LCTL_T(KC_S)
-#define HR_ST LSFT_T(KC_T)
-#define HR_SN LSFT_T(KC_N)
-#define HR_CE LCTL_T(KC_E)
-#define HR_AI LALT_T(KC_I)
-#define HR_GO LGUI_T(KC_O)
+#define    HR_GA    LGUI_T(KC_A)
+#define    HR_AR    LALT_T(KC_R)
+#define    HR_CS    LCTL_T(KC_S)
+#define    HR_ST    LSFT_T(KC_T)
+#define    HR_SN    LSFT_T(KC_N)
+#define    HR_CE    LCTL_T(KC_E)
+#define    HR_AI    LALT_T(KC_I)
+#define    HR_GO    LGUI_T(KC_O)
 
 // Thumb tap/hold
-#define MEH_GUI MEH_T(KC_LGUI)
-#define MED_ESC LT(_MEDIA, KC_ESC)
-#define NAV_SPC LT(_NAV, KC_SPC)
-#define MOU_TAB LT(_MOUSE, KC_TAB)
-#define SYM_ENT LT(_SYM, KC_SPC)
-#define NUM_BSP LT(_NUM, KC_BSPC)
-#define FUN_DEL LT(_FUN, KC_DEL)
+#define  MEH_GUI    MEH_T(KC_LGUI)
+#define  MED_ESC    LT(_MEDIA, KC_ESC)
+#define  NAV_SPC    LT(_NAV, KC_SPC)
+#define  SYM_ENT    LT(_SYM, KC_ENT)
+#define  NUM_BSP    LT(_NUM, KC_BSPC)
+#define  FUN_DEL    LT(_FUN, KC_DEL)
+
+// Layer toggle
+#define   QC_NAV    TG(_NAV)
 
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     /*
      * Base Layer: Colemak DH
      *
      * ,-------------------------------------------.                              ,-------------------------------------------.
-     * |        |   Q  |   W  |   F  |   P  |   B  |                              |   J  |   L  |   U  |   Y  | ;  : |        |
+     * |        |   Q  |   W  |   F  |   P  |   B  |                              |   J  |   L  |   U  |   Y  | ;  : | Insert |
      * |--------+------+------+------+------+------|                              |------+------+------+------+------+--------|
      * |  - / _ |GUI/A |R/ALT |S/CTRL|T/SHFT|   G  |                              |   M  |N/SHFT|E/CTRL|I/ALT |O/GUI | ' / "  |
      * |--------+------+------+------+------+------+-------------.  ,-------------+------+------+------+------+------+--------|
-     * | Lalt / |   Z  |   X  |   C  |   D  |   V  | [ {  | LENC |  | RENC |  ] } |   K  |   H  | ,  < | . >  | /  ? |        |
-     * | Enter  |      |      |      |      |      |      |      |  |      |      |      |      |      |      |      |        |
+     * |        |   Z  |   X  |   C  |   D  |   V  |      | LENC |  | RENC |      |   K  |   H  | ,  < | . >  | /  ? |        |
      * `----------------------+------+------+------+------+------|  |------+------+------+------+------+----------------------'
-     *                        |      | LGui |  Esc | Space| Tab  |  | Enter| Bspc |Delete|      |      |
-     *                        |      | MEH  | Media| Nav  | Mouse|  |  Sym | Num  | Func |      |      |
+     *                        |      | LGui |  Esc | Space| Tab  |  | Enter| Bspc |Delete| Nav  |      |
+     *                        |      |      | Media| Nav  |      |  |  Sym | Num  | Func | Togl |      |
      *                        `----------------------------------'  `----------------------------------'
      */
     [_COLEMAK_DH] = LAYOUT(
-      XXXXXXX,    KC_Q,    KC_W,    KC_F,    KC_P,    KC_B,                                        KC_J,    KC_L,    KC_U,    KC_Y, KC_SCLN, _______,
+      XXXXXXX,    KC_Q,    KC_W,    KC_F,    KC_P,    KC_B,                                        KC_J,    KC_L,    KC_U,    KC_Y, KC_SCLN,  KC_INS,
       KC_MINS,   HR_GA,   HR_AR,   HR_CS,   HR_ST,    KC_G,                                        KC_M,   HR_SN,   HR_CE,   HR_AI,   HR_GO, QC_QUOT,
-      XXXXXXX,    KC_Z,    KC_X,    KC_C,    KC_D,    KC_V, KC_LBRC, KC_LENC, KC_RENC, KC_RBRC,    KC_K,    KC_H, KC_COMM,  KC_DOT, KC_SLSH, _______,
-                                 XXXXXXX, KC_LGUI, MED_ESC, NAV_SPC, MOU_TAB, SYM_ENT, NUM_BSP, FUN_DEL, CUS_MEH, XXXXXXX
+      XXXXXXX,    KC_Z,    KC_X,    KC_C,    KC_D,    KC_V, XXXXXXX, KC_LENC, KC_RENC, XXXXXXX,    KC_K,    KC_H, KC_COMM,  KC_DOT, KC_SLSH, _______,
+                                 XXXXXXX, KC_LGUI, MED_ESC, NAV_SPC,  KC_TAB, SYM_ENT, NUM_BSP, FUN_DEL,  QC_NAV, XXXXXXX
     ),
 
     /*
@@ -127,30 +124,10 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
      *                        `----------------------------------'  `----------------------------------'
      */
     [_NAV] = LAYOUT(
-      XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,                                     KC_REDO, KC_PAST, KC_COPY, KC_CUT, KC_UNDO, XXXXXXX,
+      XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,                                     KC_REDO,   PASTE,    COPY,     CUT, KC_UNDO, XXXXXXX,
       XXXXXXX, KC_LGUI, KC_LALT, KC_LCTL, KC_LSFT, XXXXXXX,                                     KC_CAPS, KC_LEFT, KC_DOWN,   KC_UP, KC_RGHT, XXXXXXX,
-      XXXXXXX, XXXXXXX, XXXXXXX, KC_COPY, XXXXXXX, KC_PAST, XXXXXXX, _______, _______, XXXXXXX,  KC_INS, KC_HOME, KC_PGDN, KC_PGUP,  KC_END, XXXXXXX,
+      XXXXXXX, XXXXXXX, XXXXXXX,    COPY, XXXXXXX,   PASTE, XXXXXXX, _______, _______, XXXXXXX,  KC_INS, KC_HOME, KC_PGDN, KC_PGUP,  KC_END, XXXXXXX,
                                  _______, _______,  KC_ESC,  KC_SPC,  KC_TAB,  KC_ENT, KC_BSPC,  KC_DEL, _______, _______
-    ),
-
-    /*
-     * Mouse Layer: Media, navigation
-     *
-     * ,-------------------------------------------.                              ,-------------------------------------------.
-     * |        |      |      |      |      |      |                              | Redo | Paste| Copy | Cut  | Undo |        |
-     * |--------+------+------+------+------+------|                              |------+------+------+------+------+--------|
-     * |        | LGui |  Alt | Ctrl | Shift|      |                              | Prev |Mouse←|Mouse↓|Mouse↑|Mouse→|        |
-     * |--------+------+------+------+------+------+-------------.  ,-------------+------+------+------+------+------+--------|
-     * |        |      |      |      |      |      |      |      |  |      |      | Next | Scrl←| Scrl↓| Scrl↑| Scrl→|        |
-     * `----------------------+------+------+------+------+------|  |------+------+------+------+------+----------------------'
-     *                        |      |      | Esc  | Space| Tab  |  | Right| Left |Middle|      |      |
-     *                        `----------------------------------'  `----------------------------------'
-     */
-    [_MOUSE] = LAYOUT(
-      XXXXXXX, _______, _______, _______, _______, _______,                                     KC_REDO, KC_PAST, KC_COPY, KC_CUT, KC_UNDO, XXXXXXX,
-      XXXXXXX, KC_LGUI, KC_LALT, KC_LCTL, KC_LSFT, _______,                                     KC_BTN4, KC_MS_L, KC_MS_D, KC_MS_U, KC_MS_R, XXXXXXX,
-      XXXXXXX, _______, _______, _______, _______, _______, _______, _______, _______, XXXXXXX, KC_BTN5, KC_WH_L, KC_WH_D, KC_WH_U, KC_WH_R, XXXXXXX,
-                                 _______, _______, _______, _______, _______, KC_BTN2, KC_BTN1, KC_BTN3, _______, _______
     ),
 
     /*
@@ -310,12 +287,6 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
                 }
             }
             return false;
-        case CUS_MEH:
-            if (record->tap.count && record->event.pressed) {
-                register_code16(MEH(KC_SPC));
-                unregister_code16(MEH(KC_SPC));
-                break;
-            }
         case ALT_TAB:
             if (record-> event.pressed) {
                 if (!is_alt_tab_active) {
@@ -403,13 +374,6 @@ bool encoder_update_user(uint8_t index, bool clockwise) {
                     }
                     alt_tab_timer = timer_read();
                     tap_code16(S(KC_TAB));
-                }
-                return false;
-            case RENC_SCROLL:
-                if (clockwise) {
-                    tap_code(KC_WH_D);
-                } else {
-                    tap_code(KC_WH_U);
                 }
                 return false;
             default:
@@ -595,9 +559,6 @@ bool oled_task_user(void) {
             case _FUN:
                 oled_write_P(PSTR("Function\n"), false);
                 break;
-            case _MOUSE:
-                oled_write_P(PSTR("Mouse\n"), false);
-                break;
             case _NUM:
                 oled_write_P(PSTR("Num\n"), false);
                 break;
@@ -620,9 +581,6 @@ bool oled_task_user(void) {
 
         oled_write_P(PSTR("Right: "), false);
         switch (right_encoder) {
-            case RENC_SCROLL:
-                oled_write_P(PSTR("Mouse scroll\n"), false);
-                break;
             case RENC_TAB:
                 oled_write_P(PSTR("Alt - Tab\n"), false);
                 break;
