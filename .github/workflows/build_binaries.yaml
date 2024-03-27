@@ -10,7 +10,7 @@ jobs:
     name: 'QMK Userspace Build'
     uses: qmk/.github/.github/workflows/qmk_userspace_build.yml@main
     with:
-      qmk_repo: qmk/qmk_firmware
+      qmk_repo: Tyosa/qmk_firmware
       qmk_ref: master
 
   publish:

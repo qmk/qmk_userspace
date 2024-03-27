@@ -1,22 +1,22 @@
 BOOTLOADER=caterina
 
 OLED_ENABLE = yes
-ENCODER_ENABLE = yes       # Enables the use of one or more encoders
+ENCODER_ENABLE = yes
 EXTRAFLAGS += -flto
-MOUSEKEY_ENABLE  = yes # Mouse keys(+4700)
+MOUSEKEY_ENABLE = yes # Mouse keys(+4700)
 LTO_ENABLE = yes
 WPM_ENABLE = yes
 TAP_DANCE_ENABLE = yes
-REPEAT_KEY_ENABLE = yes
+DEFERRED_EXEC_ENABLE = yes
 
 # AVR optimizations
-RGB_MATRIX_ENABLE = no     # Disable keyboard RGB matrix, as it is enabled by default on rev3
+RGB_MATRIX_ENABLE = no
 CONSOLE_ENABLE = no
 SPACE_CADET_ENABLE = no
 GRAVE_ESC_ENABLE = no
 MAGIC_ENABLE = no
-RGBLIGHT_ENABLE = no      # Enable keyboard RGB underglow
-UNICODE_ENABLE   = no# Unicode
-COMMAND_ENABLE   = no # Commands for debug and configuration
+RGBLIGHT_ENABLE = no
+UNICODE_ENABLE = no
+COMMAND_ENABLE = no
 LEADER_ENABLE = no
 MUSIC_ENABLE = no
