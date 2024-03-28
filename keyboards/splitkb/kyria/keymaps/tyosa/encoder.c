@@ -2,23 +2,19 @@
 #include "tyosa.h"
 
 enum left_encoder_mode {
-    LENC_VOL,                    // volume control
-    LENC_WORD,                   // scroll horizontally by word
+    LENC_VOL,           // volume control
+    LENC_WORD,          // scroll horizontally by word
     LENC_NOOP
 };
 
 enum right_encoder_mode {
-    RENC_TAB,                    // alt tabbing
-    RENC_PAGE,                   // scroll half pages
+    RENC_TAB,           // alt tabbing
+    RENC_PAGE,          // scroll half pages
     RENC_NOOP
 };
 
 enum left_encoder_mode left_encoder = LENC_VOL;
 enum right_encoder_mode right_encoder = RENC_TAB;
-
-// Alt tab on steroids
-//bool is_alt_tab_active = false;
-//uint16_t alt_tab_timer = 0;
 
 void left_encoder_click(void) {
     left_encoder++;
@@ -41,7 +37,6 @@ void right_encoder_click(void) {
 void right_encoder_hold(void) {
     tap_code(KC_MUTE);
 }
-
 
 void left_encoder_oled(void) {
     switch (left_encoder) {
@@ -69,9 +64,8 @@ void right_encoder_oled(void) {
     }
 }
 
-/**************** Encoder *****************/
 bool encoder_update_user(uint8_t index, bool clockwise) {
-    if (index == 0) { // left
+    if (index == 0) {
         switch (left_encoder) {
             case LENC_VOL:
                 if (clockwise) {
@@ -91,7 +85,7 @@ bool encoder_update_user(uint8_t index, bool clockwise) {
             default:
                 return false;
         }
-    } else if (index == 1) { // right
+    } else if (index == 1) {
         switch (right_encoder) {
             case RENC_PAGE:
                 if (clockwise) {

@@ -29,18 +29,14 @@ typedef struct _master_to_slave_t {
     bool is_barking;
 } master_to_slave_t;
 
-#define  CTL_ESC    MT(MOD_LCTL, KC_ESC)
-#define LALT_ENT    MT(MOD_LALT, KC_ENT)
-#define RALT_ENT    MT(MOD_RALT, KC_ENT)
-#define  KC_LENC    LT(0, KC_LEFT_ENC_MODE)
-#define  KC_RENC    LT(0, KC_RIGHT_ENC_MODE)
-
 // Custom actions
 #define     COPY    LCTL(KC_C)
 #define    PASTE    LCTL(KC_V)
 #define      CUT    LCTL(KC_X)
-#define  KC_REDO    LCTL(KC_Y)
-#define  KC_UNDO    LCTL(KC_Z)
+#define     REDO    LCTL(KC_Y)
+#define     UNDO    LCTL(KC_Z)
+#define  KC_LENC    LT(0, KC_LEFT_ENC_MODE)     // Left encoder
+#define  KC_RENC    LT(0, KC_RIGHT_ENC_MODE)    // Right encoder
 
 // Home row mods
 #define    HR_GA    LGUI_T(KC_A)

@@ -4,9 +4,6 @@
 #include "luna.h"
 #include "encoder.h"
 
-/**************** Oled *****************/
-
-// Used to draw on to the oled screen
 bool oled_task_user(void) {
     if (is_keyboard_master()) {
         oled_write_P(PSTR("Layer: "), false);

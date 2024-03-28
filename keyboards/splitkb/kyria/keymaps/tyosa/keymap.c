@@ -39,7 +39,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
      *                        `----------------------------------'  `----------------------------------'
      */
     [_NAV] = LAYOUT(
-      XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,                                     KC_REDO,   PASTE,    COPY,     CUT, KC_UNDO, XXXXXXX,
+      XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,                                        REDO,   PASTE,    COPY,     CUT,    UNDO, XXXXXXX,
       XXXXXXX, KC_LGUI, KC_LALT, KC_LCTL, KC_LSFT, XXXXXXX,                                     KC_CAPS, KC_LEFT, KC_DOWN,   KC_UP, KC_RGHT, XXXXXXX,
       XXXXXXX, XXXXXXX, XXXXXXX,    COPY, XXXXXXX,   PASTE, XXXXXXX, _______, _______, XXXXXXX,  KC_INS, KC_HOME, KC_PGDN, KC_PGUP,  KC_END, XXXXXXX,
                                  _______, _______,  KC_ESC,  KC_SPC,  KC_TAB,  KC_ENT, KC_BSPC,  KC_DEL, _______, _______
@@ -96,83 +96,56 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
 };
 
-// Initialize variable holding the binary
-// representation of active modifiers.
 uint8_t mod_state;
 bool process_record_user(uint16_t keycode, keyrecord_t *record) {
-    // Store the current modifier state in the variable for later reference
     mod_state = get_mods();
     switch (keycode) {
         case QC_EAIG:
             if (record->event.pressed) {
-                // First temporarily canceling both shifts so that
-                // shift isn't applied to the X_QUOTE keycode
                 del_mods(MOD_MASK_SHIFT);
                 SEND_STRING(SS_TAP(X_QUOTE));
-                // Reapplying modifier state so that the held shift key(s)
-                // still work
                 set_mods(mod_state);
                 SEND_STRING("e");
             }
             return true;
         case QC_EGRV:
             if (record->event.pressed) {
-                // First temporarily canceling both shifts so that
-                // shift isn't applied to the X_QUOTE keycode
                 del_mods(MOD_MASK_SHIFT);
                 SEND_STRING(SS_TAP(X_GRV));
-                // Reapplying modifier state so that the held shift key(s)
-                // still work
                 set_mods(mod_state);
                 SEND_STRING("e");
             }
             return true;
         case QC_AGRV:
             if (record->event.pressed) {
-                // First temporarily canceling both shifts so that
-                // shift isn't applied to the X_QUOTE keycode
                 del_mods(MOD_MASK_SHIFT);
                 SEND_STRING(SS_TAP(X_GRV));
-                // Reapplying modifier state so that the held shift key(s)
-                // still work
                 set_mods(mod_state);
                 SEND_STRING("a");
             }
             return true;
         case QC_ICRC:
             if (record->event.pressed) {
-                // First temporarily canceling both shifts so that
-                // shift isn't applied to the X_QUOTE keycode
                 add_mods(MOD_MASK_SHIFT);
                 SEND_STRING(SS_TAP(X_6));
                 del_mods(MOD_MASK_SHIFT);
-                // Reapplying modifier state so that the held shift key(s)
-                // still work
                 set_mods(mod_state);
                 SEND_STRING("i");
             }
             return true;
         case QC_OCRC:
             if (record->event.pressed) {
-                // First temporarily canceling both shifts so that
-                // shift isn't applied to the X_QUOTE keycode
                 add_mods(MOD_MASK_SHIFT);
                 SEND_STRING(SS_TAP(X_6));
                 del_mods(MOD_MASK_SHIFT);
-                // Reapplying modifier state so that the held shift key(s)
-                // still work
                 set_mods(mod_state);
                 SEND_STRING("o");
             }
             return true;
         case QC_UGRV:
             if (record->event.pressed) {
-                // First temporarily canceling both shifts so that
-                // shift isn't applied to the X_QUOTE keycode
                 del_mods(MOD_MASK_SHIFT);
                 SEND_STRING(SS_TAP(X_GRV));
-                // Reapplying modifier state so that the held shift key(s)
-                // still work
                 set_mods(mod_state);
                 SEND_STRING("u");
             }
