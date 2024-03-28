@@ -1,5 +1,8 @@
+#include QMK_KEYBOARD_H
+#include "tyosa.h"
 #include "quantum.h"
 #include "luna.h"
+#include "transactions.h"
 
 #define MIN_WALK_SPEED 10
 #define MIN_RUN_SPEED 40
@@ -147,5 +150,31 @@ void render_luna(int LUNA_X, int LUNA_Y) {
         anim_sleep = timer_read32();
     } else if (timer_elapsed32(anim_sleep) > OLED_TIMEOUT) {
         oled_off();
+    }
+}
+
+/*** Custom data sync for OLED ***/
+void user_sync_slave_handler(uint8_t in_buflen, const void* in_data, uint8_t out_buflen, void* out_data) {
+    const master_to_slave_t *m2s = (const master_to_slave_t*)in_data;
+    is_sneaking = m2s->is_sneaking;
+    is_barking = m2s->is_barking;
+}
+
+void keyboard_post_init_user(void) {
+    transaction_register_rpc(USER_SYNC_LUNA, user_sync_slave_handler);
+}
+
+void housekeeping_task_user(void) {
+    if (is_keyboard_master()) {
+        static uint32_t last_sync = 0;
+        if (timer_elapsed32(last_sync) > 100) {
+            master_to_slave_t m2s = {
+                get_mods() & MOD_MASK_CTRL,
+                get_mods() & MOD_MASK_SHIFT || host_keyboard_led_state().caps_lock
+            };
+            if (transaction_rpc_send(USER_SYNC_LUNA, sizeof(m2s), &m2s)) {
+                last_sync = timer_read32();
+            };
+        }
     }
 }

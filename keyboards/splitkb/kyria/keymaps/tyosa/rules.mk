@@ -5,10 +5,11 @@ ENCODER_ENABLE = yes
 EXTRAFLAGS += -flto
 LTO_ENABLE = yes
 WPM_ENABLE = yes
-TAP_DANCE_ENABLE = yes
 DEFERRED_EXEC_ENABLE = yes
 
 # Inclusions
+SRC += tyosa.c
+SRC += encoder.c
 SRC += luna.c
 
 # AVR optimizations

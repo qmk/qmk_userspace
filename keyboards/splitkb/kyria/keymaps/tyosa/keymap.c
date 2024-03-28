@@ -1,87 +1,7 @@
 #include QMK_KEYBOARD_H
-#include "transactions.h"
+#include "tyosa.h"
 #include "luna.h"
-
-enum layers {
-    _COLEMAK_DH = 0,
-    _NAV,
-    _SYM,
-    _FUN,
-    _MEDIA,
-    _NUM
-};
-
-enum custom_keycodes {
-    QC_EGRV = SAFE_RANGE,       // è
-    QC_EAIG,                    // é
-    QC_AGRV,                    // à
-    QC_CCED,                    // ç
-    QC_UGRV,                    // ù
-    QC_ICRC,                    // î
-    QC_OCRC,                    // ù
-    KC_LEFT_ENC_MODE,           // left encoder mode
-    KC_RIGHT_ENC_MODE,          // right encoder mode
-    ALT_TAB,                    // alt-tab
-    QC_QUOT                     // non-dead quotes
-};
-
-enum left_encoder_mode {
-    LENC_VOL,                    // volume control
-    LENC_WORD,                   // scroll horizontally by word
-    LENC_NOOP
-};
-
-enum right_encoder_mode {
-    RENC_TAB,                    // alt tabbing
-    RENC_PAGE,                   // scroll half pages
-    RENC_NOOP
-};
-
-typedef struct _master_to_slave_t {
-    bool is_sneaking;
-    bool is_barking;
-} master_to_slave_t;
-
-enum left_encoder_mode left_encoder = LENC_VOL;
-enum right_encoder_mode right_encoder = RENC_TAB;
-
-// Alt tab on steroids
-bool is_alt_tab_active = false;
-uint16_t alt_tab_timer = 0;
-
-#define  CTL_ESC    MT(MOD_LCTL, KC_ESC)
-#define LALT_ENT    MT(MOD_LALT, KC_ENT)
-#define RALT_ENT    MT(MOD_RALT, KC_ENT)
-#define  KC_LENC    LT(0, KC_LEFT_ENC_MODE)
-#define  KC_RENC    KC_RIGHT_ENC_MODE
-
-// Custom actions
-#define     COPY    LCTL(KC_C)
-#define    PASTE    LCTL(KC_V)
-#define      CUT    LCTL(KC_X)
-#define  KC_REDO    LCTL(KC_Y)
-#define  KC_UNDO    LCTL(KC_Z)
-
-// Home row mods
-#define    HR_GA    LGUI_T(KC_A)
-#define    HR_AR    LALT_T(KC_R)
-#define    HR_CS    LCTL_T(KC_S)
-#define    HR_ST    LSFT_T(KC_T)
-#define    HR_SN    LSFT_T(KC_N)
-#define    HR_CE    LCTL_T(KC_E)
-#define    HR_AI    LALT_T(KC_I)
-#define    HR_GO    LGUI_T(KC_O)
-
-// Thumb tap/hold
-#define  MEH_GUI    MEH_T(KC_LGUI)
-#define  MED_ESC    LT(_MEDIA, KC_ESC)
-#define  NAV_SPC    LT(_NAV, KC_SPC)
-#define  SYM_ENT    LT(_SYM, KC_ENT)
-#define  NUM_BSP    LT(_NUM, KC_BSPC)
-#define  FUN_DEL    LT(_FUN, KC_DEL)
-
-// Layer toggle
-#define   QC_NAV    TG(_NAV)
+#include "encoder.h"
 
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     /*
@@ -266,34 +186,18 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
             return true;
         case KC_LENC:
             if (record->tap.count && record->event.pressed) {
-                left_encoder++;
-                if (left_encoder == LENC_NOOP) {
-                    left_encoder = 0;
-                }
+                left_encoder_click();
             } else if (record->event.pressed) {
-                tap_code(KC_MUTE);
+                left_encoder_hold();
             }
             return false;
         case KC_RENC:
-             if (record->event.pressed) {
-                right_encoder++;
-                if (right_encoder == RENC_NOOP) {
-                    right_encoder = 0;
-                }
+            if (record->tap.count && record->event.pressed) {
+                right_encoder_click();
+            } else if (record->event.pressed) {
+                right_encoder_hold();
             }
             return false;
-        case ALT_TAB:
-            if (record-> event.pressed) {
-                if (!is_alt_tab_active) {
-                    is_alt_tab_active = true;
-                    register_code(KC_LALT);
-                }
-                alt_tab_timer = timer_read();
-                register_code(KC_TAB);
-            } else {
-                unregister_code(KC_TAB);
-            }
-            break;
         case QC_QUOT:
             if (record -> event.pressed) {
                 SEND_STRING(SS_TAP(X_QUOTE));
@@ -304,16 +208,6 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
     return true;
 };
 
-uint16_t keycode_config(uint16_t keycode) {
-    return keycode;
-}
-
-uint8_t mod_config(uint8_t mod) {
-    return mod;
-}
-
-tap_dance_action_t tap_dance_actions[] = {};
-
 void matrix_scan_user(void) {
   if (is_alt_tab_active) {
     if (timer_elapsed(alt_tab_timer) > 750) {
@@ -323,60 +217,6 @@ void matrix_scan_user(void) {
   }
 }
 
-/**************** Encoder *****************/
-bool encoder_update_user(uint8_t index, bool clockwise) {
-    if (index == 0) { // left
-        switch (left_encoder) {
-            case LENC_VOL:
-                if (clockwise) {
-                    tap_code(KC_VOLU);
-                } else {
-                    tap_code(KC_VOLD);
-                }
-                return false;
-            case LENC_WORD:
-                if (clockwise) {
-                    tap_code16(C(KC_RIGHT));
-                } else {
-                    tap_code16(C(KC_LEFT));
-                }
-
-                return false;
-            default:
-                return false;
-        }
-    } else if (index == 1) { // right
-        switch (right_encoder) {
-            case RENC_PAGE:
-                if (clockwise) {
-                    tap_code(KC_PGDN);
-                } else {
-                    tap_code(KC_PGUP);
-                }
-                return false;
-            case RENC_TAB:
-                if (clockwise) {
-                    if (!is_alt_tab_active) {
-                        is_alt_tab_active = true;
-                        register_code(KC_LALT);
-                    }
-                    alt_tab_timer = timer_read();
-                    tap_code16(KC_TAB);
-                } else {
-                    if (!is_alt_tab_active) {
-                        is_alt_tab_active = true;
-                        register_code(KC_LALT);
-                    }
-                    alt_tab_timer = timer_read();
-                    tap_code16(S(KC_TAB));
-                }
-                return false;
-            default:
-                return false;
-        }
-    }
-    return false;
-}
 
 /**************** Oled *****************/
 
@@ -406,28 +246,11 @@ bool oled_task_user(void) {
 
 
         oled_write_P(PSTR("Left: "), false);
-        switch (left_encoder) {
-            case LENC_VOL:
-                oled_write_P(PSTR("Volume\n"), false);
-                break;
-            case LENC_WORD:
-                oled_write_P(PSTR("Word\n"), false);
-                break;
-            default:
-                break;
-        }
+        left_encoder_oled();
 
         oled_write_P(PSTR("Right: "), false);
-        switch (right_encoder) {
-            case RENC_TAB:
-                oled_write_P(PSTR("Alt - Tab\n"), false);
-                break;
-            case RENC_PAGE:
-                oled_write_P(PSTR("Page scroll\n"), false);
-                break;
-            default:
-                break;
-        }
+        right_encoder_oled();
+
     } else {
         render_luna(0,1);
         oled_set_cursor(0,6);
@@ -437,28 +260,3 @@ bool oled_task_user(void) {
     return false;
 }
 
-/*** Custom data sync for OLED ***/
-void user_sync_slave_handler(uint8_t in_buflen, const void* in_data, uint8_t out_buflen, void* out_data) {
-    const master_to_slave_t *m2s = (const master_to_slave_t*)in_data;
-    is_sneaking = m2s->is_sneaking;
-    is_barking = m2s->is_barking;
-}
-
-void keyboard_post_init_user(void) {
-    transaction_register_rpc(USER_SYNC_LUNA, user_sync_slave_handler);
-}
-
-void housekeeping_task_user(void) {
-    if (is_keyboard_master()) {
-        static uint32_t last_sync = 0;
-        if (timer_elapsed32(last_sync) > 100) {
-            master_to_slave_t m2s = {
-                get_mods() & MOD_MASK_CTRL,
-                get_mods() & MOD_MASK_SHIFT || host_keyboard_led_state().caps_lock
-            };
-            if (transaction_rpc_send(USER_SYNC_LUNA, sizeof(m2s), &m2s)) {
-                last_sync = timer_read32();
-            };
-        }
-    }
-}
