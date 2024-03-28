@@ -10,6 +10,7 @@ DEFERRED_EXEC_ENABLE = yes
 # Inclusions
 SRC += tyosa.c
 SRC += encoder.c
+SRC += oled.c
 SRC += luna.c
 
 # AVR optimizations
