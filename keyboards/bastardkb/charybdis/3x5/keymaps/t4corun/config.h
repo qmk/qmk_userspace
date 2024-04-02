@@ -1,0 +1,4 @@
+#pragma once
+
+#define CHARYBDIS_CONFIG_SYNC
+#define CHARYBDIS_DRAGSCROLL_REVERSE_Y
