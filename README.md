@@ -206,10 +206,13 @@ Notes:
 
 ## Target Keyboards
 
+All boards use my keymaps unless noted
+
+- Ploopy Nano: `lkbm` keymap
 - Bastardkb Charybdis Nano 3x5
 - Crkbd 3x6
 - Planck Rev6
-- DZRGB60v2 (combing)
+- DZRGB60v2 (coming)
 - Ferris Swoop (coming)
 - Geist KLOR (coming)
 
@@ -217,4 +220,3 @@ Notes:
 
 - [qmk documentation](https://docs.qmk.fm/#/)
 - [qmk/awesome-userspaces Github](https://github.com/qmk/awesome-userspaces?tab=readme-ov-file). Links to fantastic userspaces to draw inspiration from, such as Drashna's
-
