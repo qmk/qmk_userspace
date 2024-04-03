@@ -4,3 +4,6 @@ This is my personal userspace for QMK. The keyboard I am currently using is a Ky
 
 The keymap I use is available under [keyboards/splitkb/kyria/keymaps/tyosa](./keyboards/splitkb/kyria/keymaps/tyosa).
 
+# To-Do
+
+[] Switch KC_GUI key with Win+S on left thumb
