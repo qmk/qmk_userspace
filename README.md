@@ -7,3 +7,4 @@ The keymap I use is available under [keyboards/splitkb/kyria/keymaps/tyosa](./ke
 # To-Do
 
 [] Switch KC_GUI key with Win+S on left thumb
+[] Add caps word qmk feature 
