@@ -18,7 +18,7 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
       current_base_layer = (current_base_layer + 1) % NUM_BASE_LAYER; 
       set_single_persistent_default_layer(current_base_layer);
     }
-    return false
+    return false;
 
   /*
   case QWERTY:
