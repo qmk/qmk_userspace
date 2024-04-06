@@ -61,7 +61,7 @@ ifeq ($(strip $(OLED_ENABLE)), yes)
 endif
 
 ifeq ($(strip $(ENCODER_MAP_ENABLE)), yes)
-	SRC += features/encoders.c
+	SRC += features/encoder.c
 endif
 
 ifeq ($(strip $(COMBO_ENABLE)), yes)
