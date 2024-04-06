@@ -18,21 +18,7 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
       current_base_layer = (current_base_layer + 1) % NUM_BASE_LAYER; 
       set_single_persistent_default_layer(current_base_layer);
     }
-    return false;
-
-  /*
-  case QWERTY:
-    if (record->event.pressed) { set_single_persistent_default_layer(_QWERTY); } //default_layer_set(1UL<<_QWERTY); }
-    return false;
-
-  case CLMAKDH:
-    if (record->event.pressed) { set_single_persistent_default_layer(_COLEMAK_DH); } //default_layer_set(1UL<<_COLEMAK_DH); }
-    return false;
-
-  case GAME:
-    if (record->event.pressed) { set_single_persistent_default_layer(_GAME); } //default_layer_set(1UL<<_COLEMAK_DH); }
-    return false;
-  */
+    return false
 
   case PN_DRGS:
     if (record->event.pressed) { 

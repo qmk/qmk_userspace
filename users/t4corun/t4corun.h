@@ -18,12 +18,8 @@ enum layers {
 };
 
 enum keycodes {
-  QWERTY = QK_USER,
-  CLMAKDH,
-  GAME,
-
   //These are only here to make the case statements unique in taphold.c
-  TH_LCBR,
+  TH_LCBR = QK_USER,
   TH_LABK,
   TH_LBRC,
   TH_SQUO,
