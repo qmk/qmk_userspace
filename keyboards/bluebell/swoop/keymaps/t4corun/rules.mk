@@ -2,4 +2,5 @@
 
 # override keyboard defaults
 #	qmk_firmware\keyboards\bluebell\swoop\rules.mk
-CONVERT_TO=blok
+ENCODER_MAP_ENABLE = yes
+CONVERT_TO = blok

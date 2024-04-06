@@ -39,7 +39,9 @@ enum keycodes {
   TH_QUOT,
 
   PN_DRGS,
-  PN_PDPI
+  PN_PDPI,
+
+  BASELYR
 };
 
 #define ___x___ KC_NO
@@ -186,15 +188,10 @@ enum keycodes {
 
 
 
-
-
-
-
-
-
 #define _DEFAULT_LAYER_1 FIRST_DEFAULT_LAYER
 #define _DEFAULT_LAYER_2 (FIRST_DEFAULT_LAYER + 1)
 #define _DEFAULT_LAYER_3 (FIRST_DEFAULT_LAYER + 2)
+#define NUM_BASE_LAYER 3
 
 #define _NONE_3__________________                   ___x___, ___x___, ___x___
 #define _NONE_5____________________________________ ___x___, ___x___, ___x___, ___x___, ___x___
@@ -283,6 +280,6 @@ enum keycodes {
 
 #define LAYER_CONFIG \
   ___x___, ___x___, ___x___, ___x___, ___x___, EE_CLR,  QK_RBT,  QK_BOOT, ___x___, _______, \
-  TR_RTOG, TR_RMOD, ___x___, ___x___, ___x___, ___x___, _SCAG_MODS________________________, \
-  TR_RHUI, TR_RSAI, TR_RVAI, TR_RSPI, GAME,    _NONE_5____________________________________, \
-                             CLMAKDH, QWERTY,  _LAYER_TRANS_R__
+  TR_RTOG, TR_RMOD, ___x___, ___x___, ___x___, BASELYR, _SCAG_MODS________________________, \
+  TR_RHUI, TR_RSAI, TR_RVAI, TR_RSPI, ___x___, _NONE_5____________________________________, \
+                             ___x___, ___x___, _LAYER_TRANS_R__
