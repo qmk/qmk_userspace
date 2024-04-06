@@ -1,5 +1,5 @@
 # override userspace defaults
-RGB_MATRIX_ENABLE = yes
+RGB_MATRIX_ENABLE = ws2812
 OLED_ENABLE = yes
 
 # override keyboard defaults

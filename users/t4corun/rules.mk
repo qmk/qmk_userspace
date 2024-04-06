@@ -51,6 +51,10 @@ ifeq ($(strip $(RGB_MATRIX_ENABLE)), yes)
 	SRC += features/rgbmatrix.c
 endif
 
+ifeq ($(strip $(RGB_MATRIX_ENABLE)), ws2812)
+	SRC += features/rgbmatrix.c
+endif
+
 
 ifeq ($(strip $(MOUSEKEY_ENABLE)), yes)
 	SRC += features/mouse.c
