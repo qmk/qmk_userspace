@@ -22,6 +22,7 @@ RGB_MATRIX_ENABLE ?= no
 RGBLIGHT_ENABLE ?= no
 POINTING_DEVICE_ENABLE ?= no
 OLED_ENABLE ?= no
+ENCODER_ENABLE ?= no
 ENCODER_MAP_ENABLE ?= no
 
 # qmk features we will force
