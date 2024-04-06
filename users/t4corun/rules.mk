@@ -22,6 +22,7 @@ RGB_MATRIX_ENABLE ?= no
 RGBLIGHT_ENABLE ?= no
 POINTING_DEVICE_ENABLE ?= no
 OLED_ENABLE ?= no
+ENCODER_MAP_ENABLE ?= no
 
 # qmk features we will force
 AUDIO_ENABLE = no
@@ -59,6 +60,9 @@ ifeq ($(strip $(OLED_ENABLE)), yes)
 	SRC += features/oled.c
 endif
 
+ifeq ($(strip $(ENCODER_MAP_ENABLE)), yes)
+	SRC += features/encoder.c
+endif
 
 ifeq ($(strip $(COMBO_ENABLE)), yes)
 	INTROSPECTION_KEYMAP_C += features/combo.c
