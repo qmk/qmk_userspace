@@ -22,6 +22,7 @@ RGB_MATRIX_ENABLE ?= no
 RGBLIGHT_ENABLE ?= no
 POINTING_DEVICE_ENABLE ?= no
 OLED_ENABLE ?= no
+ENCODER_ENABLE ?= no
 ENCODER_MAP_ENABLE ?= no
 
 # qmk features we will force
@@ -47,6 +48,10 @@ endif
 
 
 ifeq ($(strip $(RGB_MATRIX_ENABLE)), yes)
+	SRC += features/rgbmatrix.c
+endif
+
+ifeq ($(strip $(RGB_MATRIX_ENABLE)), ws2812)
 	SRC += features/rgbmatrix.c
 endif
 
