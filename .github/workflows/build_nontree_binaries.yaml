@@ -8,7 +8,7 @@ permissions:
 jobs:
   build:
     name: 'QMK Userspace Build'
-    uses: t4corun/.github/workflows/custom/qmk_userspace_build.yml@main
+    uses: t4corun/.github/workflows/qmk_userspace_build.yml@main
     with:
       qmk_repo: qmk/qmk_firmware
       qmk_ref: master
