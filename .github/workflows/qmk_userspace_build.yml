@@ -66,14 +66,14 @@ jobs:
           apt-get update
           apt-get install jq -y
 
+      - name: Parse Non Tree Targets JSON file
+        id: parse-json
+        run: |
+          echo "::set-output name=copy_targets::$(cat $GITHUB_WORKSPACE/qmk_nontree.json)" | jq -r '.nontree_targets[]'
+
       - name: Copy Non-Tree Keyboards to QMK Firmware
         run: |
-          targets = $( cat $GITHUB_WORKSPACE/qmk_nontree.json ) | jq -r '.nontree_targets[]'
-          targets2 = "$( cat $GITHUB_WORKSPACE/qmk_nontree.json )" | jq -r '.nontree_targets[]'
-          echo $targets
-          echo "$( cat $GITHUB_WORKSPACE/qmk_nontree.json )" | jq -r '.nontree_targets[]'
-          echo $targets2
-          for target in $targets; 
+          for target in ${{ join(fromJSON(steps.parse-json.outputs.copy_targets).nontree_targets, ' ') }}
           do
             echo "Copying keyboard: $target"
             cp $GITHUB_WORKSPACE/keyboards/$target $GITHUB_WORKSPACE/qmk_firmware/keyboards -R
