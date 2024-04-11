@@ -63,7 +63,9 @@ jobs:
 
       - name: Copy Non-Tree Keyboards to QMK Firmware
         run: |
-          cp $GITHUB_WORKSPACE/keyboards/barbellboards $GITHUB_WORKSPACE/qmk_firmware/keyboards -R
+          for kb in '${keyboard[@]}'; do
+            cp $GITHUB_WORKSPACE/keyboards/$kb $GITHUB_WORKSPACE/qmk_firmware/keyboards -R
+          done
 
       - name: Build
         run: |
