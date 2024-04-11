@@ -78,6 +78,7 @@ jobs:
           {
             echo 'COPY_TARGETS<<EOF'
             cat $GITHUB_WORKSPACE/${{ inputs.qmk_nontree_json }}
+            echo
             echo 'EOF'
           } >> "$GITHUB_ENV"
 
