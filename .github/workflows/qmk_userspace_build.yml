@@ -70,17 +70,19 @@ jobs:
         id: read_file
         run: |
           cat $GITHUB_WORKSPACE/qmk_nontree.json
+          echo "::set-output name=json::$(cat qmk-nontree.json)"
 
       - name: Parse Non Tree Targets JSON file
         id: parse-json
         run: |
-          echo "${{ steps.read_file.outputs.stdout }}" | jq -r '.nontree_targets[]'
+          echo "${{ steps.read-json.outputs.json }}" | jq -r '.nontree_targets[]'
 
       - name: Copy Non-Tree Keyboards to QMK Firmware
         id: loop-targets
         run: |
           for target in ${{ steps.parse-json.outputs.stdout }}; 
           do
+            echo "Copying keyboard: $target"
             cp $GITHUB_WORKSPACE/keyboards/$target $GITHUB_WORKSPACE/qmk_firmware/keyboards -R
           done
 
