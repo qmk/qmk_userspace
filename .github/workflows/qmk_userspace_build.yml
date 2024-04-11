@@ -62,7 +62,6 @@ jobs:
           qmk userspace-doctor
 
       - name: Read Non-Tree Targets from JSON file
-        if: steps.check_json_file.outputs.files_exists == 'true'
         run: |
           {
             echo 'COPY_TARGETS<<EOF'
@@ -71,6 +70,7 @@ jobs:
           } >> "$GITHUB_ENV"
 
       - name: Copy Non-Tree Keyboard Defintions from Userspace to QMK Firmware
+        if: ${{ env.COPY_TARGETS == '' }}
         run: |
           for target in ${{ join(fromJson(env.COPY_TARGETS).nontree_targets, ' ') }};
           do
