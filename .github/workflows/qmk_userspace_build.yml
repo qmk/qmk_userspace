@@ -76,11 +76,11 @@ jobs:
 
       - name: Parse Non Tree Targets JSON file
         run: |
-          echo ${{ fromJson(env.JSON_FILE).nontree_targets[@] }}
+          echo ${{ fromJson(env.JSON_FILE).nontree_targets }}
 
       - name: Copy Non-Tree Keyboards to QMK Firmware
         run: |
-          for target in ${{ fromJson(env.JSON_FILE).nontree_targets }};
+          for target in ${{ join(fromJson(env.JSON_FILE).nontree_targets, ' ') }};
           do
             echo "Copying keyboard: $target"
             cp $GITHUB_WORKSPACE/keyboards/$target $GITHUB_WORKSPACE/qmk_firmware/keyboards -R
