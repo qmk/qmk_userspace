@@ -61,11 +61,6 @@ jobs:
         run: |
           qmk userspace-doctor
 
-      - name: Install jq
-        run: |
-          apt-get update
-          apt-get install jq -y
-
       - name: Read Non Tree Targets from JSON file
         run: |
           {
