@@ -3,7 +3,6 @@
 
 #pragma once
 
-#define MASTER_RIGHT
 #define POINTING_DEVICE_GESTURES_SCROLL_ENABLE // Circular scroll.
 #define POINTING_DEVICE_AUTO_MOUSE_ENABLE
 
