@@ -63,7 +63,7 @@ jobs:
 
       - name: Import Non Tree Targets JSON file
         id: read_file
-        run: cat $GITHUB_WORKSPACE/qmk-nontree.json
+        run: cat $GITHUB_WORKSPACE/qmk_nontree.json
 
       - name: Parse Non Tree Targets JSON file
         id: parse-json
