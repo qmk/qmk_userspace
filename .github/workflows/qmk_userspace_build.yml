@@ -70,7 +70,7 @@ jobs:
         id: check_json_files
         uses: andstor/file-existence-action@v2
         with:
-          files: $GITHUB_WORKSPACE/${{ inputs.qmk_nontree_json }}
+          files: ${{ inputs.qmk_nontree_json }}
 
       - name: Read Non-Tree Targets from JSON file
         if: steps.check_json_files.outputs.files_exists == 'true'
