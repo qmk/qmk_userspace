@@ -68,13 +68,15 @@ jobs:
 
       - name: Read Non Tree Targets from JSON file
         run: |
-          echo 'JSON_FILE<<EOF' >> $GITHUB_ENV
-          cat $GITHUB_WORKSPACE/qmk_nontree.json >> $GITHUB_ENV
-          echo 'EOF' >> $GITHUB_ENV
+          {
+            echo 'JSON_FILE<<EOF'
+            cat $GITHUB_WORKSPACE/qmk_nontree.json
+            echo 'EOF'
+          } >> "$GITHUB_ENV"
 
       - name: Parse Non Tree Targets JSON file
         run: |
-          echo ${{ fromJson(env.JSON_FILE).nontree_targets }}
+          echo ${{ fromJson(env.JSON_FILE).nontree_targets[0] }}
 
       - name: Copy Non-Tree Keyboards to QMK Firmware
         run: |
