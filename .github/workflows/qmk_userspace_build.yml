@@ -67,10 +67,10 @@ jobs:
           apt-get install jq -y
 
       - name: Import Non Tree Targets JSON file
-        id: read_file
+        id: read-json
         run: |
           cat $GITHUB_WORKSPACE/qmk_nontree.json
-          echo "::set-output name=json::$(cat qmk_nontree.json)"
+          echo "::set-output name=json::$(cat $GITHUB_WORKSPACE/qmk_nontree.json)"
 
       - name: Parse Non Tree Targets JSON file
         id: parse-json
