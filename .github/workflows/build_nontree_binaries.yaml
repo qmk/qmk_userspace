@@ -12,7 +12,6 @@ jobs:
     with:
       qmk_repo: qmk/qmk_firmware
       qmk_ref: master
-      config-file: ./.github/workflows/Configuration/keyboard_nontree.yaml
 
   publish:
     name: 'QMK Userspace Publish'
