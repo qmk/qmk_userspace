@@ -62,7 +62,7 @@ jobs:
           qmk userspace-doctor
 
       - name: Install jq
-        run: sudo apt-get install jq
+        run: apt-get install jq
 
       - name: Import Non Tree Targets JSON file
         id: read_file
