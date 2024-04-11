@@ -64,7 +64,7 @@ jobs:
       - name: Install jq
         run: |
           apt-get update
-          apt-get install jq
+          apt-get install jq -y
 
       - name: Import Non Tree Targets JSON file
         id: read_file
