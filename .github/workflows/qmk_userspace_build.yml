@@ -15,7 +15,7 @@ on:
         type: string
       qmk_nontree_json:
         description: "json file containing non-tree keyboards"
-        default: "$GITHUB_WORKSPACE/qmk_nontree.json"
+        default: "qmk_nontree.json"
         required: false
         type: string
 
@@ -70,18 +70,18 @@ jobs:
         id: check_json_files
         uses: andstor/file-existence-action@v2
         with:
-          files: ${{ inputs.qmk_nontree_json }}
+          files: $GITHUB_WORKSPACE/${{ inputs.qmk_nontree_json }}
 
       - name: Read Non-Tree Targets from JSON file
         if: steps.check_json_files.outputs.files_exists == 'true'
         run: |
           {
             echo 'COPY_TARGETS<<EOF'
-            cat ${{ inputs.qmk_nontree_json }}
+            cat $GITHUB_WORKSPACE/${{ inputs.qmk_nontree_json }}
             echo 'EOF'
           } >> "$GITHUB_ENV"
 
-      - name: Copy Non-Tree Keyboard Defintions from Userspace to QMK Firmware
+      - name: Copy Non-Tree Keyboard Definitions from Userspace to QMK Firmware
         if: steps.check_json_files.outputs.files_exists == 'true'
         run: |
           for target in ${{ join(fromJson(env.COPY_TARGETS).nontree_targets, ' ') }};
