@@ -61,13 +61,20 @@ jobs:
         run: |
           qmk userspace-doctor
 
+      - name: Install jq
+        run: |
+          apt-get update
+          apt-get install jq
+
       - name: Import Non Tree Targets JSON file
         id: read_file
-        run: cat $GITHUB_WORKSPACE/qmk_nontree.json
+        run: |
+          cat $GITHUB_WORKSPACE/qmk_nontree.json
 
       - name: Parse Non Tree Targets JSON file
         id: parse-json
-        run: echo "${{ steps.read_file.outputs.stdout }}" | jq -r '.nontree_targets[]'
+        run: |
+          echo "${{ steps.read_file.outputs.stdout }}" | jq -r '.nontree_targets[]'
 
       - name: Copy Non-Tree Keyboards to QMK Firmware
         id: loop-targets
