@@ -1,6 +1,3 @@
 {
-	"nontree_targets": [
-		"barbellboards",
-		"planck"
-	]
+	"nontree_targets": []
 }
