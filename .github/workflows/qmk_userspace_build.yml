@@ -62,11 +62,11 @@ jobs:
           qmk userspace-doctor
 
       - name: Read Non-Tree Targets from JSON file
-        if: ${{ hashFiles( $GITHUB_WORKSPACE/qmk_nontree.json ) != '' }}
+        if: steps.check_json_file.outputs.files_exists == 'true'
         run: |
           {
             echo 'COPY_TARGETS<<EOF'
-            cat $GITHUB_WORKSPACE/qmk_nontree.json
+            cat $GITHUB_WORKSPACE/qmk_nontree.json 2>/dev/null
             echo 'EOF'
           } >> "$GITHUB_ENV"
 
