@@ -69,7 +69,8 @@ jobs:
       - name: Parse Non Tree Targets JSON file
         id: parse-json
         run: |
-          echo "::set-output name=copy_targets::$(cat $GITHUB_WORKSPACE/qmk_nontree.json)" | jq -r '.nontree_targets[]'
+          targets="$(cat $GITHUB_WORKSPACE/qmk_nontree.json)" | jq -r '.nontree_targets[]'
+          echo $targets
 
       - name: Copy Non-Tree Keyboards to QMK Firmware
         run: |
