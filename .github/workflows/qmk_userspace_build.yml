@@ -68,8 +68,11 @@ jobs:
 
       - name: Copy Non-Tree Keyboards to QMK Firmware
         run: |
-          targets=$( cat $GITHUB_WORKSPACE/qmk_nontree.json ) | jq -r '.nontree_targets[]'
+          targets = $( cat $GITHUB_WORKSPACE/qmk_nontree.json ) | jq -r '.nontree_targets[]'
+          targets2 = "$( cat $GITHUB_WORKSPACE/qmk_nontree.json )" | jq -r '.nontree_targets[]'
           echo $targets
+          echo "$( cat $GITHUB_WORKSPACE/qmk_nontree.json )" | jq -r '.nontree_targets[]'
+          echo $targets2
           for target in $targets; 
           do
             echo "Copying keyboard: $target"
