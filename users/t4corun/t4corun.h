@@ -219,7 +219,7 @@ enum keycodes {
   KC_Q,    KC_W,    KC_E,    KC_R,    KC_T,    KC_Y,    KC_U,    KC_I,    KC_O,    KC_P,    \
   TR_MOUA, KC_S,    KC_D,    KC_F,    KC_G,    KC_H,    KC_J,    KC_K,    KC_L,    TR_QUOT, \
   KC_Z,    KC_X,    KC_C,    KC_V,    KC_B,    KC_N,    KC_M,    TR_COMM, TR_DOT,  TR_MINS, \
-                    TR_BTN1, _BASE_L4________, _BASE_R4________, KC_MUTE 
+                    TR_BTN1, _BASE_L4________, _BASE_R4________, KC_MUTE
 
 
 #define LAYER_COLEMAK_DH \
