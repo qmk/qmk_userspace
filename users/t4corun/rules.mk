@@ -9,6 +9,8 @@
 # 
 # ?= means set the value if its not defined elsewhere
 
+
+
 LTO_ENABLE ?= yes
 MAGIC_ENABLE ?= no
 CONSOLE_ENABLE ?= no
@@ -26,6 +28,7 @@ ENCODER_ENABLE ?= no
 ENCODER_MAP_ENABLE ?= no
 
 # qmk features we will force
+EXTRAKEY_ENABLE = yes
 AUDIO_ENABLE = no
 CAPS_WORD_ENABLE = yes
 MOUSEKEY_ENABLE = yes
