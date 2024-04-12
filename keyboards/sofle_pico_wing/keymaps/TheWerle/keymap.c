@@ -95,7 +95,7 @@ enum custom_keycodes {
 	 * ,-----------------------------------------.                    ,-----------------------------------------.
 	 * |      |      |      |      |      |      |                    |      |      |      |      |      |      |
 	 * |------+------+------+------+------+------|                    |------+------+------+------+------+------|
-	 * |QK_BOOT|      |QWERTY|    |      |      |                    |      |      |      |      |      |      |
+	 * |QK_BOOT|      |QWERTY|    |      |      |                    |      |      |Music+|Mus ON|MUS OFF|MUS TOG|
 	 * |------+------+------+------+------+------|                    |------+------+------+------+------+------|
 	 * |      |      |MACWIN|      |      |      |-------.    ,-------|      | VOLDO| MUTE | VOLUP|      |      |
 	 * |------+------+------+------+------+------|  MUTE |    |       |------+------+------+------+------+------|
@@ -105,10 +105,10 @@ enum custom_keycodes {
 	 *            |      |      |      |      |/       /         \      \ |      |      |      |      |
 	 */
 	  [_ADJUST] = LAYOUT(
-	  XXXXXXX, XXXXXXX, XXXXXXX,  XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,
-	  QK_BOOT, XXXXXXX, KC_QWERTY,XXXXXXX, CG_TOGG, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,
+	  XXXXXXX, XXXXXXX, XXXXXXX,  XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, AG_NORM, AG_SWAP,   AU_ON,  AU_OFF, AU_TOGG,
+      QK_BOOT, XXXXXXX, KC_QWERTY,XXXXXXX, CG_TOGG, XXXXXXX, XXXXXXX, XXXXXXX, MU_NEXT, MU_ON, MU_OFF, MU_TOGG,
 	  XXXXXXX, XXXXXXX, CG_TOGG,  XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, KC_VOLD, KC_MUTE, KC_VOLU, XXXXXXX, XXXXXXX,
-	  XXXXXXX, XXXXXXX, XXXXXXX,  XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, KC_MPRV, KC_MPLY, KC_MNXT,
+	  QK_REBOOT, XXXXXXX, XXXXXXX,  XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, KC_MPRV, KC_MPLY, KC_MNXT,
       XXXXXXX, XXXXXXX, _______,  _______, _______, _______, _______, _______, _______, _______, _______, _______
 	  )
 	};
