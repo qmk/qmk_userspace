@@ -30,19 +30,19 @@ jobs:
 
     steps:
       - name: Checkout Userspace
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
         with:
           token: ${{ github.token }}
           submodules: recursive
 
       - name: Check if qmk_firmware exists
         id: check_files
-        uses: andstor/file-existence-action@v2
+        uses: andstor/file-existence-action@v3
         with:
           files: qmk_firmware
 
       - name: Checkout QMK Firmware
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
         if: steps.check_files.outputs.files_exists == 'false'
         with:
           token: ${{ github.token }}
@@ -68,7 +68,7 @@ jobs:
 
       - name: Check if non-tree keyboard json file exists
         id: check_json_files
-        uses: andstor/file-existence-action@v2
+        uses: andstor/file-existence-action@v3
         with:
           files: ${{ inputs.qmk_nontree_json }}
 
@@ -102,7 +102,7 @@ jobs:
           [ ! -f .failed ] || exit 1
 
       - name: Upload binaries
-        uses: actions/upload-artifact@v3
+        uses: actions/upload-artifact@v4
         if: always() && !cancelled()
         continue-on-error: true
         with:
