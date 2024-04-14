@@ -131,7 +131,7 @@ bool oled_task_user(void) {
   } else {
 #if defined( KEYBOARD_barbellboards_rollow )
     render_barbellboards_logo();
-#elif
+#else
     render_crkbd_logo();
 #endif
   }
