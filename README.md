@@ -10,11 +10,11 @@ The custom layout optimizes for programming (SQL, Powershell, C) and minimizes h
 
 A single keymap layout can be shared with multiple keyboards by using C preprocessor macros. These macros are referenced in the keyboard JSON files, and the build process will expand them into a transient keymap.c file during compile time.
 
-In this userspace, the base split 3x5_2 layout can be adapted for other split keyboards by expanding it with macros. For example, there is a wrapper that will add extra columns to the base layout for a Corne's 42-key 3x6_3 layout.
+In this userspace, the base split 3x5_3 layout can be adapted for other split keyboards by expanding it with macros. For example, there is a wrapper that will add extra columns to the base layout for a Corne's 42-key 3x6_3 layout.
 
 ### Tri-Layer
 
-Hold both thumb momentary layer keys `NAV` and `SYM` to access the `_NUMBER` layer
+Hold both thumb momentary layer keys `NAV` and `SYM` to access the `_SYMBOL` layer
 
 ### One Shot Mods
 
@@ -85,6 +85,7 @@ Enables simultaneous pressing of key combinations to get another. Handy when the
 This is the keymap designed for split 3x5 layout, two thumb keys on each side, and dual encoders. Emphasis on:
 
 - Releasing all keys always brings you back to base layer
+- Outside thumb keys are encoder clicks
 - Keeping certain keys consistent on all layers for better muscle memory
 - Numbers and function keys are positioned similarly
 - Symbols important for powershell / writing are positioned under stronger fingers
@@ -99,9 +100,9 @@ Additional keys may be mapped if present. Check each keyboard's `keymap.c` for m
 │ a mou│ s    │ d    │ f    │ g    │ qwerty  │ h    │ j    │ k    │ l    │ ' "  │
 ├──────┼──────┼──────┼──────┼──────┤         ├──────┼──────┼──────┼──────┼──────┤
 │ z    │ x    │ c    │ v    │ b    │         │ n    │ m    │ , (  │ . )  │ - _  │
-╰──────┴──────┴──────┼──────┼──────┤         ├──────┼──────┼──────┴──────┴──────╯
-                     │ sym  │ mou  │         │ spc  │ nav  │
-                     ╰──────┴──────╯         ╰──────┴──────╯
+╰──────┴──────┼──────┼──────┼──────┤         ├──────┼──────┼──────┼──────┴──────╯
+ enc: mwheel  │      │ num  │ mou  │         │ spc  │ nav  │ mute │ enc: volume
+              ╰──────┴──────┴──────╯         ╰──────┴──────┴──────╯
 
 ╭──────┬──────┬──────┬──────┬──────╮         ╭──────┬──────┬──────┬──────┬──────╮
 │ q    │ w    │ f    │ p    │ b    │         │ j    │ l    │ u    │ y    │ o    │
@@ -109,9 +110,10 @@ Additional keys may be mapped if present. Check each keyboard's `keymap.c` for m
 │ a mou│ r    │ s    │ t    │ g    │ colemak │ m    │ n    │ e    │ i    │ ' "  │
 ├──────┼──────┼──────┼──────┼──────┤   dh    ├──────┼──────┼──────┼──────┼──────┤
 │ z    │ x    │ c    │ d    │ v    │         │ k    │ h    │ , (  │ . )  │ - _  │
-╰──────┴──────┴──────┼──────┼──────┤         ├──────┼──────┼──────┴──────┴──────╯
-                     │ sym  │ mou  │         │ spc  │ nav  │
-                     ╰──────┴──────╯         ╰──────┴──────╯
+╰──────┴──────┼──────┼──────┼──────┤         ├──────┼──────┼──────┼──────┴──────╯
+ enc: mwheel  │      │ num  │ mou  │         │ spc  │ nav  │ mute │ enc: volume
+              ╰──────┴──────┴──────╯         ╰──────┴──────┴──────╯
+
 Notes:
 - swapped o and repeat on this keymap to keep repeat key in the same position across layers
 
@@ -121,9 +123,9 @@ Notes:
 │ gnum │ a    │ s    │ d    │ f    │  game   │      │      │      │      │      │
 ├──────┼──────┼──────┼──────┼──────┤         ├──────┼──────┼──────┼──────┼──────┤
 │ z    │ x    │ c    │ v    │ b    │         │      │      │      │      │      │
-╰──────┴──────┴──────┼──────┼──────┤         ├──────┼──────┼──────┴──────┴──────╯
-                     │ shft │ spc  │         │ spc  │ nav  │
-                     ╰──────┴──────╯         ╰──────┴──────╯
+╰──────┴──────┼──────┼──────┼──────┤         ├──────┼──────┼──────┼──────┴──────╯
+ enc: mwheel  │      │ shft │ spc  │         │ spc  │ nav  │ mute │ enc: volume
+              ╰──────┴──────┴──────╯         ╰──────┴──────┴──────╯
 
 ╭──────┬──────┬──────┬──────┬──────╮         ╭──────┬──────┬──────┬──────┬──────╮
 │ esc  │ home │ up   │ end  │ pgup │         │ ins  │      │ app  │      │ cfg  │
@@ -131,9 +133,12 @@ Notes:
 │      │ left │ down │ rght │ pgdn │   nav   │ bksp │ shft │ ctrl │ alt  │ gui  │
 ├──────┼──────┼──────┼──────┼──────┤         ├──────┼──────┼──────┼──────┼──────┤
 │ undo │ cut  │ copy │ pste │ redo │         │ del  │ tab  │ vol- │ vol+ │ mute │
-╰──────┴──────┴──────┼──────┼──────┤         ├──────┼──────┼──────┴──────┴──────╯
-                     │ sym  │ ent  │         │      │ nav  │
-                     ╰──────┴──────╯         ╰──────┴──────╯
+╰──────┴──────┼──────┼──────┼──────┤         ├──────┼──────┼──────┴──────┴──────╯
+ enc: zoom    │ zrst │ num  │ ent  │         │      │ nav  │      │ enc: none
+              ╰──────┴──────┴──────╯         ╰──────┴──────┴──────╯
+
+Notes:
+- zrst - Ctrl + 0 to Zoom Reset
 
 ╭──────┬──────┬──────┬──────┬──────╮         ╭──────┬──────┬──────┬──────┬──────╮
 │ esc  │ snip │ file │ func │ ` ~  │         │ ent  │ 7    │ 8    │ 9    │ tab  │
@@ -142,7 +147,7 @@ Notes:
 ├──────┼──────┼──────┼──────┼──────┤         ├──────┼──────┼──────┼──────┼──────┤
 │ undo │ cut  │ copy │ pste │ redo │         │ del  │ 1    │ 2    │ 3    │ - _  │
 ╰──────┴──────┼──────┼──────┼──────┤         ├──────┼──────┼──────┼──────┴──────╯
-              │      │ sym  │      │         │ spc  │ 0 nav│      │
+ enc: none    │      │ sym  │      │         │ spc  │ 0 nav│      │ enc: ← →
               ╰──────┴──────┴──────╯         ╰──────┴──────┴──────╯
 
 ╭──────┬──────┬──────┬──────┬──────╮         ╭──────┬──────┬──────┬──────┬──────╮
@@ -151,9 +156,9 @@ Notes:
 │ &    │ { {} │ }    │ |    │ ; :  │ symbols │ bksp │ ?    │ [ [] │ ]    │ ' '' │
 ├──────┼──────┼──────┼──────┼──────┤         ├──────┼──────┼──────┼──────┼──────┤
 │ % ^  │ < <> │ >    │ \    │ !    │         │ del  │ /    │ , () │ . )  │ - _  │
-╰──────┴──────┴──────┼──────┼──────┤         ├──────┼──────┼──────┴──────┴──────╯
-                     │ sym  │      │         │      │ nav  │
-                     ╰──────┴──────╯         ╰──────┴──────╯
+╰──────┴──────┼──────┼──────┼──────┤         ├──────┼──────┼──────┼──────┴──────╯
+ enc: none    │      │ sym  │      │         │      │ nav  │      │ enc: none
+              ╰──────┴──────┴──────╯         ╰──────┴──────┴──────╯
 
 Notes:
 - tri layer: Activate th the symbol layer by holding down symbol and navigation
@@ -164,9 +169,9 @@ Notes:
 │      │      │      │      │ scrl │  func   │ caps │ F4   │ F5   │ F6   │ F11  │
 ├──────┼──────┼──────┼──────┼──────┤         ├──────┼──────┼──────┼──────┼──────┤
 │      │      │      │      │      │         │ paus │ F1   │ F2   │ F3   │ F12  │
-╰──────┴──────┴──────┼──────┼──────┤         ├──────┼──────┼──────┴──────┴──────╯
-                     │ sym  │      │         │ mply1│ mrec1│
-                     ╰──────┴──────╯         ╰──────┴──────╯
+╰──────┴──────┼──────┼──────┼──────┤         ├──────┼──────┼──────┼──────┴──────╯
+  enc: none   │      │ sym  │      │         │ mply1│ mrec1│      │ enc: ↑ ↓
+              ╰──────┴──────┴──────╯         ╰──────┴──────┴──────╯
 
 ╭──────┬──────┬──────┬──────┬──────╮         ╭──────┬──────┬──────┬──────┬──────╮
 │      │ btn5 │ btn4 │ btn3 │      │         │ whup │      │ mouu │      │      │
@@ -174,9 +179,9 @@ Notes:
 │ mou  │ alt  │ ctrl │ shft │      │  mouse  │ whdn │ moul │ moud │ mour │      │
 ├──────┼──────┼──────┼──────┼──────┤         ├──────┼──────┼──────┼──────┼──────┤
 │      │      │      │ drgs │ snip │         │ sdpi │ pdpi │      │      │      │
-╰──────┴──────┴──────┼──────┼──────┤         ├──────┼──────┼──────┴──────┴──────╯
-                     │ btn1 │ btn2 │         │      │      │
-                     ╰──────┴──────╯         ╰──────┴──────╯
+╰──────┴──────┼──────┼──────┼──────┤         ├──────┼──────┼──────┼──────┴──────╯
+  enc:mwheel  │      │ btn1 │ btn2 │         │      │      │      │ enc: none
+              ╰──────┴──────┴──────╯         ╰──────┴──────┴──────╯
 
 Notes:
 - drgs on non Charybdis Nano boards will trigger drag scrolling on Ploopy Nano
@@ -189,20 +194,22 @@ Notes:
 │ gnum │ 1    │ 2    │ 3    │ 4    │  game   │      │      │      │      │      │
 ├──────┼──────┼──────┼──────┼──────┤    num  ├──────┼──────┼──────┼──────┼──────┤
 │      │ 5    │ 6    │ 7    │ 8    │         │      │      │      │      │      │
-╰──────┴──────┴──────┼──────┼──────┤         ├──────┼──────┼──────┴──────┴──────╯
-                     │ alt  │ ctr  │         │      │ nav  │
-                     ╰──────┴──────╯         ╰──────┴──────╯
+╰──────┴──────┼──────┼──────┼──────┤         ├──────┼──────┼──────┼──────┴──────╯
+ end: mwheel  │      │ alt  │ ctr  │         │      │ nav  │ mute │ enc: volume
+              ╰──────┴──────┴──────╯         ╰──────┴──────┴──────╯
 
 ╭──────┬──────┬──────┬──────┬──────╮         ╭──────┬──────┬──────┬──────┬──────╮
 │      │      │      │      │      │         │ eeclr│ rboot│ boot │      │ cfg  │
 ├──────┼──────┼──────┼──────┼──────┤         ├──────┼──────┼──────┼──────┼──────┤
-│rgbtog│rgbMod│      │      │      │ config  │      │ shft │ ctrl │ alt  │ gui  │
+│rgbtog│rgbMod│      │      │      │ config  │ blyr │ shft │ ctrl │ alt  │ gui  │
 ├──────┼──────┼──────┼──────┼──────┤         ├──────┼──────┼──────┼──────┼──────┤
-│ hue+ │ sat+ │ vib+ │ spd+ │ game │         │      │      │      │      │      │
-╰──────┴──────┴──────┼──────┼──────┤         ├──────┼──────┼──────┴──────┴──────╯
-                     │clmkdh│qwerty│         │      │ nav  │
-                     ╰──────┴──────╯         ╰──────┴──────╯
-```
+│ hue+ │ sat+ │ vib+ │ spd+ │      │         │      │      │      │      │      │
+╰──────┴──────┼──────┼──────┼──────┤         ├──────┼──────┼──────┼──────┴──────╯
+ enc: none    │      │      │      │         │      │ nav  │      │ enc: none
+              ╰──────┴──────┴──────╯         ╰──────┴──────┴──────╯
+
+notes: 
+- blyr - toggles between the three base layers: qwerty, colemakdh, game
 
 ## Target Keyboards
 
@@ -212,8 +219,9 @@ All boards use my keymaps unless noted
 - Bastardkb Charybdis Nano 3x5
 - Crkbd 3x6
 - Planck Rev6
+- Ferris Swoop
+- Barbell Rollow (non-tree)
 - DZRGB60v2 (coming)
-- Ferris Swoop (coming)
 - Geist KLOR (coming)
 
 ## Links
