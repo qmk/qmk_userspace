@@ -5,7 +5,7 @@ void render_crkbd_logo(void) {
 }
 
 void render_rollow_logo(void) {
-  oled_write_raw_P(barbellboards_logo, sizeof(barbellboards_logo));
+  oled_write_raw_P(rollow_logo, sizeof(rollow_logo));
 }
 
 void render_qmk_logo(void) {
@@ -92,7 +92,7 @@ bool oled_task_user(void) {
     render_oled_main();  // Renders the current keyboard state (layer, lock, caps, scroll, etc)
   } else {
 #if defined( KEYBOARD_barbellboards_rollow )
-    render_barbellboards_logo();
+    render_rollow_logo();
 #elif defined( KEYBOARD_crkbd )
     render_crkbd_logo();
 #else
