@@ -98,7 +98,7 @@ enum keycodes {
 
 
 #if defined(MOUSEKEY_ENABLE)
-#   define TR_MOUZ LT(_MOUSE, KC_Z)
+#   define TR_MOUA LT(_MOUSE, KC_A)
 
 #   define TR_MOUU KC_MS_U
 #   define TR_MOUD KC_MS_D
@@ -130,7 +130,7 @@ enum keycodes {
 # endif //KEYBOARD_bastardkb_charybdis_3x5
 
 #else
-#   define TR_MOUZ KC_A
+#   define TR_MOUA KC_A
 
 #   define TR_MOUU ___x___
 #   define TR_MOUD ___x___
@@ -152,7 +152,6 @@ enum keycodes {
 #   define TR_PDPI ___x___
 
 #   define TR_NUM1 MO(_NUMBER)
-
 #endif //MOUSEKEY_ENABLE
 
 
@@ -214,15 +213,15 @@ enum keycodes {
 
 #define LAYER_QWERTY \
   KC_Q,    KC_W,    KC_E,    KC_R,    KC_T,    KC_Y,    KC_U,    KC_I,    KC_O,    KC_P,    \
-  KC_A,    KC_S,    KC_D,    KC_F,    KC_G,    KC_H,    KC_J,    KC_K,    KC_L,    TR_QUOT, \
-  TR_MOUZ, KC_X,    KC_C,    KC_V,    KC_B,    KC_N,    KC_M,    TR_COMM, TR_DOT,  TR_MINS, \
+  TR_MOUA, KC_S,    KC_D,    KC_F,    KC_G,    KC_H,    KC_J,    KC_K,    KC_L,    TR_QUOT, \
+  KC_Z,    KC_X,    KC_C,    KC_V,    KC_B,    KC_N,    KC_M,    TR_COMM, TR_DOT,  TR_MINS, \
                     _BASE_L4_________________, _BASE_R4_________________
 
 
 #define LAYER_COLEMAK_DH \
   KC_Q,    KC_W,    KC_F,    KC_P,    KC_B,    KC_J,    KC_L,    KC_U,    KC_Y,    TR_QUOT, \
-  KC_A,    KC_R,    KC_S,    KC_T,    KC_G,    KC_M,    KC_N,    KC_E,    KC_I,    KC_O,    \
-  TR_MOUZ, KC_X,    KC_C,    KC_D,    KC_V,    KC_K,    KC_H,    TR_COMM, TR_DOT,  TR_MINS, \
+  TR_MOUA, KC_R,    KC_S,    KC_T,    KC_G,    KC_M,    KC_N,    KC_E,    KC_I,    KC_O,    \
+  KC_Z,    KC_X,    KC_C,    KC_D,    KC_V,    KC_K,    KC_H,    TR_COMM, TR_DOT,  TR_MINS, \
                     _BASE_L4_________________, _BASE_R4_________________
 
 
