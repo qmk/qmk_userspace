@@ -1,0 +1,8 @@
+{
+	"clone_targets": [
+		{ 
+			"repository": "https://github.com/app-gitKaiwho/qmk-config-klor/", 
+			"tree": "main" 
+		}
+	]
+}
