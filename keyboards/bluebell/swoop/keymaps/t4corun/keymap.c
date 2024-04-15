@@ -2,50 +2,52 @@
 
 #define LAYOUT_swoop_wrapper(...) LAYOUT_split_3x5_3(__VA_ARGS__)
 
-#define LAYOUT_3x5_keymap( \
+#define LAYOUT_3x5_3_keymap( \
 	k00, k01, k02, k03, k04, k05, k06, k07, k08, k09, \
 	k10, k11, k12, k13, k14, k15, k16, k17, k18, k19, \
 	k20, k21, k22, k23, k24, k25, k26, k27, k28, k29, \
-	               k33, k34, k35, k36                 \
+	          k32, k33, k34, k35, k36, k37            \
 ) \
 LAYOUT_swoop_wrapper ( \
-	k00, k01, k02,   k03, k04, k05, k06, k07, k08, k09, \
-	k10, k11, k12,   k13, k14, k15, k16, k17, k18, k19, \
-	k20, k21, k22,   k23, k24, k25, k26, k27, k28, k29, \
-	          KC_NO, k33, k34, k35, k36, KC_NO          \
+	k00, k01, k02, k03, k04, k05, k06, k07, k08, k09, \
+	k10, k11, k12, k13, k14, k15, k16, k17, k18, k19, \
+	k20, k21, k22, k23, k24, k25, k26, k27, k28, k29, \
+	          k32, k33, k34, k35, k36, k37            \
 )
 
-#define SWOOP(...) LAYOUT_3x5_keymap(__VA_ARGS__)
+#define SWOOP(...) LAYOUT_3x5_3_keymap(__VA_ARGS__)
 
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
-  [_DEFAULT_LAYER_1 ] = SWOOP(LAYER_QWERTY),
-  [_DEFAULT_LAYER_2 ] = SWOOP(LAYER_COLEMAK_DH),
-  [_DEFAULT_LAYER_3 ] = SWOOP(LAYER_GAME),
-  [_NAVIGATION]       = SWOOP(LAYER_NAVIGATION),
-  [_NUMBER]           = SWOOP(LAYER_NUMBER),
-  [_SYMBOL]           = SWOOP(LAYER_SYMBOL),
-  [_FUNCTION]         = SWOOP(LAYER_FUNCTION),
-  [_MOUSE]            = SWOOP(LAYER_MOUSE),
-  [_GAME_NUM]         = SWOOP(LAYER_GAME_NUM),
-  [_CONFIG]           = SWOOP(LAYER_CONFIG)
+  [_DEFAULT_LAYER_1] = SWOOP(LAYER_QWERTY),
+  [_DEFAULT_LAYER_2] = SWOOP(LAYER_COLEMAK_DH),
+  [_DEFAULT_LAYER_3] = SWOOP(LAYER_GAME),
+  [_NAVIGATION]      = SWOOP(LAYER_NAVIGATION),
+  [_NUMBER]          = SWOOP(LAYER_NUMBER),
+  [_SYMBOL]          = SWOOP(LAYER_SYMBOL),
+  [_FUNCTION]        = SWOOP(LAYER_FUNCTION),
+  [_MOUSE]           = SWOOP(LAYER_MOUSE),
+  [_GAME_NUM]        = SWOOP(LAYER_GAME_NUM),
+  [_CONFIG]          = SWOOP(LAYER_CONFIG)
 
 };
 
 
 #if defined(ENCODER_MAP_ENABLE)
 
-/* may have to swap the hands in this array since we do right side master*/
+/* The encoder presses are handled in the keymap */
+
 const uint16_t PROGMEM encoder_map[][NUM_ENCODERS][NUM_DIRECTIONS] = {
-  [_DEFAULT_LAYER_1 ] = { ENCODER_CCW_CW(TR_MWHU, TR_MWHD), ENCODER_CCW_CW(KC_VOLD, KC_VOLU)  }, //wheel up, wheel down, vol up and down
-  [_DEFAULT_LAYER_2 ] = { ENCODER_CCW_CW(TR_MWHU, TR_MWHD), ENCODER_CCW_CW(KC_VOLD, KC_VOLU)  }, //wheel up, wheel down, vol up and down
-  [_DEFAULT_LAYER_3 ] = { ENCODER_CCW_CW(TR_MWHU, TR_MWHD), ENCODER_CCW_CW(KC_VOLD, KC_VOLU)  }, //wheel up, wheel down, xx,xx
-  [_NAVIGATION]       = { ENCODER_CCW_CW(TR_MWHU, TR_MWHD), ENCODER_CCW_CW(___x___, ___x___)  }, //wheel up, wheel down, xx,xx
-  [_NUMBER]           = { ENCODER_CCW_CW(___x___, ___x___), ENCODER_CCW_CW(KC_LEFT, KC_RGHT)  }, //xx,xx left and right
-  [_SYMBOL]           = { ENCODER_CCW_CW(___x___, ___x___), ENCODER_CCW_CW(___x___, ___x___)  }, //xx,xx xx,xx
-  [_FUNCTION]         = { ENCODER_CCW_CW(___x___, ___x___), ENCODER_CCW_CW(KC_UP,   KC_DOWN)  }, //xx,xx up and down
-  [_MOUSE]            = { ENCODER_CCW_CW(TR_MWHU, TR_MWHD), ENCODER_CCW_CW(___x___, ___x___)  }, //wheel up, wheel down, ??,??
-  [_GAME_NUM]         = { ENCODER_CCW_CW(TR_MWHU, TR_MWHD), ENCODER_CCW_CW(KC_VOLD, KC_VOLU)  }, //wheel up, wheel down, xx,xx
-  [_CONFIG]           = { ENCODER_CCW_CW(TR_MWHU, TR_MWHD), ENCODER_CCW_CW(___x___, ___x___)  }, //maybe rgb functionality?
+  [_DEFAULT_LAYER_1] = { ENCODER_CCW_CW(TR_MWHD, TR_MWHU), ENCODER_CCW_CW(KC_VOLU, KC_VOLD)  },
+  [_DEFAULT_LAYER_2] = { ENCODER_CCW_CW(TR_MWHD, TR_MWHU), ENCODER_CCW_CW(KC_VOLU, KC_VOLD)  },
+  [_DEFAULT_LAYER_3] = { ENCODER_CCW_CW(TR_MWHD, TR_MWHU), ENCODER_CCW_CW(KC_VOLU, KC_VOLD)  },
+  [_NAVIGATION]      = { ENCODER_CCW_CW(ZOOMIN,  ZOOMOUT), ENCODER_CCW_CW(___x___, ___x___)  },
+  [_NUMBER]          = { ENCODER_CCW_CW(___x___, ___x___), ENCODER_CCW_CW(KC_RGHT, KC_LEFT)  },
+  [_SYMBOL]          = { ENCODER_CCW_CW(___x___, ___x___), ENCODER_CCW_CW(___x___, ___x___)  },
+  [_FUNCTION]        = { ENCODER_CCW_CW(___x___, ___x___), ENCODER_CCW_CW(KC_DOWN, KC_UP  )  },
+  [_MOUSE]           = { ENCODER_CCW_CW(TR_MWHD, TR_MWHU), ENCODER_CCW_CW(___x___, ___x___)  },
+  [_GAME_NUM]        = { ENCODER_CCW_CW(TR_MWHD, TR_MWHU), ENCODER_CCW_CW(KC_VOLU, KC_VOLD)  },
+  [_CONFIG]          = { ENCODER_CCW_CW(___x___, ___x___), ENCODER_CCW_CW(___x___, ___x___)  },
 };
+
 #endif
