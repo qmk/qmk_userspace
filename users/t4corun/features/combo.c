@@ -45,10 +45,15 @@ bool get_combo_must_tap(uint16_t index, combo_t *combo) {
       return true;
     */
 
+#if defined(MOUSEKEY_ENABLE)
     case MOUSE_BUTTON1:
     case MOUSE_BUTTON2:
     case MOUSE_BUTTON4:
     case MOUSE_DRGTOG:
+#endif //MOUSEKEY_ENABLE
+
+    case KB_TAB:
+    case KB_BSPC:
 
     default:
       return false;
