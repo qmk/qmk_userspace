@@ -64,6 +64,9 @@ enum keycodes {
 #define ZOOMOUT    LCTL(KC_MINS)
 #define ZOOMRST    LCTL(KC_0)
 
+// Macros
+#define BACKWRD    LCTL(vcKC_BSPC)
+
 /*
 - Any keycodes with prefix TR has behavior dependent on if the feature is enabled.
 - If the feature is disabled then the key is just the normal key
