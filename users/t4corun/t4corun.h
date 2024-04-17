@@ -65,7 +65,7 @@ enum keycodes {
 #define ZOOMRST    LCTL(KC_0)
 
 // Macros
-#define BACKWRD    LCTL(vcKC_BSPC)
+#define BACKWRD    LCTL(KC_BSPC)
 
 /*
 - Any keycodes with prefix TR has behavior dependent on if the feature is enabled.
