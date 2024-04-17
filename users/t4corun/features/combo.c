@@ -6,28 +6,29 @@
 //const uint16_t PROGMEM sniptog_combo[]     = {KC_M,    TR_DOT,     COMBO_END};
 //const uint16_t PROGMEM moubtn4_combo[]     = {KC_SPC,  NAV,        COMBO_END};
 
-combo_t key_combos[COMBO_LENGTH] = {
-
 /*
-#if defined(POINTING_DEVICE_ENABLE)
-  [DRAGTOGGLE]      = COMBO(dragtog_combo, DRG_TOG),
-  [SNIPERTOGGLE]    = COMBO(sniptog_combo, SNP_TOG),
-#else
-  [DRAGTOGGLE]      = COMBO(dragtog_combo, ___x___),
-  [SNIPERTOGGLE]    = COMBO(sniptog_combo, ___x___),  
-#endif //POINTING_DEVICE_ENABLE
+mouse buttons to map
+- mb1 left    1 df 
+- mb2 right   3 dg
+- mb3 middle
+- mb4 back    2 cv
+- mb5 forward
 
-#if defined(MOUSELAYER_ENABLE)
-  [MOUSEBUTTON4]    = COMBO(moubtn4_combo, KC_BTN4)
-#else
-  [MOUSEBUTTON4]    = COMBO(moubtn4_combo, ___x___)
-#endif //MOUSELAYER_ENABLE
+bigrams that may work for mouse
+- cv
+- cb
+- xc
+- cv
 */
-};
 
 
 bool get_combo_must_hold(uint16_t index, combo_t *combo) {
   switch (index) {
+
+    case LYR_CONFIG:
+    case LYR_FUNCTION:
+      return true;
+
     default:
       return false;
   }
@@ -44,6 +45,11 @@ bool get_combo_must_tap(uint16_t index, combo_t *combo) {
       return true;
     */
 
+    case MOUSE_BUTTON1:
+    case MOUSE_BUTTON2:
+    case MOUSE_BUTTON4:
+    case MOUSE_DRGTOG:
+
     default:
       return false;
   }
@@ -53,10 +59,14 @@ bool get_combo_must_press_in_order(uint16_t combo_index, combo_t *combo) {
   switch (combo_index) {
     /* List combos here that you want to only activate if their keys
     * are pressed in the same order as they are defined in the combo's key
-    * array. */
+    * array. 
+    * 
+    * return false means they do not have to be pressed in order
+    * 
+    * */
 
     default:
-      return false;
+      return true; 
   }
 }
 

@@ -18,7 +18,6 @@ UNICODE_ENABLE ?= no
 SPACE_CADET_ENABLE ?= no
 GRAVE_ESC_ENABLE ?= no
 
-COMBO_ENABLE ?= no
 DYNAMIC_MACRO_ENABLE ?= yes
 RGB_MATRIX_ENABLE ?= no
 RGBLIGHT_ENABLE ?= no
@@ -32,7 +31,7 @@ EXTRAKEY_ENABLE = yes
 AUDIO_ENABLE = no
 CAPS_WORD_ENABLE = yes
 MOUSEKEY_ENABLE = yes
-
+COMBO_ENABLE = yes
 
 # ---------------------------------------------------------
 # include my code that will be common across all my keyboards
@@ -49,7 +48,6 @@ ifeq ($(strip $(CAPS_WORD_ENABLE)), yes)
 	SRC += features/capsword.c
 endif
 
-
 ifeq ($(strip $(RGB_MATRIX_ENABLE)), yes)
 	SRC += features/rgbmatrix.c
 endif
@@ -58,11 +56,9 @@ ifeq ($(strip $(RGB_MATRIX_ENABLE)), ws2812)
 	SRC += features/rgbmatrix.c
 endif
 
-
 ifeq ($(strip $(MOUSEKEY_ENABLE)), yes)
 	SRC += features/mouse.c
 endif
-
 
 ifeq ($(strip $(OLED_ENABLE)), yes)
 	SRC += features/oled.c

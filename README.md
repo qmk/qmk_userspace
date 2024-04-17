@@ -6,6 +6,10 @@ The custom layout optimizes for programming (SQL, Powershell, C) and minimizes h
 
 ## Features
 
+### Build Non-Tree Keyboards
+
+- Extended the [qmk/.github](https://github.com/qmk/.github) userspace build actions to build non-tree qmk keyboards (e.g. Barbellboards Rollow). This works by copying keyboard definitions from the userspace to the qmk_firmware keyboards folder in the container. The list of keyboards to copy are defined in `qmk_nontree.json`
+
 ### Layout Wrapper Macros
 
 A single keymap layout can be shared with multiple keyboards by using C preprocessor macros. These macros are referenced in the keyboard JSON files, and the build process will expand them into a transient keymap.c file during compile time.
@@ -101,21 +105,18 @@ Additional keys may be mapped if present. Check each keyboard's `keymap.c` for m
 ├──────┼──────┼──────┼──────┼──────┤         ├──────┼──────┼──────┼──────┼──────┤
 │ z    │ x    │ c    │ v    │ b    │         │ n    │ m    │ , (  │ . )  │ - _  │
 ╰──────┴──────┼──────┼──────┼──────┤         ├──────┼──────┼──────┼──────┴──────╯
- enc: mwheel  │      │ num  │ mou  │         │ spc  │ nav  │ mute │ enc: volume
+ enc: mwheel  │      │ num  │ shft │         │ spc  │ nav  │ mute │ enc: volume
               ╰──────┴──────┴──────╯         ╰──────┴──────┴──────╯
 
 ╭──────┬──────┬──────┬──────┬──────╮         ╭──────┬──────┬──────┬──────┬──────╮
-│ q    │ w    │ f    │ p    │ b    │         │ j    │ l    │ u    │ y    │ o    │
+│ q    │ w    │ f    │ p    │ b    │         │ j    │ l    │ u    │ y    │ ' "  │
 ├──────┼──────┼──────┼──────┼──────┤         ├──────┼──────┼──────┼──────┼──────┤
-│ a mou│ r    │ s    │ t    │ g    │ colemak │ m    │ n    │ e    │ i    │ ' "  │
+│ a mou│ r    │ s    │ t    │ g    │ colemak │ m    │ n    │ e    │ i    │ o    │
 ├──────┼──────┼──────┼──────┼──────┤   dh    ├──────┼──────┼──────┼──────┼──────┤
 │ z    │ x    │ c    │ d    │ v    │         │ k    │ h    │ , (  │ . )  │ - _  │
 ╰──────┴──────┼──────┼──────┼──────┤         ├──────┼──────┼──────┼──────┴──────╯
- enc: mwheel  │      │ num  │ mou  │         │ spc  │ nav  │ mute │ enc: volume
+ enc: mwheel  │      │ num  │ shft │         │ spc  │ nav  │ mute │ enc: volume
               ╰──────┴──────┴──────╯         ╰──────┴──────┴──────╯
-
-Notes:
-- swapped o and repeat on this keymap to keep repeat key in the same position across layers
 
 ╭──────┬──────┬──────┬──────┬──────╮         ╭──────┬──────┬──────┬──────┬──────╮
 │ tab  │ q    │ w    │ e    │ r    │         │      │      │      │      │      │
@@ -128,11 +129,11 @@ Notes:
               ╰──────┴──────┴──────╯         ╰──────┴──────┴──────╯
 
 ╭──────┬──────┬──────┬──────┬──────╮         ╭──────┬──────┬──────┬──────┬──────╮
-│ esc  │ home │ up   │ end  │ pgup │         │ ins  │      │ app  │      │ cfg  │
+│ esc  │ home │ up   │ end  │ pgup │         │ ins  │      │      │      │ cfg  │
 ├──────┼──────┼──────┼──────┼──────┤         ├──────┼──────┼──────┼──────┼──────┤
-│      │ left │ down │ rght │ pgdn │   nav   │ bksp │ shft │ ctrl │ alt  │ gui  │
+│ tab  │ left │ down │ rght │ pgdn │   nav   │ bksp │ shft │ ctrl │ alt  │ gui  │
 ├──────┼──────┼──────┼──────┼──────┤         ├──────┼──────┼──────┼──────┼──────┤
-│ undo │ cut  │ copy │ pste │ redo │         │ del  │ tab  │ vol- │ vol+ │ mute │
+│ undo │ cut  │ copy │ pste │ redo │         │ del  │ app  │ vol- │ vol+ │ mute │
 ╰──────┴──────┼──────┼──────┼──────┤         ├──────┼──────┼──────┴──────┴──────╯
  enc: zoom    │ zrst │ num  │ ent  │         │      │ nav  │      │ enc: none
               ╰──────┴──────┴──────╯         ╰──────┴──────┴──────╯
@@ -147,7 +148,7 @@ Notes:
 ├──────┼──────┼──────┼──────┼──────┤         ├──────┼──────┼──────┼──────┼──────┤
 │ undo │ cut  │ copy │ pste │ redo │         │ del  │ 1    │ 2    │ 3    │ - _  │
 ╰──────┴──────┼──────┼──────┼──────┤         ├──────┼──────┼──────┼──────┴──────╯
- enc: none    │      │ sym  │      │         │ spc  │ 0 nav│      │ enc: ← →
+ enc: none    │      │ num  │      │         │ spc  │ 0 nav│      │ enc: ← →
               ╰──────┴──────┴──────╯         ╰──────┴──────┴──────╯
 
 ╭──────┬──────┬──────┬──────┬──────╮         ╭──────┬──────┬──────┬──────┬──────╮
@@ -157,7 +158,7 @@ Notes:
 ├──────┼──────┼──────┼──────┼──────┤         ├──────┼──────┼──────┼──────┼──────┤
 │ % ^  │ < <> │ >    │ \    │ !    │         │ del  │ /    │ , () │ . )  │ - _  │
 ╰──────┴──────┼──────┼──────┼──────┤         ├──────┼──────┼──────┼──────┴──────╯
- enc: none    │      │ sym  │      │         │      │ nav  │      │ enc: none
+ enc: none    │      │ num  │      │         │      │ nav  │      │ enc: none
               ╰──────┴──────┴──────╯         ╰──────┴──────┴──────╯
 
 Notes:
@@ -170,7 +171,7 @@ Notes:
 ├──────┼──────┼──────┼──────┼──────┤         ├──────┼──────┼──────┼──────┼──────┤
 │      │      │      │      │      │         │ paus │ F1   │ F2   │ F3   │ F12  │
 ╰──────┴──────┼──────┼──────┼──────┤         ├──────┼──────┼──────┼──────┴──────╯
-  enc: none   │      │ sym  │      │         │ mply1│ mrec1│      │ enc: ↑ ↓
+  enc: none   │      │ num  │      │         │ mply1│ mrec1│      │ enc: ↑ ↓
               ╰──────┴──────┴──────╯         ╰──────┴──────┴──────╯
 
 ╭──────┬──────┬──────┬──────┬──────╮         ╭──────┬──────┬──────┬──────┬──────╮
@@ -195,7 +196,7 @@ Notes:
 ├──────┼──────┼──────┼──────┼──────┤    num  ├──────┼──────┼──────┼──────┼──────┤
 │      │ 5    │ 6    │ 7    │ 8    │         │      │      │      │      │      │
 ╰──────┴──────┼──────┼──────┼──────┤         ├──────┼──────┼──────┼──────┴──────╯
- end: mwheel  │      │ alt  │ ctr  │         │      │ nav  │ mute │ enc: volume
+ end: mwheel  │      │ alt  │ ctrl │         │      │ nav  │ mute │ enc: volume
               ╰──────┴──────┴──────╯         ╰──────┴──────┴──────╯
 
 ╭──────┬──────┬──────┬──────┬──────╮         ╭──────┬──────┬──────┬──────┬──────╮

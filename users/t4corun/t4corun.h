@@ -114,12 +114,10 @@ enum keycodes {
 #   define TR_BTN4 KC_BTN4
 #   define TR_BTN5 KC_BTN5
 
-#   define TR_NUM1 LT(_NUMBER, KC_BTN1)
-
 # if defined(KEYBOARD_bastardkb_charybdis_3x5)
 //these codes are defined in charybdis.h
 #   define TR_SNIP SNIPING  
-#   define TR_DRGS DRGSCRL
+#   define TR_DRGS DRG_TOG
 #   define TR_SDPI S_D_MOD  //sniping dpi
 #   define TR_PDPI DPI_MOD  //pointer dpi
 # else
@@ -151,7 +149,6 @@ enum keycodes {
 #   define TR_SDPI ___x___
 #   define TR_PDPI ___x___
 
-#   define TR_NUM1 MO(_NUMBER)
 #endif //MOUSEKEY_ENABLE
 
 
@@ -197,7 +194,7 @@ enum keycodes {
 #define _SCAG_MODS________________________          TR_LSFT, TR_LCTL, TR_LALT, TR_LGUI
 #define _UCCPR_L___________________________________ SC_UNDO, SC_CUT,  SC_COPY, SC_PAST, SC_REDO
 
-#define _BASE_L4_________________                   ___x___, TR_NUM1, TR_LSFT
+#define _BASE_L4_________________                   ___x___, NUM,     TR_LSFT
 #define _BASE_R4_________________                   KC_SPC,  NAV,     KC_MUTE
 #define _LAYER_TRANS_____________                   ___x___, _______, ___x___
 
@@ -233,10 +230,10 @@ enum keycodes {
 
 
 #define LAYER_NAVIGATION \
-  KC_ESC,  KC_HOME, KC_UP,   KC_END,  KC_PGUP, KC_INS,  ___x___, KC_APP,  ___x___, CONFIG,  \
-  ___x___, KC_LEFT, KC_DOWN, KC_RGHT, KC_PGDN, KC_BSPC, _SCAG_MODS________________________, \
-  _UCCPR_L___________________________________, KC_DEL,  KC_TAB,  KC_VOLD, KC_VOLU, KC_MUTE, \
-                    ZOOMRST, NUM,     KC_ENT,  _LAYER_TRANS_____________
+  KC_ESC,  KC_HOME, KC_UP,   KC_END,  KC_PGUP, KC_INS,  ___x___, ___x___, ___x___, CONFIG,  \
+  KC_TAB,  KC_LEFT, KC_DOWN, KC_RGHT, KC_PGDN, KC_BSPC, _SCAG_MODS________________________, \
+  _UCCPR_L___________________________________, KC_DEL,  KC_APP,  KC_VOLD, KC_VOLU, KC_MUTE, \
+                    ZOOMRST, _______, KC_ENT,  _LAYER_TRANS_____________
 
 
 #define LAYER_NUMBER \
