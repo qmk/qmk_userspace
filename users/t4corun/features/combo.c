@@ -67,11 +67,10 @@ bool get_combo_must_press_in_order(uint16_t combo_index, combo_t *combo) {
     * array. 
     * 
     * return false means they do not have to be pressed in order
-    * 
     * */
 
     default:
-      return true; 
+      return false;
   }
 }
 

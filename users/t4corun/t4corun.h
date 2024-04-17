@@ -251,8 +251,8 @@ enum keycodes {
 
 
 #define LAYER_FUNCTION \
-  TR_DMP2, TR_DMR2, ___x___, _______, KC_SCRL, KC_PSCR, KC_F7,   KC_F8,   KC_F9,   KC_F10, \
-  _NONE_5____________________________________, KC_CAPS, KC_F4,   KC_F5,   KC_F6,   KC_F11, \
+  TR_DMP2, TR_DMR2, ___x___, ___x___, KC_SCRL, KC_PSCR, KC_F7,   KC_F8,   KC_F9,   KC_F10, \
+  ___x___, ___x___, ___x___, ___x___, KC_NUM,  KC_CAPS, KC_F4,   KC_F5,   KC_F6,   KC_F11, \
   _NONE_5____________________________________, KC_PAUS, KC_F1,   KC_F2,   KC_F3,   KC_F12, \
                     _LAYER_TRANS_____________, TR_DMP1, TR_DMR1, ___x___
 
@@ -272,7 +272,7 @@ enum keycodes {
 
 
 #define LAYER_CONFIG \
-  _NONE_5____________________________________, EE_CLR,  QK_RBT,  QK_BOOT, ___x___, _______, \
+  _NONE_5____________________________________, EE_CLR,  QK_RBT,  QK_BOOT, ___x___, ___x___, \
   TR_RTOG, TR_RMOD, _NONE_3__________________, BASELYR, _SCAG_MODS________________________, \
   TR_RHUI, TR_RSAI, TR_RVAI, TR_RSPI, ___x___, _NONE_5____________________________________, \
-                    _NONE_3__________________, _LAYER_TRANS_____________
+                    _NONE_3__________________, _NONE_3__________________
