@@ -29,8 +29,7 @@ bool get_combo_must_tap(uint16_t index, combo_t *combo) {
     case KEY_TAB:
     case KEY_ENT:
     case KEY_DEL:
-    case KEY_BSPC:
-    case KEY_BWRD:
+    case KEY_BSPC:  
       return true;
 
     default:
