@@ -16,7 +16,7 @@ bool get_combo_must_tap(uint16_t index, combo_t *combo) {
   
   switch (index) {
 
-#if defined(MOUSEKEY_ENABLE)
+#if defined(MOUSEKEY_ENABLE222)
     case MOUSE_BUTTON1:
     case MOUSE_BUTTON2:
     case MOUSE_BUTTON3:
