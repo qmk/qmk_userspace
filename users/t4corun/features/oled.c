@@ -42,7 +42,7 @@ void render_layer_state(void) {
   oled_write_P(PSTR(OLED_RENDER_LAYER_MOUSE), get_highest_layer(layer_state) == _MOUSE);
 #endif //MOUSEKEY_ENABLE
 
-  oled_write_P(PSTR(OLED_RENDER_LAYER_GAME_NUM), get_highest_layer(layer_state) == _GAME_NUM);
+  oled_write_P(PSTR(OLED_RENDER_LAYER_FUNCTION), get_highest_layer(layer_state) == _FUNCTION);
   oled_write_P(PSTR(OLED_RENDER_LAYER_CONFIG), get_highest_layer(layer_state) == _CONFIG);
 }
 

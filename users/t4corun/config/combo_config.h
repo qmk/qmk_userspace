@@ -23,7 +23,7 @@ Explore these (there are way more)
 
 
 //Set common configuration for all keyboards
-#define COMBO_TERM 50
+#define COMBO_TERM 25
 #define COMBO_TERM_PER_COMBO
 #define COMBO_MUST_TAP_PER_COMBO
 #define EXTRA_SHORT_COMBOS

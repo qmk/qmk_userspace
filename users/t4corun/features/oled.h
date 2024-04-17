@@ -7,7 +7,7 @@
 #define OLED_RENDER_MODS_NAME         "Mods:"
 
 #define OLED_RENDER_LAYOUT_NAME       "Lyout"
-#define OLED_RENDER_LAYOUT_QWERTY     " QRTY"
+#define OLED_RENDER_LAYOUT_QWERTY     " qrty"
 #define OLED_RENDER_LAYOUT_COLEMAK_DH " cmDH"
 #define OLED_RENDER_LAYOUT_GAME       " Game"
 
@@ -16,7 +16,7 @@
 #define OLED_RENDER_LAYER_NUMBER      " Num "
 #define OLED_RENDER_LAYER_NAVIGATION  " Nav "
 #define OLED_RENDER_LAYER_SYMBOL      " Sym "
-#define OLED_RENDER_LAYER_GAME_NUM    " gNum"
+#define OLED_RENDER_LAYER_FUNCTION    " Fun "
 #define OLED_RENDER_LAYER_CONFIG      " Cfg "
 
 #if defined(MOUSEKEY_ENABLE)

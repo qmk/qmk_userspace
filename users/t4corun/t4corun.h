@@ -48,7 +48,6 @@ enum keycodes {
 #define NUM        MO(_NUMBER)
 #define CONFIG     MO(_CONFIG)
 #define FUNC       MO(_FUNCTION)
-#define GAMENUM    MO(_GAME_NUM)
 
 // Windows Shortcuts
 #define SC_COPY    LCTL(KC_C)
@@ -204,13 +203,6 @@ enum keycodes {
 
   //___x___, ___x___, ___x___, ___x___, ___x___, ___x___, ___x___, ___x___, ___x___, ___x___,
 
-#define BASETEST \
-  KC_Q,    KC_W,    KC_E,    KC_R,    KC_T,    KC_Y,    KC_U,    KC_I,    KC_O,    KC_P,    \
-  KC_A,    KC_S,    KC_D,    KC_F,    KC_G,    KC_H,    KC_J,    KC_K,    KC_L,    KC_QUOT, \
-  KC_Z,    KC_X,    KC_C,    KC_V,    KC_B,    KC_N,    KC_M,    KC_COMM, KC_DOT,  KC_SLSH, \
-                    KC_TAB,  KC_ESC,  KC_LSFT, KC_SPC,  KC_ENT,  KC_MUTE
-
-
 #define LAYER_QWERTY \
   KC_Q,    KC_W,    KC_E,    KC_R,    KC_T,    KC_Y,    KC_U,    KC_I,    KC_O,    KC_P,    \
   TR_MOUA, KC_S,    KC_D,    KC_F,    KC_G,    KC_H,    KC_J,    KC_K,    KC_L,    TR_QUOT, \
@@ -226,30 +218,30 @@ enum keycodes {
 
 
 #define LAYER_GAME \
-  KC_TAB,  KC_Q,    KC_W,    KC_E,    KC_R,    _NONE_5____________________________________, \
-  GAMENUM, KC_A,    KC_S,    KC_D,    KC_F,    _NONE_5____________________________________, \
-  KC_Z,    KC_X,    KC_C,    KC_V,    KC_B,    _NONE_5____________________________________, \
+  KC_TAB,  KC_Q,    KC_W,    KC_E,    KC_R,    KC_T,    KC_7,    KC_8,    KC_9,    KC_ESC,  \
+  KC_LCTL, KC_A,    KC_S,    KC_D,    KC_F,    KC_G,    KC_4,    KC_5,    KC_6,    KC_GRV,  \
+  KC_Z,    KC_X,    KC_C,    KC_V,    KC_B,    KC_LALT, KC_1,    KC_2,    KC_3,    CM_TOGG, \
                     ___x___, KC_LSFT, KC_SPC,  _BASE_R4_________________
 
 
 #define LAYER_NAVIGATION \
-  KC_ESC,  KC_HOME, KC_UP,   KC_END,  KC_PGUP, KC_INS,  ___x___, ___x___, ___x___, CONFIG,  \
-  KC_TAB,  KC_LEFT, KC_DOWN, KC_RGHT, KC_PGDN, KC_BSPC, _SCAG_MODS________________________, \
-  _UCCPR_L___________________________________, KC_DEL,  KC_APP,  KC_VOLD, KC_VOLU, KC_MUTE, \
-                    ZOOMRST, _______, KC_ENT,  _LAYER_TRANS_____________
+  ___x___, KC_HOME, KC_UP,   KC_END,  KC_PGUP, KC_INS,  ___x___, ___x___, ___x___, ___x___, \
+  ___x___, KC_LEFT, KC_DOWN, KC_RGHT, KC_PGDN, ___x___, _SCAG_MODS________________________, \
+  _UCCPR_L___________________________________, ___x___, KC_APP,  KC_VOLD, KC_VOLU, KC_MUTE, \
+                    ZOOMRST, _______, ___x___, _LAYER_TRANS_____________
 
 
 #define LAYER_NUMBER \
-  KC_ESC,  SC_SNIP, SC_FILE, ___x___, TR_GRV,  KC_ENT,  KC_7,    KC_8,    KC_9,    KC_TAB,  \
-  _GACS_MODS________________________, TR_SCLN, KC_BSPC, KC_4,    KC_5,    KC_6,    KC_DOT,  \
-  _UCCPR_L___________________________________, KC_DEL,  KC_1,    KC_2,    KC_3,    TR_MINS, \
+  ___x___, SC_SNIP, SC_FILE, ___x___, TR_GRV,  ___x___, KC_7,    KC_8,    KC_9,    ___x___, \
+  _GACS_MODS________________________, TR_SCLN, ___x___, KC_4,    KC_5,    KC_6,    KC_DOT,  \
+  _UCCPR_L___________________________________, ___x___, KC_1,    KC_2,    KC_3,    TR_MINS, \
                     _LAYER_TRANS_____________, KC_SPC,  NAV_0,   ___x___
 
 
 #define LAYER_SYMBOL \
-  KC_ESC,  ___x___, KC_AT,   KC_DLR,  TR_GRV,  TR_EQL,  KC_HASH, KC_ASTR, ___x___, TR_DQUO, \
-  KC_AMPR, TR_LCBR, KC_RCBR, KC_PIPE, TR_SCLN, KC_BSPC, KC_QUES, TR_LBRC, KC_RBRC, TR_SQUO, \
-  TR_PERC, TR_LABK, KC_RABK, KC_BSLS, KC_EXLM, KC_DEL,  KC_SLSH, TR_LPRN, TR_DOT,  TR_MINS, \
+  ___x___, ___x___, KC_AT,   KC_DLR,  TR_GRV,  TR_EQL,  KC_HASH, KC_ASTR, ___x___, TR_DQUO, \
+  KC_AMPR, TR_LCBR, KC_RCBR, KC_PIPE, TR_SCLN, ___x___, KC_QUES, TR_LBRC, KC_RBRC, TR_SQUO, \
+  TR_PERC, TR_LABK, KC_RABK, KC_BSLS, KC_EXLM, ___x___, KC_SLSH, TR_LPRN, TR_DOT,  TR_MINS, \
                     _LAYER_TRANS_____________, _LAYER_TRANS_____________
 
 
@@ -265,13 +257,6 @@ enum keycodes {
   _______, _GACS_MOUSE_MODS_________, ___x___, TR_MWHD, TR_MOUL, TR_MOUD, TR_MOUR, ___x___, \
   _NONE_3__________________, TR_DRGS, TR_SNIP, TR_SDPI, TR_PDPI, ___x___, ___x___, ___x___, \
                     ___x___, TR_BTN1, TR_BTN2, _NONE_3__________________
-
-
-#define LAYER_GAME_NUM \
-  ___x___, KC_ESC,  KC_TILD, KC_G,    KC_T,    _NONE_5____________________________________, \
-  _______, KC_1,    KC_2,    KC_3,    KC_4,    _NONE_5____________________________________, \
-  ___x___, KC_5,    KC_6,    KC_7,    KC_8,    _NONE_5____________________________________, \
-                    ___x___, KC_LALT, KC_LCTL, _LAYER_TRANS_____________
 
 
 #define LAYER_CONFIG \

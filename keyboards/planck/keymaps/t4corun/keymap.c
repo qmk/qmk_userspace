@@ -27,7 +27,6 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   [_SYMBOL]          = PLANCK(LAYER_SYMBOL),
   [_FUNCTION]        = PLANCK(LAYER_FUNCTION),
   [_MOUSE]           = PLANCK(LAYER_MOUSE),
-  [_GAME_NUM]        = PLANCK(LAYER_GAME_NUM),
   [_CONFIG]          = PLANCK(LAYER_CONFIG)
 
 };
