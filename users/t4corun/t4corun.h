@@ -237,7 +237,7 @@ enum keycodes {
 
 
 #define LAYER_NUMBER \
-  KC_ESC,  SC_SNIP, SC_FILE, FUNC,    TR_GRV,  KC_ENT,  KC_7,    KC_8,    KC_9,    KC_TAB,  \
+  KC_ESC,  SC_SNIP, SC_FILE, ___x___, TR_GRV,  KC_ENT,  KC_7,    KC_8,    KC_9,    KC_TAB,  \
   _GACS_MODS________________________, TR_SCLN, KC_BSPC, KC_4,    KC_5,    KC_6,    KC_DOT,  \
   _UCCPR_L___________________________________, KC_DEL,  KC_1,    KC_2,    KC_3,    TR_MINS, \
                     _LAYER_TRANS_____________, KC_SPC,  NAV_0,   ___x___
