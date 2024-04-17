@@ -32,9 +32,9 @@ enum combos {
 #if defined(MOUSEKEY_ENABLE)
 const uint16_t PROGMEM mou_btn1_combo[] = { KC_D,    KC_F,    COMBO_END };
 const uint16_t PROGMEM mou_btn2_combo[] = { KC_S,    KC_D,    COMBO_END };
-const uint16_t PROGMEM mou_btn3_combo[] = { KC_E,    KC_R,    COMBO_END };
-const uint16_t PROGMEM mou_btn4_combo[] = { KC_W,    KC_E,    COMBO_END };
-const uint16_t PROGMEM mou_btn5_combo[] = { KC_W,    KC_R,    COMBO_END };
+const uint16_t PROGMEM mou_btn3_combo[] = { KC_S,    KC_F,    COMBO_END };
+const uint16_t PROGMEM mou_btn4_combo[] = { KC_E,    KC_R,    COMBO_END };
+const uint16_t PROGMEM mou_btn5_combo[] = { KC_W,    KC_E,    COMBO_END };
 const uint16_t PROGMEM mou_drg_combo[]  = { KC_A,    KC_S,    COMBO_END };
 #endif //MOUSEKEY_ENABLE
 
