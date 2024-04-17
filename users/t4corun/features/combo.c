@@ -40,6 +40,17 @@ bool get_combo_must_press_in_order(uint16_t combo_index, combo_t *combo) {
     * return false means they do not have to be pressed in order
     * */
 
+#if defined(MOUSEKEY_ENABLE)
+    case MOUSE_BUTTON1:
+    case MOUSE_BUTTON2:
+    case MOUSE_BUTTON3:
+    case MOUSE_BUTTON4:
+    case MOUSE_BUTTON5:
+#endif //MOUSEKEY_ENABLE
+
+    case KEY_ESC:
+      return true;
+
     default:
       return false;
   }
