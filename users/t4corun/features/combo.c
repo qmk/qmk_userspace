@@ -17,12 +17,13 @@ bool get_combo_must_tap(uint16_t index, combo_t *combo) {
   switch (index) {
 
 #if defined(MOUSEKEY_ENABLE)
+    case MOUSE_BUTTON3:
+    case MOUSE_BUTTON4:
+    case MOUSE_BUTTON5:
     case MOUSE_DRGTOG:
 #endif //MOUSEKEY_ENABLE
 
-    case KEY_ESC:
     case KEY_TAB:
-    case KEY_ENT:
     case KEY_BWRD:
       return true;
 
@@ -40,16 +41,12 @@ bool get_combo_must_press_in_order(uint16_t combo_index, combo_t *combo) {
     * return false means they do not have to be pressed in order
     * */
 
-#if defined(MOUSEKEY_ENABLE)
+#if defined(MOUSEKEY_ENABLE2222)
     case MOUSE_BUTTON1:
     case MOUSE_BUTTON2:
-    case MOUSE_BUTTON3:
     case MOUSE_BUTTON4:
-    case MOUSE_BUTTON5:
-#endif //MOUSEKEY_ENABLE
-
-    case KEY_ESC:
       return true;
+#endif //MOUSEKEY_ENABLE
 
     default:
       return false;
