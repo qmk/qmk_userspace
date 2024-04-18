@@ -219,7 +219,7 @@ enum keycodes {
 
 #define LAYER_GAME \
   KC_TAB,  KC_Q,    KC_W,    KC_E,    KC_R,    KC_T,    KC_7,    KC_8,    KC_9,    KC_ESC,  \
-  KC_LCTL, KC_A,    KC_S,    KC_Dp,    KC_F,    KC_G,    KC_4,    KC_5,    KC_6,    KC_GRV,  \
+  KC_LCTL, KC_A,    KC_S,    KC_D,    KC_F,    KC_G,    KC_4,    KC_5,    KC_6,    KC_GRV,  \
   KC_Z,    KC_X,    KC_C,    KC_V,    KC_B,    KC_LALT, KC_1,    KC_2,    KC_3,    CM_TOGG, \
                     ___x___, KC_LSFT, KC_SPC,  _BASE_R4_________________
 
