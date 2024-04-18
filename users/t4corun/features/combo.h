@@ -38,9 +38,7 @@ const uint16_t PROGMEM mou_btn5_combo[] = { KC_W,    KC_R,    COMBO_END };
 const uint16_t PROGMEM mou_drg_combo[]  = { TR_MOUA, KC_S,    COMBO_END };
 #endif //MOUSEKEY_ENABLE
 
-const uint16_t PROGMEM key_esc_combo[] = { KC_Q,    KC_W,    COMBO_END };
 const uint16_t PROGMEM key_tab_combo[] = { KC_C,    KC_V,    COMBO_END };
-const uint16_t PROGMEM key_ent_combo[] = { KC_X,    KC_V,    COMBO_END };
 const uint16_t PROGMEM lyr_fun_combo[] = { NUM,     TR_LSFT, COMBO_END };
 
 // right hand combos
@@ -62,9 +60,7 @@ combo_t key_combos[COMBO_LENGTH] = {
   [MOUSE_DRGTOG]  = COMBO(mou_drg_combo,  TR_DRGS),
 #endif //MOUSEKEY_ENABLE
 
-  [KEY_ESC]      = COMBO(key_esc_combo,  KC_ESC),
   [KEY_TAB]      = COMBO(key_tab_combo,  KC_TAB),
-  [KEY_ENT]      = COMBO(key_ent_combo,  KC_ENT),
   [LYR_FUNCTION] = COMBO(lyr_fun_combo,  FUNC),
 
   // right hand combos

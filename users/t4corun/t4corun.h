@@ -219,27 +219,27 @@ enum keycodes {
 
 #define LAYER_GAME \
   KC_TAB,  KC_Q,    KC_W,    KC_E,    KC_R,    KC_T,    KC_7,    KC_8,    KC_9,    KC_ESC,  \
-  KC_LCTL, KC_A,    KC_S,    KC_D,    KC_F,    KC_G,    KC_4,    KC_5,    KC_6,    KC_GRV,  \
+  KC_LCTL, KC_A,    KC_S,    KC_Dp,    KC_F,    KC_G,    KC_4,    KC_5,    KC_6,    KC_GRV,  \
   KC_Z,    KC_X,    KC_C,    KC_V,    KC_B,    KC_LALT, KC_1,    KC_2,    KC_3,    CM_TOGG, \
                     ___x___, KC_LSFT, KC_SPC,  _BASE_R4_________________
 
 
 #define LAYER_NAVIGATION \
-  ___x___, KC_HOME, KC_UP,   KC_END,  KC_PGUP, KC_INS,  ___x___, ___x___, ___x___, ___x___, \
+  KC_ESC,  KC_HOME, KC_UP,   KC_END,  KC_PGUP, KC_INS,  ___x___, ___x___, ___x___, ___x___, \
   ___x___, KC_LEFT, KC_DOWN, KC_RGHT, KC_PGDN, ___x___, _SCAG_MODS________________________, \
   _UCCPR_L___________________________________, ___x___, KC_APP,  KC_VOLD, KC_VOLU, KC_MUTE, \
-                    ZOOMRST, _______, ___x___, _LAYER_TRANS_____________
+                    ZOOMRST, _______, KC_ENT,  _LAYER_TRANS_____________
 
 
 #define LAYER_NUMBER \
-  ___x___, SC_SNIP, SC_FILE, ___x___, TR_GRV,  ___x___, KC_7,    KC_8,    KC_9,    ___x___, \
+  KC_ESC,  SC_SNIP, SC_FILE, ___x___, TR_GRV,  ___x___, KC_7,    KC_8,    KC_9,    ___x___, \
   _GACS_MODS________________________, TR_SCLN, ___x___, KC_4,    KC_5,    KC_6,    KC_DOT,  \
   _UCCPR_L___________________________________, ___x___, KC_1,    KC_2,    KC_3,    TR_MINS, \
                     _LAYER_TRANS_____________, KC_SPC,  NAV_0,   ___x___
 
 
 #define LAYER_SYMBOL \
-  ___x___, ___x___, KC_AT,   KC_DLR,  TR_GRV,  TR_EQL,  KC_HASH, KC_ASTR, ___x___, TR_DQUO, \
+  KC_ESC,  ___x___, KC_AT,   KC_DLR,  TR_GRV,  TR_EQL,  KC_HASH, KC_ASTR, ___x___, TR_DQUO, \
   KC_AMPR, TR_LCBR, KC_RCBR, KC_PIPE, TR_SCLN, ___x___, KC_QUES, TR_LBRC, KC_RBRC, TR_SQUO, \
   TR_PERC, TR_LABK, KC_RABK, KC_BSLS, KC_EXLM, ___x___, KC_SLSH, TR_LPRN, TR_DOT,  TR_MINS, \
                     _LAYER_TRANS_____________, _LAYER_TRANS_____________
