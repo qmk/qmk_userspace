@@ -19,10 +19,6 @@
 #define OLED_RENDER_LAYER_FUNCTION    " Fun "
 #define OLED_RENDER_LAYER_CONFIG      " Cfg "
 
-#if defined(MOUSEKEY_ENABLE)
-# define OLED_RENDER_LAYER_MOUSE      " Mou "
-#endif //MOUSEKEY_ENABLE
-
 void              render_crkbd_logo(void);
 void              render_default_layer_state(void);
 void              render_layer_state(void);

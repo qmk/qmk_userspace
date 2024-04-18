@@ -225,7 +225,7 @@ enum keycodes {
 
 
 #define LAYER_NAVIGATION \
-  KC_ESC,  KC_HOME, KC_UP,   KC_END,  KC_PGUP, KC_INS,  ___x___, ___x___, ___x___, ___x___, \
+  KC_ESC,  KC_HOME, KC_UP,   KC_END,  KC_PGUP, KC_INS,  KC_CAPS, KC_SCRL, ___x___, ___x___, \
   ___x___, KC_LEFT, KC_DOWN, KC_RGHT, KC_PGDN, ___x___, _SCAG_MODS________________________, \
   _UCCPR_L___________________________________, ___x___, KC_APP,  KC_VOLD, KC_VOLU, KC_MUTE, \
                     ZOOMRST, _______, KC_ENT,  _LAYER_TRANS_____________
@@ -246,17 +246,10 @@ enum keycodes {
 
 
 #define LAYER_FUNCTION \
-  TR_DMP2, TR_DMR2, ___x___, ___x___, KC_SCRL, KC_PSCR, KC_F7,   KC_F8,   KC_F9,   KC_F10, \
-  ___x___, ___x___, ___x___, ___x___, KC_NUM,  KC_CAPS, KC_F4,   KC_F5,   KC_F6,   KC_F11, \
-  _NONE_5____________________________________, KC_PAUS, KC_F1,   KC_F2,   KC_F3,   KC_F12, \
+  ___x___, ___x___, TR_MOUU, ___x___, TR_MWHU, KC_PSCR, KC_F7,   KC_F8,   KC_F9,   KC_F10, \
+  ___x___, TR_MOUL, TR_MOUD, TR_MOUR, TR_MWHD, KC_NUM,  KC_F4,   KC_F5,   KC_F6,   KC_F11, \
+  TR_PDPI, TR_SDPI, ___x___, TR_DRGS, TR_SNIP, KC_PAUS, KC_F1,   KC_F2,   KC_F3,   KC_F12, \
                     _LAYER_TRANS_____________, TR_DMP1, TR_DMR1, ___x___
-
-
-#define LAYER_MOUSE \
-  ___x___, TR_BTN5, TR_BTN4, TR_BTN3, ___x___, TR_MWHU, ___x___, TR_MOUU, ___x___, ___x___, \
-  _______, _GACS_MOUSE_MODS_________, ___x___, TR_MWHD, TR_MOUL, TR_MOUD, TR_MOUR, ___x___, \
-  _NONE_3__________________, TR_DRGS, TR_SNIP, TR_SDPI, TR_PDPI, ___x___, ___x___, ___x___, \
-                    ___x___, TR_BTN1, TR_BTN2, _NONE_3__________________
 
 
 #define LAYER_CONFIG \

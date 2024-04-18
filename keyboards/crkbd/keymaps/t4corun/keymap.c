@@ -26,7 +26,6 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   [_NUMBER]          = CRKBD(LAYER_NUMBER),
   [_SYMBOL]          = CRKBD(LAYER_SYMBOL),
   [_FUNCTION]        = CRKBD(LAYER_FUNCTION),
-  [_MOUSE]           = CRKBD(LAYER_MOUSE),
   [_CONFIG]          = CRKBD(LAYER_CONFIG)
 
 };

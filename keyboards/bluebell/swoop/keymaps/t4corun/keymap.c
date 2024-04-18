@@ -26,7 +26,6 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   [_NUMBER]          = SWOOP(LAYER_NUMBER),
   [_SYMBOL]          = SWOOP(LAYER_SYMBOL),
   [_FUNCTION]        = SWOOP(LAYER_FUNCTION),
-  [_MOUSE]           = SWOOP(LAYER_MOUSE),
   [_CONFIG]          = SWOOP(LAYER_CONFIG)
 
 };
@@ -44,7 +43,6 @@ const uint16_t PROGMEM encoder_map[][NUM_ENCODERS][NUM_DIRECTIONS] = {
   [_NUMBER]          = { ENCODER_CCW_CW(___x___, ___x___), ENCODER_CCW_CW(KC_RGHT, KC_LEFT)  },
   [_SYMBOL]          = { ENCODER_CCW_CW(___x___, ___x___), ENCODER_CCW_CW(___x___, ___x___)  },
   [_FUNCTION]        = { ENCODER_CCW_CW(___x___, ___x___), ENCODER_CCW_CW(KC_DOWN, KC_UP  )  },
-  [_MOUSE]           = { ENCODER_CCW_CW(TR_MWHD, TR_MWHU), ENCODER_CCW_CW(___x___, ___x___)  },
   [_CONFIG]          = { ENCODER_CCW_CW(___x___, ___x___), ENCODER_CCW_CW(___x___, ___x___)  },
 };
 

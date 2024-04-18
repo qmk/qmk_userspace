@@ -37,11 +37,6 @@ void render_layer_state(void) {
   oled_write_P(PSTR(OLED_RENDER_LAYER_NAVIGATION), get_highest_layer(layer_state) == _NAVIGATION);
   oled_write_P(PSTR(OLED_RENDER_LAYER_NUMBER), get_highest_layer(layer_state) == _NUMBER);
   oled_write_P(PSTR(OLED_RENDER_LAYER_SYMBOL), get_highest_layer(layer_state) == _SYMBOL);
-
-#if defined(MOUSEKEY_ENABLE)
-  oled_write_P(PSTR(OLED_RENDER_LAYER_MOUSE), get_highest_layer(layer_state) == _MOUSE);
-#endif //MOUSEKEY_ENABLE
-
   oled_write_P(PSTR(OLED_RENDER_LAYER_FUNCTION), get_highest_layer(layer_state) == _FUNCTION);
   oled_write_P(PSTR(OLED_RENDER_LAYER_CONFIG), get_highest_layer(layer_state) == _CONFIG);
 }
