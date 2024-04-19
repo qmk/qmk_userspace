@@ -101,14 +101,14 @@ enum custom_keycodes {
 	 * |------+------+------+------+------+------|  MUTE |    |       |------+------+------+------+------+------|
 	 * |      |      |      |      |      |      |-------|    |-------|      | PREV | PLAY | NEXT |      |      |
 	 * `-----------------------------------------/       /     \      \-----------------------------------------'
-	 *            | LGUI | LAlt | LCTR |Space | / LOWER /       \RAISE \  |Enter | RCTR | RAlt | RGUI |
+	 *            | LGUI | LAlt | LCTR |Space | / LOWER /       \RAISE \  |Enter |,mikjqpwo/8 RCTR | RAlt | RGUI |
 	 *            |      |      |      |      |/       /         \      \ |      |      |      |      |
 	 */
 	  [_ADJUST] = LAYOUT(
 	  XXXXXXX, XXXXXXX, XXXXXXX,  XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, AG_NORM, AG_SWAP,   AU_ON,  AU_OFF, AU_TOGG,
       QK_BOOT, XXXXXXX, KC_QWERTY,XXXXXXX, CG_TOGG, XXXXXXX, XXXXXXX, XXXXXXX, MU_NEXT, MU_ON, MU_OFF, MU_TOGG,
 	  XXXXXXX, XXXXXXX, CG_TOGG,  XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, KC_VOLD, KC_MUTE, KC_VOLU, XXXXXXX, XXXXXXX,
-	  QK_REBOOT, XXXXXXX, XXXXXXX,  XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, KC_MPRV, KC_MPLY, KC_MNXT,
+	  QK_REBOOT, XXXXXXX, XXXXXXX,XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, KC_MPRV, KC_MPLY, KC_MNXT,
       XXXXXXX, XXXXXXX, _______,  _______, _______, _______, _______, _______, _______, _______, _______, _______
 	  )
 	};
