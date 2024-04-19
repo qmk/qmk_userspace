@@ -12,8 +12,6 @@ enum layers {
   _NUMBER,
   _SYMBOL,
   _FUNCTION,
-  _MOUSE,
-  _GAME_NUM,
   _CONFIG
 };
 
@@ -46,8 +44,6 @@ enum keycodes {
 #define NAV        MO(_NAVIGATION)
 #define NAV_0      LT(_NAVIGATION, KC_0)
 #define NUM        MO(_NUMBER)
-#define CONFIG     MO(_CONFIG)
-#define FUNC       MO(_FUNCTION)
 
 // Windows Shortcuts
 #define SC_COPY    LCTL(KC_C)
@@ -100,7 +96,6 @@ enum keycodes {
 
 
 #if defined(MOUSEKEY_ENABLE)
-#   define TR_MOUA LT(_MOUSE, KC_A)
 
 #   define TR_MOUU KC_MS_U
 #   define TR_MOUD KC_MS_D
@@ -130,7 +125,6 @@ enum keycodes {
 # endif //KEYBOARD_bastardkb_charybdis_3x5
 
 #else
-#   define TR_MOUA KC_A
 
 #   define TR_MOUU ___x___
 #   define TR_MOUD ___x___
@@ -205,14 +199,14 @@ enum keycodes {
 
 #define LAYER_QWERTY \
   KC_Q,    KC_W,    KC_E,    KC_R,    KC_T,    KC_Y,    KC_U,    KC_I,    KC_O,    KC_P,    \
-  TR_MOUA, KC_S,    KC_D,    KC_F,    KC_G,    KC_H,    KC_J,    KC_K,    KC_L,    TR_QUOT, \
+  KC_A,    KC_S,    KC_D,    KC_F,    KC_G,    KC_H,    KC_J,    KC_K,    KC_L,    TR_QUOT, \
   KC_Z,    KC_X,    KC_C,    KC_V,    KC_B,    KC_N,    KC_M,    TR_COMM, TR_DOT,  TR_MINS, \
                     _BASE_L4_________________, _BASE_R4_________________
 
 
 #define LAYER_COLEMAK_DH \
   KC_Q,    KC_W,    KC_F,    KC_P,    KC_B,    KC_J,    KC_L,    KC_U,    KC_Y,    TR_QUOT, \
-  TR_MOUA, KC_R,    KC_S,    KC_T,    KC_G,    KC_M,    KC_N,    KC_E,    KC_I,    KC_O,    \
+  KC_A,    KC_R,    KC_S,    KC_T,    KC_G,    KC_M,    KC_N,    KC_E,    KC_I,    KC_O,    \
   KC_Z,    KC_X,    KC_C,    KC_D,    KC_V,    KC_K,    KC_H,    TR_COMM, TR_DOT,  TR_MINS, \
                     _BASE_L4_________________, _BASE_R4_________________
 
@@ -232,14 +226,14 @@ enum keycodes {
 
 
 #define LAYER_NUMBER \
-  KC_ESC,  SC_SNIP, SC_FILE, ___x___, TR_GRV,  ___x___, KC_7,    KC_8,    KC_9,    ___x___, \
+  ___x___, SC_SNIP, SC_FILE, ___x___, TR_GRV,  ___x___, KC_7,    KC_8,    KC_9,    ___x___, \
   _GACS_MODS________________________, TR_SCLN, ___x___, KC_4,    KC_5,    KC_6,    KC_DOT,  \
   _UCCPR_L___________________________________, ___x___, KC_1,    KC_2,    KC_3,    TR_MINS, \
                     _LAYER_TRANS_____________, KC_SPC,  NAV_0,   ___x___
 
 
 #define LAYER_SYMBOL \
-  KC_ESC,  ___x___, KC_AT,   KC_DLR,  TR_GRV,  TR_EQL,  KC_HASH, KC_ASTR, ___x___, TR_DQUO, \
+  ___x___, ___x___, KC_AT,   KC_DLR,  TR_GRV,  TR_EQL,  KC_HASH, KC_ASTR, ___x___, TR_DQUO, \
   KC_AMPR, TR_LCBR, KC_RCBR, KC_PIPE, TR_SCLN, ___x___, KC_QUES, TR_LBRC, KC_RBRC, TR_SQUO, \
   TR_PERC, TR_LABK, KC_RABK, KC_BSLS, KC_EXLM, ___x___, KC_SLSH, TR_LPRN, TR_DOT,  TR_MINS, \
                     _LAYER_TRANS_____________, _LAYER_TRANS_____________
