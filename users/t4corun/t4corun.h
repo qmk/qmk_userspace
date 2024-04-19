@@ -44,6 +44,8 @@ enum keycodes {
 #define NAV        MO(_NAVIGATION)
 #define NAV_0      LT(_NAVIGATION, KC_0)
 #define NUM        MO(_NUMBER)
+#define FUNC       MO(_FUNCTION)
+#define CONFIG     MO(_CONFIG)
 
 // Windows Shortcuts
 #define SC_COPY    LCTL(KC_C)
