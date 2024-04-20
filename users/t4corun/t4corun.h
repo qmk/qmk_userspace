@@ -56,13 +56,10 @@ enum keycodes {
 #define SC_SNIP    LGUI(LSFT(KC_S))
 #define SC_FILE    LGUI(KC_E)
 
-// Zoom
+// Zoom for encoders
 #define ZOOMIN     LCTL(LSFT(KC_EQL))
 #define ZOOMOUT    LCTL(KC_MINS)
 #define ZOOMRST    LCTL(KC_0)
-
-// Macros
-#define BACKWRD    LCTL(KC_BSPC)
 
 /*
 - Any keycodes with prefix TR has behavior dependent on if the feature is enabled.

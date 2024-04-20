@@ -89,11 +89,12 @@ combos:
   - { p: [12, 13], k: MB1, l: [base_QWERTY] }
   - { p: [13, 14], k: MB3, l: [base_QWERTY] }
   - { p: [11, 12], k: DrgScr Tog, l: [base_QWERTY] }
-  - { p: [16, 17], k: Tab, l: [base_QWERTY] }
+  - { p: [26, 27], k: Tab, l: [base_QWERTY] }
   - { p: [21, 22], k: Enter, l: [base_QWERTY] }
   - { p: [22, 23], k: MB2, l: [base_QWERTY] }
-  - { p: [26, 27], k: Bksp, l: [base_QWERTY] }
-  - { p: [27, 28], k: Del, l: [base_QWERTY] }
-  - { p: [26, 28], k: Bwrd, l: [base_QWERTY], align: bottom, offset: 0.1 }
+  - { p: [7, 8], k: Bksp, l: [base_QWERTY] }
+  - { p: [6, 7], k: Del, l: [base_QWERTY] }
   - { p: [31, 32], k: FUNC, l: [base_QWERTY], align: top }
   - { p: [33, 34], k: CONFIG, l: [base_QWERTY], align: top }
+draw_config:
+  small_pad: 6

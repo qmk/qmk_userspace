@@ -21,7 +21,6 @@ enum combos {
   KEY_TAB,
   KEY_DEL,
   KEY_BSPC,
-  KEY_BWRD,
   LYR_CONFIG,
 
   COMBO_LENGTH
@@ -38,17 +37,16 @@ const uint16_t PROGMEM mou_btn5_combo[] = { KC_R,    KC_T,    COMBO_END };
 const uint16_t PROGMEM mou_drg_combo[]  = { KC_S,    KC_D,    COMBO_END };
 #endif //MOUSEKEY_ENABLE
 
-const uint16_t PROGMEM key_esc_combo[]  = { KC_W,    KC_E,                      COMBO_END };
-const uint16_t PROGMEM key_ent_combo[]  = { KC_X,    KC_C,                      COMBO_END };
-const uint16_t PROGMEM lyr_fun_combo[]  = { NUM,     TR_LSFT,                   COMBO_END };
+const uint16_t PROGMEM key_esc_combo[]  = { KC_W,    KC_E,    COMBO_END };
+const uint16_t PROGMEM key_ent_combo[]  = { KC_X,    KC_C,    COMBO_END };
+const uint16_t PROGMEM lyr_fun_combo[]  = { NUM,     TR_LSFT, COMBO_END };
 
 
 // right hand combos 
-const uint16_t PROGMEM key_tab_combo[]  = { KC_J,    KC_K,                      COMBO_END };
-const uint16_t PROGMEM key_del_combo[]  = { TR_COMM, TR_DOT,                    COMBO_END };
-const uint16_t PROGMEM key_bspc_combo[] = { KC_M,    TR_COMM,                   COMBO_END };
-const uint16_t PROGMEM key_bwrd_combo[] = { KC_M,    TR_DOT,                    COMBO_END };
-const uint16_t PROGMEM lyr_cfg_combo[]  = { KC_SPC,  NAV,                       COMBO_END };
+const uint16_t PROGMEM key_tab_combo[]  = { KC_M,    TR_COMM, COMBO_END };
+const uint16_t PROGMEM key_del_combo[]  = { KC_U,    KC_I,    COMBO_END };
+const uint16_t PROGMEM key_bspc_combo[] = { KC_I,    KC_O,    COMBO_END };
+const uint16_t PROGMEM lyr_cfg_combo[]  = { KC_SPC,  NAV,     COMBO_END };
 
 
 
@@ -72,7 +70,6 @@ combo_t key_combos[COMBO_LENGTH] = {
   [KEY_TAB]      = COMBO(key_tab_combo,  KC_TAB),
   [KEY_DEL]      = COMBO(key_del_combo,  KC_DEL),
   [KEY_BSPC]     = COMBO(key_bspc_combo, KC_BSPC),
-  [KEY_BWRD]     = COMBO(key_bwrd_combo, BACKWRD),
   [LYR_CONFIG]   = COMBO(lyr_cfg_combo,  CONFIG)
 
 };
