@@ -2,7 +2,22 @@
 
 My userspace for building QMK firmware via GitHub Actions. This does not require a local build environment where files are placed within keyboard subfolders.
 
-The custom layout optimizes for programming (SQL, Powershell, C) and minimizes holds for comfort. It started from [Manna Harbor Miryoku](https://github.com/manna-harbour/miryoku) and took heavy influence from [Jonas Hietala T-34](https://www.jonashietala.se/series/t-34/)
+## Layout
+
+The custom layout optimizes for programming (SQL, Powershell, C) and minimizes holds for comfort. It started from [Manna Harbor Miryoku](https://github.com/manna-harbour/miryoku) and took heavy influence from [Jonas Hietala T-34](https://www.jonashietala.se/series/t-34/). The keymap designed for split 3x5, two thumbs keys, dual encoders, and combined with a Ploopy Nano trackball mouse. Design themes:
+
+- Releasing all keys always brings you back to base layer
+- Keeping certain keys consistent on all layers for better muscle memory
+- Numbers and function keys are positioned similarly
+- Symbols important for powershell / writing are positioned under stronger fingers
+- Game keymap that doesn't require massive game key bind changes. Tested on Resident Evil 4 Remake
+
+Notes:
+
+- Outside thumb keys are encoder clicks. Some keyboards may have extra thumb keys
+- Pressing Pointer DPI and Drag Scroll Toggle will enter bootlaoder on Ploopy Nano
+
+![image](my_keymap.png)
 
 ## Features
 
@@ -62,12 +77,6 @@ Enables trackball functionality on certain boards (e.g., Ploopy Nano and Bastard
 
 Note: `MOUSEKEY_ENABLE` do not need to be enabled in tandem with this to get the mouse buttons.
 
-### Mouse Keys
-
-Enables mouse emulation for all boards. Required when using the Ploopy Nano as that has no mouse buttons.
-
-Hold `a` to enter `_MOUSE` layer. Use right side directional pad (e.g. IJKL) to move the cursor and left side thumb keys for basic mouse clicking.
-
 ### RGB Matrix
 
 Taste the rainbow for boards with RGB LEDs and large MCU memory footprints. Enables RGB lighting effects and layer/host status indicators. Review the keyboard files to identify the key position for each LED and update the preprocessor definitions in `config\rgbmatrix_config.h`
@@ -80,137 +89,7 @@ Enables keyboard status visualization. Shows currently selected layer, active mo
 
 ### Combos
 
-Enables simultaneous pressing of key combinations to get another. Handy when there are not enough keys on the keyboard
-
-**Note** Framework is present but disabled during redesign
-
-## Layout
-
-This is the keymap designed for split 3x5 layout, two thumb keys on each side, and dual encoders. Emphasis on:
-
-- Releasing all keys always brings you back to base layer
-- Outside thumb keys are encoder clicks
-- Keeping certain keys consistent on all layers for better muscle memory
-- Numbers and function keys are positioned similarly
-- Symbols important for powershell / writing are positioned under stronger fingers
-- Game keymap that doesn't require massive game key bind changes. Tested on Resident Evil 4 Remake
-
-Additional keys may be mapped if present. Check each keyboard's `keymap.c` for more information
-
-```text
-╭──────┬──────┬──────┬──────┬──────╮         ╭──────┬──────┬──────┬──────┬──────╮
-│ q    │ w    │ e    │ r    │ t    │         │ y    │ u    │ i    │ o    │ p    │
-├──────┼──────┼──────┼──────┼──────┤         ├──────┼──────┼──────┼──────┼──────┤
-│ a mou│ s    │ d    │ f    │ g    │ qwerty  │ h    │ j    │ k    │ l    │ ' "  │
-├──────┼──────┼──────┼──────┼──────┤         ├──────┼──────┼──────┼──────┼──────┤
-│ z    │ x    │ c    │ v    │ b    │         │ n    │ m    │ , (  │ . )  │ - _  │
-╰──────┴──────┼──────┼──────┼──────┤         ├──────┼──────┼──────┼──────┴──────╯
- enc: mwheel  │      │ num  │ shft │         │ spc  │ nav  │ mute │ enc: volume
-              ╰──────┴──────┴──────╯         ╰──────┴──────┴──────╯
-
-╭──────┬──────┬──────┬──────┬──────╮         ╭──────┬──────┬──────┬──────┬──────╮
-│ q    │ w    │ f    │ p    │ b    │         │ j    │ l    │ u    │ y    │ ' "  │
-├──────┼──────┼──────┼──────┼──────┤         ├──────┼──────┼──────┼──────┼──────┤
-│ a mou│ r    │ s    │ t    │ g    │ colemak │ m    │ n    │ e    │ i    │ o    │
-├──────┼──────┼──────┼──────┼──────┤   dh    ├──────┼──────┼──────┼──────┼──────┤
-│ z    │ x    │ c    │ d    │ v    │         │ k    │ h    │ , (  │ . )  │ - _  │
-╰──────┴──────┼──────┼──────┼──────┤         ├──────┼──────┼──────┼──────┴──────╯
- enc: mwheel  │      │ num  │ shft │         │ spc  │ nav  │ mute │ enc: volume
-              ╰──────┴──────┴──────╯         ╰──────┴──────┴──────╯
-
-╭──────┬──────┬──────┬──────┬──────╮         ╭──────┬──────┬──────┬──────┬──────╮
-│ tab  │ q    │ w    │ e    │ r    │         │      │      │      │      │      │
-├──────┼──────┼──────┼──────┼──────┤         ├──────┼──────┼──────┼──────┼──────┤
-│ gnum │ a    │ s    │ d    │ f    │  game   │      │      │      │      │      │
-├──────┼──────┼──────┼──────┼──────┤         ├──────┼──────┼──────┼──────┼──────┤
-│ z    │ x    │ c    │ v    │ b    │         │      │      │      │      │      │
-╰──────┴──────┼──────┼──────┼──────┤         ├──────┼──────┼──────┼──────┴──────╯
- enc: mwheel  │      │ shft │ spc  │         │ spc  │ nav  │ mute │ enc: volume
-              ╰──────┴──────┴──────╯         ╰──────┴──────┴──────╯
-
-╭──────┬──────┬──────┬──────┬──────╮         ╭──────┬──────┬──────┬──────┬──────╮
-│ esc  │ home │ up   │ end  │ pgup │         │ ins  │      │      │      │ cfg  │
-├──────┼──────┼──────┼──────┼──────┤         ├──────┼──────┼──────┼──────┼──────┤
-│ tab  │ left │ down │ rght │ pgdn │   nav   │ bksp │ shft │ ctrl │ alt  │ gui  │
-├──────┼──────┼──────┼──────┼──────┤         ├──────┼──────┼──────┼──────┼──────┤
-│ undo │ cut  │ copy │ pste │ redo │         │ del  │ app  │ vol- │ vol+ │ mute │
-╰──────┴──────┼──────┼──────┼──────┤         ├──────┼──────┼──────┴──────┴──────╯
- enc: zoom    │ zrst │ num  │ ent  │         │      │ nav  │      │ enc: none
-              ╰──────┴──────┴──────╯         ╰──────┴──────┴──────╯
-
-Notes:
-- zrst - Ctrl + 0 to Zoom Reset
-
-╭──────┬──────┬──────┬──────┬──────╮         ╭──────┬──────┬──────┬──────┬──────╮
-│ esc  │ snip │ file │ func │ ` ~  │         │ ent  │ 7    │ 8    │ 9    │ tab  │
-├──────┼──────┼──────┼──────┼──────┤         ├──────┼──────┼──────┼──────┼──────┤
-│ gui  │ alt  │ ctrl │ shft │ ; :  │ numbers │ bksp │ 4    │ 5    │ 6    │ .    │
-├──────┼──────┼──────┼──────┼──────┤         ├──────┼──────┼──────┼──────┼──────┤
-│ undo │ cut  │ copy │ pste │ redo │         │ del  │ 1    │ 2    │ 3    │ - _  │
-╰──────┴──────┼──────┼──────┼──────┤         ├──────┼──────┼──────┼──────┴──────╯
- enc: none    │      │ num  │      │         │ spc  │ 0 nav│      │ enc: ← →
-              ╰──────┴──────┴──────╯         ╰──────┴──────┴──────╯
-
-╭──────┬──────┬──────┬──────┬──────╮         ╭──────┬──────┬──────┬──────┬──────╮
-│ esc  │      │ @    │ $    │ ` ~  │         │ = +  │ #    │ *    │      │ " "" │
-├──────┼──────┼──────┼──────┼──────┤         ├──────┼──────┼──────┼──────┼──────┤
-│ &    │ { {} │ }    │ |    │ ; :  │ symbols │ bksp │ ?    │ [ [] │ ]    │ ' '' │
-├──────┼──────┼──────┼──────┼──────┤         ├──────┼──────┼──────┼──────┼──────┤
-│ % ^  │ < <> │ >    │ \    │ !    │         │ del  │ /    │ , () │ . )  │ - _  │
-╰──────┴──────┼──────┼──────┼──────┤         ├──────┼──────┼──────┼──────┴──────╯
- enc: none    │      │ num  │      │         │      │ nav  │      │ enc: none
-              ╰──────┴──────┴──────╯         ╰──────┴──────┴──────╯
-
-Notes:
-- tri layer: Activate th the symbol layer by holding down symbol and navigation
-
-╭──────┬──────┬──────┬──────┬──────╮         ╭──────┬──────┬──────┬──────┬──────╮
-│ mply2│ mrec2│      │ func │      │         │ pscr │ F7   │ F8   │ F9   │ F10  │
-├──────┼──────┼──────┼──────┼──────┤         ├──────┼──────┼──────┼──────┼──────┤
-│      │      │      │      │ scrl │  func   │ caps │ F4   │ F5   │ F6   │ F11  │
-├──────┼──────┼──────┼──────┼──────┤         ├──────┼──────┼──────┼──────┼──────┤
-│      │      │      │      │      │         │ paus │ F1   │ F2   │ F3   │ F12  │
-╰──────┴──────┼──────┼──────┼──────┤         ├──────┼──────┼──────┼──────┴──────╯
-  enc: none   │      │ num  │      │         │ mply1│ mrec1│      │ enc: ↑ ↓
-              ╰──────┴──────┴──────╯         ╰──────┴──────┴──────╯
-
-╭──────┬──────┬──────┬──────┬──────╮         ╭──────┬──────┬──────┬──────┬──────╮
-│      │ btn5 │ btn4 │ btn3 │      │         │ whup │      │ mouu │      │      │
-├──────┼──────┼──────┼──────┼──────┤         ├──────┼──────┼──────┼──────┼──────┤
-│ mou  │ alt  │ ctrl │ shft │      │  mouse  │ whdn │ moul │ moud │ mour │      │
-├──────┼──────┼──────┼──────┼──────┤         ├──────┼──────┼──────┼──────┼──────┤
-│      │      │      │ drgs │ snip │         │ sdpi │ pdpi │      │      │      │
-╰──────┴──────┼──────┼──────┼──────┤         ├──────┼──────┼──────┼──────┴──────╯
-  enc:mwheel  │      │ btn1 │ btn2 │         │      │      │      │ enc: none
-              ╰──────┴──────┴──────╯         ╰──────┴──────┴──────╯
-
-Notes:
-- drgs on non Charybdis Nano boards will trigger drag scrolling on Ploopy Nano
-- pdpi on non Charybdis Nano boards will cycle Ploopy Nano DPI settings
-- both together will enter bootlaoder on Ploopy Nano
-
-╭──────┬──────┬──────┬──────┬──────╮         ╭──────┬──────┬──────┬──────┬──────╮
-│      │ esc  │ `    │ g    │ t    │         │      │      │      │      │      │
-├──────┼──────┼──────┼──────┼──────┤         ├──────┼──────┼──────┼──────┼──────┤
-│ gnum │ 1    │ 2    │ 3    │ 4    │  game   │      │      │      │      │      │
-├──────┼──────┼──────┼──────┼──────┤    num  ├──────┼──────┼──────┼──────┼──────┤
-│      │ 5    │ 6    │ 7    │ 8    │         │      │      │      │      │      │
-╰──────┴──────┼──────┼──────┼──────┤         ├──────┼──────┼──────┼──────┴──────╯
- end: mwheel  │      │ alt  │ ctrl │         │      │ nav  │ mute │ enc: volume
-              ╰──────┴──────┴──────╯         ╰──────┴──────┴──────╯
-
-╭──────┬──────┬──────┬──────┬──────╮         ╭──────┬──────┬──────┬──────┬──────╮
-│      │      │      │      │      │         │ eeclr│ rboot│ boot │      │ cfg  │
-├──────┼──────┼──────┼──────┼──────┤         ├──────┼──────┼──────┼──────┼──────┤
-│rgbtog│rgbMod│      │      │      │ config  │ blyr │ shft │ ctrl │ alt  │ gui  │
-├──────┼──────┼──────┼──────┼──────┤         ├──────┼──────┼──────┼──────┼──────┤
-│ hue+ │ sat+ │ vib+ │ spd+ │      │         │      │      │      │      │      │
-╰──────┴──────┼──────┼──────┼──────┤         ├──────┼──────┼──────┼──────┴──────╯
- enc: none    │      │      │      │         │      │ nav  │      │ enc: none
-              ╰──────┴──────┴──────╯         ╰──────┴──────┴──────╯
-
-notes: 
-- blyr - toggles between the three base layers: qwerty, colemakdh, game
+Enables simultaneous pressing of key combinations to get another. Handy when there are not enough keys on the keyboard. Primarily used to implement mouse buttons and make important keys (enter, backspace, etc) available on base layer
 
 ## Target Keyboards
 
