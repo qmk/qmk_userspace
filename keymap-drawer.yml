@@ -1,0 +1,100 @@
+layout:
+  qmk_keyboard: bluebell/swoop
+  qmk_layout: LAYOUT_split_3x5_3
+layers:
+  base_QWERTY:
+    - [Q, W, E, R, T, Y, U, I ,O, P]
+    - [A, S, D, F, G, H, J, K ,L, {h: "\"", t: "'"}]
+    - [Z, X, C, V, B, N, M, {h: "(", t: ","} , {h: ")", t: "."}, {h: "_", t: "-"}]
+    - {type: ghost}
+    - NUM
+    - Shift
+    - Space
+    - NAV
+    - {t: Mute, type: ghost}
+  base_COLEMAK_DH:
+    - [Q, W, F, P, B, J, L, U ,Y, {h: "\"", t: "'"}]
+    - [A, R, S, T, G, M, N, E ,I, O]
+    - [Z, X, C, D, V, K, H, {h: "(", t: ","} , {h: ")", t: "."}, {h: "_", t: "-"}]
+    - {type: ghost}
+    - NUM
+    - Shift
+    - Space
+    - NAV
+    - {t: Mute, type: ghost}
+  base_GAME:
+    - [Tab, Q, W, E, R, T, "7", "8" ,"9", Esc]
+    - [Ctrl, A, S, D, F, G, "4", "5" ,"6", "`"]
+    - [Z, X, C, V, B, Alt, "1", "2" ,"3", Combo Toggle]
+    - {t: Enter, type: ghost}
+    - Shift
+    - Space
+    - Space
+    - {h: "NAV", t: "0"}
+    - {t: Mute, type: ghost}
+  NAV:
+    - [Escape, Home, ▲, End, Page Up, Insert, Caps Lock, Scroll Lock, null, null ]
+    - [null, ◄, ▼, ►, Page Down, null, Shift, Ctrl, Alt, Gui ]
+    - [Undo, Cut, Copy, Paste, Redo, null, App, Vol-, Vol+, Mute ]
+    - {t: Zoom Reset, type: ghost}
+    - NUM
+    - Enter
+    - null
+    - {type: held}
+    - {t: Mute, type: ghost}
+  NUM:
+    - [null, Win Snip, Win File, null, {h: "~", t: "`"}, null, "7", "8" ,"9", null ]
+    - [Gui, Alt, Ctrl, Shift, {h: ":", t: ";"}, null, "4", "5" ,"6", "."]
+    - [Undo, Cut, Copy, Paste, Redo, null, "1", "2" ,"3", {h: "_", t: "-"}]
+    - {type: ghost}
+    - {type: held}
+    - null
+    - Space
+    - {h: "NAV", t: "0"}
+    - {type: ghost}
+  SYM:
+    - [null, null, "@", "$", {h: "~", t: "`"}, {h: "+", t: "="}, "#", "*", null, {h: "\"\"", t: "\""}]
+    - ["&", {h: "{}", t: "{"}, "}", "|", {h: ":", t: ";"}, null, "?", {h: "[]", t: "]"}, "]", {h: "''", t: "'"}]
+    - [{h: "^", t: "%"}, {h: "<>", t: "<"}, ">", "\\", "!", null, "/", {h: "()", t: ","}, {h: ")", t: "."}, {h: "_", t: "-"}]
+    - {type: ghost}
+    - {type: held}
+    - null
+    - null
+    - {type: held}
+    - {type: ghost}
+  FUNCTION: 
+    - [null, null, Mouse Up, null, Mouse Wheel Up, Print Screen, F7, F8, F9, F10]
+    - [null, Mouse Left, Mouse Down, Mouse Right, Mouse Wheel Down, Num Lock, F4, F5, F6, F11]
+    - [Pointer DPI, Sniper DPI, null, Drag Scroll Toggle, Sniper Toggle, Pause Break, F1, F2, F3, F12]
+    - {type: ghost}
+    - {type: held}
+    - {type: held}
+    - Macro Play
+    - Macro Record 
+    - {type: ghost}
+  CONFIG:
+    - [null, null, null, null, null, Clear EEPROM, Reboot, Boot Loader, null, null]
+    - [RGB Toggle, RGB Mode, null, null, null, Base Layer Toggle, Shift, Ctrl, Alt, Gui]
+    - [RGB Hue, RGB Sat, RGB Vib, RGB Spd, null, null, null, null, null, null ]
+    - {type: ghost}
+    - null
+    - null
+    - {type: held}
+    - {type: held}
+    - {type: ghost}
+combos:
+  - { p: [1, 2], k: Esc, l: [base_QWERTY] }
+  - { p: [2, 3], k: MB4, l: [base_QWERTY] }
+  - { p: [3, 4], k: MB5, l: [base_QWERTY] }
+  - { p: [12, 13], k: MB1, l: [base_QWERTY] }
+  - { p: [13, 14], k: MB3, l: [base_QWERTY] }
+  - { p: [11, 12], k: DrgScr Tog, l: [base_QWERTY] }
+  - { p: [26, 27], k: Tab, l: [base_QWERTY] }
+  - { p: [21, 22], k: Enter, l: [base_QWERTY] }
+  - { p: [22, 23], k: MB2, l: [base_QWERTY] }
+  - { p: [7, 8], k: Bksp, l: [base_QWERTY] }
+  - { p: [6, 7], k: Del, l: [base_QWERTY] }
+  - { p: [31, 32], k: FUNC, l: [base_QWERTY], align: top }
+  - { p: [33, 34], k: CONFIG, l: [base_QWERTY], align: top }
+draw_config:
+  small_pad: 6

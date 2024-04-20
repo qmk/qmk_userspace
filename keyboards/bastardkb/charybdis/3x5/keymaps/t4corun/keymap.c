@@ -26,8 +26,6 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   [_NUMBER]          = CNANO(LAYER_NUMBER),
   [_SYMBOL]          = CNANO(LAYER_SYMBOL),
   [_FUNCTION]        = CNANO(LAYER_FUNCTION),
-  [_MOUSE]           = CNANO(LAYER_MOUSE),
-  [_GAME_NUM]        = CNANO(LAYER_GAME_NUM),
   [_CONFIG]          = CNANO(LAYER_CONFIG)
 
 };

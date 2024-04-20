@@ -15,10 +15,6 @@ The current build guide is [available here](https://github.com/barbellboards/Rol
 Make example for this keyboard (after setting up your build environment):
 
 ```bash
-# This board definition is currently not part of QMK Firmware
-# Copy the keyboard definition into your forked/cloned QMK_HOME folder
-cp /d/Repo/qmk_userspace/keyboards/barbellboards /d/Repo/qmk_firmware/keyboards/ -R
-
 make barbellboards/rollow:default
 # or
 qmk compile -kb barbellboards/rollow -km default
