@@ -43,9 +43,9 @@ const uint16_t PROGMEM lyr_fun_combo[]  = { NUM,     TR_LSFT, COMBO_END };
 
 
 // right hand combos 
-const uint16_t PROGMEM key_tab_combo[]  = { KC_M,    TR_COMM, COMBO_END };
-const uint16_t PROGMEM key_del_combo[]  = { KC_U,    KC_I,    COMBO_END };
-const uint16_t PROGMEM key_bspc_combo[] = { KC_I,    KC_O,    COMBO_END };
+const uint16_t PROGMEM key_tab_combo[]  = { KC_U,    I,       COMBO_END };
+const uint16_t PROGMEM key_bspc_combo[] = { KC_M,    TR_COMM, COMBO_END };
+const uint16_t PROGMEM key_del_combo[]  = { TR_COMM, TR_DOT,  COMBO_END };
 const uint16_t PROGMEM lyr_cfg_combo[]  = { KC_SPC,  NAV,     COMBO_END };
 
 
