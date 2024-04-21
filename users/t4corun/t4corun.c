@@ -47,7 +47,7 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
   case TR_EQL:
   case TR_MINS:
   case TR_GRV:
-  case TR_SCLN:
+  case TH_SCLN:
   case TR_QUOT:
     return process_tap_hold_key(record, keycode);
 

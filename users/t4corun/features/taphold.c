@@ -76,7 +76,7 @@ bool process_tap_hold_key(keyrecord_t* record, uint16_t keycode) {
       key = KC_GRV; 
       altkey = KC_TILDE;
       break;
-    case TR_SCLN: //tap for semicolon, hold for colon
+    case TH_SCLN: //tap for semicolon, hold for colon
       key = KC_SCLN;
       altkey = KC_COLN;
       break;
@@ -116,7 +116,7 @@ bool process_tap_hold_key(keyrecord_t* record, uint16_t keycode) {
       case TR_EQL:
       case TR_MINS:
       case TR_GRV:
-      case TR_SCLN:
+      case TH_SCLN:
       case TR_QUOT:
         tap_code16(altkey);
         break;
