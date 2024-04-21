@@ -44,7 +44,7 @@ enum keycodes {
 #define NAV        MO(_NAVIGATION)
 #define NAV_0      LT(_NAVIGATION, KC_0)
 #define NUM        MO(_NUMBER)
-#define FUNC       MO(_FUNCTION)
+//#define FUNC       MO(_FUNCTION)
 #define CONFIG     MO(_CONFIG)
 
 // Windows Shortcuts
@@ -241,7 +241,7 @@ enum keycodes {
 
 #define LAYER_SYMBOL \
   ___x___, ___x___, KC_AT,   KC_DLR,  TR_GRV,  TR_EQL,  KC_HASH, KC_ASTR, ___x___, TR_DQUO, \
-  KC_AMPR, TR_LCBR, KC_RCBR, KC_PIPE, TH_SCLN, TR_PLUS, KC_QUES, TR_LBRC, KC_RBRC, TR_SQUO, \
+  KC_AMPR, TR_LCBR, KC_RCBR, KC_PIPE, TH_SCLN, KC_PLUS, KC_QUES, TR_LBRC, KC_RBRC, TR_SQUO, \
   TR_PERC, TR_LABK, KC_RABK, KC_BSLS, KC_EXLM, ___x___, KC_SLSH, TR_LPRN, TR_DOT,  TR_MINS, \
                     _LAYER_TRANS_____________, _LAYER_TRANS_____________
 

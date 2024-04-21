@@ -39,7 +39,7 @@ bool get_combo_must_hold(uint16_t index, combo_t *combo) {
   switch (index) {
 
     case LYR_CONFIG:
-    case LYR_FUNCTION:
+    //case LYR_FUNCTION:
       return true;
 
     default:
