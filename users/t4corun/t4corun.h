@@ -11,26 +11,12 @@ enum layers {
   _NAVIGATION,
   _NUMBER,
   _SYMBOL,
-  _FUNCTION,
   _CONFIG
 };
 
 enum keycodes {
-  //These are only here to make the case statements unique in taphold.c
-  TH_LCBR = QK_USER,
-  TH_LABK,
-  TH_LBRC,
-  TH_SQUO,
-  TH_DQUO,
-  TH_LPRN,
-  TH_COMM,
-  TH_DOT,
-  TH_PERC,
-  TH_EQL,
-  TH_MINS,
-  TH_GRV,
-  TH_SCLN,
-  TH_QUOT,
+  //These are only here to make the taphold/defines unique
+  KY_SQUO = QK_USER,
 
   PN_DRGS,
   PN_PDPI,
@@ -44,7 +30,6 @@ enum keycodes {
 #define NAV        MO(_NAVIGATION)
 #define NAV_0      LT(_NAVIGATION, KC_0)
 #define NUM        MO(_NUMBER)
-//#define FUNC       MO(_FUNCTION)
 #define CONFIG     MO(_CONFIG)
 
 // Windows Shortcuts
@@ -75,34 +60,31 @@ enum keycodes {
 #define TR_LGUI OSM(MOD_LGUI)
 
 
-//tap hoLd
-#define TR_LCBR  LT(_DEFAULT_LAYER_1, TH_LCBR) // bracket behvavior
-#define TR_LABK  LT(_DEFAULT_LAYER_1, TH_LABK)
-#define TR_LBRC  LT(_DEFAULT_LAYER_1, TH_LBRC) 
-#define TR_SQUO  LT(_DEFAULT_LAYER_1, TH_SQUO)
-#define TR_DQUO  LT(_DEFAULT_LAYER_1, TH_DQUO)
+//tap hoLd. These will be intercepted and overridden. The LT will be ignored
+#define TR_LCBR  LT(_DEFAULT_LAYER_1, KC_LCBR) // bracket behvavior
+#define TR_LABK  LT(_DEFAULT_LAYER_1, KC_LABK)
+#define TR_LBRC  LT(_DEFAULT_LAYER_1, KC_LBRC)
+#define TR_LPRN  LT(_DEFAULT_LAYER_1, KC_LPRN)
+#define TR_SQUO  LT(_DEFAULT_LAYER_1, KY_SQUO)
+#define TR_DQUO  LT(_DEFAULT_LAYER_1, KC_DQUO)
 
-#define TR_LPRN  LT(_DEFAULT_LAYER_1, TH_LPRN) // custom behavior
-#define TR_COMM  LT(_DEFAULT_LAYER_1, TH_COMM)
-#define TR_DOT   LT(_DEFAULT_LAYER_1, TH_DOT)
-#define TR_PERC  LT(_DEFAULT_LAYER_1, TH_PERC)
+#define TR_EQL   LT(_DEFAULT_LAYER_1, KC_EQL) // double tap
+#define TR_PLUS  LT(_DEFAULT_LAYER_1, KC_PLUS)
+#define TR_PIPE  LT(_DEFAULT_LAYER_1, KC_PIPE)
 
-#define TR_EQL   LT(_DEFAULT_LAYER_1, TH_EQL)  // basically auto shift
-#define TR_MINS  LT(_DEFAULT_LAYER_1, TH_MINS)
-#define TR_GRV   LT(_DEFAULT_LAYER_1, TH_GRV)
-//#define TR_SCLN  LT(_DEFAULT_LAYER_1, TH_SCLN)
-#define TR_QUOT  LT(_DEFAULT_LAYER_1, TH_QUOT)
+#define TR_COMM  LT(_DEFAULT_LAYER_1, KC_COMM) // custom behavior
+#define TR_DOT   LT(_DEFAULT_LAYER_1, KC_DOT)
+#define TR_PERC  LT(_DEFAULT_LAYER_1, KC_PERC)
+#define TR_EXLM  LT(_DEFAULT_LAYER_1, KC_EXLM)
+
+  // basically auto shift
+#define TR_MINS  LT(_DEFAULT_LAYER_1, KC_MINS)
+#define TR_GRV   LT(_DEFAULT_LAYER_1, KC_GRV)
+#define TR_SCLN  LT(_DEFAULT_LAYER_1, KC_SCLN)
+#define TR_QUOT  LT(_DEFAULT_LAYER_1, KC_QUOT)
 
 
 #if defined(MOUSEKEY_ENABLE)
-
-#   define TR_MOUU KC_MS_U
-#   define TR_MOUD KC_MS_D
-#   define TR_MOUL KC_MS_L
-#   define TR_MOUR KC_MS_R
-
-#   define TR_MWHU KC_WH_U //Mouse wheel keys are not needed unless the board has no encoders
-#   define TR_MWHD KC_WH_D
 
 #   define TR_BTN1 KC_BTN1
 #   define TR_BTN2 KC_BTN2
@@ -124,14 +106,6 @@ enum keycodes {
 # endif //KEYBOARD_bastardkb_charybdis_3x5
 
 #else
-
-#   define TR_MOUU ___x___
-#   define TR_MOUD ___x___
-#   define TR_MOUL ___x___
-#   define TR_MOUR ___x___
-
-#   define TR_MWHU ___x___
-#   define TR_MWHD ___x___
 
 #   define TR_BTN1 ___x___
 #   define TR_BTN2 ___x___
@@ -185,7 +159,6 @@ enum keycodes {
 #define _NONE_3__________________                   ___x___, ___x___, ___x___
 #define _NONE_5____________________________________ ___x___, ___x___, ___x___, ___x___, ___x___
 #define _GACS_MODS________________________          TR_LGUI, TR_LALT, TR_LCTL, TR_LSFT
-#define _GACS_MOUSE_MODS_________                   TR_LALT, TR_LCTL, TR_LSFT
 #define _SCAG_MODS________________________          TR_LSFT, TR_LCTL, TR_LALT, TR_LGUI
 #define _UCCPR_L___________________________________ SC_UNDO, SC_CUT,  SC_COPY, SC_PAST, SC_REDO
 
@@ -216,14 +189,6 @@ enum keycodes {
   KC_Z,    KC_X,    KC_C,    KC_V,    KC_B,    KC_LALT, KC_1,    KC_2,    KC_3,    CM_TOGG, \
                     KC_ENT,  KC_LSFT, KC_SPC,  KC_SPC,  NAV_0,   KC_MUTE
 
-/*
-#define LAYER_NAVIGATION \
-  KC_ESC,  KC_HOME, KC_UP,   KC_END,  KC_PGUP, KC_INS,  KC_CAPS, KC_SCRL, ___x___, ___x___, \
-  ___x___, KC_LEFT, KC_DOWN, KC_RGHT, KC_PGDN, ___x___, _SCAG_MODS________________________, \
-  _UCCPR_L___________________________________, ___x___, KC_APP,  KC_VOLD, KC_VOLU, KC_MUTE, \
-                    ZOOMRST, _______, KC_ENT,  _LAYER_TRANS_____________
-*/
-
 
 #define LAYER_NAVIGATION \
   ___x___, KC_HOME, KC_UP,   KC_END,  KC_PGUP, ___x___, TR_DRGS, TR_SNIP, TR_SDPI, TR_PDPI, \
@@ -241,9 +206,16 @@ enum keycodes {
 
 #define LAYER_SYMBOL \
   ___x___, ___x___, KC_AT,   KC_DLR,  TR_GRV,  TR_EQL,  KC_HASH, KC_ASTR, ___x___, TR_DQUO, \
-  KC_AMPR, TR_LCBR, KC_RCBR, KC_PIPE, TH_SCLN, KC_PLUS, KC_QUES, TR_LBRC, KC_RBRC, TR_SQUO, \
-  TR_PERC, TR_LABK, KC_RABK, KC_BSLS, KC_EXLM, ___x___, KC_SLSH, TR_LPRN, TR_DOT,  TR_MINS, \
+  KC_AMPR, TR_LCBR, KC_RCBR, TR_PIPE, TH_SCLN, TR_PLUS, KC_QUES, TR_LBRC, KC_RBRC, TR_SQUO, \
+  TR_PERC, TR_LABK, KC_RABK, KC_BSLS, TR_EXLM, ___x___, KC_SLSH, TR_LPRN, KC_RPRN, TR_MINS, \
                     _LAYER_TRANS_____________, _LAYER_TRANS_____________
+
+
+#define LAYER_CONFIG \
+  KC_F10,  KC_F7,   KC_F8,   KC_F9,   ___x___, ___x___, ___x___, ___x___, ___x___, QK_BOOT, \
+  KC_F11,  KC_F4,   KC_F5,   KC_F6,   ___x___, BASELYR, TR_LSFT, _NONE_3__________________, \
+  KC_F12,  KC_F1,   KC_F2,   KC_F3,   ___x___, TR_RHUI, TR_RSAI, TR_RVAI, TR_RSPI, TR_RTOG, \
+                    ___x___, TR_DMR1, TR_DMP1, _NONE_3__________________
 
 /*
 If I was going to combine number and symbols together, it'd look like this
@@ -254,24 +226,3 @@ If I was going to combine number and symbols together, it'd look like this
   _UCCPR_L___________________________________, KC_SLSH, KC_1,    KC_2,    KC_3,    KC_BSLS, \
                     _LAYER_TRANS_____________, KC_SPC,  NAV_0,   ___x___
 */
-
-/*
-#define LAYER_FUNCTION \
-  ___x___, ___x___, TR_MOUU, ___x___, TR_MWHU, KC_PSCR, KC_F7,   KC_F8,   KC_F9,   KC_F10, \
-  ___x___, TR_MOUL, TR_MOUD, TR_MOUR, TR_MWHD, KC_NUM,  KC_F4,   KC_F5,   KC_F6,   KC_F11, \
-  TR_PDPI, TR_SDPI, ___x___, TR_DRGS, TR_SNIP, KC_PAUS, KC_F1,   KC_F2,   KC_F3,   KC_F12, \
-                    _LAYER_TRANS_____________, TR_DMP1, TR_DMR1, ___x___
-
-
-#define LAYER_CONFIG \
-  _NONE_5____________________________________, EE_CLR,  QK_RBT,  QK_BOOT, ___x___, ___x___, \
-  TR_RTOG, TR_RMOD, _NONE_3__________________, BASELYR, _SCAG_MODS________________________, \
-  TR_RHUI, TR_RSAI, TR_RVAI, TR_RSPI, ___x___, _NONE_5____________________________________, \
-                    _NONE_3__________________, _NONE_3__________________
-*/
-
-#define LAYER_CONFIG \
-  KC_F10,  KC_F7,   KC_F8,   KC_F9,   ___x___, ___x___, ___x___, ___x___, ___x___, QK_BOOT, \
-  KC_F11,  KC_F4,   KC_F5,   KC_F6,   ___x___, BASELYR, TR_LSFT, _NONE_3__________________, \
-  KC_F12,  KC_F1,   KC_F2,   KC_F3,   ___x___, TR_RHUI, TR_RSAI, TR_RVAI, TR_RSPI, TR_RTOG, \
-                    _NONE_3__________________, _NONE_3__________________

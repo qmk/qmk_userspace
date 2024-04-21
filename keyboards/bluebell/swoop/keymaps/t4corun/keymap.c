@@ -25,7 +25,6 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   [_NAVIGATION]      = SWOOP(LAYER_NAVIGATION),
   [_NUMBER]          = SWOOP(LAYER_NUMBER),
   [_SYMBOL]          = SWOOP(LAYER_SYMBOL),
-  //[_FUNCTION]        = SWOOP(LAYER_FUNCTION),
   [_CONFIG]          = SWOOP(LAYER_CONFIG)
 
 };
@@ -42,7 +41,6 @@ const uint16_t PROGMEM encoder_map[][NUM_ENCODERS][NUM_DIRECTIONS] = {
   [_NAVIGATION]      = { ENCODER_CCW_CW(ZOOMIN,  ZOOMOUT), ENCODER_CCW_CW(___x___, ___x___)  },
   [_NUMBER]          = { ENCODER_CCW_CW(___x___, ___x___), ENCODER_CCW_CW(KC_RGHT, KC_LEFT)  },
   [_SYMBOL]          = { ENCODER_CCW_CW(___x___, ___x___), ENCODER_CCW_CW(___x___, ___x___)  },
-  //[_FUNCTION]        = { ENCODER_CCW_CW(___x___, ___x___), ENCODER_CCW_CW(KC_DOWN, KC_UP  )  },
   [_CONFIG]          = { ENCODER_CCW_CW(___x___, ___x___), ENCODER_CCW_CW(___x___, ___x___)  },
 };
 
