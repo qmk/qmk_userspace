@@ -38,7 +38,7 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
     case TR_EXLM:
     case TR_MINS:
     case TR_GRV:
-    case TH_SCLN:
+    case TR_SCLN:
     case TR_QUOT:
     case PN_DRGS:
     case PN_PDPI:
