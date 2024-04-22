@@ -16,7 +16,26 @@ enum layers {
 
 enum keycodes {
   //These are only here to make the taphold/defines unique
-  KY_SQUO = QK_USER,
+  TH_LCBR = QK_USER,
+  TH_LABK,
+  TH_LBRC,
+  TH_LPRN,
+  TH_SQUO,
+  TH_DQUO,
+  
+  TH_EQL,
+  TH_PLUS,
+  TH_PIPE,
+
+  TH_COMM,
+  TH_DOT,
+  TH_PERC,
+  TH_EXLM,
+
+  TH_MINS,
+  TH_GRV,
+  TH_SCLN,
+  TH_QUOT,
 
   PN_DRGS,
   PN_PDPI,
@@ -61,30 +80,33 @@ enum keycodes {
 
 
 //tap hoLd. These will be intercepted and overridden. The LT will be ignored
-#define TR_LCBR  LT(_DEFAULT_LAYER_1, KC_LCBR) // bracket behvavior
-#define TR_LABK  LT(_DEFAULT_LAYER_1, KC_LABK)
-#define TR_LBRC  LT(_DEFAULT_LAYER_1, KC_LBRC)
-#define TR_LPRN  LT(_DEFAULT_LAYER_1, KC_LPRN)
-#define TR_SQUO  LT(_DEFAULT_LAYER_1, KY_SQUO)
-#define TR_DQUO  LT(_DEFAULT_LAYER_1, KC_DQUO)
+#define TR_LCBR  LT(_DEFAULT_LAYER_1, TH_LCBR) // bracket behvavior
+#define TR_LABK  LT(_DEFAULT_LAYER_1, TH_LABK)
+#define TR_LBRC  LT(_DEFAULT_LAYER_1, TH_LBRC)
+#define TR_LPRN  LT(_DEFAULT_LAYER_1, TH_LPRN)
+#define TR_SQUO  LT(_DEFAULT_LAYER_1, TH_SQUO)
+#define TR_DQUO  LT(_DEFAULT_LAYER_1, TH_DQUO)
 
-#define TR_EQL   LT(_DEFAULT_LAYER_1, KC_EQL) // double tap
-#define TR_PLUS  LT(_DEFAULT_LAYER_1, KC_PLUS)
-#define TR_PIPE  LT(_DEFAULT_LAYER_1, KC_PIPE)
+#define TR_EQL   LT(_DEFAULT_LAYER_1, TH_EQL) // double tap
+#define TR_PLUS  LT(_DEFAULT_LAYER_1, TH_PLUS)
+#define TR_PIPE  LT(_DEFAULT_LAYER_1, TH_PIPE)
 
-#define TR_COMM  LT(_DEFAULT_LAYER_1, KC_COMM) // custom behavior
-#define TR_DOT   LT(_DEFAULT_LAYER_1, KC_DOT)
-#define TR_PERC  LT(_DEFAULT_LAYER_1, KC_PERC)
-#define TR_EXLM  LT(_DEFAULT_LAYER_1, KC_EXLM)
+#define TR_COMM  LT(_DEFAULT_LAYER_1, TH_COMM) // custom behavior
+#define TR_DOT   LT(_DEFAULT_LAYER_1, TH_DOT)
+#define TR_PERC  LT(_DEFAULT_LAYER_1, TH_PERC)
+#define TR_EXLM  LT(_DEFAULT_LAYER_1, TH_EXLM)
 
   // basically auto shift
-#define TR_MINS  LT(_DEFAULT_LAYER_1, KC_MINS)
-#define TR_GRV   LT(_DEFAULT_LAYER_1, KC_GRV)
-#define TR_SCLN  LT(_DEFAULT_LAYER_1, KC_SCLN)
-#define TR_QUOT  LT(_DEFAULT_LAYER_1, KC_QUOT)
+#define TR_MINS  LT(_DEFAULT_LAYER_1, TH_MINS)
+#define TR_GRV   LT(_DEFAULT_LAYER_1, TH_GRV)
+#define TR_SCLN  LT(_DEFAULT_LAYER_1, TH_SCLN)
+#define TR_QUOT  LT(_DEFAULT_LAYER_1, TH_QUOT)
 
 
 #if defined(MOUSEKEY_ENABLE)
+
+#   define TR_MWHU KC_WH_U
+#   define TR_MWHD KC_WH_D
 
 #   define TR_BTN1 KC_BTN1
 #   define TR_BTN2 KC_BTN2
@@ -106,6 +128,9 @@ enum keycodes {
 # endif //KEYBOARD_bastardkb_charybdis_3x5
 
 #else
+
+#   define TR_MWHU ___x___
+#   define TR_MWHD ___x___
 
 #   define TR_BTN1 ___x___
 #   define TR_BTN2 ___x___

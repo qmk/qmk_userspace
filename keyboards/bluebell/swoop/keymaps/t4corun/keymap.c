@@ -35,13 +35,13 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 /* The encoder presses are handled in the keymap */
 
 const uint16_t PROGMEM encoder_map[][NUM_ENCODERS][NUM_DIRECTIONS] = {
-  [_DEFAULT_LAYER_1] = { ENCODER_CCW_CW(TR_MWHD, TR_MWHU), ENCODER_CCW_CW(KC_VOLU, KC_VOLD)  },
-  [_DEFAULT_LAYER_2] = { ENCODER_CCW_CW(TR_MWHD, TR_MWHU), ENCODER_CCW_CW(KC_VOLU, KC_VOLD)  },
-  [_DEFAULT_LAYER_3] = { ENCODER_CCW_CW(TR_MWHD, TR_MWHU), ENCODER_CCW_CW(KC_VOLU, KC_VOLD)  },
-  [_NAVIGATION]      = { ENCODER_CCW_CW(ZOOMIN,  ZOOMOUT), ENCODER_CCW_CW(___x___, ___x___)  },
-  [_NUMBER]          = { ENCODER_CCW_CW(___x___, ___x___), ENCODER_CCW_CW(KC_RGHT, KC_LEFT)  },
+  [_DEFAULT_LAYER_1] = { ENCODER_CCW_CW(TR_MWHU, TR_MWHD), ENCODER_CCW_CW(KC_VOLD, KC_VOLU)  },
+  [_DEFAULT_LAYER_2] = { ENCODER_CCW_CW(TR_MWHU, TR_MWHD), ENCODER_CCW_CW(KC_VOLD, KC_VOLU)  },
+  [_DEFAULT_LAYER_3] = { ENCODER_CCW_CW(TR_MWHU, TR_MWHD), ENCODER_CCW_CW(KC_VOLD, KC_VOLU)  },
+  [_NAVIGATION]      = { ENCODER_CCW_CW(ZOOMOUT,dddddddf ZOOMIN),  ENCODER_CCW_CW(___x___, ___x___)  },
+  [_NUMBER]          = { ENCODER_CCW_CW(___x___, ___x___), ENCODER_CCW_CW(KC_LEFT, KC_RGHT)  },
   [_SYMBOL]          = { ENCODER_CCW_CW(___x___, ___x___), ENCODER_CCW_CW(___x___, ___x___)  },
-  [_CONFIG]          = { ENCODER_CCW_CW(___x___, ___x___), ENCODER_CCW_CW(___x___, ___x___)  },
+  [_CONFIG]          = { ENCODER_CCW_CW(___x___, ___x___), ENCODER_CCW_CW(LSFT(TR_RMOD), TR_RMOD) },
 };
 
 #endif
