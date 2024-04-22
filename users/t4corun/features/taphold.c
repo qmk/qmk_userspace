@@ -107,33 +107,33 @@ bool process_tap_hold_key(keyrecord_t* record, uint16_t keycode) {
 
       //Brackets
       case TR_LCBR:
-        insert_brackets(TAPHOLD_LCBR);
+        insert_brackets(TAPHOLD_LCBR, WAIT_DELAY);
         break;
       case TR_LABK:
-        insert_brackets(TAPHOLD_LABK);
+        insert_brackets(TAPHOLD_LABK, WAIT_DELAY);
         break;
       case TR_LBRC:
-        insert_brackets(TAPHOLD_LBRC);
+        insert_brackets(TAPHOLD_LBRC, WAIT_DELAY);
         break;
       case TR_SQUO:
-        insert_brackets(TAPHOLD_SQUO);
+        insert_brackets(TAPHOLD_SQUO, WAIT_DELAY);
         break;
       case TR_DQUO:
-        insert_brackets(TAPHOLD_DQUO);
+        insert_brackets(TAPHOLD_DQUO, WAIT_DELAY);
         break;
       case TR_LPRN:
-        insert_brackets(TAPHOLD_LPRN);
+        insert_brackets(TAPHOLD_LPRN, WAIT_DELAY);
         break;
 
       //double tap
       case TR_EQL:
-        double_tap(TAPHOLD_LPRN);
+        double_tap(TAPHOLD_LPRN, WAIT_DELAY);
         break;
       case TR_PLUS:
-        double_tap(TAPHOLD_PLUS);
+        double_tap(TAPHOLD_PLUS, WAIT_DELAY);
         break;
       case TR_PIPE:
-        double_tap(TAPHOLD_PIPE);
+        double_tap(TAPHOLD_PIPE, WAIT_DELAY);
         break;
 
       //custom action
@@ -147,7 +147,7 @@ bool process_tap_hold_key(keyrecord_t* record, uint16_t keycode) {
         single_tap(TAPHOLD_PERC, isHold);
         break;
       case TR_EXLM:
-        double_tap(TAPHOLD_NEQL);
+        double_tap(TAPHOLD_NEQL, WAIT_DELAY);
         break;
 
       //simulates auto-shift
