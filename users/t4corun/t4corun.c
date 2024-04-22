@@ -20,6 +20,20 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
       }
       return false;
 
+    case PN_DRGS:
+      if (record->event.pressed) {
+        //tap numlock twice to toggle ploopy nano drag scroll
+        double_tap(KC_NUM, KC_NUM,WAIT_DELAY);
+      }
+      return false;
+
+    case PN_PDPI:
+      if (record->event.pressed) {
+        //tap capslock twice to cycle ploopy nano pointer DPI
+        double_tap(KC_CAPS, KC_CAPS, WAIT_DELAY);
+      }
+      return false;
+
     //https://docs.qmk.fm/#/mod_tap?id=changing-both-tasp-and-hold
     //https://getreuer.info/posts/keyboards/triggers/index.html#tap-vs.-long-press
     //https://www.jonashietala.se/series/t-34/ he focuses on a keymap for programming/VIM
@@ -40,8 +54,6 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
     case TR_GRV:
     case TR_SCLN:
     case TR_QUOT:
-    case PN_DRGS:
-    case PN_PDPI:
       return process_tap_hold_key(record, keycode);
 
   }

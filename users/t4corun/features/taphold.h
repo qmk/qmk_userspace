@@ -25,8 +25,6 @@ bool process_tap_hold_key(keyrecord_t* record, uint16_t keycode);
 #define TAPHOLD_EQL  KC_EQL,  KC_EQL
 #define TAPHOLD_PLUS KC_PLUS, KC_PLUS
 #define TAPHOLD_PIPE KC_PIPE, KC_PIPE
-#define TAPHOLD_NUM  KC_NUM,  KC_NUM //For ploopy nano
-#define TAPHOLD_CAPS KC_CAPS, KC_CAPS
 
 //Custom: things like overriding default shifted key
 #define TAPHOLD_COMM KC_COMM, KC_LPRN

@@ -53,7 +53,7 @@ bool process_tap_hold_key(keyrecord_t* record, uint16_t keycode) {
         single_tap(TAPHOLD_DQUO, isHold);
         break;
       case TR_EQL:
-        single_tap(TAPHOLD_LPRN, isHold);
+        single_tap(TAPHOLD_EQL, isHold);
         break;
       case TR_PLUS:
         single_tap(TAPHOLD_PLUS, isHold);
@@ -85,16 +85,7 @@ bool process_tap_hold_key(keyrecord_t* record, uint16_t keycode) {
       case TR_QUOT:
         single_tap(TAPHOLD_QUOT, isHold);
         break;
-      
-      //tap numlock twice to toggle ploopy nano drag scroll
-      case PN_DRGS:
-        double_tap(TAPHOLD_NUM, WAIT_DELAY);
-        break;
 
-      //tap capslock twice to cycle ploopy nano pointer DPI
-      case PN_PDPI:
-        double_tap(TAPHOLD_CAPS, WAIT_DELAY);
-        break;
     }
 
     return false;
@@ -127,7 +118,7 @@ bool process_tap_hold_key(keyrecord_t* record, uint16_t keycode) {
 
       //double tap
       case TR_EQL:
-        double_tap(TAPHOLD_LPRN, WAIT_DELAY);
+        double_tap(TAPHOLD_EQL, WAIT_DELAY);
         break;
       case TR_PLUS:
         double_tap(TAPHOLD_PLUS, WAIT_DELAY);
