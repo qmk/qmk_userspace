@@ -79,7 +79,7 @@ bool process_tap_hold_key(keyrecord_t* record, uint16_t keycode) {
       case TR_GRV:
         single_tap(TAPHOLD_GRV, isHold);
         break;
-      case TAPHOLD_SCLN:
+      case TR_SCLN:
         single_tap(TAPHOLD_SCLN, isHold);
         break;
       case TR_QUOT:
@@ -157,7 +157,7 @@ bool process_tap_hold_key(keyrecord_t* record, uint16_t keycode) {
       case TR_GRV:
         single_tap(TAPHOLD_GRV, isHold);
         break;
-      case TAPHOLD_SCLN:
+      case TR_SCLN:
         single_tap(TAPHOLD_SCLN, isHold);
         break;
       case TR_QUOT:
