@@ -14,31 +14,31 @@ bool process_tap_hold_key(keyrecord_t* record, uint16_t keycode);
 */ 
 
 //Brackets: open and close brackets and put the cursor inside
-#define TH_LCBR KC_LCBR, KC_RCBR
-#define TH_LABK KC_LABK, KC_RABK
-#define TH_LBRC KC_LBRC, KC_RBRC
-#define TH_SQUO KC_QUOT, KC_QUOT
-#define TH_DQUO KC_DQUO, KC_DQUO
-#define TH_LPRN KC_LPRN, KC_RPRN
+#define TAPHOLD_LCBR KC_LCBR, KC_RCBR
+#define TAPHOLD_LABK KC_LABK, KC_RABK
+#define TAPHOLD_LBRC KC_LBRC, KC_RBRC
+#define TAPHOLD_SQUO KC_QUOT, KC_QUOT
+#define TAPHOLD_DQUO KC_DQUO, KC_DQUO
+#define TAPHOLD_LPRN KC_LPRN, KC_RPRN
 
 //double tap
-#define TH_EQL  KC_EQL,  KC_EQL 
-#define TH_PLUS KC_PLUS, KC_PLUS
-#define TH_PIPE KC_PIPE, KC_PIPE
-#define TH_NUM  KC_NUM,  KC_NUM //For ploopy nano
-#define TH_CAPS KC_CAPS, KC_CAPS
+#define TAPHOLD_EQL  KC_EQL,  KC_EQL
+#define TAPHOLD_PLUS KC_PLUS, KC_PLUS
+#define TAPHOLD_PIPE KC_PIPE, KC_PIPE
+#define TAPHOLD_NUM  KC_NUM,  KC_NUM //For ploopy nano
+#define TAPHOLD_CAPS KC_CAPS, KC_CAPS
 
 //Custom: things like overriding default shifted key
-#define TH_COMM KC_COMM, KC_LPRN
-#define TH_DOT  KC_DOT,  KC_RPRN
-#define TH_PERC KC_PERC, KC_CIRC
-#define TH_EXLM KC_EXLM, KC_EXLM
-#define TH_NEQL KC_EXLM, KC_EQL
+#define TAPHOLD_COMM KC_COMM, KC_LPRN
+#define TAPHOLD_DOT  KC_DOT,  KC_RPRN
+#define TAPHOLD_PERC KC_PERC, KC_CIRC
+#define TAPHOLD_EXLM KC_EXLM, KC_EXLM
+#define TAPHOLD_NEQL KC_EXLM, KC_EQL
 
 //auto shift
-#define TH_MINS KC_MINS, KC_UNDS
-#define TH_GRV  KC_GRV,  KC_TILD
-#define TH_SCLN KC_SCLN, KC_COLN
-#define TH_QUOT KC_QUOT, KC_DQUO
+#define TAPHOLD_MINS KC_MINS, KC_UNDS
+#define TAPHOLD_GRV  KC_GRV,  KC_TILD
+#define TAPHOLD_SCLN KC_SCLN, KC_COLN
+#define TAPHOLD_QUOT KC_QUOT, KC_DQUO
 
 
