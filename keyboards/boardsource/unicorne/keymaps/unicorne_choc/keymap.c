@@ -258,25 +258,20 @@ const uint16_t PROGMEM encoder_map[][NUM_ENCODERS][NUM_DIRECTIONS] = {
 #ifdef OLED_ENABLE
 bool oled_task_user(void) {
     // Host Keyboard Layer Status
-    // Set cursor position
-
     if (is_keyboard_master()) {
         switch (get_highest_layer(layer_state)) {
-            case _QWERTY:
-                oled_write_P(PSTR("Default\n"), false);
+            case 0:
+                oled_write_raw(layer_zero, sizeof(layer_zero));
                 break;
-            case _LOWER:
-                oled_write_P(PSTR("Lower\n"), false);
+            case 1:
+                oled_write_raw(layer_one, sizeof(layer_one));
                 break;
-            case _RAISE:
-                oled_write_P(PSTR("Raise\n"), false);
+            case 2:
+                oled_write_raw(layer_two, sizeof(layer_two));
                 break;
-            case _FUNC:
-                oled_write_P(PSTR("FN\n"), false);
+            case 3:
+                oled_write_raw(layer_three, sizeof(layer_three));
                 break;
-            default:
-                // Or use the write_ln shortcut over adding '\n' to the end of your string
-                oled_write_ln_P(PSTR("Undefined"), false);
         }
     } else {
         oled_write_raw(logo, sizeof(logo));
