@@ -98,7 +98,7 @@ Explore These
 #define RGB_MATRIX_DEFAULT_SPD 32
 
 //Set per keyboard configuration
-#if defined(KEYBOARD_bastardkb_charybdis_3x5) || defined(KEYBOARD_dztech_dz60rgb_v2_1)
+#if defined(KEYBOARD_bastardkb_charybdis_3x5) || defined(KEYBOARD_dztech_dz60rgb_v2_1) || defined(KEYBOARD_bluebell_swoop)
 #   define RGB_MATRIX_MAXIMUM_BRIGHTNESS 150
 #   define RGB_MATRIX_FRAMEBUFFER_EFFECTS
 #   define RGB_MATRIX_KEYPRESSES

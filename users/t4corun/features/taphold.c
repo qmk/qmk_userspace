@@ -1,17 +1,22 @@
 #include "taphold.h"
 
-void insert_brackets(uint16_t left, uint16_t right) {
+void single_tap(uint16_t key, uint16_t altkey, bool isHold) {
+  isHold ? tap_code16(altkey) : tap_code16(key);
+}
+
+void double_tap(uint16_t key, uint16_t altkey, uint32_t ms) {
+  tap_code16(key);
+  wait_ms(ms);
+  tap_code16(altkey);
+}
+
+void insert_brackets(uint16_t left, uint16_t right, uint32_t ms) {
   tap_code16(left);
+  wait_ms(ms);
   tap_code16(right);
+  wait_ms(ms);
   tap_code16(KC_LEFT);
 }
-
-void double_tap(uint16_t keycode, uint32_t ms) {
-  tap_code16(keycode);
-  wait_ms(ms);
-  tap_code16(keycode);
-}
-
 
 //here we can have the holds be more complex, like sending "" when you hold "
 bool process_tap_hold_key(keyrecord_t* record, uint16_t keycode) {
@@ -19,110 +24,140 @@ bool process_tap_hold_key(keyrecord_t* record, uint16_t keycode) {
   //tap is record->tap.count && record->event.pressed
   //hold is record->event.pressed
 
+  //just saving this to handle mods
   //bool isShift = ( (get_mods() & MOD_BIT(KC_LSFT)) || (get_oneshot_mods() & MOD_BIT(KC_LSFT)) );
-  uint16_t key = KC_NO;
-  uint16_t altkey = KC_NO;
+  //isShift ? insert_brackets(LSFT(key), LSFT(altkey)) : insert_brackets(key, altkey);
 
-  switch(keycode) {
-
-    //Brackets
-    //open and close brackets and put the cursor inside
-    case TR_LCBR:
-      key = KC_LCBR;
-      altkey = KC_RCBR;
-      break;
-    case TR_LABK:
-      key = KC_LABK;
-      altkey = KC_RABK;
-      break;
-    case TR_LBRC:
-      key = KC_LBRC;
-      altkey = KC_RBRC;
-      break;
-    case TR_SQUO:
-      key = KC_QUOT;
-      altkey = KC_QUOT;
-      break;
-    case TR_DQUO:
-      key = KC_DQUO;
-      altkey = KC_DQUO; 
-      break;
-
-    //Custom
-    case TR_LPRN: //tap for comma, hold for bracket parenthesis
-    case TR_COMM: //tap for comma, hold for left parenthesis
-      key = KC_COMM; 
-      altkey = KC_LPRN;
-      break;
-    case TR_DOT:  //tap for dot, hold for right parenthesis
-      key = KC_DOT;
-      altkey = KC_RPRN;
-      break;
-    case TR_PERC: //tap for percent, hold for carat. for saving room on symbols layer
-      key = KC_PERC; 
-      altkey = KC_CIRC;
-      break;
-
-    //faux auto-shift
-    case TR_EQL:  //tap for equal, hold for plus
-      key = KC_EQL; 
-      altkey = KC_PLUS;
-      break;
-    case TR_MINS: //tap for minus, hold for underscore
-      key = KC_MINS;
-      altkey = KC_UNDS;
-      break;
-    case TR_GRV: //tap for grave, hold for tilde
-      key = KC_GRV; 
-      altkey = KC_TILDE;
-      break;
-    case TR_SCLN: //tap for semicolon, hold for colon
-      key = KC_SCLN;
-      altkey = KC_COLN;
-      break;
-    case TR_QUOT: //tap for single quote, hold for double quote
-      key = KC_QUOT; 
-      altkey = KC_DQUO;
-      break;
-  }
-
+  bool isHold = false;
 
   if (record->tap.count && record->event.pressed) {
 
-    tap_code16(key);
+    switch(keycode) {
+
+      case TR_LCBR:
+        single_tap(TAPHOLD_LCBR, isHold);
+        break;
+      case TR_LABK:
+        single_tap(TAPHOLD_LABK, isHold);
+        break;
+      case TR_LBRC:
+        single_tap(TAPHOLD_LBRC, isHold);
+        break;
+      case TR_LPRN:
+        single_tap(TAPHOLD_LPRN, isHold);
+        break;
+      case TR_SQUO:
+        single_tap(TAPHOLD_SQUO, isHold);
+        break;
+      case TR_DQUO:
+        single_tap(TAPHOLD_DQUO, isHold);
+        break;
+      case TR_EQL:
+        single_tap(TAPHOLD_EQL, isHold);
+        break;
+      case TR_PLUS:
+        single_tap(TAPHOLD_PLUS, isHold);
+        break;
+      case TR_PIPE:
+        single_tap(TAPHOLD_PIPE, isHold);
+        break;
+      case TR_COMM:
+        single_tap(TAPHOLD_COMM, isHold);
+        break;
+      case TR_DOT:
+        single_tap(TAPHOLD_DOT, isHold);
+        break;
+      case TR_PERC:
+        single_tap(TAPHOLD_PERC, isHold);
+        break;
+      case TR_EXLM:
+        single_tap(TAPHOLD_EXLM, isHold);
+        break;
+      case TR_MINS:
+        single_tap(TAPHOLD_MINS, isHold);
+        break;
+      case TR_GRV:
+        single_tap(TAPHOLD_GRV, isHold);
+        break;
+      case TR_SCLN:
+        single_tap(TAPHOLD_SCLN, isHold);
+        break;
+      case TR_QUOT:
+        single_tap(TAPHOLD_QUOT, isHold);
+        break;
+
+    }
+
     return false;
 
   } else if (record->tap.count == 0 && record->event.pressed) {
+
+    isHold = true;
 
     switch(keycode) {
 
       //Brackets
       case TR_LCBR:
+        insert_brackets(TAPHOLD_LCBR, WAIT_DELAY);
+        break;
       case TR_LABK:
+        insert_brackets(TAPHOLD_LABK, WAIT_DELAY);
+        break;
       case TR_LBRC:
+        insert_brackets(TAPHOLD_LBRC, WAIT_DELAY);
+        break;
       case TR_SQUO:
+        insert_brackets(TAPHOLD_SQUO, WAIT_DELAY);
+        break;
       case TR_DQUO:
-        //isShift ? insert_brackets(LSFT(key), LSFT(altkey)) : insert_brackets(key, altkey);
-        insert_brackets(key, altkey);
+        insert_brackets(TAPHOLD_DQUO, WAIT_DELAY);
         break;
-      
-      //custom and faux auto-shift
       case TR_LPRN:
-        insert_brackets(KC_LPRN, KC_RPRN);
+        insert_brackets(TAPHOLD_LPRN, WAIT_DELAY);
         break;
-      case TR_COMM:
-      case TR_DOT:
-      case TR_PERC:  
+
+      //double tap
       case TR_EQL:
+        double_tap(TAPHOLD_EQL, WAIT_DELAY);
+        break;
+      case TR_PLUS:
+        double_tap(TAPHOLD_PLUS, WAIT_DELAY);
+        break;
+      case TR_PIPE:
+        double_tap(TAPHOLD_PIPE, WAIT_DELAY);
+        break;
+
+      //custom action
+      case TR_COMM:
+        single_tap(TAPHOLD_COMM, isHold);
+        break;
+      case TR_DOT:
+        single_tap(TAPHOLD_DOT, isHold);
+        break;
+      case TR_PERC:
+        single_tap(TAPHOLD_PERC, isHold);
+        break;
+      case TR_EXLM:
+        double_tap(TAPHOLD_NEQL, WAIT_DELAY);
+        break;
+
+      //simulates auto-shift
       case TR_MINS:
+        single_tap(TAPHOLD_MINS, isHold);
+        break;
       case TR_GRV:
+        single_tap(TAPHOLD_GRV, isHold);
+        break;
       case TR_SCLN:
+        single_tap(TAPHOLD_SCLN, isHold);
+        break;
       case TR_QUOT:
-        tap_code16(altkey);
+        single_tap(TAPHOLD_QUOT, isHold);
         break;
     }
 
     return false;
+
   }
 
   return true;  // Continue default handling.
