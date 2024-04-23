@@ -2,8 +2,8 @@ name: Build QMK firmware
 
 on:
   push:
-    branches:
-      - 'lejouson/**'
+    branches-ignore:
+      - main
   workflow_dispatch:
 
 permissions:
