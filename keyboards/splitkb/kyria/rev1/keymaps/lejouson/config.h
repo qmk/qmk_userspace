@@ -4,19 +4,15 @@
 #pragma once
 
 #define MASTER_RIGHT
-#define ONESHOT_TAP_TOGGLE 2
-#define TAPPING_TOGGLE 1
-
-#ifdef OLED_DRIVER_ENABLE
-  #define OLED_DISPLAY_128X64
-#endif
 
 #ifdef RGBLIGHT_ENABLE
   #define RGBLIGHT_EFFECT_BREATHING 2
   #define RGBLIGHT_HUE_STEP 8
   #define RGBLIGHT_SAT_STEP 8
   #define RGBLIGHT_VAL_STEP 8
-  #define RGBLIGHT_LIMIT_VAL 150
+  #ifndef RGBLIGHT_LIMIT_VAL
+    #define RGBLIGHT_LIMIT_VAL 150
+  #endif
 #endif
 
 #ifdef ENCODER_ENABLE
