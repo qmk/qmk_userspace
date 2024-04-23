@@ -253,22 +253,12 @@ bool oled_task_user(void) {
 #endif
 
 #ifdef ENCODER_ENABLE
-bool encoder_update_user(uint8_t index, bool clockwise) {
-    switch (get_highest_layer(layer_state)) {
-        case _NAVI:
-            if (clockwise) {
-                tap_code16(C(KC_LEFT));
-            } else {
-                tap_code16(C(KC_RGHT));
-            }
-            break;
-        default:
-            if (clockwise) {
-                tap_code16(S(KC_TAB));
-            } else {
-                tap_code16(KC_TAB);
-            }
-    }
-    return true;
-}
+const uint16_t PROGMEM encoder_map[][NUM_ENCODERS][NUM_DIRECTIONS] = {
+    [_DEFAULT ] = { ENCODER_CCW_CW(XXXXXXX, XXXXXXX), ENCODER_CCW_CW(S(KC_TAB),  KC_TAB    ) },
+    [  _NAVI  ] = { ENCODER_CCW_CW(XXXXXXX, XXXXXXX), ENCODER_CCW_CW(C(KC_LEFT), C(KC_RGHT)) },
+    [_SYMBOLS ] = { ENCODER_CCW_CW(XXXXXXX, XXXXXXX), ENCODER_CCW_CW(_______,    _______   ) },
+    [_FUNCTION] = { ENCODER_CCW_CW(XXXXXXX, XXXXXXX), ENCODER_CCW_CW(_______,    _______   ) },
+    [_NUMERIC ] = { ENCODER_CCW_CW(XXXXXXX, XXXXXXX), ENCODER_CCW_CW(_______,    _______   ) },
+    [ _CONFIG ] = { ENCODER_CCW_CW(XXXXXXX, XXXXXXX), ENCODER_CCW_CW(_______,    _______   ) },
+};
 #endif
