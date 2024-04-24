@@ -40,7 +40,7 @@ const uint16_t PROGMEM encoder_map[][NUM_ENCODERS][NUM_DIRECTIONS] = {
   [_NAVIGATION]      = { ENCODER_CCW_CW(ZOOMOUT, ZOOMIN),  ENCODER_CCW_CW(___x___, ___x___)  },
   [_NUMBER]          = { ENCODER_CCW_CW(___x___, ___x___), ENCODER_CCW_CW(KC_LEFT, KC_RGHT)  },
   [_SYMBOL]          = { ENCODER_CCW_CW(___x___, ___x___), ENCODER_CCW_CW(___x___, ___x___)  },
-  [_CONFIG]          = { ENCODER_CCW_CW(___x___, ___x___), ENCODER_CCW_CW(LSFT(TR_RMOD), TR_RMOD) },
+  [_CONFIG]          = { ENCODER_CCW_CW(RBSELYR, BASELYR), ENCODER_CCW_CW(TR_RRMD, TR_RMOD)  }
 };
 
 #endif //ENCODER_MAP_ENABLE
@@ -49,61 +49,14 @@ const uint16_t PROGMEM encoder_map[][NUM_ENCODERS][NUM_DIRECTIONS] = {
 #if defined(RGB_MATRIX_ENABLE)
 
 /*
- * Center: 133 
- * 20  41  61  81  102 122 143 163 183 204 224 244
- *                                                   Center: 54
- * 16  11  10  04  03          21  22  28  29  34    21
- * 15  12  09  05  02          20  23  27  30  33    43
- * 14  13  08  06  01          19  24  26  31  32    64
- *             17  07  00  18  25  35                85
+ * Center: 112
+ * 0   20  41  61  81  102 122 143 163 183 204 224
+ *                                                   Center: 32
+ * 16  11  10  04  03          21  22  28  29  34    0
+ * 15  12  09  05  02          20  23  27  30  33    21
+ * 14  13  08  06  01          19  24  26  31  32    43
+ *             17  07  00  18  25  35                64
  */
-
-/*
-led_config_t g_led_config = { 
-  {
-    // Key matrix to LED index
-    // I still don't understand but make it match the split layout?
-    // Left 1-18
-    {16,     11,     10,     4,      3},
-    {15,     12,      9,     5,      2},
-    {14,     13,      8,     6,      1},
-    {NO_LED, NO_LED, 17,     7,      0},
-    // Right 1-18
-    {21,     22,     28,     29,     34},
-    {20,     23,     27,     30,     33},
-    {19,     24,     26,     31,     32},
-    {18,     25,     35,     NO_LED, NO_LED}
-  }
-  , {
-    // LED index to physical position
-    // Start from 0 and go to the end
-    // Left 1-18
-    {122,85},  {102,64},  {102,43},  {102,21},  {81,21},   {81,43},
-    {81,64},   {102,85},  {61,64},   {61,43},   {61,21},   {41,21},
-    {41,43},   {41,64},   {20,64},   {20,43},   {20,21},   {81,85},
-    // Right 1-18
-    {143,85},  {163,64},  {163,43},  {163,21},  {183,21},  {183,43},
-    {183,64},  {163,85},  {204,64},  {204,43},  {204,21},  {224,21},
-    {224,43},  {224,64},  {244,64},  {244,43},  {244,21},  {183,85}
-  } 
-  , {
-    // LED index to flag
-    // Start from 0 and go to the end
-    // Left 1-18
-    LED_FLAG_KEYLIGHT, LED_FLAG_KEYLIGHT, LED_FLAG_KEYLIGHT, LED_FLAG_KEYLIGHT,
-    LED_FLAG_KEYLIGHT, LED_FLAG_KEYLIGHT, LED_FLAG_KEYLIGHT, LED_FLAG_KEYLIGHT,
-    LED_FLAG_KEYLIGHT, LED_FLAG_KEYLIGHT, LED_FLAG_KEYLIGHT, LED_FLAG_KEYLIGHT,
-    LED_FLAG_KEYLIGHT, LED_FLAG_KEYLIGHT, LED_FLAG_KEYLIGHT, LED_FLAG_KEYLIGHT,
-    LED_FLAG_KEYLIGHT, LED_FLAG_KEYLIGHT, 
-    // Right 1-18
-    LED_FLAG_KEYLIGHT, LED_FLAG_KEYLIGHT, LED_FLAG_KEYLIGHT, LED_FLAG_KEYLIGHT,
-    LED_FLAG_KEYLIGHT, LED_FLAG_KEYLIGHT, LED_FLAG_KEYLIGHT, LED_FLAG_KEYLIGHT,
-    LED_FLAG_KEYLIGHT, LED_FLAG_KEYLIGHT, LED_FLAG_KEYLIGHT, LED_FLAG_KEYLIGHT,
-    LED_FLAG_KEYLIGHT, LED_FLAG_KEYLIGHT, LED_FLAG_KEYLIGHT, LED_FLAG_KEYLIGHT,
-    LED_FLAG_KEYLIGHT, LED_FLAG_KEYLIGHT,
-  }
-};
-*/
 
 led_config_t g_led_config = { 
   {
@@ -130,30 +83,17 @@ led_config_t g_led_config = {
     {81,64},                        //7 middle thumb
     {41,43},   {41,21},   {41,0},   //8
     {20,0},    {20,21},   {20,13},  //11
-    {0,43},    {0,21},    {0,0},    //14
-    {81,85},                        //17
+    {0,43},    {0,21},    {0,0},    //14 outer column
+    {81,85},                        //17 outer thumb
     // Right 1-18
-    /* this with the last table in the obsidian notes
-    * heatmap works, but the ones don't work when i press the slave side
-    {224,64},                       //18
-    {204,43},  {204,21},  {204,0},  //19
-    {183,0} ,  {183,21},  {183,43}, //22
-    {204,64},                       //25
-    {163,43},  {163,21},  {163,0},  //26
-    {143,0},   {143,21},  {143,43}, //29
-    {122,43},  {122,21},  {122,0},  //32
-    {183,64}                        //35
-    */
-    //this time we will leave the top inverted but write the locations the 
-    // way I understand
-    {122,64},                       //18
-    {143,43},  {143,21},  {143,0},  //19
+    {122,64},                       //18 inner thumb
+    {143,43},  {143,21},  {143,0},  //19 inner column
     {163,0} ,  {163,21},  {163,43}, //22
-    {143,64},                       //25
+    {143,64},                       //25 middle thumb
     {183,43},  {183,21},  {183,0},  //26
     {204,0},   {204,21},  {204,43}, //29
-    {224,43},  {224,21},  {224,0},  //32
-    {163,64}                        //35
+    {224,43},  {224,21},  {224,0},  //32 outer column
+    {163,64}                        //35 outer thumb
   } 
   , {
     // LED index to flag
