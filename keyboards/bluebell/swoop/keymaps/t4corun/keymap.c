@@ -103,7 +103,7 @@ led_config_t g_led_config = {
     LED_FLAG_KEYLIGHT, LED_FLAG_KEYLIGHT,
   }
 };
-*/
+*/ j  
 
 led_config_t g_led_config = { 
   {
@@ -133,6 +133,8 @@ led_config_t g_led_config = {
     {0,43},    {0,21},    {0,0},    //14
     {81,85},                        //17
     // Right 1-18
+    /* this with the last table in the obsidian notes
+    * heatmap works, but the ones don't work when i press the slave side
     {224,64},                       //18
     {204,43},  {204,21},  {204,0},  //19
     {183,0} ,  {183,21},  {183,43}, //22
@@ -141,6 +143,17 @@ led_config_t g_led_config = {
     {143,0},   {143,21},  {143,43}, //29
     {122,43},  {122,21},  {122,0},  //32
     {183,64}                        //35
+    */
+    //this time we will leave the top inverted but write the locations the 
+    // way I understand
+    {122,64},                       //18
+    {143,43},  {143,21},  {143,0},  //19
+    {163,0} ,  {163,21},  {163,43}, //22
+    {143,64},                       //25
+    {183,43},  {183,21},  {183,0},  //26
+    {204,0},   {204,21},  {204,43}, //29
+    {224,43},  {224,21},  {224,0},  //32
+    {163,64}                        //35
   } 
   , {
     // LED index to flag
