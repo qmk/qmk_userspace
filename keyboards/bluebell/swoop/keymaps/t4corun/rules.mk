@@ -4,7 +4,8 @@ OLED_ENABLE = yes
 
 # override keyboard defaults
 #	qmk_firmware\keyboards\bluebell\swoop\rules.mk
-ENCODER_ENABLE = yes
+# ENCODER_ENABLE = yes
 ENCODER_MAP_ENABLE = yes
-CONVERT_TO = blok
+RGBLIGHT_ENABLE = no
 RGB_MATRIX_DRIVER = ws2812
+CONVERT_TO = blok
