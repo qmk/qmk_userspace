@@ -180,8 +180,6 @@ enum keycodes {
 #define _DEFAULT_LAYER_3 (FIRST_DEFAULT_LAYER + 2)
 #define NUM_BASE_LAYER 3
 
-static uint8_t current_base_layer = _DEFAULT_LAYER_1;
-
 #define _NONE_3__________________                   ___x___, ___x___, ___x___
 #define _NONE_5____________________________________ ___x___, ___x___, ___x___, ___x___, ___x___
 #define _GACS_MODS________________________          TR_LGUI, TR_LALT, TR_LCTL, TR_LSFT

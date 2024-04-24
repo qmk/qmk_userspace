@@ -1,5 +1,7 @@
 #include "t4corun.h"
 
+static uint8_t current_base_layer = _DEFAULT_LAYER_1;
+
 layer_state_t layer_state_set_user(layer_state_t  state) {
 
   state = update_tri_layer_state(state, _NAVIGATION, _NUMBER, _SYMBOL);
