@@ -223,9 +223,9 @@ enum keycodes {
 
 
 #define LAYER_NUMBER \
-  ___x___, SC_SNIP, SC_FILE, ___x___, ___x___, ___x___, KC_7,    KC_8,    KC_9,    ___x___, \
-  _GACS_MODS________________________, ___x___, KC_DOT,  KC_4,    KC_5,    KC_6,    ___x___, \
-  _UCCPR_L___________________________________, KC_COMM, KC_1,    KC_2,    KC_3,    TR_MINS, \
+  ___x___, SC_SNIP, SC_FILE, ___x___, ___x___, ___x___, KC_7,    KC_8,    KC_9,    KC_COMM, \
+  _GACS_MODS________________________, ___x___, ___x___, KC_4,    KC_5,    KC_6,    KC_DOT,  \
+  _UCCPR_L___________________________________, ___x___, KC_1,    KC_2,    KC_3,    TR_MINS, \
                     _LAYER_TRANS_____________, KC_SPC,  NAV_0,   ___x___
 
 
