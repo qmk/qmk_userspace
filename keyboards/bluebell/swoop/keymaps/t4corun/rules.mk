@@ -1,5 +1,5 @@
 # override userspace defaults
-RGB_MATRIX_ENABLE = ws2812
+RGB_MATRIX_ENABLE = yes
 OLED_ENABLE = yes
 
 # override keyboard defaults
@@ -7,3 +7,4 @@ OLED_ENABLE = yes
 ENCODER_ENABLE = yes
 ENCODER_MAP_ENABLE = yes
 CONVERT_TO = blok
+RGB_MATRIX_DRIVER = ws2812
