@@ -103,7 +103,7 @@ led_config_t g_led_config = {
     LED_FLAG_KEYLIGHT, LED_FLAG_KEYLIGHT,
   }
 };
-*/ j  
+*/
 
 led_config_t g_led_config = { 
   {
