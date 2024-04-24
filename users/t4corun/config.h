@@ -41,3 +41,7 @@
 #if defined(SPLIT_KEYBOARD)
 #	  include "config/split_config.h"
 #endif
+
+#if defined(OLED_ENABLE)
+#	  include "config/oled_config.h"
+#endif

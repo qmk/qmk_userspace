@@ -236,8 +236,8 @@ enum keycodes {
 
 
 #define LAYER_CONFIG \
-  KC_F10,  KC_F7,   KC_F8,   KC_F9,   ___x___, TR_RMOD, ___x___, ___x___, EE_CLR,  QK_BOOT, \
-  KC_F11,  KC_F4,   KC_F5,   KC_F6,   ___x___, ___x___, TR_LSFT, _NONE_3__________________, \
+  KC_F10,  KC_F7,   KC_F8,   KC_F9,   ___x___, ___x___, ___x___, ___x___, EE_CLR,  QK_BOOT, \
+  KC_F11,  KC_F4,   KC_F5,   KC_F6,   ___x___, BASELYR, TR_LSFT, ___x___, ___x___, TR_RMOD, \
   KC_F12,  KC_F1,   KC_F2,   KC_F3,   ___x___, TR_RHUI, TR_RSAI, TR_RVAI, TR_RSPI, TR_RTOG, \
                     ___x___, TR_DMR1, TR_DMP1, _NONE_3__________________
 

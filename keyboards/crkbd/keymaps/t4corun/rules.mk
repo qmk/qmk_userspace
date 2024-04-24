@@ -1,11 +1,12 @@
 # override userspace defaults
+
 DYNAMIC_MACRO_ENABLE = no
 
 # override keyboard defaults
-#	qmk_firmware\keyboards\crkbd\rev1\rules.mk
-#	qmk_firmware\keyboards\crkbd\rules.mk
-#	qmk_firmware\keyboards\crkbd\info.json
-OLED_DRIVER = ssd1306
-OLED_ENABLE = yes
+#	keyboards\crkbd\info.json
+#	keyboards\crkbd\rev1\info.json
+#	keyboards\crkbd\rules.mk
+#	keyboards\crkbd\rev1\rules.mk
+
 RGB_MATRIX_ENABLE = no
 RGBLIGHT_ENABLE = no
