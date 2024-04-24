@@ -58,6 +58,7 @@ const uint16_t PROGMEM encoder_map[][NUM_ENCODERS][NUM_DIRECTIONS] = {
  *             17  07  00  18  25  35                85
  */
 
+/*
 led_config_t g_led_config = { 
   {
     // Key matrix to LED index
@@ -84,6 +85,62 @@ led_config_t g_led_config = {
     {143,85},  {163,64},  {163,43},  {163,21},  {183,21},  {183,43},
     {183,64},  {163,85},  {204,64},  {204,43},  {204,21},  {224,21},
     {224,43},  {224,64},  {244,64},  {244,43},  {244,21},  {183,85}
+  } 
+  , {
+    // LED index to flag
+    // Start from 0 and go to the end
+    // Left 1-18
+    LED_FLAG_KEYLIGHT, LED_FLAG_KEYLIGHT, LED_FLAG_KEYLIGHT, LED_FLAG_KEYLIGHT,
+    LED_FLAG_KEYLIGHT, LED_FLAG_KEYLIGHT, LED_FLAG_KEYLIGHT, LED_FLAG_KEYLIGHT,
+    LED_FLAG_KEYLIGHT, LED_FLAG_KEYLIGHT, LED_FLAG_KEYLIGHT, LED_FLAG_KEYLIGHT,
+    LED_FLAG_KEYLIGHT, LED_FLAG_KEYLIGHT, LED_FLAG_KEYLIGHT, LED_FLAG_KEYLIGHT,
+    LED_FLAG_KEYLIGHT, LED_FLAG_KEYLIGHT, 
+    // Right 1-18
+    LED_FLAG_KEYLIGHT, LED_FLAG_KEYLIGHT, LED_FLAG_KEYLIGHT, LED_FLAG_KEYLIGHT,
+    LED_FLAG_KEYLIGHT, LED_FLAG_KEYLIGHT, LED_FLAG_KEYLIGHT, LED_FLAG_KEYLIGHT,
+    LED_FLAG_KEYLIGHT, LED_FLAG_KEYLIGHT, LED_FLAG_KEYLIGHT, LED_FLAG_KEYLIGHT,
+    LED_FLAG_KEYLIGHT, LED_FLAG_KEYLIGHT, LED_FLAG_KEYLIGHT, LED_FLAG_KEYLIGHT,
+    LED_FLAG_KEYLIGHT, LED_FLAG_KEYLIGHT,
+  }
+};
+*/
+
+led_config_t g_led_config = { 
+  {
+    // Key matrix to LED index
+    // I still don't understand but make it match the split layout?
+    // Left 1-18
+    {16,     11,     10,     4,      3},
+    {15,     12,      9,     5,      2},
+    {14,     13,      8,     6,      1},
+    {NO_LED, NO_LED, 17,     7,      0},
+    // Right 1-18
+    {21,     22,     28,     29,     34},
+    {20,     23,     27,     30,     33},
+    {19,     24,     26,     31,     32},
+    {18,     25,     35,     NO_LED, NO_LED}
+  }
+  , {
+    // LED index to physical position
+    // Start from 0 and go to the end
+    // Left 1-18
+    {102,64},                       //0 inner thumb key
+    {81,43},   {81,21},   {81,0},   //1: inner column
+    {61,0},    {61,21},   {61,43},  //4
+    {81,64},                        //7 middle thumb
+    {41,43},   {41,21},   {41,0},   //8
+    {20,0},    {20,21},   {20,13},  //11
+    {0,43},    {0,21},    {0,0},    //14
+    {81,85},                        //17
+    // Right 1-18
+    {122,64},                       //18
+    {143,43},  {143,21},  {143,0},  //19
+    {163,0} ,  {163,21},  {163,43}, //22
+    {143,64},                       //25
+    {183,43},  {183,21},  {183,28}, //26
+    {204,0},   {204,21},  {204,43}, //29
+    {224,43},  {224,21},  {224,0},  //32
+    {163,64}                        //35
   } 
   , {
     // LED index to flag
