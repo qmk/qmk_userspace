@@ -71,7 +71,7 @@ led_config_t g_led_config = {
     {21,     22,     28,     29,     34},
     {20,     23,     27,     30,     33},
     {19,     24,     26,     31,     32},
-    {18,     18,     35,     NO_LED, NO_LED}
+    {18,     25,     35,     NO_LED, NO_LED}
   }
   , {
     // LED index to physical position
