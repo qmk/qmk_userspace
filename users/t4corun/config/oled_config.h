@@ -1,7 +1,9 @@
 #pragma once
 
-/*
-https://docs.qmk.fm/#/feature_oled_driver
+/* OLED
+*
+* https://docs.qmk.fm/#/feature_oled_driver
+* 
 */
 
 //Clear variables we plan to use that might be set elsewhere

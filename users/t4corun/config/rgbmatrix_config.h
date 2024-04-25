@@ -1,5 +1,11 @@
 #pragma once
 
+/* RGB Matrix
+*
+* https://docs.qmk.fm/#/feature_rgb_matrix
+* 
+*/
+
 
 //Clear variables we plan to use that might be set elsewhere
 #undef RGB_MATRIX_SLEEP

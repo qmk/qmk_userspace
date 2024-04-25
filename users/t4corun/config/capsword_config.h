@@ -1,11 +1,13 @@
 #pragma once
 
-/*
-https://docs.qmk.fm/#/feature_caps_word
-
-Explore these
-#undef BOTH_SHIFTS_TURNS_ON_CAPS_WORD
-#undef CAPS_WORD_INVERT_ON_SHIFT
+/* Caps Word
+*
+* https://docs.qmk.fm/#/feature_caps_word
+* 
+* Explore these
+* #undef BOTH_SHIFTS_TURNS_ON_CAPS_WORD
+* #undef CAPS_WORD_INVERT_ON_SHIFT
+*
 */
 
 

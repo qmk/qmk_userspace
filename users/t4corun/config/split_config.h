@@ -1,8 +1,9 @@
 #pragma once
 
-/*
-https://docs.qmk.fm/#/feature_split_keyboard
-
+/* Split keyboard
+*
+* https://docs.qmk.fm/#/feature_split_keyboard
+* 
 */
 
 #undef SPLIT_TRANSPORT_MIRROR
