@@ -40,7 +40,8 @@ enum keycodes {
   PN_DRGS,
   PN_PDPI,
 
-  BASELYR
+  BASELYR,
+  RBSELYR
 };
 
 #define ___x___ KC_NO
@@ -149,13 +150,9 @@ enum keycodes {
 #if defined(DYNAMIC_MACRO_ENABLE)
 #   define TR_DMR1 DM_REC1
 #   define TR_DMP1 DM_PLY1
-#   define TR_DMR2 DM_REC2
-#   define TR_DMP2 DM_PLY2
 #else
 #   define TR_DMR1 ___x___
 #   define TR_DMP1 ___x___
-#   define TR_DMR2 ___x___
-#   define TR_DMP2 ___x___
 #endif //DYNAMIC_MACRO_ENABLE
 
 #if defined(RGB_MATRIX_ENABLE) || defined(RGBLIGHT_ENABLE)
@@ -165,6 +162,7 @@ enum keycodes {
 #   define TR_RSPI RGB_SPI
 #   define TR_RTOG RGB_TOG
 #   define TR_RMOD RGB_MOD
+#   define TR_RRMD RGB_RMOD
 #else
 #   define TR_RHUI ___x___
 #   define TR_RSAI ___x___
@@ -172,6 +170,7 @@ enum keycodes {
 #   define TR_RSPI ___x___
 #   define TR_RTOG ___x___
 #   define TR_RMOD ___x___
+#   define TR_RRMD ___x___
 #endif //RGB_MATRIX_ENABLE || RGBLIGHT_ENABLE
 
 
@@ -216,16 +215,16 @@ enum keycodes {
 
 
 #define LAYER_NAVIGATION \
-  ___x___, KC_HOME, KC_UP,   KC_END,  KC_PGUP, TR_MWHU, TR_DRGS, TR_SNIP, TR_SDPI, TR_PDPI, \
+  ___x___, KC_HOME, KC_UP,   KC_END,  KC_PGUP, TR_MWHU, ___x___, TR_SNIP, TR_SDPI, TR_PDPI, \
   KC_CAPS, KC_LEFT, KC_DOWN, KC_RGHT, KC_PGDN, TR_MWHD, _SCAG_MODS________________________, \
   _UCCPR_L___________________________________, ___x___, KC_APP,  KC_VOLD, KC_VOLU, KC_MUTE, \
                     ZOOMRST, _______, KC_ENT,  _LAYER_TRANS_____________
 
 
 #define LAYER_NUMBER \
-  ___x___, SC_SNIP, SC_FILE, ___x___, ___x___, ___x___, KC_7,    KC_8,    KC_9,    ___x___, \
-  _GACS_MODS________________________, ___x___, KC_DOT,  KC_4,    KC_5,    KC_6,    ___x___, \
-  _UCCPR_L___________________________________, KC_COMM, KC_1,    KC_2,    KC_3,    TR_MINS, \
+  ___x___, SC_SNIP, SC_FILE, ___x___, ___x___, ___x___, KC_7,    KC_8,    KC_9,    KC_COMM, \
+  _GACS_MODS________________________, ___x___, ___x___, KC_4,    KC_5,    KC_6,    KC_DOT,  \
+  _UCCPR_L___________________________________, ___x___, KC_1,    KC_2,    KC_3,    TR_MINS, \
                     _LAYER_TRANS_____________, KC_SPC,  NAV_0,   ___x___
 
 
@@ -237,8 +236,8 @@ enum keycodes {
 
 
 #define LAYER_CONFIG \
-  KC_F10,  KC_F7,   KC_F8,   KC_F9,   ___x___, TR_RMOD, ___x___, ___x___, ___x___, QK_BOOT, \
-  KC_F11,  KC_F4,   KC_F5,   KC_F6,   ___x___, BASELYR, TR_LSFT, _NONE_3__________________, \
+  KC_F10,  KC_F7,   KC_F8,   KC_F9,   ___x___, ___x___, ___x___, ___x___, EE_CLR,  QK_BOOT, \
+  KC_F11,  KC_F4,   KC_F5,   KC_F6,   ___x___, BASELYR, TR_LSFT, ___x___, ___x___, TR_RMOD, \
   KC_F12,  KC_F1,   KC_F2,   KC_F3,   ___x___, TR_RHUI, TR_RSAI, TR_RVAI, TR_RSPI, TR_RTOG, \
                     ___x___, TR_DMR1, TR_DMP1, _NONE_3__________________
 

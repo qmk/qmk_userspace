@@ -1,11 +1,9 @@
 #pragma once
 
-/*
-https://docs.qmk.fm/#/feature_combo
-
-Explore these (there are way more)
-#undef COMBO_MUST_PRESS_IN_ORDER
-#undef COMBO_ONLY_FROM_LAYER
+/* Combos
+*
+* https://docs.qmk.fm/#/feature_combo
+*
 */
 
 //Clear variables we plan to use that might be set elsewhere

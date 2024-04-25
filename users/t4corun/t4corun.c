@@ -20,10 +20,17 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
       }
       return false;
 
+    case RBSELYR:
+      if (record->event.pressed) { 
+        current_base_layer = (current_base_layer - 1) % NUM_BASE_LAYER; 
+        set_single_persistent_default_layer(current_base_layer);
+      }
+      return false;
+
     case PN_DRGS:
       if (record->event.pressed) {
         //tap numlock twice to toggle ploopy nano drag scroll
-        double_tap(KC_NUM, KC_NUM,WAIT_DELAY);
+        double_tap(KC_NUM, KC_NUM, WAIT_DELAY);
       }
       return false;
 

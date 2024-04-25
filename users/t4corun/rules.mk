@@ -36,38 +36,17 @@ COMBO_ENABLE = yes
 # ---------------------------------------------------------
 # include my code that will be common across all my keyboards
 
-SRC += \
-	t4corun.c \
-	features/tapping.c \
-	features/taphold.c 
+SRC +=                  \
+	t4corun.c           \
+	features/tapping.c  \
+	features/taphold.c  \
+	features/capsword.c \
+
+INTROSPECTION_KEYMAP_C += features/combo.c
 
 # ---------------------------------------------------------
 # include my code for enabled features for each keyboard
 
-ifeq ($(strip $(CAPS_WORD_ENABLE)), yes)
-	SRC += features/capsword.c
-endif
-
-ifeq ($(strip $(RGB_MATRIX_ENABLE)), yes)
-	SRC += features/rgbmatrix.c
-endif
-
-ifeq ($(strip $(RGB_MATRIX_ENABLE)), ws2812)
-	SRC += features/rgbmatrix.c
-endif
-
-ifeq ($(strip $(MOUSEKEY_ENABLE)), yes)
-	SRC += features/mouse.c
-endif
-
 ifeq ($(strip $(OLED_ENABLE)), yes)
 	SRC += features/oled.c
-endif
-
-ifeq ($(strip $(ENCODER_MAP_ENABLE)), yes)
-	SRC += features/encoder.c
-endif
-
-ifeq ($(strip $(COMBO_ENABLE)), yes)
-	INTROSPECTION_KEYMAP_C += features/combo.c
 endif

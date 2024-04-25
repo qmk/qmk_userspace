@@ -33,8 +33,8 @@ layers:
     - {h: "NAV", t: "0"}
     - {t: Mute, type: ghost}
   NAV:
-    - [Escape, Home, ▲, End, Page Up, Insert, Caps Lock, Scroll Lock, null, null ]
-    - [null, ◄, ▼, ►, Page Down, null, Shift, Ctrl, Alt, Gui ]
+    - [Escape, Home, ▲, End, Page Up, Mouse Wheel Up, null, Sniper Toggle, Sniper DPI, Pointer DPI ]
+    - [Caps Lock, ◄, ▼, ►, Page Down, Mouse Wheel down, Shift, Ctrl, Alt, Gui ]
     - [Undo, Cut, Copy, Paste, Redo, null, App, Vol-, Vol+, Mute ]
     - {t: Zoom Reset, type: ghost}
     - NUM
@@ -43,8 +43,8 @@ layers:
     - {type: held}
     - {t: Mute, type: ghost}
   NUM:
-    - [null, Win Snip, Win File, null, {h: "~", t: "`"}, null, "7", "8" ,"9", null ]
-    - [Gui, Alt, Ctrl, Shift, {h: ":", t: ";"}, null, "4", "5" ,"6", "."]
+    - [null, Win Snip, Win File, null, null, null, "7", "8" ,"9", {h: "<", t: ","} ]
+    - [Gui, Alt, Ctrl, Shift, null, null, "4", "5" ,"6", {h: ">", t: "."}]
     - [Undo, Cut, Copy, Paste, Redo, null, "1", "2" ,"3", {h: "_", t: "-"}]
     - {type: ghost}
     - {type: held}
@@ -53,48 +53,37 @@ layers:
     - {h: "NAV", t: "0"}
     - {type: ghost}
   SYM:
-    - [null, null, "@", "$", {h: "~", t: "`"}, {h: "+", t: "="}, "#", "*", null, {h: "\"\"", t: "\""}]
-    - ["&", {h: "{}", t: "{"}, "}", "|", {h: ":", t: ";"}, null, "?", {h: "[]", t: "]"}, "]", {h: "''", t: "'"}]
-    - [{h: "^", t: "%"}, {h: "<>", t: "<"}, ">", "\\", "!", null, "/", {h: "()", t: ","}, {h: ")", t: "."}, {h: "_", t: "-"}]
+    - [null, null, "@", "$", {h: "~", t: "`"}, {h: "==", t: "="}, "#", "*", null, {h: "\"\"", t: "\""}]
+    - ["&", {h: "{}", t: "{"}, "}", {h: "||", t: "|"}, {h: ":", t: ";"}, {h: "++", t: "+"}, "?", {h: "[]", t: "]"}, "]", {h: "''", t: "'"}]
+    - [{h: "^", t: "%"}, {h: "<>", t: "<"}, ">", "\\", {h: "!=", t: "!"}, null, "/", {h: "()", t: "("}, ")", {h: "_", t: "-"}]
     - {type: ghost}
     - {type: held}
     - null
     - null
     - {type: held}
-    - {type: ghost}
-  FUNCTION: 
-    - [null, null, Mouse Up, null, Mouse Wheel Up, Print Screen, F7, F8, F9, F10]
-    - [null, Mouse Left, Mouse Down, Mouse Right, Mouse Wheel Down, Num Lock, F4, F5, F6, F11]
-    - [Pointer DPI, Sniper DPI, null, Drag Scroll Toggle, Sniper Toggle, Pause Break, F1, F2, F3, F12]
-    - {type: ghost}
-    - {type: held}
-    - {type: held}
-    - Macro Play
-    - Macro Record 
     - {type: ghost}
   CONFIG:
-    - [null, null, null, null, null, Clear EEPROM, Reboot, Boot Loader, null, null]
-    - [RGB Toggle, RGB Mode, null, null, null, Base Layer Toggle, Shift, Ctrl, Alt, Gui]
-    - [RGB Hue, RGB Sat, RGB Vib, RGB Spd, null, null, null, null, null, null ]
+    - [F10, F7, F8, F9, null, RGB Mode, null, null, EEPROM Clear, Boot Loader]
+    - [F11, F4, F5, F6, null, null, Shift, null, null, null]
+    - [F12, F1, F2, F3, null, RGB Hue, RGB Sat, RGB Vib, RGB Spd, RGB Toggle ]
     - {type: ghost}
-    - null
-    - null
+    - Macro Record
+    - Macro Play
     - {type: held}
     - {type: held}
     - {type: ghost}
 combos:
-  - { p: [1, 2], k: Esc, l: [base_QWERTY] }
-  - { p: [2, 3], k: MB4, l: [base_QWERTY] }
-  - { p: [3, 4], k: MB5, l: [base_QWERTY] }
+  - { p: [0, 1], k: Esc, l: [base_QWERTY] }
   - { p: [12, 13], k: MB1, l: [base_QWERTY] }
-  - { p: [13, 14], k: MB3, l: [base_QWERTY] }
-  - { p: [11, 12], k: DrgScr Tog, l: [base_QWERTY] }
-  - { p: [26, 27], k: Tab, l: [base_QWERTY] }
-  - { p: [21, 22], k: Enter, l: [base_QWERTY] }
   - { p: [22, 23], k: MB2, l: [base_QWERTY] }
-  - { p: [7, 8], k: Bksp, l: [base_QWERTY] }
-  - { p: [6, 7], k: Del, l: [base_QWERTY] }
-  - { p: [31, 32], k: FUNC, l: [base_QWERTY], align: top }
+  - { p: [23, 24], k: MB3, l: [base_QWERTY] }
+  - { p: [13, 14], k: MB4, l: [base_QWERTY] }
+  - { p: [4, 14], k: MB5, l: [base_QWERTY] }
+  - { p: [11, 12], k: DrgScr Tog, l: [base_QWERTY] }
+  - { p: [6, 7], k: Tab, l: [base_QWERTY] }
+  - { p: [21, 22], k: Enter, l: [base_QWERTY] }
+  - { p: [26, 27], k: Bksp, l: [base_QWERTY] }
+  - { p: [27, 28], k: Del, l: [base_QWERTY] }
   - { p: [33, 34], k: CONFIG, l: [base_QWERTY], align: top }
 draw_config:
   small_pad: 6

@@ -3,10 +3,10 @@
 uint16_t get_combo_term(uint16_t index, combo_t *combo) {
   // or with combo index, i.e. its name from enum.
   switch (index) {
-    /*
-    case CONFIGLAYER:
-      return COMBO_HOLD_TERM + 150;
-    */
+    
+    case LYR_CONFIG:
+      return COMBO_HOLD_TERM + 100;
+    
    
     default:
       return COMBO_TERM;
@@ -39,7 +39,6 @@ bool get_combo_must_hold(uint16_t index, combo_t *combo) {
   switch (index) {
 
     case LYR_CONFIG:
-    //case LYR_FUNCTION:
       return true;
 
     default:

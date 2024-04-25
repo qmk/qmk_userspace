@@ -1,7 +1,6 @@
 #pragma once
 
 #include "t4corun.h"
-#include "oled_driver.h"
 
 #define OLED_RENDER_KEYLOCK_NAME      "Lock:"
 #define OLED_RENDER_MODS_NAME         "Mods:"
@@ -19,6 +18,8 @@
 #define OLED_RENDER_LAYER_CONFIG      " Cfg "
 
 void              render_crkbd_logo(void);
+void              render_rollow_logo(void);
+void              render_qmk_logo(void);
 void              render_default_layer_state(void);
 void              render_layer_state(void);
 void              render_keylock_status(void);

@@ -32,7 +32,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
 #if defined(ENCODER_MAP_ENABLE)
 
-/* may have to swap the hands in this array since we do right side master*/
+/* These are horizontal encoders. Found I have to make it opposite the rotary encoders for it to feel intuitive*/
 const uint16_t PROGMEM encoder_map[][NUM_ENCODERS][NUM_DIRECTIONS] = {
   [_DEFAULT_LAYER_1] = { ENCODER_CCW_CW(TR_MWHD, TR_MWHU), ENCODER_CCW_CW(KC_VOLU, KC_VOLD)  },
   [_DEFAULT_LAYER_2] = { ENCODER_CCW_CW(TR_MWHD, TR_MWHU), ENCODER_CCW_CW(KC_VOLU, KC_VOLD)  },
@@ -40,7 +40,7 @@ const uint16_t PROGMEM encoder_map[][NUM_ENCODERS][NUM_DIRECTIONS] = {
   [_NAVIGATION]      = { ENCODER_CCW_CW(ZOOMIN,  ZOOMOUT), ENCODER_CCW_CW(___x___, ___x___)  },
   [_NUMBER]          = { ENCODER_CCW_CW(___x___, ___x___), ENCODER_CCW_CW(KC_RGHT, KC_LEFT)  },
   [_SYMBOL]          = { ENCODER_CCW_CW(___x___, ___x___), ENCODER_CCW_CW(___x___, ___x___)  },
-  [_CONFIG]          = { ENCODER_CCW_CW(___x___, ___x___), ENCODER_CCW_CW(___x___, ___x___)  },
+  [_CONFIG]          = { ENCODER_CCW_CW(BASELYR, RBSELYR), ENCODER_CCW_CW(TR_RMOD, TR_RRMD)  }
 };
 
 #endif
