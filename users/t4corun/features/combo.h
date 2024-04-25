@@ -3,7 +3,6 @@
 
 enum combos {
 
-  // left hand combos
 #if defined(MOUSEKEY_ENABLE)
   MOUSE_BUTTON1,
   MOUSE_BUTTON2,
@@ -15,9 +14,6 @@ enum combos {
 
   KEY_ESC,
   KEY_ENT,
-  LYR_FUNCTION,
-
-  // right hand combos
   KEY_TAB,
   KEY_DEL,
   KEY_BSPC,
@@ -26,8 +22,10 @@ enum combos {
   COMBO_LENGTH
 };
 
+//their documentation is so confusing because you don't use COMBO_LEN defining the actions
+uint16_t COMBO_LEN = COMBO_LENGTH;
 
-// left hand combos
+
 #if defined(MOUSEKEY_ENABLE)
 const uint16_t PROGMEM mou_btn1_combo[] = { KC_D,    KC_F,    COMBO_END };
 const uint16_t PROGMEM mou_btn2_combo[] = { KC_C,    KC_V,    COMBO_END };
@@ -39,10 +37,6 @@ const uint16_t PROGMEM mou_drg_combo[]  = { KC_S,    KC_D,    COMBO_END };
 
 const uint16_t PROGMEM key_esc_combo[]  = { KC_Q,    KC_W,    COMBO_END };
 const uint16_t PROGMEM key_ent_combo[]  = { KC_X,    KC_C,    COMBO_END };
-//const uint16_t PROGMEM lyr_fun_combo[]  = { NUM,     TR_LSFT, COMBO_END };
-
-
-// right hand combos 
 const uint16_t PROGMEM key_tab_combo[]  = { KC_U,    KC_I,    COMBO_END };
 const uint16_t PROGMEM key_bspc_combo[] = { KC_M,    TR_COMM, COMBO_END };
 const uint16_t PROGMEM key_del_combo[]  = { TR_COMM, TR_DOT,  COMBO_END };
@@ -50,9 +44,9 @@ const uint16_t PROGMEM lyr_cfg_combo[]  = { KC_SPC,  NAV,     COMBO_END };
 
 
 
+
 combo_t key_combos[COMBO_LENGTH] = {
 
-  // left hand combos
 #if defined(MOUSEKEY_ENABLE)
   [MOUSE_BUTTON1] = COMBO(mou_btn1_combo, TR_BTN1),
   [MOUSE_BUTTON2] = COMBO(mou_btn2_combo, TR_BTN2),
@@ -64,9 +58,6 @@ combo_t key_combos[COMBO_LENGTH] = {
 
   [KEY_ESC]      = COMBO(key_esc_combo,  KC_ESC),
   [KEY_ENT]      = COMBO(key_ent_combo,  KC_ENT),
-  //[LYR_FUNCTION] = COMBO(lyr_fun_combo,  FUNC),
-
-  // right hand combos
   [KEY_TAB]      = COMBO(key_tab_combo,  KC_TAB),
   [KEY_DEL]      = COMBO(key_del_combo,  KC_DEL),
   [KEY_BSPC]     = COMBO(key_bspc_combo, KC_BSPC),
@@ -74,5 +65,3 @@ combo_t key_combos[COMBO_LENGTH] = {
 
 };
 
-//their documentation is so confusing because you don't use COMBO_LEN defining the actions
-uint16_t COMBO_LEN = COMBO_LENGTH;

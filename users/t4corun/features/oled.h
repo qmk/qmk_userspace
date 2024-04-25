@@ -1,7 +1,6 @@
 #pragma once
 
 #include "t4corun.h"
-#include "oled_driver.h"
 
 #define OLED_RENDER_KEYLOCK_NAME      "Lock:"
 #define OLED_RENDER_MODS_NAME         "Mods:"
