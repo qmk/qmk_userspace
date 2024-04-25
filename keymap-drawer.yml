@@ -63,8 +63,8 @@ layers:
     - {type: held}
     - {type: ghost}
   CONFIG:
-    - [F10, F7, F8, F9, null, RGB Mode, null, null, EEPROM Clear, Boot Loader]
-    - [F11, F4, F5, F6, null, null, Shift, null, null, null]
+    - [F10, F7, F8, F9, null, null, null, null, EEPROM Clear, Boot Loader]
+    - [F11, F4, F5, F6, null, Base Layer Toggle, Shift, null, null, RGB Mode]
     - [F12, F1, F2, F3, null, RGB Hue, RGB Sat, RGB Vib, RGB Spd, RGB Toggle ]
     - {type: ghost}
     - Macro Record
@@ -75,11 +75,11 @@ layers:
 combos:
   - { p: [0, 1], k: Esc, l: [base_QWERTY] }
   - { p: [12, 13], k: MB1, l: [base_QWERTY] }
-  - { p: [22, 23], k: MB2, l: [base_QWERTY] }
-  - { p: [23, 24], k: MB3, l: [base_QWERTY] }
-  - { p: [13, 14], k: MB4, l: [base_QWERTY] }
+  - { p: [11, 12], k: MB2, l: [base_QWERTY] }
+  - { p: [13, 14], k: MB3, l: [base_QWERTY] }
+  - { p: [3, 13], k: MB4, l: [base_QWERTY] }
   - { p: [4, 14], k: MB5, l: [base_QWERTY] }
-  - { p: [11, 12], k: DrgScr Tog, l: [base_QWERTY] }
+  - { p: [22, 23], k: DrgScr Tog, l: [base_QWERTY] }
   - { p: [6, 7], k: Tab, l: [base_QWERTY] }
   - { p: [21, 22], k: Enter, l: [base_QWERTY] }
   - { p: [26, 27], k: Bksp, l: [base_QWERTY] }

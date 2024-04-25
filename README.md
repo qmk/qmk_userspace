@@ -15,7 +15,7 @@ The custom layout optimizes for programming (SQL, Powershell, C) and minimizes h
 Notes:
 
 - Outside thumb keys are encoder clicks. Some keyboards may have extra thumb keys
-- Pressing Pointer DPI and Drag Scroll Toggle will enter bootlaoder on Ploopy Nano
+- Pressing Pointer DPI and Drag Scroll Toggle together will enter Ploopy Nano's boot loader
 
 ![image](my_keymap.png)
 
@@ -33,7 +33,7 @@ In this userspace, the base split 3x5_3 layout can be adapted for other split ke
 
 ### Tri-Layer
 
-Hold both thumb momentary layer keys `NAV` and `SYM` to access the `_SYMBOL` layer
+Hold both thumb momentary layer keys `NUMBER` and `NAVIGATION` to access the `SYMBOL` layer
 
 ### One Shot Mods
 
@@ -58,11 +58,27 @@ Certain keys have different behaviors when held vs tapped allowing commonly type
 | `TH_LCBR` | `{`         | `{}` with cursor inside |                                   |
 | `TR_LABK` | `<`         | `<>` with cursor inside |                                   |
 | `TR_LPRN` | `(`         | `()` with cursor inside |                                   |
-| `TR_PERC` | `%`         | `^`                     |                                   |
+| `TR_SQUO` | `'`         | `''` with cursor inside |                                   |
+| `TR_DQUO` | `"`         | `""` with cursor inside |                                   |
+| `TR_EQL`  | `=`         | `==`                    |                                   |
+| `TR_PLUS` | `+`         | `++`                    |                                   |
+| `TR_PIPE` | `\|`        | `\|\|`                  |                                   |
+| `TR_EXLM` | `!`         | `!=`                    |                                   |
 | `TR_COMM` | `,`         | `(`                     | enables parenthesis on base layer |
 | `TR_DOT`  | `.`         | `)`                     |                                   |
+| `TR_PERC` | `%`         | `^`                     |                                   |
+| `TR_MINS` | `-`         | `_`                     |                                   |
+| `TR_GRV`  | `           | `~`                     |                                   |
+| `TR_SCLN` | `;`         | `:`                     |                                   |
+| `TR_QUOT` | `'`         | `"`                     |                                   |
 
-`Update this table later`
+### Combos
+
+Enables additional keys to be mapped by pressing multiple keys simultaneously. Primarily used to implement mouse buttons and make important keys (enter, backspace, etc) available on base layer
+
+### Mouse Keys
+
+This layout is designed to be used with a Ploopy Nano. Mouse buttons and scroll wheel is handled on the keyboard side. There are macros with the host status (Caps lock, Num Lock) to toggle Ploopy Nano settings or change the tracking to simulate a scroll wheel
 
 ## Optional Features
 
@@ -81,15 +97,9 @@ Note: `MOUSEKEY_ENABLE` do not need to be enabled in tandem with this to get the
 
 Taste the rainbow for boards with RGB LEDs and large MCU memory footprints. Enables RGB lighting effects and layer/host status indicators. Review the keyboard files to identify the key position for each LED and update the preprocessor definitions in `config\rgbmatrix_config.h`
 
-**Known Issue** Commented out logic for layer/host status indicator LEDs as it caused random flickering on split side boards
-
 ### OLED
 
 Enables keyboard status visualization. Shows currently selected layer, active modifiers, and host status (e.g, Num / Caps / Scroll Lock)
-
-### Combos
-
-Enables simultaneous pressing of key combinations to get another. Handy when there are not enough keys on the keyboard. Primarily used to implement mouse buttons and make important keys (enter, backspace, etc) available on base layer
 
 ## Target Keyboards
 
