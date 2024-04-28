@@ -1,6 +1,6 @@
 # Tvrd Rad Keyboards TRK1
 
-![TRK1](https://i.imgur.com/nTHrBMr.jpg)
+![TRK1](https://www.trkeyboards.com/upload/products/gallery/1663968347286_raaw8387.jpg)
 
 *A short description of the keyboard/project*
 
