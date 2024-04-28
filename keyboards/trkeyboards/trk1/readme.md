@@ -4,9 +4,9 @@
 
 *A short description of the keyboard/project*
 
-* Keyboard Maintainer: [Tvrd Rad Keyboards](https://www.instagram.com/trkeyboards/)
-* Hardware Supported: Pro Micro and clones
-* Hardware Availability: https://www.instagram.com/trkeyboards/
+* Keyboard Maintainer: [Tvrd Rad Keyboards](https://www.trkeyboards.com)
+* Hardware Supported: Teensy 2.0
+* Hardware Availability: https://www.trkeyboards.com/en/keyboards/1-trk1/
 
 Make example for this keyboard (after setting up your build environment):
 
