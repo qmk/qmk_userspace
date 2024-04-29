@@ -1,1 +1,1 @@
-# The default VIA keymap for TRK1
+# VIA keymap for TRK1
