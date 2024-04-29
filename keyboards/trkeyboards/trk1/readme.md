@@ -2,7 +2,7 @@
 
 ![TRK1](https://www.trkeyboards.com/upload/products/gallery/1663968347286_raaw8387.jpg)
 
-*A short description of the keyboard/project*
+Custom keyboard designed by Tvrd Rad Keyboards aka TRK1
 
 * Keyboard Maintainer: [Tvrd Rad Keyboards](https://www.trkeyboards.com)
 * Hardware Supported: Teensy 2.0
