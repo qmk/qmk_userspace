@@ -211,7 +211,7 @@ enum keycodes {
   KC_TAB,  KC_Q,    KC_W,    KC_E,    KC_R,    KC_T,    KC_7,    KC_8,    KC_9,    KC_ESC,  \
   KC_LCTL, KC_A,    KC_S,    KC_D,    KC_F,    KC_G,    KC_4,    KC_5,    KC_6,    KC_GRV,  \
   KC_Z,    KC_X,    KC_C,    KC_V,    KC_B,    KC_LALT, KC_1,    KC_2,    KC_3,    CM_TOGG, \
-                    KC_ENT,  KC_LSFT, KC_SPC,  _BASE_R4_________________
+                    KC_ENT,  KC_LSFT, KC_SPC,  KC_SPC,  NAV_0,   KC_MUTE
 
 
 #define LAYER_NAVIGATION \
@@ -224,8 +224,8 @@ enum keycodes {
 #define LAYER_NUMBER \
   ___x___, SC_SNIP, SC_FILE, ___x___, ___x___, ___x___, KC_7,    KC_8,    KC_9,    KC_COMM, \
   _GACS_MODS________________________, ___x___, ___x___, KC_4,    KC_5,    KC_6,    KC_DOT,  \
-  _UCCPR_L___________________________________, KC_0,    KC_1,    KC_2,    KC_3,    TR_MINS, \
-                    _LAYER_TRANS_____________, KC_SPC,  _______, KC_MUTE
+  _UCCPR_L___________________________________, ___x___, KC_1,    KC_2,    KC_3,    TR_MINS, \
+                    _LAYER_TRANS_____________, KC_SPC,  NAV_0,   KC_MUTE
 
 
 #define LAYER_SYMBOL \
@@ -239,7 +239,7 @@ enum keycodes {
   KC_F10,  KC_F7,   KC_F8,   KC_F9,   ___x___, ___x___, ___x___, ___x___, EE_CLR,  QK_BOOT, \
   KC_F11,  KC_F4,   KC_F5,   KC_F6,   ___x___, BASELYR, TR_LSFT, ___x___, ___x___, TR_RMOD, \
   KC_F12,  KC_F1,   KC_F2,   KC_F3,   ___x___, TR_RHUI, TR_RSAI, TR_RVAI, TR_RSPI, TR_RTOG, \
-                    ___x___, TR_DMR1, TR_DMP1, _NONE_3__________________
+                    ___x___, TR_DMR1, ___x___, ___x___, TR_DMP1, ___x___
 
 /*
 If I was going to combine number and symbols together, it'd look like this

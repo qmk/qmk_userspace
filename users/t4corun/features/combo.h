@@ -40,7 +40,7 @@ const uint16_t PROGMEM key_ent_combo[]  = { KC_X,    KC_C,    COMBO_END };
 const uint16_t PROGMEM key_tab_combo[]  = { KC_U,    KC_I,    COMBO_END };
 const uint16_t PROGMEM key_bspc_combo[] = { KC_M,    TR_COMM, COMBO_END };
 const uint16_t PROGMEM key_del_combo[]  = { TR_COMM, TR_DOT,  COMBO_END };
-const uint16_t PROGMEM lyr_cfg_combo[]  = { KC_SPC,  NAV,     COMBO_END };
+const uint16_t PROGMEM lyr_cfg_combo[]  = { TR_LSFT, KC_SPC,  COMBO_END };
 
 
 
