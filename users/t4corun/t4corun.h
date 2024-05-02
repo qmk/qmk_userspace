@@ -249,20 +249,4 @@ If I was going to combine number and symbols together, it'd look like this
   _GACS_MODS________________________, TR_GRV,  TR_SCLN, KC_4,    KC_5,    KC_6,    TR_EQL,  \
   _UCCPR_L___________________________________, KC_SLSH, KC_1,    KC_2,    KC_3,    KC_BSLS, \
                     _LAYER_TRANS_____________, KC_SPC,  NAV_0,   ___x___
-
-
-nav and the N key together for config (not using combo)
-- move all the rgb settings over one
-- move rgb toggle to right encoder press
-- move baselyr to left encoder press
-
-If we want to get rid of the mouse combos
-- put all the mouse buttons on the top number layer row
-- get rid of snipping tool and file explorer shortcuts
-- 53214 is the button layout
-- drag scroll toggle goes left of shift maybe
-
-if i want to force the use of enter combo 
-- i have to remove it from the navigation layer
-
 */
