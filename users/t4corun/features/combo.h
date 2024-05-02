@@ -3,6 +3,7 @@
 
 enum combos {
 
+/*
 #if defined(MOUSEKEY_ENABLE)
   MOUSE_BUTTON1,
   MOUSE_BUTTON2,
@@ -11,13 +12,14 @@ enum combos {
   MOUSE_BUTTON5,
   MOUSE_DRGTOG,
 #endif //MOUSEKEY_ENABLE
+*/
 
   KEY_ESC,
   KEY_ENT,
   KEY_TAB,
   KEY_DEL,
   KEY_BSPC,
-  LYR_CONFIG,
+//  LYR_CONFIG,
 
   COMBO_LENGTH
 };
