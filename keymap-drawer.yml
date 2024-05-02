@@ -33,8 +33,8 @@ layers:
     - {h: "NAV", t: "0"}
     - {t: Mute, type: ghost}
   NAV:
-    - [null, Home, ▲, End, Page Up, Mouse Wheel Up, null, Sniper Toggle, Sniper DPI, Pointer DPI ]
-    - [null, ◄, ▼, ►, Page Down, Mouse Wheel down, Shift, Ctrl, Alt, Gui ]
+    - [null, Home, ▲, End, Page Up, null, null, Sniper Toggle, Sniper DPI, Pointer DPI ]
+    - [null, ◄, ▼, ►, Page Down, null, Shift, Ctrl, Alt, Gui ]
     - [Undo, Cut, Copy, Paste, Redo, null, App, Vol-, Vol+, Mute ]
     - {t: Zoom Reset, type: ghost}
     - NUM
