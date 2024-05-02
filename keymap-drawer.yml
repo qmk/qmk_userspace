@@ -27,18 +27,18 @@ layers:
     - [Ctrl, A, S, D, F, G, "4", "5" ,"6", "`"]
     - [Z, X, C, V, B, Alt, "1", "2" ,"3", Combo Toggle]
     - {t: Enter, type: ghost}
-    - Shift
     - Space
+    - Shift
     - Space
     - {h: "NAV", t: "0"}
     - {t: Mute, type: ghost}
   NAV:
-    - [Escape, Home, ▲, End, Page Up, Mouse Wheel Up, null, Sniper Toggle, Sniper DPI, Pointer DPI ]
-    - [Caps Lock, ◄, ▼, ►, Page Down, Mouse Wheel down, Shift, Ctrl, Alt, Gui ]
+    - [null, Home, ▲, End, Page Up, Mouse Wheel Up, null, Sniper Toggle, Sniper DPI, Pointer DPI ]
+    - [null, ◄, ▼, ►, Page Down, Mouse Wheel down, Shift, Ctrl, Alt, Gui ]
     - [Undo, Cut, Copy, Paste, Redo, null, App, Vol-, Vol+, Mute ]
     - {t: Zoom Reset, type: ghost}
     - NUM
-    - Enter
+    - Space
     - null
     - {type: held}
     - {t: Mute, type: ghost}
@@ -51,9 +51,9 @@ layers:
     - null
     - Space
     - {h: "NAV", t: "0"}
-    - {type: ghost}
+    - {t: Mute, type: ghost}
   SYM:
-    - [null, null, "@", "$", {h: "~", t: "`"}, {h: "==", t: "="}, "#", "*", null, {h: "\"\"", t: "\""}]
+    - [CONFIG, null, "@", "$", {h: "~", t: "`"}, {h: "==", t: "="}, "#", "*", null, {h: "\"\"", t: "\""}]
     - ["&", {h: "{}", t: "{"}, "}", {h: "||", t: "|"}, {h: ":", t: ";"}, {h: "++", t: "+"}, "?", {h: "[]", t: "]"}, "]", {h: "''", t: "'"}]
     - [{h: "^", t: "%"}, {h: "<>", t: "<"}, ">", "\\", {h: "!=", t: "!"}, null, "/", {h: "()", t: "("}, ")", {h: "_", t: "-"}]
     - {type: ghost}
@@ -63,27 +63,26 @@ layers:
     - {type: held}
     - {type: ghost}
   CONFIG:
-    - [F10, F7, F8, F9, null, null, null, null, EEPROM Clear, Boot Loader]
-    - [F11, F4, F5, F6, null, Base Layer Toggle, Shift, null, null, RGB Mode]
-    - [F12, F1, F2, F3, null, RGB Hue, RGB Sat, RGB Vib, RGB Spd, RGB Toggle ]
-    - {type: ghost}
-    - Macro Record
+    - [{type: held}, null, null, null, null, null, F7, F8, F9, F10]
+    - [null, null, null, Shift, null, Caps Lock, F4, F5, F6, F11]
+    - [RGB Hue, RGB Sat, RGB Vib, RGB Spd, null, null, F1, F2, F3, F12]
+    - {t: RGB Toggle, type: ghost}
+    - EEPROM Clear
+    - Boot Loader
     - Macro Play
-    - {type: held}
-    - {type: held}
-    - {type: ghost}
+    - Macro Rec
+    - {t: Base Layer, type: ghost}
 combos:
   - { p: [0, 1], k: Esc, l: [base_QWERTY] }
   - { p: [12, 13], k: MB1, l: [base_QWERTY] }
   - { p: [11, 12], k: MB2, l: [base_QWERTY] }
-  - { p: [13, 14], k: MB3, l: [base_QWERTY] }
+  - { p: [14, 24], k: MB3, l: [base_QWERTY] }
   - { p: [3, 13], k: MB4, l: [base_QWERTY] }
   - { p: [4, 14], k: MB5, l: [base_QWERTY] }
-  - { p: [22, 23], k: DrgScr Tog, l: [base_QWERTY] }
+  - { p: [21, 22], k: DrgScr Tog, l: [base_QWERTY] }
   - { p: [6, 7], k: Tab, l: [base_QWERTY] }
-  - { p: [21, 22], k: Enter, l: [base_QWERTY] }
+  - { p: [22, 23], k: Enter, l: [base_QWERTY] }
   - { p: [26, 27], k: Bksp, l: [base_QWERTY] }
   - { p: [27, 28], k: Del, l: [base_QWERTY] }
-  - { p: [33, 34], k: CONFIG, l: [base_QWERTY], align: top }
 draw_config:
   small_pad: 6

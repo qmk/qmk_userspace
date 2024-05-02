@@ -40,7 +40,7 @@ const uint16_t PROGMEM encoder_map[][NUM_ENCODERS][NUM_DIRECTIONS] = {
   [_NAVIGATION]      = { ENCODER_CCW_CW(ZOOMOUT, ZOOMIN),  ENCODER_CCW_CW(___x___, ___x___)  },
   [_NUMBER]          = { ENCODER_CCW_CW(___x___, ___x___), ENCODER_CCW_CW(KC_LEFT, KC_RGHT)  },
   [_SYMBOL]          = { ENCODER_CCW_CW(___x___, ___x___), ENCODER_CCW_CW(___x___, ___x___)  },
-  [_CONFIG]          = { ENCODER_CCW_CW(RBSELYR, BASELYR), ENCODER_CCW_CW(TR_RRMD, TR_RMOD)  }
+  [_CONFIG]          = { ENCODER_CCW_CW(TR_RRMD, TR_RMOD), ENCODER_CCW_CW(RBSELYR, BASELYR)  }
 };
 
 #endif //ENCODER_MAP_ENABLE
