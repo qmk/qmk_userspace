@@ -37,6 +37,7 @@
         "driver": "snled27351",
         "max_brightness": 200,
         "animations": {
+            "alphas_mods": true,
             "breathing": true,
             "cycle_all": true,
             "cycle_left_right": true,
