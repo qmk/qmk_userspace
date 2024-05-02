@@ -64,7 +64,7 @@ combo_t key_combos[COMBO_LENGTH] = {
   [KEY_ENT]      = COMBO(key_ent_combo,  KC_ENT),
   [KEY_TAB]      = COMBO(key_tab_combo,  KC_TAB),
   [KEY_DEL]      = COMBO(key_del_combo,  KC_DEL),
-  [KEY_BSPC]     = COMBO(key_bspc_combo, KC_BSPC),
+  [KEY_BSPC]     = COMBO(key_bspc_combo, KC_BSPC)
   //[LYR_CONFIG]   = COMBO(lyr_cfg_combo,  CONFIG)
 
 };
