@@ -43,7 +43,7 @@ layers:
     - {type: held}
     - {t: Mute, type: ghost}
   NUM:
-    - [null, Win Snip, Win File, null, null, null, "7", "8" ,"9", {h: "<", t: ","} ]
+    - [CONFIG, Win Snip, Win File, null, null, null, "7", "8" ,"9", {h: "<", t: ","} ]
     - [Gui, Alt, Ctrl, Shift, null, null, "4", "5" ,"6", {h: ">", t: "."}]
     - [Undo, Cut, Copy, Paste, Redo, null, "1", "2" ,"3", {h: "_", t: "-"}]
     - {type: ghost}
@@ -53,7 +53,7 @@ layers:
     - {h: "NAV", t: "0"}
     - {t: Mute, type: ghost}
   SYM:
-    - [CONFIG, null, "@", "$", {h: "~", t: "`"}, {h: "==", t: "="}, "#", "*", null, {h: "\"\"", t: "\""}]
+    - [Caps Lock, Print Screen, "@", "$", {h: "~", t: "`"}, {h: "==", t: "="}, "#", "*", null, {h: "\"\"", t: "\""}]
     - ["&", {h: "{}", t: "{"}, "}", {h: "||", t: "|"}, {h: ":", t: ";"}, {h: "++", t: "+"}, "?", {h: "[]", t: "]"}, "]", {h: "''", t: "'"}]
     - [{h: "^", t: "%"}, {h: "<>", t: "<"}, ">", "\\", {h: "!=", t: "!"}, null, "/", {h: "()", t: "("}, ")", {h: "_", t: "-"}]
     - {type: ghost}
@@ -64,7 +64,7 @@ layers:
     - {type: ghost}
   CONFIG:
     - [{type: held}, null, null, null, null, null, F7, F8, F9, F10]
-    - [null, null, null, Shift, null, Caps Lock, F4, F5, F6, F11]
+    - [null, null, null, Shift, null, null, F4, F5, F6, F11]
     - [RGB Hue, RGB Sat, RGB Vib, RGB Spd, null, null, F1, F2, F3, F12]
     - {t: RGB Toggle, type: ghost}
     - EEPROM Clear

@@ -222,14 +222,14 @@ enum keycodes {
 
 
 #define LAYER_NUMBER \
-  ___x___, SC_SNIP, SC_FILE, ___x___, ___x___, ___x___, KC_7,    KC_8,    KC_9,    KC_COMM, \
+  CONFIG,  SC_SNIP, SC_FILE, ___x___, ___x___, ___x___, KC_7,    KC_8,    KC_9,    KC_COMM, \
   _GACS_MODS________________________, ___x___, ___x___, KC_4,    KC_5,    KC_6,    KC_DOT,  \
   _UCCPR_L___________________________________, ___x___, KC_1,    KC_2,    KC_3,    TR_MINS, \
                     _LAYER_TRANS_____________, _BASE_ZERO_R4____________
 
 
 #define LAYER_SYMBOL \
-  CONFIG,  ___x___, KC_AT,   KC_DLR,  TR_GRV,  TR_EQL,  KC_HASH, KC_ASTR, ___x___, TR_DQUO, \
+  KC_CAPS, KC_PSCR, KC_AT,   KC_DLR,  TR_GRV,  TR_EQL,  KC_HASH, KC_ASTR, ___x___, TR_DQUO, \
   KC_AMPR, TR_LCBR, KC_RCBR, TR_PIPE, TR_SCLN, TR_PLUS, KC_QUES, TR_LBRC, KC_RBRC, TR_SQUO, \
   TR_PERC, TR_LABK, KC_RABK, KC_BSLS, TR_EXLM, ___x___, KC_SLSH, TR_LPRN, KC_RPRN, TR_MINS, \
                     _LAYER_TRANS_____________, _LAYER_TRANS_____________
@@ -237,7 +237,7 @@ enum keycodes {
 
 #define LAYER_CONFIG \
   _______, ___x___, ___x___, ___x___, ___x___, ___x___, KC_F7,   KC_F8,   KC_F9,   KC_F10,  \
-  ___x___, ___x___, ___x___, TR_LSFT, ___x___, KC_CAPS, KC_F4,   KC_F5,   KC_F6,   KC_F11,  \
+  ___x___, ___x___, ___x___, TR_LSFT, ___x___, ___x___, KC_F4,   KC_F5,   KC_F6,   KC_F11,  \
   TR_RHUI, TR_RSAI, TR_RVAI, TR_RSPI, ___x___, ___x___, KC_F1,   KC_F2,   KC_F3,   KC_F12,  \
                     TR_RTOG, EE_CLR,  QK_BOOT, TR_DMP1, TR_DMR1, BASELYR
 
