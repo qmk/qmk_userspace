@@ -25,7 +25,7 @@
 #define COMBO_ONLY_FROM_LAYER 0 //this will always setup combos based off of QWERTY layout
 #define EXTRA_SHORT_COMBOS
 
-#define COMBO_TERM 35
+#define COMBO_TERM 20
 #define COMBO_TERM_PER_COMBO
 
 #define COMBO_HOLD_TERM TAPPING_TERM

@@ -3,11 +3,12 @@
 uint16_t get_combo_term(uint16_t index, combo_t *combo) {
   // or with combo index, i.e. its name from enum.
   switch (index) {
-    
+
+    /*
     case LYR_CONFIG:
       return COMBO_HOLD_TERM + 100;
-    
-   
+    */
+
     default:
       return COMBO_TERM;
 
@@ -18,13 +19,14 @@ bool get_combo_must_tap(uint16_t index, combo_t *combo) {
   
   switch (index) {
 
+/*
 #if defined(MOUSEKEY_ENABLE)
     case MOUSE_BUTTON3:
     case MOUSE_BUTTON4:
     case MOUSE_BUTTON5:
     case MOUSE_DRGTOG:
 #endif //MOUSEKEY_ENABLE
-
+*/
     case KEY_ESC:
     case KEY_ENT:
     case KEY_TAB:
@@ -38,8 +40,10 @@ bool get_combo_must_tap(uint16_t index, combo_t *combo) {
 bool get_combo_must_hold(uint16_t index, combo_t *combo) {
   switch (index) {
 
+/*
     case LYR_CONFIG:
       return true;
+*/
 
     default:
       return false;
@@ -78,6 +82,7 @@ bool combo_should_trigger(uint16_t combo_index, combo_t *combo, uint16_t keycode
       }
       break;
 
+/*
     case MOUSE_BUTTON1:
     case MOUSE_BUTTON2:
     case MOUSE_BUTTON3:
@@ -91,6 +96,7 @@ bool combo_should_trigger(uint16_t combo_index, combo_t *combo, uint16_t keycode
       }
       break;
   }
+*/
 
   return true;
 }

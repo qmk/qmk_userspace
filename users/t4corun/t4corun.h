@@ -58,8 +58,11 @@ enum keycodes {
 #define SC_UNDO    LCTL(KC_Z)
 #define SC_PAST    LCTL(KC_V)
 #define SC_REDO    LCTL(KC_Y)
+
+/*
 #define SC_SNIP    LGUI(LSFT(KC_S))
 #define SC_FILE    LGUI(KC_E)
+*/
 
 // Zoom for encoders
 #define ZOOMIN     LCTL(LSFT(KC_EQL))
@@ -188,6 +191,7 @@ enum keycodes {
 
 #define _BASE_L4_________________                   ___x___, NUM,     TR_LSFT
 #define _BASE_R4_________________                   KC_SPC,  NAV,     KC_MUTE
+#define _BASE_ZERO_R4____________                   KC_SPC,  NAV_0,   KC_MUTE
 #define _LAYER_TRANS_____________                   ___x___, _______, ___x___
 
 
@@ -211,21 +215,21 @@ enum keycodes {
   KC_TAB,  KC_Q,    KC_W,    KC_E,    KC_R,    KC_T,    KC_7,    KC_8,    KC_9,    KC_ESC,  \
   KC_LCTL, KC_A,    KC_S,    KC_D,    KC_F,    KC_G,    KC_4,    KC_5,    KC_6,    KC_GRV,  \
   KC_Z,    KC_X,    KC_C,    KC_V,    KC_B,    KC_LALT, KC_1,    KC_2,    KC_3,    CM_TOGG, \
-                    KC_ENT,  KC_LSFT, KC_SPC,  KC_SPC,  NAV_0,   KC_MUTE
+                    KC_ENT,  KC_SPC,  KC_LSFT, _BASE_ZERO_R4____________
 
 
 #define LAYER_NAVIGATION \
   ___x___, KC_HOME, KC_UP,   KC_END,  KC_PGUP, TR_MWHU, ___x___, TR_SNIP, TR_SDPI, TR_PDPI, \
   KC_CAPS, KC_LEFT, KC_DOWN, KC_RGHT, KC_PGDN, TR_MWHD, _SCAG_MODS________________________, \
-  _UCCPR_L___________________________________, ___x___, KC_APP,  KC_VOLD, KC_VOLU, KC_MUTE, \
+  _UCCPR_L___________________________________, CONFIG,  KC_APP,  KC_VOLD, KC_VOLU, KC_MUTE, \
                     ZOOMRST, _______, KC_ENT,  _LAYER_TRANS_____________
 
 
 #define LAYER_NUMBER \
-  ___x___, SC_SNIP, SC_FILE, ___x___, ___x___, ___x___, KC_7,    KC_8,    KC_9,    KC_COMM, \
-  _GACS_MODS________________________, ___x___, ___x___, KC_4,    KC_5,    KC_6,    KC_DOT,  \
+  TR_BTN5, TR_BTN3, TR_BTN2, TR_BTN1, TR_BTN4, ___x___, KC_7,    KC_8,    KC_9,    KC_COMM, \
+  _GACS_MODS________________________, TR_DRGS, ___x___, KC_4,    KC_5,    KC_6,    KC_DOT,  \
   _UCCPR_L___________________________________, ___x___, KC_1,    KC_2,    KC_3,    TR_MINS, \
-                    _LAYER_TRANS_____________, KC_SPC,  NAV_0,   KC_MUTE
+                    _LAYER_TRANS_____________, _BASE_ZERO_R4____________
 
 
 #define LAYER_SYMBOL \
@@ -237,9 +241,9 @@ enum keycodes {
 
 #define LAYER_CONFIG \
   KC_F10,  KC_F7,   KC_F8,   KC_F9,   ___x___, ___x___, ___x___, ___x___, EE_CLR,  QK_BOOT, \
-  KC_F11,  KC_F4,   KC_F5,   KC_F6,   ___x___, BASELYR, TR_LSFT, ___x___, ___x___, TR_RMOD, \
-  KC_F12,  KC_F1,   KC_F2,   KC_F3,   ___x___, TR_RHUI, TR_RSAI, TR_RVAI, TR_RSPI, TR_RTOG, \
-                    ___x___, TR_DMR1, ___x___, ___x___, TR_DMP1, ___x___
+  KC_F11,  KC_F4,   KC_F5,   KC_F6,   ___x___, ___x___, TR_LSFT, ___x___, ___x___, ___x___, \
+  KC_F12,  KC_F1,   KC_F2,   KC_F3,   ___x___, _______, TR_RHUI, TR_RSAI, TR_RVAI, TR_RSPI, \
+                    BASELYR, TR_DMR1, TR_DMP1, TR_RMOD, _______, TR_RTOG
 
 /*
 If I was going to combine number and symbols together, it'd look like this
