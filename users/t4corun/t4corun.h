@@ -58,11 +58,8 @@ enum keycodes {
 #define SC_UNDO    LCTL(KC_Z)
 #define SC_PAST    LCTL(KC_V)
 #define SC_REDO    LCTL(KC_Y)
-
-/*
 #define SC_SNIP    LGUI(LSFT(KC_S))
 #define SC_FILE    LGUI(KC_E)
-*/
 
 // Zoom for encoders
 #define ZOOMIN     LCTL(LSFT(KC_EQL))
@@ -74,7 +71,6 @@ enum keycodes {
 - If the feature is disabled then the key is just the normal key
 - We will only define things that are used across different layers. Entire layers are turned off in the keymap
 */
-
 
 // one shot mods
 #define TR_LSFT OSM(MOD_LSFT)
@@ -222,12 +218,12 @@ enum keycodes {
   ___x___, KC_HOME, KC_UP,   KC_END,  KC_PGUP, TR_MWHU, ___x___, TR_SNIP, TR_SDPI, TR_PDPI, \
   KC_CAPS, KC_LEFT, KC_DOWN, KC_RGHT, KC_PGDN, TR_MWHD, _SCAG_MODS________________________, \
   _UCCPR_L___________________________________, CONFIG,  KC_APP,  KC_VOLD, KC_VOLU, KC_MUTE, \
-                    ZOOMRST, _______, KC_ENT,  _LAYER_TRANS_____________
+                    ZOOMRST, _______, KC_SPC,  _LAYER_TRANS_____________
 
 
 #define LAYER_NUMBER \
-  TR_BTN5, TR_BTN3, TR_BTN2, TR_BTN1, TR_BTN4, ___x___, KC_7,    KC_8,    KC_9,    KC_COMM, \
-  _GACS_MODS________________________, TR_DRGS, ___x___, KC_4,    KC_5,    KC_6,    KC_DOT,  \
+  ___x___, SC_SNIP, SC_FILE, ___x___, ___x___, ___x___, KC_7,    KC_8,    KC_9,    KC_COMM, \
+  _GACS_MODS________________________, ___x___, ___x___, KC_4,    KC_5,    KC_6,    KC_DOT,  \
   _UCCPR_L___________________________________, ___x___, KC_1,    KC_2,    KC_3,    TR_MINS, \
                     _LAYER_TRANS_____________, _BASE_ZERO_R4____________
 
@@ -241,7 +237,7 @@ enum keycodes {
 
 #define LAYER_CONFIG \
   KC_F10,  KC_F7,   KC_F8,   KC_F9,   ___x___, ___x___, ___x___, ___x___, EE_CLR,  QK_BOOT, \
-  KC_F11,  KC_F4,   KC_F5,   KC_F6,   ___x___, ___x___, TR_LSFT, ___x___, ___x___, ___x___, \
+  KC_F11,  KC_F4,   KC_F5,   KC_F6,   ___x___, ___x___, TR_LSFT, ___x___, ___x___, TR_RMOD, \
   KC_F12,  KC_F1,   KC_F2,   KC_F3,   ___x___, _______, TR_RHUI, TR_RSAI, TR_RVAI, TR_RSPI, \
                     BASELYR, TR_DMR1, TR_DMP1, TR_RMOD, _______, TR_RTOG
 
@@ -253,4 +249,20 @@ If I was going to combine number and symbols together, it'd look like this
   _GACS_MODS________________________, TR_GRV,  TR_SCLN, KC_4,    KC_5,    KC_6,    TR_EQL,  \
   _UCCPR_L___________________________________, KC_SLSH, KC_1,    KC_2,    KC_3,    KC_BSLS, \
                     _LAYER_TRANS_____________, KC_SPC,  NAV_0,   ___x___
+
+
+nav and the N key together for config (not using combo)
+- move all the rgb settings over one
+- move rgb toggle to right encoder press
+- move baselyr to left encoder press
+
+If we want to get rid of the mouse combos
+- put all the mouse buttons on the top number layer row
+- get rid of snipping tool and file explorer shortcuts
+- 53214 is the button layout
+- drag scroll toggle goes left of shift maybe
+
+if i want to force the use of enter combo 
+- i have to remove it from the navigation layer
+
 */
