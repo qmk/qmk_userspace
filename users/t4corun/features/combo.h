@@ -17,7 +17,6 @@ enum combos {
   KEY_TAB,
   KEY_DEL,
   KEY_BSPC,
-  LYR_CONFIG,
 
   COMBO_LENGTH
 };
@@ -28,21 +27,18 @@ uint16_t COMBO_LEN = COMBO_LENGTH;
 
 #if defined(MOUSEKEY_ENABLE)
 const uint16_t PROGMEM mou_btn1_combo[] = { KC_D,    KC_F,    COMBO_END };
-const uint16_t PROGMEM mou_btn2_combo[] = { KC_C,    KC_V,    COMBO_END };
-const uint16_t PROGMEM mou_btn3_combo[] = { KC_V,    KC_B,    COMBO_END };
-const uint16_t PROGMEM mou_btn4_combo[] = { KC_F,    KC_G,    COMBO_END };
+const uint16_t PROGMEM mou_btn2_combo[] = { KC_S,    KC_D,    COMBO_END };
+const uint16_t PROGMEM mou_btn3_combo[] = { KC_G,    KC_B,    COMBO_END };
+const uint16_t PROGMEM mou_btn4_combo[] = { KC_F,    KC_R,    COMBO_END };
 const uint16_t PROGMEM mou_btn5_combo[] = { KC_T,    KC_G,    COMBO_END };
-const uint16_t PROGMEM mou_drg_combo[]  = { KC_S,    KC_D,    COMBO_END };
+const uint16_t PROGMEM mou_drg_combo[]  = { KC_X,    KC_C,    COMBO_END };
 #endif //MOUSEKEY_ENABLE
 
 const uint16_t PROGMEM key_esc_combo[]  = { KC_Q,    KC_W,    COMBO_END };
-const uint16_t PROGMEM key_ent_combo[]  = { KC_X,    KC_C,    COMBO_END };
+const uint16_t PROGMEM key_ent_combo[]  = { KC_C,    KC_V,    COMBO_END };
 const uint16_t PROGMEM key_tab_combo[]  = { KC_U,    KC_I,    COMBO_END };
 const uint16_t PROGMEM key_bspc_combo[] = { KC_M,    TR_COMM, COMBO_END };
 const uint16_t PROGMEM key_del_combo[]  = { TR_COMM, TR_DOT,  COMBO_END };
-const uint16_t PROGMEM lyr_cfg_combo[]  = { KC_SPC,  NAV,     COMBO_END };
-
-
 
 
 combo_t key_combos[COMBO_LENGTH] = {
@@ -60,8 +56,8 @@ combo_t key_combos[COMBO_LENGTH] = {
   [KEY_ENT]      = COMBO(key_ent_combo,  KC_ENT),
   [KEY_TAB]      = COMBO(key_tab_combo,  KC_TAB),
   [KEY_DEL]      = COMBO(key_del_combo,  KC_DEL),
-  [KEY_BSPC]     = COMBO(key_bspc_combo, KC_BSPC),
-  [LYR_CONFIG]   = COMBO(lyr_cfg_combo,  CONFIG)
+  [KEY_BSPC]     = COMBO(key_bspc_combo, KC_BSPC)
+  //[LYR_CONFIG]   = COMBO(lyr_cfg_combo,  CONFIG)
 
 };
 
