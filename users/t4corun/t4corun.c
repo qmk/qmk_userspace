@@ -42,6 +42,7 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
       return false;
 
     case KC_BSPC: {
+      //https://docs.qmk.fm/#/feature_advanced_keycodes?id=shift-backspace-for-delete
       static bool delkey_registered = false;
       if (record->event.pressed) {
         // Detect the activation of either shift keys
