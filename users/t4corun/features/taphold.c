@@ -128,9 +128,6 @@ bool process_tap_hold_key(keyrecord_t* record, uint16_t keycode) {
       case TR_SLSH:
         double_tap(TAPHOLD_SLSH, WAIT_DELAY);
         break;
-      case TR_AMPR:
-        double_tap(TAPHOLD_AMPR, WAIT_DELAY);
-        break;
 
       //custom action
       case TR_COMM:
