@@ -42,16 +42,32 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
       return false;
 
     case KC_BSPC: {
-
-      bool isShift = ( (get_mods() & MOD_BIT(KC_LSFT)) || (get_oneshot_mods() & MOD_BIT(KC_LSFT)) );
-
+      static bool delkey_registered = false;
       if (record->event.pressed) {
-        isShift ? register_code(KC_DEL) : register_code(KC_BSPC);
-      } else {
-        isShift ? unregister_code(KC_DEL) : unregister_code(KC_BSPC);
-      }
+        // Detect the activation of either shift keys
+        uint8_t current_mod = get_mods();
+        uint8_t current_osm = get_oneshot_mods();
 
-      return false;
+        if ((current_mod | current_osm) & MOD_MASK_SHIFT ) {
+          del_mods(MOD_MASK_SHIFT);
+          register_code(KC_DEL);
+          delkey_registered = true;
+          set_mods((current_mod | current_osm));
+          return false;
+        }
+  
+      } else {
+
+        if(delkey_registered) {
+          unregister_code(KC_DEL);
+          delkey_registered = false;
+          return false;
+        }
+        
+      }
+      
+      // QMK will process Backspace instead
+      return true;
     }
 
     //https://docs.qmk.fm/#/mod_tap?id=changing-both-tasp-and-hold
