@@ -4,8 +4,8 @@ layout:
 layers:
   base_QWERTY:
     - [Q, W, E, R, T, Y, U, I ,O, P]
-    - [A, S, D, F, G, H, J, K ,L, {h: "\"", t: "'"}]
-    - [Z, X, C, V, B, N, M, {h: "(", t: ","} , {h: ")", t: "."}, {h: "_", t: "-"}]
+    - [A, S, D, F, G, H, J, K ,L, {h: '"', t: ''''}]
+    - [Z, X, C, V, B, N, M, {h: '(', t: ','} , {h: ')', t: '.'}, {h: '_', t: '-'}]
     - {type: ghost}
     - NUM
     - Shift
@@ -13,9 +13,9 @@ layers:
     - NAV
     - {t: Mute, type: ghost}
   base_COLEMAK_DH:
-    - [Q, W, F, P, B, J, L, U ,Y, {h: "\"", t: "'"}]
+    - [Q, W, F, P, B, J, L, U ,Y, {h: '"', t: ''''}]
     - [A, R, S, T, G, M, N, E ,I, O]
-    - [Z, X, C, D, V, K, H, {h: "(", t: ","} , {h: ")", t: "."}, {h: "_", t: "-"}]
+    - [Z, X, C, D, V, K, H, {h: '(', t: ','} , {h: ')', t: '.'}, {h: '_', t: '-'}]
     - {type: ghost}
     - NUM
     - Shift
@@ -23,39 +23,39 @@ layers:
     - NAV
     - {t: Mute, type: ghost}
   base_GAME:
-    - [Tab, Q, W, E, R, T, "7", "8" ,"9", Esc]
-    - [Ctrl, A, S, D, F, G, "4", "5" ,"6", "`"]
-    - [Z, X, C, V, B, Alt, "1", "2" ,"3", Combo Toggle]
+    - [Tab, Q, W, E, R, T, '7', '8' ,'9', Esc]
+    - [Ctrl, A, S, D, F, G, '4', '5' ,'6', '`']
+    - [Z, X, C, V, B, Alt, '1', '2' ,'3', Combo Toggle]
     - {t: Enter, type: ghost}
     - Space
     - Shift
     - Space
-    - {h: "NAV", t: "0"}
+    - NAV
     - {t: Mute, type: ghost}
   NAV:
-    - [null, Home, ▲, End, Page Up, null, null, Sniper Toggle, Sniper DPI, Pointer DPI ]
-    - [null, ◄, ▼, ►, Page Down, null, Shift, Ctrl, Alt, Gui ]
-    - [Undo, Cut, Copy, Paste, Redo, null, App, Vol-, Vol+, Mute ]
+    - [null, Home, ▲, End, Page Up, Caps Lock, Tab, null, Print Screen, CONFIG ]
+    - [null, ◄, ▼, ►, Page Down, Back Space, Shift, Ctrl, Alt, Gui ]
+    - [Undo, Cut, Copy, Paste, Redo, Delete, App, Sniper Toggle, Sniper DPI, Pointer DPI ]
     - {t: Zoom Reset, type: ghost}
     - NUM
     - Space
     - null
     - {type: held}
     - {t: Mute, type: ghost}
-  NUM:
-    - [CONFIG, Win Snip, Win File, null, null, null, "7", "8" ,"9", {h: "<", t: ","} ]
-    - [Gui, Alt, Ctrl, Shift, null, null, "4", "5" ,"6", {h: ">", t: "."}]
-    - [Undo, Cut, Copy, Paste, Redo, null, "1", "2" ,"3", {h: "_", t: "-"}]
+  SYM:
+    - [Esc, Mouse 3, Mouse 2, Mouse 1, {h: '~', t: '`'}, {h: '==', t: '='}, '#', {h: '<>', t: '<'}, '>', {h: '^', t: '%'}]
+    - [Gui, Alt, Ctrl, Shift, {h: ':', t: ';'}, {h: '&', t: '@'}, '*', {h: '[]', t: '['}, ']', {h: '''''', t: ''''}]
+    - [Undo, Cut, Copy, Paste, Redo, {h: '\\', t: "\\"}, {h: '//', t: '/'}, {h: '()', t: '('}, ')', {h: '_', t: '-'}]
     - {type: ghost}
     - {type: held}
     - null
-    - Space
-    - {h: "NAV", t: "0"}
-    - {t: Mute, type: ghost}
-  SYM:
-    - [Caps Lock, Print Screen, "@", "$", {h: "~", t: "`"}, {h: "==", t: "="}, "#", "*", null, {h: "\"\"", t: "\""}]
-    - ["&", {h: "{}", t: "{"}, "}", {h: "||", t: "|"}, {h: ":", t: ";"}, {h: "++", t: "+"}, "?", {h: "[]", t: "]"}, "]", {h: "''", t: "'"}]
-    - [{h: "^", t: "%"}, {h: "<>", t: "<"}, ">", "\\", {h: "!=", t: "!"}, null, "/", {h: "()", t: "("}, ")", {h: "_", t: "-"}]
+    - null
+    - NAV
+    - {type: ghost}
+  NUM:
+    - ['7', '5', '3', '1', '9', '8', '0', '2' , '4', '6' ]
+    - [Gui, Alt, Ctrl, Shift, F11, F12, null, Vol- , Vol+, Mute]
+    - [F7, F5, F3, F1, F9, F8, F10, F2 , F4, F6]
     - {type: ghost}
     - {type: held}
     - null
@@ -63,20 +63,19 @@ layers:
     - {type: held}
     - {type: ghost}
   CONFIG:
-    - [{type: held}, null, null, null, null, null, F7, F8, F9, F10]
-    - [null, null, null, Shift, null, null, F4, F5, F6, F11]
-    - [RGB Hue, RGB Sat, RGB Vib, RGB Spd, null, null, F1, F2, F3, F12]
-    - {t: RGB Toggle, type: ghost}
-    - EEPROM Clear
-    - Boot Loader
+    - [null, null, null, null, null, null, null, EEPROM Clear, Boot Loader, {type: held}]
+    - [null, null, null, null, null, null, Shift, null, null, RGB Mode]
+    - [null, null, null, null, null, RGB Toggle, RGB Hue, RGB Sat, RGB Vib, RGB Spd]
+    - {t: Base Layer, type: ghost}
+    - null
+    - null
     - Macro Play
     - Macro Rec
-    - {t: Base Layer, type: ghost}
+    - {t: RGB Toggle, type: ghost}
 combos:
-  - { p: [0, 1], k: Esc, l: [base_QWERTY] }
   - { p: [12, 13], k: MB1, l: [base_QWERTY] }
   - { p: [11, 12], k: MB2, l: [base_QWERTY] }
-  - { p: [14, 24], k: MB3, l: [base_QWERTY] }
+  - { p: [13, 14], k: MB3, l: [base_QWERTY] }
   - { p: [3, 13], k: MB4, l: [base_QWERTY] }
   - { p: [4, 14], k: MB5, l: [base_QWERTY] }
   - { p: [21, 22], k: DrgScr Tog, l: [base_QWERTY] }
