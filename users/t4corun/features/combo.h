@@ -12,12 +12,6 @@ enum combos {
   MOUSE_DRGTOG,
 #endif //MOUSEKEY_ENABLE
 
-  KEY_ESC,
-  KEY_ENT,
-  KEY_TAB,
-  KEY_DEL,
-  KEY_BSPC,
-
   COMBO_LENGTH
 };
 
@@ -34,11 +28,6 @@ const uint16_t PROGMEM mou_btn5_combo[] = { KC_T,    KC_G,    COMBO_END };
 const uint16_t PROGMEM mou_drg_combo[]  = { KC_X,    KC_C,    COMBO_END };
 #endif //MOUSEKEY_ENABLE
 
-const uint16_t PROGMEM key_esc_combo[]  = { KC_Q,    KC_W,    COMBO_END };
-const uint16_t PROGMEM key_ent_combo[]  = { KC_C,    KC_V,    COMBO_END };
-const uint16_t PROGMEM key_tab_combo[]  = { KC_U,    KC_I,    COMBO_END };
-const uint16_t PROGMEM key_bspc_combo[] = { KC_M,    TR_COMM, COMBO_END };
-const uint16_t PROGMEM key_del_combo[]  = { TR_COMM, TR_DOT,  COMBO_END };
 
 
 combo_t key_combos[COMBO_LENGTH] = {
@@ -51,13 +40,6 @@ combo_t key_combos[COMBO_LENGTH] = {
   [MOUSE_BUTTON5] = COMBO(mou_btn5_combo, TR_BTN5),
   [MOUSE_DRGTOG]  = COMBO(mou_drg_combo,  TR_DRGS),
 #endif //MOUSEKEY_ENABLE
-
-  [KEY_ESC]      = COMBO(key_esc_combo,  KC_ESC),
-  [KEY_ENT]      = COMBO(key_ent_combo,  KC_ENT),
-  [KEY_TAB]      = COMBO(key_tab_combo,  KC_TAB),
-  [KEY_DEL]      = COMBO(key_del_combo,  KC_DEL),
-  [KEY_BSPC]     = COMBO(key_bspc_combo, KC_BSPC)
-  //[LYR_CONFIG]   = COMBO(lyr_cfg_combo,  CONFIG)
 
 };
 

@@ -5,15 +5,19 @@ void single_tap(uint16_t key, uint16_t altkey, bool isHold) {
 }
 
 void double_tap(uint16_t key, uint16_t altkey, uint32_t ms) {
-  tap_code16(key);
+  bool isShift = ( (get_mods() & MOD_BIT(KC_LSFT)) || (get_oneshot_mods() & MOD_BIT(KC_LSFT)) );
+  
+  isShift ? tap_code16(LSFT(key)) : tap_code16(key);
   wait_ms(ms);
-  tap_code16(altkey);
+  isShift ? tap_code16(LSFT(altkey)) : tap_code16(altkey);
 }
 
 void insert_brackets(uint16_t left, uint16_t right, uint32_t ms) {
-  tap_code16(left);
+  bool isShift = ( (get_mods() & MOD_BIT(KC_LSFT)) || (get_oneshot_mods() & MOD_BIT(KC_LSFT)) );
+
+  isShift ? tap_code16(LSFT(left)) : tap_code16(left);
   wait_ms(ms);
-  tap_code16(right);
+  isShift ? tap_code16(LSFT(right)) : tap_code16(right);
   wait_ms(ms);
   tap_code16(KC_LEFT);
 }

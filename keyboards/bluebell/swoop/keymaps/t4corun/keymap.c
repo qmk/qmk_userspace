@@ -23,8 +23,8 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   [_DEFAULT_LAYER_2] = SWOOP(LAYER_COLEMAK_DH),
   [_DEFAULT_LAYER_3] = SWOOP(LAYER_GAME),
   [_NAVIGATION]      = SWOOP(LAYER_NAVIGATION),
-  [_NUMBER]          = SWOOP(LAYER_NUMBER),
   [_SYMBOL]          = SWOOP(LAYER_SYMBOL),
+  [_NUMBER]          = SWOOP(LAYER_NUMBER),
   [_CONFIG]          = SWOOP(LAYER_CONFIG)
 
 };
@@ -38,9 +38,9 @@ const uint16_t PROGMEM encoder_map[][NUM_ENCODERS][NUM_DIRECTIONS] = {
   [_DEFAULT_LAYER_2] = { ENCODER_CCW_CW(TR_MWHU, TR_MWHD), ENCODER_CCW_CW(KC_VOLD, KC_VOLU)  },
   [_DEFAULT_LAYER_3] = { ENCODER_CCW_CW(TR_MWHU, TR_MWHD), ENCODER_CCW_CW(KC_VOLD, KC_VOLU)  },
   [_NAVIGATION]      = { ENCODER_CCW_CW(ZOOMOUT, ZOOMIN),  ENCODER_CCW_CW(___x___, ___x___)  },
-  [_NUMBER]          = { ENCODER_CCW_CW(___x___, ___x___), ENCODER_CCW_CW(KC_LEFT, KC_RGHT)  },
-  [_SYMBOL]          = { ENCODER_CCW_CW(___x___, ___x___), ENCODER_CCW_CW(___x___, ___x___)  },
-  [_CONFIG]          = { ENCODER_CCW_CW(TR_RRMD, TR_RMOD), ENCODER_CCW_CW(RBSELYR, BASELYR)  }
+  [_SYMBOL]          = { ENCODER_CCW_CW(___x___, ___x___), ENCODER_CCW_CW(KC_LEFT, KC_RGHT)  },
+  [_NUMBER]          = { ENCODER_CCW_CW(___x___, ___x___), ENCODER_CCW_CW(___x___, ___x___)  },
+  [_CONFIG]          = { ENCODER_CCW_CW(RBSELYR, BASELYR), ENCODER_CCW_CW(TR_RRMD, TR_RMOD)  }
 };
 
 #endif //ENCODER_MAP_ENABLE
