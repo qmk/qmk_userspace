@@ -62,8 +62,17 @@ bool process_tap_hold_key(keyrecord_t* record, uint16_t keycode) {
       case TR_PLUS:
         single_tap(TAPHOLD_PLUS, isHold);
         break;
-      case TR_PIPE:
-        single_tap(TAPHOLD_PIPE, isHold);
+      //case TR_PIPE:
+      //  single_tap(TAPHOLD_PIPE, isHold);
+      //  break;
+      case TR_BSLS:
+        single_tap(TAPHOLD_BSLS, isHold);
+        break;
+      case TR_SLSH:
+        single_tap(TAPHOLD_SLSH, isHold);
+        break;
+      case TR_AMPR:
+        single_tap(TAPHOLD_AMPR, isHold);
         break;
       case TR_COMM:
         single_tap(TAPHOLD_COMM, isHold);
@@ -127,8 +136,17 @@ bool process_tap_hold_key(keyrecord_t* record, uint16_t keycode) {
       case TR_PLUS:
         double_tap(TAPHOLD_PLUS, WAIT_DELAY);
         break;
-      case TR_PIPE:
-        double_tap(TAPHOLD_PIPE, WAIT_DELAY);
+      //case TR_PIPE:
+      //   double_tap(TAPHOLD_PIPE, WAIT_DELAY);
+      //  break;
+      case TR_BSLS:
+        double_tap(TAPHOLD_BSLS, WAIT_DELAY);
+        break;
+      case TR_SLSH:
+        double_tap(TAPHOLD_SLSH, WAIT_DELAY);
+        break;
+      case TR_AMPR:
+        double_tap(TAPHOLD_AMPR, WAIT_DELAY);
         break;
 
       //custom action

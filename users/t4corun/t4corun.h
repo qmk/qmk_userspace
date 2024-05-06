@@ -25,7 +25,10 @@ enum keycodes {
   
   TH_EQL,
   TH_PLUS,
-  TH_PIPE,
+  //TH_PIPE,
+  TH_BSLS,
+  TH_SLSH,
+  TH_AMPR,
 
   TH_COMM,
   TH_DOT,
@@ -88,7 +91,10 @@ enum keycodes {
 
 #define TR_EQL   LT(_DEFAULT_LAYER_1, TH_EQL) // double tap
 #define TR_PLUS  LT(_DEFAULT_LAYER_1, TH_PLUS)
-#define TR_PIPE  LT(_DEFAULT_LAYER_1, TH_PIPE)
+//#define TR_PIPE  LT(_DEFAULT_LAYER_1, TH_PIPE)
+#define TR_BSLS  LT(_DEFAULT_LAYER_1, TH_BSLS)
+#define TR_SLSH  LT(_DEFAULT_LAYER_1, TH_SLSH)
+#define TR_AMPR  LT(_DEFAULT_LAYER_1, TH_AMPR)
 
 #define TR_COMM  LT(_DEFAULT_LAYER_1, TH_COMM) // custom behavior
 #define TR_DOT   LT(_DEFAULT_LAYER_1, TH_DOT)
@@ -220,10 +226,10 @@ enum keycodes {
 
 
 #define LAYER_SYMBOL                                                                        \
-  KC_ESC,  KC_AMPR, KC_AT,   KC_DLR,  TR_GRV,  TR_EQL,  KC_HASH, TR_LABK, KC_RABK, TR_DQUO, \
-  _SCAG_MODS________________________, TR_SCLN, TR_PLUS, KC_QUES, TR_LBRC, KC_RBRC, TR_SQUO, \
-  TR_PERC, TR_PIPE, KC_ASTR, KC_BSLS, TR_EXLM, ___x___, KC_SLSH, TR_LPRN, KC_RPRN, TR_MINS, \
-                    _LAYER_TRANS_____________, _BASE_R4_________________
+  KC_ESC,  TR_PERC, KC_ASTR, KC_DLR,  TR_GRV,  TR_EQL,  KC_HASH, TR_LABK, KC_RABK, TR_AMPR, \
+  _GACS_MODS________________________, TR_SCLN, KC_AT,   KC_QUES, TR_LBRC, KC_RBRC, TR_SQUO, \
+  _UCCPR_L___________________________________, TR_BSLS, TR_SLSH, TR_LPRN, KC_RPRN, TR_MINS, \
+                    _LAYER_TRANS_____________, TR_EXLM, _______, ___x___
 
 
 #define LAYER_NUMBER                                                                        \

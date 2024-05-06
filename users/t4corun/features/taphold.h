@@ -24,7 +24,10 @@ bool process_tap_hold_key(keyrecord_t* record, uint16_t keycode);
 //double tap
 #define TAPHOLD_EQL  KC_EQL,  KC_EQL
 #define TAPHOLD_PLUS KC_PLUS, KC_PLUS
-#define TAPHOLD_PIPE KC_PIPE, KC_PIPE
+//#define TAPHOLD_PIPE KC_PIPE, KC_PIPE
+#define TAPHOLD_BSLS KC_BSLS, KC_BSLS
+#define TAPHOLD_SLSH KC_SLSH, KC_SLSH
+#define TAPHOLD_AMPR KC_AMPR, KC_AMPR
 
 //Custom: things like overriding default shifted key
 #define TAPHOLD_COMM KC_COMM, KC_LPRN
