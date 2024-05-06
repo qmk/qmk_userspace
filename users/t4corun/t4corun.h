@@ -21,19 +21,16 @@ enum keycodes {
   TH_LBRC,
   TH_LPRN,
   TH_SQUO,
-  TH_DQUO,
   
   TH_EQL,
-  TH_PLUS,
-  //TH_PIPE,
   TH_BSLS,
   TH_SLSH,
-  TH_AMPR,
 
   TH_COMM,
   TH_DOT,
   TH_PERC,
   TH_EXLM,
+  TH_AT,
 
   TH_MINS,
   TH_GRV,
@@ -87,19 +84,16 @@ enum keycodes {
 #define TR_LBRC  LT(_DEFAULT_LAYER_1, TH_LBRC)
 #define TR_LPRN  LT(_DEFAULT_LAYER_1, TH_LPRN)
 #define TR_SQUO  LT(_DEFAULT_LAYER_1, TH_SQUO)
-#define TR_DQUO  LT(_DEFAULT_LAYER_1, TH_DQUO)
 
 #define TR_EQL   LT(_DEFAULT_LAYER_1, TH_EQL) // double tap
-#define TR_PLUS  LT(_DEFAULT_LAYER_1, TH_PLUS)
-//#define TR_PIPE  LT(_DEFAULT_LAYER_1, TH_PIPE)
 #define TR_BSLS  LT(_DEFAULT_LAYER_1, TH_BSLS)
 #define TR_SLSH  LT(_DEFAULT_LAYER_1, TH_SLSH)
-#define TR_AMPR  LT(_DEFAULT_LAYER_1, TH_AMPR)
 
 #define TR_COMM  LT(_DEFAULT_LAYER_1, TH_COMM) // custom behavior
 #define TR_DOT   LT(_DEFAULT_LAYER_1, TH_DOT)
 #define TR_PERC  LT(_DEFAULT_LAYER_1, TH_PERC)
 #define TR_EXLM  LT(_DEFAULT_LAYER_1, TH_EXLM)
+#define TR_AT    LT(_DEFAULT_LAYER_1, TH_AT)
 
   // basically auto shift
 #define TR_MINS  LT(_DEFAULT_LAYER_1, TH_MINS)
@@ -108,47 +102,18 @@ enum keycodes {
 #define TR_QUOT  LT(_DEFAULT_LAYER_1, TH_QUOT)
 
 
-#if defined(MOUSEKEY_ENABLE)
-
-#   define TR_MWHU KC_WH_U
-#   define TR_MWHD KC_WH_D
-
-#   define TR_BTN1 KC_BTN1
-#   define TR_BTN2 KC_BTN2
-#   define TR_BTN3 KC_BTN3
-#   define TR_BTN4 KC_BTN4
-#   define TR_BTN5 KC_BTN5
-
-# if defined(KEYBOARD_bastardkb_charybdis_3x5)
-//these codes are defined in charybdis.h
+#if defined(KEYBOARD_bastardkb_charybdis_3x5)
+//these mouse codes are defined in charybdis.h
 #   define TR_SNIP SNIPING  
 #   define TR_DRGS DRG_TOG
 #   define TR_SDPI S_D_MOD  //sniping dpi
 #   define TR_PDPI DPI_MOD  //pointer dpi
-# else
+#else
 #   define TR_SNIP ___x___
 #   define TR_DRGS PN_DRGS  //use host status for ploopy nano drag scroll
 #   define TR_SDPI ___x___
 #   define TR_PDPI PN_PDPI  //use host status for ploopy nano dpi switch
-# endif //KEYBOARD_bastardkb_charybdis_3x5
-
-#else
-
-#   define TR_MWHU ___x___
-#   define TR_MWHD ___x___
-
-#   define TR_BTN1 ___x___
-#   define TR_BTN2 ___x___
-#   define TR_BTN3 ___x___
-#   define TR_BTN4 ___x___
-#   define TR_BTN5 ___x___
-
-#   define TR_SNIP ___x___
-#   define TR_DRGS ___x___
-#   define TR_SDPI ___x___
-#   define TR_PDPI ___x___
-
-#endif //MOUSEKEY_ENABLE
+#endif //KEYBOARD_bastardkb_charybdis_3x5
 
 
 #if defined(DYNAMIC_MACRO_ENABLE)
@@ -158,6 +123,7 @@ enum keycodes {
 #   define TR_DMR1 ___x___
 #   define TR_DMP1 ___x___
 #endif //DYNAMIC_MACRO_ENABLE
+
 
 #if defined(RGB_MATRIX_ENABLE) || defined(RGBLIGHT_ENABLE)
 #   define TR_RHUI RGB_HUI
@@ -176,7 +142,6 @@ enum keycodes {
 #   define TR_RMOD ___x___
 #   define TR_RRMD ___x___
 #endif //RGB_MATRIX_ENABLE || RGBLIGHT_ENABLE
-
 
 
 #define _DEFAULT_LAYER_1 FIRST_DEFAULT_LAYER
@@ -226,8 +191,8 @@ enum keycodes {
 
 
 #define LAYER_SYMBOL                                                                        \
-  KC_ESC,  TR_PERC, KC_ASTR, KC_DLR,  TR_GRV,  TR_EQL,  KC_HASH, TR_LABK, KC_RABK, TR_AMPR, \
-  _GACS_MODS________________________, TR_SCLN, KC_AT,   KC_QUES, TR_LBRC, KC_RBRC, TR_SQUO, \
+  KC_ESC,  KC_BTN3, KC_BTN2, KC_BTN1, TR_GRV,  TR_EQL,  KC_HASH, TR_LABK, KC_RABK, TR_PERC, \
+  _GACS_MODS________________________, TR_SCLN, TR_AT,   KC_ASTR, TR_LBRC, KC_RBRC, TR_SQUO, \
   _UCCPR_L___________________________________, TR_BSLS, TR_SLSH, TR_LPRN, KC_RPRN, TR_MINS, \
                     _LAYER_TRANS_____________, TR_EXLM, _______, ___x___
 

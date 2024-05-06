@@ -53,26 +53,14 @@ bool process_tap_hold_key(keyrecord_t* record, uint16_t keycode) {
       case TR_SQUO:
         single_tap(TAPHOLD_SQUO, isHold);
         break;
-      case TR_DQUO:
-        single_tap(TAPHOLD_DQUO, isHold);
-        break;
       case TR_EQL:
         single_tap(TAPHOLD_EQL, isHold);
         break;
-      case TR_PLUS:
-        single_tap(TAPHOLD_PLUS, isHold);
-        break;
-      //case TR_PIPE:
-      //  single_tap(TAPHOLD_PIPE, isHold);
-      //  break;
       case TR_BSLS:
         single_tap(TAPHOLD_BSLS, isHold);
         break;
       case TR_SLSH:
         single_tap(TAPHOLD_SLSH, isHold);
-        break;
-      case TR_AMPR:
-        single_tap(TAPHOLD_AMPR, isHold);
         break;
       case TR_COMM:
         single_tap(TAPHOLD_COMM, isHold);
@@ -85,6 +73,9 @@ bool process_tap_hold_key(keyrecord_t* record, uint16_t keycode) {
         break;
       case TR_EXLM:
         single_tap(TAPHOLD_EXLM, isHold);
+        break;
+      case TR_AT:
+        single_tap(TAPHOLD_AT, isHold);
         break;
       case TR_MINS:
         single_tap(TAPHOLD_MINS, isHold);
@@ -119,26 +110,18 @@ bool process_tap_hold_key(keyrecord_t* record, uint16_t keycode) {
       case TR_LBRC:
         insert_brackets(TAPHOLD_LBRC, WAIT_DELAY);
         break;
-      case TR_SQUO:
-        insert_brackets(TAPHOLD_SQUO, WAIT_DELAY);
-        break;
-      case TR_DQUO:
-        insert_brackets(TAPHOLD_DQUO, WAIT_DELAY);
-        break;
       case TR_LPRN:
         insert_brackets(TAPHOLD_LPRN, WAIT_DELAY);
         break;
+      case TR_SQUO:
+        insert_brackets(TAPHOLD_SQUO, WAIT_DELAY);
+        break;
+
 
       //double tap
       case TR_EQL:
         double_tap(TAPHOLD_EQL, WAIT_DELAY);
         break;
-      case TR_PLUS:
-        double_tap(TAPHOLD_PLUS, WAIT_DELAY);
-        break;
-      //case TR_PIPE:
-      //   double_tap(TAPHOLD_PIPE, WAIT_DELAY);
-      //  break;
       case TR_BSLS:
         double_tap(TAPHOLD_BSLS, WAIT_DELAY);
         break;
@@ -160,7 +143,10 @@ bool process_tap_hold_key(keyrecord_t* record, uint16_t keycode) {
         single_tap(TAPHOLD_PERC, isHold);
         break;
       case TR_EXLM:
-        double_tap(TAPHOLD_NEQL, WAIT_DELAY);
+        single_tap(TAPHOLD_EXLM, isHold);
+        break;
+      case TR_AT:
+        single_tap(TAPHOLD_AT, isHold);
         break;
 
       //simulates auto-shift
