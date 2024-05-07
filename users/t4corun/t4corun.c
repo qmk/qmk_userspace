@@ -41,6 +41,7 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
       }
       return false;
 
+/*
     case KC_BSPC: {
       //https://docs.qmk.fm/#/feature_advanced_keycodes?id=shift-backspace-for-delete
 
@@ -90,7 +91,7 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
       // if the shift modifier is not detected
       return true;
     }
-
+*/
     //https://docs.qmk.fm/#/mod_tap?id=changing-both-tasp-and-hold
     //https://getreuer.info/posts/keyboards/triggers/index.html#tap-vs.-long-press
     //https://www.jonashietala.se/series/t-34/ he focuses on a keymap for programming/VIM
