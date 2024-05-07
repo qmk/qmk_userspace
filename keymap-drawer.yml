@@ -33,9 +33,9 @@ layers:
     - NAV
     - {t: Mute, type: ghost}
   NAV:
-    - [null, Home, ▲, End, Page Up, Caps Lock, Tab, null, Print Screen, CONFIG ]
-    - [null, ◄, ▼, ►, Page Down, Back Space, Shift, Ctrl, Alt, Gui ]
-    - [Undo, Cut, Copy, Paste, Redo, Delete, App, Sniper Toggle, Sniper DPI, Pointer DPI ]
+    - [null, Home, ▲, End, Page Up, null, null, Caps Lock, Print Screen, CONFIG ]
+    - [null, ◄, ▼, ►, Page Down, null, Shift, Ctrl, Alt, Gui ]
+    - [Undo, Cut, Copy, Paste, Redo, null, App, Sniper Toggle, Sniper DPI, Pointer DPI ]
     - {t: Zoom Reset, type: ghost}
     - NUM
     - Space
@@ -53,9 +53,9 @@ layers:
     - NAV
     - {type: ghost}
   NUM:
+    - [F7, F5, F3, F1, F9, F8, F10, F2, F4, F6]
     - ['7', '5', '3', '1', '9', '8', '0', '2' , '4', '6' ]
-    - [Gui, Alt, Ctrl, Shift, F11, F12, null, Vol- , Vol+, Mute]
-    - [F7, F5, F3, F1, F9, F8, F10, F2 , F4, F6]
+    - [Mute, Vol-, Vol+, Next, Play Pause, F11, F12, {h: '(', t: ','} , {h: ')', t: '.'}, {h: '_', t: '-'}]
     - {type: ghost}
     - {type: held}
     - null
@@ -82,6 +82,5 @@ combos:
   - { p: [6, 7], k: Tab, l: [base_QWERTY] }
   - { p: [22, 23], k: Enter, l: [base_QWERTY] }
   - { p: [26, 27], k: Bksp, l: [base_QWERTY] }
-  - { p: [27, 28], k: Del, l: [base_QWERTY] }
 draw_config:
   small_pad: 6

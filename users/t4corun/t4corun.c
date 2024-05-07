@@ -43,33 +43,51 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
 
     case KC_BSPC: {
       //https://docs.qmk.fm/#/feature_advanced_keycodes?id=shift-backspace-for-delete
+
+      // Initialize a boolean variable that keeps track
+      // of the delete key status: registered or not?
       static bool delkey_registered = false;
+
       if (record->event.pressed) {
-        // Detect the activation of either shift keys
+
         uint8_t current_mod = get_mods();
         uint8_t current_osm = get_oneshot_mods();
 
+        // Detect the activation of either shift keys
         if ((current_mod | current_osm) & MOD_MASK_SHIFT) {
+
+          // First temporarily canceling both shifts so that
+          // shift isn't applied to the KC_DEL keycode
           del_mods(MOD_MASK_SHIFT);
           del_oneshot_mods(MOD_MASK_SHIFT);
+
+          // Press delete and keep track that key press
           register_code(KC_DEL);
           delkey_registered = true;
+
+          // Reapplying modifier state so that the held shift key(s)
+          // still work even after having tapped the Backspace/Delete key
           set_mods(current_mod);
           set_oneshot_mods(current_osm);
+
           return false;
+
         }
-  
-      } else {
+
+      } else { // on release of KC_BSPC
 
         if(delkey_registered) {
+
           unregister_code(KC_DEL);
           delkey_registered = false;
           return false;
+
         }
-        
+
       }
-      
+
       // QMK will process Backspace instead
+      // if the shift modifier is not detected
       return true;
     }
 
