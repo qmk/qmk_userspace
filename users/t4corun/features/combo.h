@@ -15,7 +15,6 @@ const uint16_t PROGMEM mou_drg_combo[]  = { KC_X,    KC_C,    COMBO_END };
 const uint16_t PROGMEM key_ent_combo[]  = { KC_C,    KC_V,    COMBO_END };
 const uint16_t PROGMEM key_tab_combo[]  = { KC_U,    KC_I,    COMBO_END };
 const uint16_t PROGMEM key_bspc_combo[] = { KC_M,    TR_COMM, COMBO_END };
-const uint16_t PROGMEM key_del_combo[]  = { TR_COMM, TR_DOT,  COMBO_END };
 
 
 
@@ -33,7 +32,6 @@ enum combos {
   KEY_ENT,
   KEY_TAB,
   KEY_BSPC,
-  KEY_DEL,
 
   COMBO_LENGTH
 };
@@ -56,7 +54,6 @@ combo_t key_combos[COMBO_LENGTH] = {
 
   [KEY_ENT]      = COMBO(key_ent_combo,  KC_ENT),
   [KEY_TAB]      = COMBO(key_tab_combo,  KC_TAB),
-  [KEY_BSPC]     = COMBO(key_bspc_combo, KC_BSPC),
-  [KEY_DEL]      = COMBO(key_del_combo,  KC_DEL)
+  [KEY_BSPC]     = COMBO(key_bspc_combo, KC_BSPC)
 
 };

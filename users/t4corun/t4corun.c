@@ -53,7 +53,8 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
           del_mods(MOD_MASK_SHIFT);
           register_code(KC_DEL);
           delkey_registered = true;
-          set_mods((current_mod | current_osm));
+          set_mods(current_mod);
+          set_oneshot_mods(current_osm);
           return false;
         }
   
