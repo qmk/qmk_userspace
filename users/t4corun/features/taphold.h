@@ -31,6 +31,7 @@ bool process_tap_hold_key(keyrecord_t* record, uint16_t keycode);
 #define TAPHOLD_PERC KC_PERC, KC_CIRC
 #define TAPHOLD_EXLM KC_EXLM, KC_DLR
 #define TAPHOLD_AT   KC_AT,   KC_AMPR
+#define TAPHOLD_ASTR KC_ASTR, KC_QUES
 
 // auto shift
 #define TAPHOLD_MINS KC_MINS, KC_UNDS

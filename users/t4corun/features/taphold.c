@@ -76,7 +76,10 @@ bool process_tap_hold_key(keyrecord_t* record, uint16_t keycode) {
         break;
       case TR_AT:
         single_tap(TAPHOLD_AT, isHold);
-        break; 
+        break;
+      case TR_ASTR:
+        single_tap(TAPHOLD_ASTR, isHold);
+        break;
       case TR_MINS:
         single_tap(TAPHOLD_MINS, isHold);
         break;
@@ -144,6 +147,9 @@ bool process_tap_hold_key(keyrecord_t* record, uint16_t keycode) {
         break;
       case TR_AT:
         single_tap(TAPHOLD_AT, isHold);
+        break;
+      case TR_ASTR:
+        single_tap(TAPHOLD_ASTR, isHold);
         break;
 
       // simulates auto-shift

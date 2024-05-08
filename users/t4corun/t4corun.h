@@ -31,6 +31,7 @@ enum keycodes {
   TH_PERC,
   TH_EXLM,
   TH_AT,
+  TH_ASTR,
 
   TH_MINS,
   TH_GRV,
@@ -94,6 +95,7 @@ enum keycodes {
 #define TR_PERC  LT(_DEFAULT_LAYER_1, TH_PERC)
 #define TR_EXLM  LT(_DEFAULT_LAYER_1, TH_EXLM)
 #define TR_AT    LT(_DEFAULT_LAYER_1, TH_AT)
+#define TR_ASTR  LT(_DEFAULT_LAYER_1, TH_ASTR)
 
 #define TR_MINS  LT(_DEFAULT_LAYER_1, TH_MINS) // auto shift
 #define TR_GRV   LT(_DEFAULT_LAYER_1, TH_GRV)
@@ -191,7 +193,7 @@ enum keycodes {
 
 #define LAYER_SYMBOL                                                                        \
   KC_ESC,  KC_BTN3, KC_BTN2, KC_BTN1, TR_GRV,  TR_EQL,  KC_HASH, TR_LABK, KC_RABK, TR_PERC, \
-  _GACS_MODS________________________, TR_SCLN, TR_AT,   KC_ASTR, TR_LBRC, KC_RBRC, TR_SQUO, \
+  _GACS_MODS________________________, TR_SCLN, TR_AT,   TR_ASTR, TR_LBRC, KC_RBRC, TR_SQUO, \
   _UCCPR_L___________________________________, TR_BSLS, TR_SLSH, TR_LPRN, KC_RPRN, TR_MINS, \
                     _LAYER_TRANS_____________, TR_EXLM, _______, ___x___
 
