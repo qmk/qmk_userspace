@@ -14,7 +14,7 @@ const uint16_t PROGMEM mou_drg_combo[]  = { KC_X,    KC_C,    COMBO_END };
 
 const uint16_t PROGMEM key_ent_combo[]  = { KC_C,    KC_V,    COMBO_END };
 const uint16_t PROGMEM key_tab_combo[]  = { KC_U,    KC_I,    COMBO_END };
-const uint16_t PROGMEM key_bspc_combo[] = { KC_M,    KC_COMM, COMBO_END };
+const uint16_t PROGMEM key_bspc_combo[] = { KC_M,    TR_COMM, COMBO_END };
 
 
 
