@@ -8,8 +8,6 @@ const key_override_t at_sym_override     = ko_make_basic(MOD_MASK_SHIFT, KC_AT, 
 const key_override_t exlm_sym_override   = ko_make_basic(MOD_MASK_SHIFT, KC_EXLM, KC_DLR);
 const key_override_t perc_sym_override   = ko_make_basic(MOD_MASK_SHIFT, KC_PERC, KC_CIRC);
 
-,
-
 const key_override_t **key_overrides = (const key_override_t *[]){
 
   &delete_override,
