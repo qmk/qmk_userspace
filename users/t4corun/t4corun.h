@@ -26,7 +26,7 @@ enum keycodes {
   TH_BSLS,
   TH_SLSH,
 
-/*  TH_COMM,
+  TH_COMM,
   TH_DOT,
   TH_PERC,
   TH_EXLM,
@@ -35,7 +35,7 @@ enum keycodes {
   TH_MINS,
   TH_GRV,
   TH_SCLN,
-  TH_QUOT, */
+  TH_QUOT,
 
   PN_DRGS,
   PN_PDPI,
@@ -78,7 +78,7 @@ enum keycodes {
 #define TR_LGUI OSM(MOD_LGUI)
 
 
-//tap hoLd. These will be intercepted and overridden. The LT will be ignored
+// tap hoLd. These will be intercepted and overridden. The LT will be ignored
 #define TR_LCBR  LT(_DEFAULT_LAYER_1, TH_LCBR) // bracket behvavior
 #define TR_LABK  LT(_DEFAULT_LAYER_1, TH_LABK)
 #define TR_LBRC  LT(_DEFAULT_LAYER_1, TH_LBRC)
@@ -89,17 +89,16 @@ enum keycodes {
 #define TR_BSLS  LT(_DEFAULT_LAYER_1, TH_BSLS)
 #define TR_SLSH  LT(_DEFAULT_LAYER_1, TH_SLSH)
 
-//#define TR_COMM  LT(_DEFAULT_LAYER_1, TH_COMM) // custom behavior
-//#define TR_DOT   LT(_DEFAULT_LAYER_1, TH_DOT)
-//#define TR_PERC  LT(_DEFAULT_LAYER_1, TH_PERC)
-//#define TR_EXLM  LT(_DEFAULT_LAYER_1, TH_EXLM)
-//#define TR_AT    LT(_DEFAULT_LAYER_1, TH_AT)
+#define TR_COMM  LT(_DEFAULT_LAYER_1, TH_COMM) // custom behavior
+#define TR_DOT   LT(_DEFAULT_LAYER_1, TH_DOT)
+#define TR_PERC  LT(_DEFAULT_LAYER_1, TH_PERC)
+#define TR_EXLM  LT(_DEFAULT_LAYER_1, TH_EXLM)
+#define TR_AT    LT(_DEFAULT_LAYER_1, TH_AT)
 
-  // basically auto shift
-//#define TR_MINS  LT(_DEFAULT_LAYER_1, TH_MINS)
-//#define TR_GRV   LT(_DEFAULT_LAYER_1, TH_GRV)
-//#define TR_SCLN  LT(_DEFAULT_LAYER_1, TH_SCLN)
-//#define TR_QUOT  LT(_DEFAULT_LAYER_1, TH_QUOT)
+#define TR_MINS  LT(_DEFAULT_LAYER_1, TH_MINS) // auto shift
+#define TR_GRV   LT(_DEFAULT_LAYER_1, TH_GRV)
+#define TR_SCLN  LT(_DEFAULT_LAYER_1, TH_SCLN)
+#define TR_QUOT  LT(_DEFAULT_LAYER_1, TH_QUOT)
 
 
 #if defined(KEYBOARD_bastardkb_charybdis_3x5)
@@ -164,15 +163,15 @@ enum keycodes {
 
 #define LAYER_QWERTY                                                                        \
   KC_Q,    KC_W,    KC_E,    KC_R,    KC_T,    KC_Y,    KC_U,    KC_I,    KC_O,    KC_P,    \
-  KC_A,    KC_S,    KC_D,    KC_F,    KC_G,    KC_H,    KC_J,    KC_K,    KC_L,    KC_QUOT, \
-  KC_Z,    KC_X,    KC_C,    KC_V,    KC_B,    KC_N,    KC_M,    KC_COMM, KC_DOT,  KC_MINS, \
+  KC_A,    KC_S,    KC_D,    KC_F,    KC_G,    KC_H,    KC_J,    KC_K,    KC_L,    TR_QUOT, \
+  KC_Z,    KC_X,    KC_C,    KC_V,    KC_B,    KC_N,    KC_M,    TR_COMM, TR_DOT,  TR_MINS, \
                     _BASE_L4_________________, _BASE_R4_________________
 
 
 #define LAYER_COLEMAK_DH                                                                    \
-  KC_Q,    KC_W,    KC_F,    KC_P,    KC_B,    KC_J,    KC_L,    KC_U,    KC_Y,    KC_QUOT, \
+  KC_Q,    KC_W,    KC_F,    KC_P,    KC_B,    KC_J,    KC_L,    KC_U,    KC_Y,    TR_QUOT, \
   KC_A,    KC_R,    KC_S,    KC_T,    KC_G,    KC_M,    KC_N,    KC_E,    KC_I,    KC_O,    \
-  KC_Z,    KC_X,    KC_C,    KC_D,    KC_V,    KC_K,    KC_H,    KC_COMM, KC_DOT,  KC_MINS, \
+  KC_Z,    KC_X,    KC_C,    KC_D,    KC_V,    KC_K,    KC_H,    TR_COMM, TR_DOT,  TR_MINS, \
                     _BASE_L4_________________, _BASE_R4_________________
 
 
@@ -191,16 +190,16 @@ enum keycodes {
 
 
 #define LAYER_SYMBOL                                                                        \
-  KC_ESC,  KC_BTN3, KC_BTN2, KC_BTN1, KC_GRV,  TR_EQL,  KC_HASH, TR_LABK, KC_RABK, KC_PERC, \
-  _GACS_MODS________________________, KC_SCLN, KC_AT,   KC_ASTR, TR_LBRC, KC_RBRC, TR_SQUO, \
-  _UCCPR_L___________________________________, TR_BSLS, TR_SLSH, TR_LPRN, KC_RPRN, KC_MINS, \
-                    _LAYER_TRANS_____________, KC_EXLM, _______, ___x___
+  KC_ESC,  KC_BTN3, KC_BTN2, KC_BTN1, TR_GRV,  TR_EQL,  KC_HASH, TR_LABK, KC_RABK, TR_PERC, \
+  _GACS_MODS________________________, TR_SCLN, TR_AT,   KC_ASTR, TR_LBRC, KC_RBRC, TR_SQUO, \
+  _UCCPR_L___________________________________, TR_BSLS, TR_SLSH, TR_LPRN, KC_RPRN, TR_MINS, \
+                    _LAYER_TRANS_____________, TR_EXLM, _______, ___x___
 
 
 #define LAYER_NUMBER                                                                        \
   KC_F7,   KC_F5,   KC_F3,   KC_F1,   KC_F9,   KC_F8,   KC_F10,  KC_F2,   KC_F4,   KC_F6,   \
   KC_7,    KC_5,    KC_3,    KC_1,    KC_9,    KC_8,    KC_0,    KC_2,    KC_4,    KC_6,    \
-  KC_MUTE, KC_VOLD, KC_VOLU, KC_MNXT, KC_MPLY, KC_F11,  KC_F12,  KC_COMM, KC_DOT,  KC_MINS, \
+  KC_MUTE, KC_VOLD, KC_VOLU, KC_MNXT, KC_MPLY, KC_F11,  KC_F12,  TR_COMM, TR_DOT,  TR_MINS, \
                     _LAYER_TRANS_____________, _LAYER_TRANS_____________
 
 
