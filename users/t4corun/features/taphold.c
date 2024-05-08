@@ -62,13 +62,13 @@ bool process_tap_hold_key(keyrecord_t* record, uint16_t keycode) {
       case TR_SLSH:
         single_tap(TAPHOLD_SLSH, isHold);
         break;
-      case TR_COMM:
+/*    case TR_COMM:
         single_tap(TAPHOLD_COMM, isHold);
         break;
       case TR_DOT:
         single_tap(TAPHOLD_DOT, isHold);
         break;
-/*      case TR_PERC:
+      case TR_PERC:
         single_tap(TAPHOLD_PERC, isHold);
         break;
       case TR_EXLM:
@@ -76,7 +76,7 @@ bool process_tap_hold_key(keyrecord_t* record, uint16_t keycode) {
         break;
       case TR_AT:
         single_tap(TAPHOLD_AT, isHold);
-        break; */
+        break; 
       case TR_MINS:
         single_tap(TAPHOLD_MINS, isHold);
         break;
@@ -88,7 +88,7 @@ bool process_tap_hold_key(keyrecord_t* record, uint16_t keycode) {
         break;
       case TR_QUOT:
         single_tap(TAPHOLD_QUOT, isHold);
-        break;
+        break;*/
 
     }
 
@@ -130,13 +130,13 @@ bool process_tap_hold_key(keyrecord_t* record, uint16_t keycode) {
         break;
 
       //custom action
-      case TR_COMM:
+/*    case TR_COMM:
         single_tap(TAPHOLD_COMM, isHold);
         break;
       case TR_DOT:
         single_tap(TAPHOLD_DOT, isHold);
         break;
-/*      case TR_PERC:
+      case TR_PERC:
         single_tap(TAPHOLD_PERC, isHold);
         break;
       case TR_EXLM:
@@ -145,7 +145,7 @@ bool process_tap_hold_key(keyrecord_t* record, uint16_t keycode) {
       case TR_AT:
         single_tap(TAPHOLD_AT, isHold);
         break;
-*/
+
       //simulates auto-shift
       case TR_MINS:
         single_tap(TAPHOLD_MINS, isHold);
@@ -159,6 +159,7 @@ bool process_tap_hold_key(keyrecord_t* record, uint16_t keycode) {
       case TR_QUOT:
         single_tap(TAPHOLD_QUOT, isHold);
         break;
+*/
     }
 
     return false;

@@ -26,16 +26,16 @@ bool process_tap_hold_key(keyrecord_t* record, uint16_t keycode);
 #define TAPHOLD_SLSH KC_SLSH, KC_SLSH
 
 //Custom: things like overriding default shifted key
-#define TAPHOLD_COMM KC_COMM, KC_LPRN
-#define TAPHOLD_DOT  KC_DOT,  KC_RPRN
+//#define TAPHOLD_COMM KC_COMM, KC_LPRN
+//#define TAPHOLD_DOT  KC_DOT,  KC_RPRN
 //#define TAPHOLD_PERC KC_PERC, KC_CIRC
 //#define TAPHOLD_EXLM KC_EXLM, KC_DLR
 //#define TAPHOLD_AT   KC_AT,   KC_AMPR
 
 //auto shift
-#define TAPHOLD_MINS KC_MINS, KC_UNDS
-#define TAPHOLD_GRV  KC_GRV,  KC_TILD
-#define TAPHOLD_SCLN KC_SCLN, KC_COLN
-#define TAPHOLD_QUOT KC_QUOT, KC_DQUO
+//#define TAPHOLD_MINS KC_MINS, KC_UNDS
+//#define TAPHOLD_GRV  KC_GRV,  KC_TILD
+//#define TAPHOLD_SCLN KC_SCLN, KC_COLN
+//#define TAPHOLD_QUOT KC_QUOT, KC_DQUO
 
 
