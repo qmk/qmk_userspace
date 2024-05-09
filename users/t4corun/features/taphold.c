@@ -120,7 +120,6 @@ bool process_tap_hold_key(keyrecord_t* record, uint16_t keycode) {
         insert_brackets(TAPHOLD_SQUO, WAIT_DELAY);
         break;
 
-
       // double tap
       case TR_EQL:
         double_tap(TAPHOLD_EQL, WAIT_DELAY);

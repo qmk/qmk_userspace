@@ -80,7 +80,7 @@ enum keycodes {
 
 
 // tap hoLd. These will be intercepted and overridden. The LT will be ignored
-#define TR_LCBR  LT(_DEFAULT_LAYER_1, TH_LCBR) // bracket behvavior
+#define TR_LCBR  LT(_DEFAULT_LAYER_1, TH_LCBR) // bracket behavior
 #define TR_LABK  LT(_DEFAULT_LAYER_1, TH_LABK)
 #define TR_LBRC  LT(_DEFAULT_LAYER_1, TH_LBRC)
 #define TR_LPRN  LT(_DEFAULT_LAYER_1, TH_LPRN)
