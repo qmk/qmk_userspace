@@ -32,15 +32,17 @@ AUDIO_ENABLE = no
 CAPS_WORD_ENABLE = yes
 MOUSEKEY_ENABLE = yes
 COMBO_ENABLE = yes
+KEY_OVERRIDE_ENABLE = yes
 
 # ---------------------------------------------------------
 # include my code that will be common across all my keyboards
 
-SRC +=                  \
-	t4corun.c           \
-	features/tapping.c  \
-	features/taphold.c  \
-	features/capsword.c \
+SRC +=                     \
+	t4corun.c              \
+	features/tapping.c     \
+	features/taphold.c     \
+	features/capsword.c    \
+	features/keyoverride.c \
 
 INTROSPECTION_KEYMAP_C += features/combo.c
 
