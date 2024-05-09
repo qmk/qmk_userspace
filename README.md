@@ -50,7 +50,7 @@ Caps Word enables temporary all-caps typing without holding shift. Useful to typ
 
 ### Tap-Holds
 
-Certain keys have different behaviors when held vs tapped allowing commonly typed characters or auto-shifting certain keycodes
+Certain keys have different behaviors when held vs tapped allowing commonly typed programming syntax or shifting certain keycodes without actually pressing/holding shift
 
 | Keycode   | When tapped | When held               | Comments                          |
 | --------- | ----------- | ----------------------- | --------------------------------- |
@@ -64,14 +64,29 @@ Certain keys have different behaviors when held vs tapped allowing commonly type
 | `TR_DOT`  | `.`         | `)`                     |                                   |
 | `TR_PERC` | `%`         | `^`                     |                                   |
 | `TR_MINS` | `-`         | `_`                     |                                   |
-| `TR_GRV`  | `           | `~`                     |                                   |
+| `TR_GRV`  | `backtick`  | `~`                     |                                   |
 | `TR_SCLN` | `;`         | `:`                     |                                   |
 | `TR_QUOT` | `'`         | `"`                     |                                   |
 | `TR_AT`   | `@`         | `&`                     |                                   |
+| `TR_EXLM` | `!`         | `$`                     |                                   |
+
+Opted to implement overrides here instead of using built-in Key Override functionality because
+
+- Not required to press/hold shift to get the alternate key
+- Key Overrides would enable holding to repeat keycodes but hard to justify that for the symbols, even for programming
 
 ### Combos
 
 Enables additional keys to be mapped by pressing multiple keys simultaneously. Primarily used to implement mouse buttons and make important keys (enter, backspace, etc) available on base layer
+
+### Key Overrides
+
+Primarily used to minimize the layout
+
+| Keycode   | Shift Mod Applied | Comment                                |
+| --------- | ----------------- | -------------------------------------- |
+| `KC_BSPC` | `KC_DEL`          | Implemented to reduce amount of combos |
+| `KC_MNXT` | `KC_MPRV`         |                                        |
 
 ### Mouse Keys
 

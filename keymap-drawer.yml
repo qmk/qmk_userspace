@@ -44,12 +44,12 @@ layers:
     - {t: Mute, type: ghost}
   SYM:
     - [Esc, Mouse 3, Mouse 2, Mouse 1, {h: '~', t: '`'}, {h: '==', t: '='}, '#', {h: '<>', t: '<'}, '>', {h: '^', t: '%'}]
-    - [Gui, Alt, Ctrl, Shift, {h: ':', t: ';'}, {h: '&', t: '@'}, '*', {h: '[]', t: '['}, ']', {h: '''''', t: ''''}]
+    - [Gui, Alt, Ctrl, Shift, {h: ':', t: ';'}, {h: '&', t: '@'}, {h: '*', t: '?'}, {h: '[]', t: '['}, ']', {h: '''''', t: ''''}]
     - [Undo, Cut, Copy, Paste, Redo, {h: '\\', t: "\\"}, {h: '//', t: '/'}, {h: '()', t: '('}, ')', {h: '_', t: '-'}]
     - {type: ghost}
     - {type: held}
     - null
-    - null
+    - {h: '$', t: '!'}
     - NAV
     - {type: ghost}
   NUM:
