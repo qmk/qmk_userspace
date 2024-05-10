@@ -38,9 +38,13 @@ Hold both thumb momentary layer keys `NAVIGATION` and `NUMBER` to access the `SY
 
 One Shot Mods is here to minimize holding, simplify layers, and avoid misfires from having Home Row Mods. Here we have bi-lateral(ish) GACS mods.
 
+### Mouse Keys
+
+This layout is designed to be used with a Ploopy Nano. Mouse buttons and scroll wheel is handled on the keyboard side via combos. There are macros with the host status (Caps lock, Num Lock) to toggle Ploopy Nano settings and switch to drag scrolling (simulates scroll wheel)
+
 ### Caps Word
 
-Caps Word enables temporary all-caps typing without holding shift. Useful to typing programming variables. Tap `shift`  twice to enable Caps Word. It cancels when any key is pressed except
+Caps Word enables temporary all-caps typing without holding shift. Useful to typing programming variables. Tap `shift` twice to enable Caps Word. It cancels when any key is pressed except
 
 - `numbers 0-9`
 - `backspace`
@@ -74,20 +78,32 @@ Opted to implement overrides here instead of using built-in Key Override functio
 
 ### Combos
 
-Enables additional keys to be mapped by pressing multiple keys simultaneously. Primarily used to implement mouse buttons and make important keys (enter, backspace, etc) available on base layer
+Enables additional keys to be mapped by pressing multiple keys simultaneously. Primarily used to implement mouse buttons and make important keys (tab, backspace, etc) available on base layer. Combos are mapped based on the QWERTY layout but will work on any layer*. All Combos are disabled when `CONFIG` layer is active
+
+| Combo         | Result               | Comment                                           |
+| ------------- | -------------------- | ------------------------------------------------- |
+| `D` + `F`     | `Mouse Button 1`     | Left click. Mouse buttons only work on base layer |
+| `S` + `D`     | `Mouse Button 2`     | RIght click                                       |
+| `F` + `G`     | `Mouse Button 3`     | Middle click                                      |
+| `R` + `F`     | `Mouse Button 4`     | Back                                              |
+| `T` + `G`     | `Mouse Button 5`     | Forward                                           |
+| `T` + `G`     | `Drag Scroll Toggle` |                                                   |
+| `C` + `V`     | `Enter`              | Disabled on `SYMBOL` layer                        |
+| `U` + `I`     | `Tab`                | Disabled on `SYMBOL` layer                        |
+| `M` + `Comma` | `Backspace`          |                                                   |
 
 ### Key Overrides
 
-Primarily used to minimize the layout
+Enables us to customize the result of applying certain mods to keycodes. For example, Shift + Backspace will give Delete. Primarily used to minimize the number of layers required and the layout itself
 
-| Keycode   | Shift Mod Applied | Comment                                |
-| --------- | ----------------- | -------------------------------------- |
-| `KC_BSPC` | `KC_DEL`          | Implemented to reduce amount of combos |
-| `KC_MNXT` | `KC_MPRV`         |                                        |
-
-### Mouse Keys
-
-This layout is designed to be used with a Ploopy Nano. Mouse buttons and scroll wheel is handled on the keyboard side. There are macros with the host status (Caps lock, Num Lock) to toggle Ploopy Nano settings or change the tracking to simulate a scroll wheel
+| Shortcut                | Result      | Comment                                                                       |
+| ----------------------- | ----------- | ----------------------------------------------------------------------------- |
+| `Shift` + `Backspace`   | `Delete`    | Backspace is a combo. There are no dedicated backspace and delete keys mapped |
+| `Shift` + `Next Song`   | `Prev Song` | Only works on `NAVIGATION` layer                                              |
+| `Meh` + `numbers 1...9` | `F1...F9`   | Only works on `NUMBER` layer. Meh is Shift + Ctrl + Alt.                      |
+| `Meh` + `Comma`         | `F10`       | Only works on `NUMBER` layer                                                  |
+| `Meh` + `Dot`           | `F11`       | Only works on `NUMBER` layer                                                  |
+| `Meh` + `Minus`         | `F12`       | Only works on `NUMBER` layer                                                  |
 
 ## Optional Features
 

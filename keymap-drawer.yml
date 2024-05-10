@@ -45,7 +45,7 @@ layers:
   NUM:
     - [Esc, Mouse 3, Mouse 2, Mouse 1, Print Screen, null, "7", "8" ,"9", {s: "<", t: ","} ]
     - [Gui, Alt, Ctrl, Shift, null, null, "4", "5" ,"6", {s: ">", t: "."}]
-    - [Undo, Cut, Copy, Paste, Redo, null, "1", "2" ,"3", {h: "_", t: "-"}]
+    - [Undo, Cut, Copy, Paste, Redo, null, "1", "2" ,"3", {s: "_", t: "-"}]
     - {type: ghost}
     - {type: held}
     - null

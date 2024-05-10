@@ -11,7 +11,6 @@ enum layers {
   _NAVIGATION,
   _NUMBER,
   _SYMBOL,
-  //_FUNCTION,
   _CONFIG
 };
 
@@ -51,7 +50,6 @@ enum keycodes {
 #define NAV        MO(_NAVIGATION)
 #define NAV_0      LT(_NAVIGATION, KC_0)
 #define NUM        MO(_NUMBER)
-//f#define FUNC       MO(_FUNCTION)
 #define CONFIG     MO(_CONFIG)
 
 // Windows Shortcuts
@@ -64,8 +62,8 @@ enum keycodes {
 #define SC_FILE    LGUI(KC_E)
 
 // Zoom for encoders
-#define ZOOMIN     LCTL(LSFT(KC_EQL))
-#define ZOOMOUT    LCTL(KC_MINS)
+#define ZOOMIN     LCTL(KC_WH_U)
+#define ZOOMOUT    LCTL(KC_WH_D)
 #define ZOOMRST    LCTL(KC_0)
 
 /*
@@ -107,6 +105,7 @@ enum keycodes {
 #define TR_SCLN  LT(_DEFAULT_LAYER_1, TH_SCLN)
 #define TR_QUOT  LT(_DEFAULT_LAYER_1, TH_QUOT)
 
+// Tells the process_tap_hold_key what kind of hold action is wanted
 #define HOLD_SINGLETP 0
 #define HOLD_DOUBLETP 1
 #define HOLD_BRACKETS 2
@@ -204,7 +203,7 @@ enum keycodes {
 #define LAYER_NUMBER                                                                        \
   KC_ESC,  KC_BTN3, KC_BTN2, KC_BTN1, KC_PSCR, ___x___, KC_7,    KC_8,    KC_9,    KC_COMM, \
   _GACS_MODS________________________, ___x___, ___x___, KC_4,    KC_5,    KC_6,    KC_DOT,  \
-  _UCCPR_L___________________________________, ___x___, KC_1,    KC_2,    KC_3,    TR_MINS, \
+  _UCCPR_L___________________________________, ___x___, KC_1,    KC_2,    KC_3,    KC_MINS, \
                     _LAYER_TRANS_____________, _BASE_R4_ZERO____________
 
 
@@ -214,27 +213,9 @@ enum keycodes {
   ___x___, TR_LABK, KC_RABK, TR_BSLS, TR_PIPE, KC_DLR,  TR_SLSH, TR_LPRN, KC_RPRN, TR_MINS, \
                     _LAYER_TRANS_____________, _LAYER_TRANS_____________
 
-/*
-#define LAYER_FUNCTION                                                                      \
-  _NONE_5____________________________________, ___x___, KC_F7,   KC_F8,   KC_F9,   KC_F10,  \
-  ___x___, ___x___, ___x___, ___x___, _______, KC_CAPS, KC_F4,   KC_F5,   KC_F6,   KC_F11,  \
-  _NONE_5____________________________________, ___x___, KC_F1,   KC_F2,   KC_F3,   KC_F12,  \
-                    _LAYER_TRANS_____________, _NONE_3__________________
-*/
 
 #define LAYER_CONFIG                                                                        \
   _NONE_5____________________________________, ___x___, ___x___, EE_CLR,  QK_BOOT, _______, \
   _NONE_5____________________________________, ___x___, TR_LSFT, ___x___, ___x___, TR_RMOD, \
   _NONE_5____________________________________, TR_RTOG, TR_RHUI, TR_RSAI, TR_RVAI, TR_RSPI, \
                     BASELYR, ___x___, ___x___, TR_DMP1, TR_DMR1, TR_RTOG
-
-
-/*
-If I was going to combine number and symbols together, it'd look like this
-
-#define LAYER_NUMBER \
-  ___x___, SC_SNIP, SC_FILE, TR_LABK, KC_RABK, TR_LBRC, KC_7,    KC_8,    KC_9,    KC_RBRC, \
-  _GACS_MODS________________________, TR_GRV,  TR_SCLN, KC_4,    KC_5,    KC_6,    TR_EQL,  \
-  _UCCPR_L___________________________________, KC_SLSH, KC_1,    KC_2,    KC_3,    KC_BSLS, \
-                    _LAYER_TRANS_____________, KC_SPC,  NAV_0,   ___x___
-*/
