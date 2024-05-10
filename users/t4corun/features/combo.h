@@ -34,6 +34,7 @@ enum combos {
   KEY_BSPC,
 
   COMBO_LENGTH
+
 };
 
 

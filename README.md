@@ -4,11 +4,10 @@ My userspace for building QMK firmware via GitHub Actions. This does not require
 
 ## Layout
 
-The custom layout optimizes for programming (SQL, Powershell, C) and minimizes holds for comfort. It started from [Manna Harbor Miryoku](https://github.com/manna-harbour/miryoku), took heavy influence from [Jonas Hietala T-34](https://www.jonashietala.se/series/t-34/), and trying to achieve [Callum's Minimal Layout](https://github.com/qmk/qmk_firmware/tree/user-keymaps-still-present/users/callum). The keymap designed for split 3x5, two thumbs keys, dual encoders, and combined with a Ploopy Nano trackball mouse. Design themes:
+The custom layout optimizes for programming (SQL, Powershell, C) and minimizes holds for comfort. It started from [Manna Harbor Miryoku](https://github.com/manna-harbour/miryoku) and took heavy influence from [Jonas Hietala T-34](https://www.jonashietala.se/series/t-34/). The keymap designed for split 3x5, two thumbs keys, dual encoders, and combined with a Ploopy Nano trackball mouse. Design themes:
 
 - Releasing all keys always brings you back to base layer
-- Keeping certain keys consistent on all layers for better muscle memory
-- Numbers and function keys are positioned similarly
+- Patterns to layout design to reduce learning curve (e.g., Shortcuts in same place on multiple layers)
 - Symbols important for powershell / writing are positioned under stronger fingers
 - Game keymap that doesn't require massive game key bind changes. Tested on Resident Evil 4 Remake
 
@@ -33,11 +32,11 @@ In this userspace, the base split 3x5_3 layout can be adapted for other split ke
 
 ### Tri-Layer
 
-Hold both thumb momentary layer keys `NAVIGATION` and `SYMBOL` to access the `NUMBER` layer
+Hold both thumb momentary layer keys `NAVIGATION` and `NUMBER` to access the `SYMBOL` layer
 
 ### One Shot Mods
 
-One Shot Mods is here to minimize holding and simplify layers as mods are not required on every layer. Here we have bi-lateral(ish) GACS mods.
+One Shot Mods is here to minimize holding, simplify layers, and avoid misfires from having Home Row Mods. Here we have bi-lateral(ish) GACS mods.
 
 ### Caps Word
 
@@ -57,23 +56,21 @@ Certain keys have different behaviors when held vs tapped allowing commonly type
 | `TR_LBRC` | `[`         | `[]` with cursor inside |                                   |
 | `TR_LABK` | `<`         | `<>` with cursor inside |                                   |
 | `TR_LPRN` | `(`         | `()` with cursor inside |                                   |
+| `TR_SQUO` | `"`         | `""` with cursor inside |                                   |
 | `TR_SQUO` | `'`         | `''` with cursor inside |                                   |
-| `TR_EQL`  | `=`         | `==`                    |                                   |
-| `TR_EXLM` | `!`         | `$`                     |                                   |
+| `TR_BSLS` | `\`         | `\\`                    |                                   |
+| `TR_SLSH` | `/`         | `//`                    |                                   |
+| `TR_PIPE` | `\|`        | `\|\|`                  |                                   |
 | `TR_COMM` | `,`         | `(`                     | enables parenthesis on base layer |
 | `TR_DOT`  | `.`         | `)`                     |                                   |
 | `TR_PERC` | `%`         | `^`                     |                                   |
+| `TR_EQL`  | `=`         | `+`                     |                                   |
 | `TR_MINS` | `-`         | `_`                     |                                   |
 | `TR_GRV`  | `backtick`  | `~`                     |                                   |
 | `TR_SCLN` | `;`         | `:`                     |                                   |
 | `TR_QUOT` | `'`         | `"`                     |                                   |
-| `TR_AT`   | `@`         | `&`                     |                                   |
-| `TR_EXLM` | `!`         | `$`                     |                                   |
 
-Opted to implement overrides here instead of using built-in Key Override functionality because
-
-- Not required to press/hold shift to get the alternate key
-- Key Overrides would enable holding to repeat keycodes but hard to justify that for the symbols, even for programming
+Opted to implement overrides here instead of using built-in Key Override functionality because this implementation does not require pressing/holding shift to get the alternate key
 
 ### Combos
 

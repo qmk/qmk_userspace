@@ -17,30 +17,24 @@ bool get_combo_must_tap(uint16_t index, combo_t *combo) {
 
     default:
       return false;
+
   }
+
 }
 
 bool combo_should_trigger(uint16_t combo_index, combo_t *combo, uint16_t keycode, keyrecord_t *record) {
 
   // disable all combos on config layer
-  if ( get_highest_layer(layer_state) == _CONFIG ) {
-    return false;
-  }
+  if ( get_highest_layer(layer_state) == _CONFIG ) return false;
 
   switch (combo_index) {
 
     case KEY_ENT:
-      if ( get_highest_layer(layer_state) == _SYMBOL ) {
-        return false;
-      }
-      break;
+      if ( get_highest_layer(layer_state) == _SYMBOL )  return false;
 
     case KEY_TAB:
       if (  get_highest_layer(layer_state) == _NAVIGATION ||
-            get_highest_layer(layer_state) == _SYMBOL ) {
-        return false;
-      }
-      break;
+            get_highest_layer(layer_state) == _SYMBOL ) return false;
 
     case MOUSE_BUTTON1:
     case MOUSE_BUTTON2:
@@ -48,10 +42,7 @@ bool combo_should_trigger(uint16_t combo_index, combo_t *combo, uint16_t keycode
     case MOUSE_BUTTON4:
     case MOUSE_BUTTON5:
     case MOUSE_DRGTOG:
-      if (  get_highest_layer(layer_state) > _DEFAULT_LAYER_1 ) {
-        return false;
-      }
-      break;
+      if ( get_highest_layer(layer_state) > _DEFAULT_LAYER_1 ) return false;
 
   }
 
