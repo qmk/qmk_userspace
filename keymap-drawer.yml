@@ -33,9 +33,9 @@ layers:
     - {h: "NAV", t: "0"}
     - {t: Mute, type: ghost}
   NAV:
-    - [Esc, Home, ▲, End, Page Up, Vol+, Next, Play Pause, null, CONFIG ]
-    - [null, ◄, ▼, ►, Page Down, Vol-, Shift, Ctrl, Alt, Gui ]
-    - [Undo, Cut, Copy, Paste, Redo, Mute, App, Sniper Toggle, Sniper DPI, Pointer DPI ]
+    - [Esc, Home, ▲, End, Page Up, null, null, null, null, CONFIG ]
+    - [null, ◄, ▼, ►, Page Down, null, Shift, Ctrl, Alt, Gui ]
+    - [Undo, Cut, Copy, Paste, Redo, null, App, Sniper Toggle, Sniper DPI, Pointer DPI ]
     - {t: Zoom Reset, type: ghost}
     - NUM
     - Ent
@@ -43,8 +43,8 @@ layers:
     - {type: held}
     - null
   NUM:
-    - [Esc, Mouse 3, Mouse 2, Mouse 1, Print Screen, null, "7", "8" ,"9", {s: "<", t: ","} ]
-    - [Gui, Alt, Ctrl, Shift, null, null, "4", "5" ,"6", {s: ">", t: "."}]
+    - [Esc, Mouse 3, Mouse 2, Mouse 1, {h: "~", t: "`"}, null, "7", "8" ,"9", {s: "<", t: ","} ]
+    - [Gui, Alt, Ctrl, Shift, {h: ":", t: ";"}, null, "4", "5" ,"6", {s: ">", t: "."}]
     - [Undo, Cut, Copy, Paste, Redo, null, "1", "2" ,"3", {s: "_", t: "-"}]
     - {type: ghost}
     - {type: held}
@@ -65,7 +65,7 @@ layers:
   CONFIG:
     - [null, null, null, null, null, null, null, EEPROM Clear, Boot Loader, {type: held}]
     - [null, null, null, null, null, null, Shift, null, null, RGB Mode]
-    - [null, null, null, null, null, RGB Toggle, RGB Hue, RGB Sat, RGB Vib, RGB Spd]
+    - [Mute, Vol-, Vol+, Next Song, Play Pause, RGB Toggle, RGB Hue, RGB Sat, RGB Vib, RGB Spd]
     - {t: Base Layer, type: ghost}
     - null
     - null

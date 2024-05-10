@@ -96,14 +96,16 @@ Enables additional keys to be mapped by pressing multiple keys simultaneously. P
 
 Enables us to customize the result of applying certain mods to keycodes. For example, Shift + Backspace will give Delete. Primarily used to minimize the number of layers required and the layout itself
 
-| Shortcut                | Result      | Comment                                                                       |
-| ----------------------- | ----------- | ----------------------------------------------------------------------------- |
-| `Shift` + `Backspace`   | `Delete`    | Backspace is a combo. There are no dedicated backspace and delete keys mapped |
-| `Shift` + `Next Song`   | `Prev Song` | Only works on `NAVIGATION` layer                                              |
-| `Meh` + `numbers 1...9` | `F1...F9`   | Only works on `NUMBER` layer. Meh is Shift + Ctrl + Alt.                      |
-| `Meh` + `Comma`         | `F10`       | Only works on `NUMBER` layer                                                  |
-| `Meh` + `Dot`           | `F11`       | Only works on `NUMBER` layer                                                  |
-| `Meh` + `Minus`         | `F12`       | Only works on `NUMBER` layer                                                  |
+| Shortcut              | Result               | Comment                                                                       |
+| --------------------- | -------------------- | ----------------------------------------------------------------------------- |
+| `Shift` + `Backspace` | `Delete`             | Backspace is a combo. There are no dedicated backspace and delete keys mapped |
+| `Shift` + `Next Song` | `Prev Song`          | Only works on `NAVIGATION` layer                                              |
+| `Meh` + `1...9`       | `F1...F9`            | Only works on `NUMBER` layer. Meh is Shift + Ctrl + Alt.                      |
+| `Meh` + `Comma`       | `F10`                | Only works on `NUMBER` layer                                                  |
+| `Meh` + `Dot`         | `F11`                | Only works on `NUMBER` layer                                                  |
+| `Meh` + `Minus`       | `F12`                | Only works on `NUMBER` layer                                                  |
+| `Alt` + `Mouse 3`     | `Print Screen`       | Only works on `NUMBER` layer                                                  |
+| `Ctrl` + `Mouse 2`    | `Open File Explorer` | Only works on `NUMBER` layer. Keyboard Shortcut `GUI` + `E`                   |
 
 ## Optional Features
 

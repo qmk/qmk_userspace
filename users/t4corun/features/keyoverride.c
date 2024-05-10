@@ -27,7 +27,11 @@ const key_override_t f8_override         = ko_make_with_layers(MOD_MASK_CSA,   K
 const key_override_t f9_override         = ko_make_with_layers(MOD_MASK_CSA,   KC_9,    KC_F9,   1<<_NUMBER);
 const key_override_t f10_override        = ko_make_with_layers(MOD_MASK_CSA,   KC_COMM, KC_F10,  1<<_NUMBER);
 const key_override_t f11_override        = ko_make_with_layers(MOD_MASK_CSA,   KC_DOT,  KC_F11,  1<<_NUMBER);
-const key_override_t f12_override        = ko_make_with_layers(MOD_MASK_CSA,   TR_MINS, KC_F12,  1<<_NUMBER);
+const key_override_t f12_override        = ko_make_with_layers(MOD_MASK_CSA,   KC_MINS, KC_F12,  1<<_NUMBER);
+
+const key_override_t mb2_override        = ko_make_with_layers(MOD_MASK_ALT,   KC_BTN3, KC_PSCR, 1<<_NUMBER);
+const key_override_t mb3_override        = ko_make_with_layers(MOD_MASK_CTRL,  KC_BTN2, SC_FILE, 1<<_NUMBER);
+
 
 const key_override_t **key_overrides = (const key_override_t *[]) {
 
@@ -45,6 +49,8 @@ const key_override_t **key_overrides = (const key_override_t *[]) {
   &f10_override,
   &f11_override,
   &f12_override,
+  &mb2_override,
+  &mb3_override,
   NULL // Null terminate the array of overrides!
 
 };
