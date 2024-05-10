@@ -104,8 +104,8 @@ Enables us to customize the result of applying certain mods to keycodes. For exa
 | `Meh` + `Comma`       | `F10`                | Only works on `NUMBER` layer                                                  |
 | `Meh` + `Dot`         | `F11`                | Only works on `NUMBER` layer                                                  |
 | `Meh` + `Minus`       | `F12`                | Only works on `NUMBER` layer                                                  |
-| `Alt` + `Mouse 3`     | `Print Screen`       | Only works on `NUMBER` layer                                                  |
-| `Ctrl` + `Mouse 2`    | `Open File Explorer` | Only works on `NUMBER` layer. Keyboard Shortcut `GUI` + `E`                   |
+| `Ctrl` + `Mouse 1`    | `Print Screen`       | Only works on `NUMBER` layer                                                  |
+| `Alt` + `Mouse 2`     | `Open File Explorer` | Only works on `NUMBER` layer. Keyboard Shortcut `GUI` + `E`                   |
 
 ## Optional Features
 
