@@ -50,7 +50,7 @@ enum keycodes {
 // momentary layer
 #define NAV        MO(_NAVIGATION)
 #define NAV_0      LT(_NAVIGATION, KC_0)
-#define SYM        MO(_SYMBOL)
+#define NUM        MO(_NUMBER)
 #define FUNC       MO(_FUNCTION)
 #define CONFIG     MO(_CONFIG)
 
