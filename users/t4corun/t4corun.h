@@ -9,8 +9,9 @@ enum layers {
   _COLEMAK_DH,
   _GAME,
   _NAVIGATION,
-  _SYMBOL,
   _NUMBER,
+  _SYMBOL,
+  _FUNCTION,
   _CONFIG
 };
 
@@ -49,7 +50,9 @@ enum keycodes {
 
 // momentary layer
 #define NAV        MO(_NAVIGATION)
+#define NAV_0      LT(_NAVIGATION, KC_0)
 #define SYM        MO(_SYMBOL)
+#define FUNC       MO(_FUNCTION)
 #define CONFIG     MO(_CONFIG)
 
 // Windows Shortcuts
@@ -80,28 +83,64 @@ enum keycodes {
 
 
 // tap hoLd. These will be intercepted and overridden. The LT will be ignored
-#define TR_LCBR  LT(_DEFAULT_LAYER_1, TH_LCBR) // bracket behavior
+// Brackets: open and close brackets and put the cursor inside
+#define TR_LCBR  LT(_DEFAULT_LAYER_1, TH_LCBR)
 #define TR_LABK  LT(_DEFAULT_LAYER_1, TH_LABK)
-#define TR_LBRC  LT(_DEFAULT_LAYER_1, TH_LBRC)
+#define TR_LBRC  LT(_DEFAULT_LAYER_1, TH_LBRC) //
 #define TR_LPRN  LT(_DEFAULT_LAYER_1, TH_LPRN)
-#define TR_SQUO  LT(_DEFAULT_LAYER_1, TH_SQUO)
+#define TR_DQUO  LT(_DEFAULT_LAYER_1, TH_DQUO)
+#define TR_SQUO  LT(_DEFAULT_LAYER_1, TH_SQUO) 
 
-#define TR_EQL   LT(_DEFAULT_LAYER_1, TH_EQL) // double tap
-#define TR_BSLS  LT(_DEFAULT_LAYER_1, TH_BSLS)
-#define TR_SLSH  LT(_DEFAULT_LAYER_1, TH_SLSH)
+// double tap
+#define TR_BSLS  LT(_DEFAULT_LAYER_1, TH_BSLS) //
+#define TR_SLSH  LT(_DEFAULT_LAYER_1, TH_SLSH) //
+#define TR_PIPE  LT(_DEFAULT_LAYER_1, TH_PIPE)
 
-#define TR_COMM  LT(_DEFAULT_LAYER_1, TH_COMM) // custom behavior
-#define TR_DOT   LT(_DEFAULT_LAYER_1, TH_DOT)
+// Custom override without holding shift
+#define TR_COMM  LT(_DEFAULT_LAYER_1, TH_COMM) //
+#define TR_DOT   LT(_DEFAULT_LAYER_1, TH_DOT)  //
 #define TR_PERC  LT(_DEFAULT_LAYER_1, TH_PERC)
-#define TR_EXLM  LT(_DEFAULT_LAYER_1, TH_EXLM)
-#define TR_AT    LT(_DEFAULT_LAYER_1, TH_AT)
-#define TR_QUES  LT(_DEFAULT_LAYER_1, TH_QUES)
 
-#define TR_MINS  LT(_DEFAULT_LAYER_1, TH_MINS) // auto shift
-#define TR_GRV   LT(_DEFAULT_LAYER_1, TH_GRV)
-#define TR_SCLN  LT(_DEFAULT_LAYER_1, TH_SCLN)
-#define TR_QUOT  LT(_DEFAULT_LAYER_1, TH_QUOT)
+// auto shift
+#define TR_EQL   LT(_DEFAULT_LAYER_1, TH_EQL)  //
+#define TR_MINS  LT(_DEFAULT_LAYER_1, TH_MINS) //
+#define TR_GRV   LT(_DEFAULT_LAYER_1, TH_GRV)  //
+#define TR_SCLN  LT(_DEFAULT_LAYER_1, TH_SCLN) //
+#define TR_QUOT  LT(_DEFAULT_LAYER_1, TH_QUOT) //
 
+#define HOLD_SINGLETP 0
+#define HOLD_DOUBLETP 1
+#define HOLD_BRACKETS 2
+
+/*
+
+// tap hoLd. These will be intercepted and overridden. The LT will be ignored
+// Brackets: open and close brackets and put the cursor inside
+#define TR_LCBR  LT(_DEFAULT_LAYER_1, TH_LCBR)
+#define TR_LABK  LT(_DEFAULT_LAYER_1, TH_LABK)
+#define TR_LBRC  LT(_DEFAULT_LAYER_1, TH_LBRC) //
+#define TR_LPRN  LT(_DEFAULT_LAYER_1, TH_LPRN)
+#define TR_DQUO  LT(_DEFAULT_LAYER_1, TH_DQUO)
+#define TR_SQUO  LT(_DEFAULT_LAYER_1, TH_SQUO) 
+
+// double tap
+#define TR_BSLS  LT(_DEFAULT_LAYER_1, TH_BSLS) //
+#define TR_SLSH  LT(_DEFAULT_LAYER_1, TH_SLSH) //
+#define TR_PIPE  LT(_DEFAULT_LAYER_1, TH_PIPE)
+
+// Custom override without holding shift
+#define TR_COMM  LT(_DEFAULT_LAYER_1, TH_COMM) //
+#define TR_DOT   LT(_DEFAULT_LAYER_1, TH_DOT)  //
+#define TR_PERC  LT(_DEFAULT_LAYER_1, TH_PERC)
+
+// auto shift
+#define TR_EQL   LT(_DEFAULT_LAYER_1, TH_EQL)  //
+#define TR_MINS  LT(_DEFAULT_LAYER_1, TH_MINS) //
+#define TR_GRV   LT(_DEFAULT_LAYER_1, TH_GRV)  //
+#define TR_SCLN  LT(_DEFAULT_LAYER_1, TH_SCLN) //
+#define TR_QUOT  LT(_DEFAULT_LAYER_1, TH_QUOT) //
+
+*/
 
 #if defined(KEYBOARD_bastardkb_charybdis_3x5)
 //these mouse codes are defined in charybdis.h
@@ -156,8 +195,9 @@ enum keycodes {
 #define _SCAG_MODS________________________          TR_LSFT, TR_LCTL, TR_LALT, TR_LGUI
 #define _UCCPR_L___________________________________ SC_UNDO, SC_CUT,  SC_COPY, SC_PAST, SC_REDO
 
-#define _BASE_L4_________________                   ___x___, SYM,     TR_LSFT
+#define _BASE_L4_________________                   ___x___, NUM,     TR_LSFT
 #define _BASE_R4_________________                   KC_SPC,  NAV,     KC_MUTE
+#define _BASE_R4_ZERO____________                   KC_SPC,  NAV_0,   KC_MUTE
 #define _LAYER_TRANS_____________                   ___x___, _______, ___x___
 
 
@@ -185,24 +225,31 @@ enum keycodes {
 
 
 #define LAYER_NAVIGATION                                                                    \
-  ___x___, KC_HOME, KC_UP,   KC_END,  KC_PGUP, ___x___, ___x___, KC_CAPS, KC_PSCR, CONFIG,  \
-  ___x___, KC_LEFT, KC_DOWN, KC_RGHT, KC_PGDN, ___x___, _SCAG_MODS________________________, \
-  _UCCPR_L___________________________________, ___x___, KC_APP,  TR_SNIP, TR_SDPI, TR_PDPI, \
-                    ZOOMRST, SYM,     KC_ENT,  _LAYER_TRANS_____________
-
-
-#define LAYER_SYMBOL                                                                        \
-  KC_ESC,  KC_BTN3, KC_BTN2, KC_BTN1, TR_GRV,  TR_EQL,  KC_HASH, TR_LABK, KC_RABK, TR_PERC, \
-  _GACS_MODS________________________, TR_SCLN, TR_AT,   TR_QUES, TR_LBRC, KC_RBRC, TR_SQUO, \
-  _UCCPR_L___________________________________, TR_BSLS, TR_SLSH, TR_LPRN, KC_RPRN, TR_MINS, \
-                    _LAYER_TRANS_____________, TR_EXLM, _______, ___x___
+  KC_ESC,  KC_HOME, KC_UP,   KC_END,  KC_PGUP, KC_VOLU, KC_MNXT, KC_MPLY, ___x___, CONFIG,  \
+  ___x___, KC_LEFT, KC_DOWN, KC_RGHT, KC_PGDN, KC_VOLD, _SCAG_MODS________________________, \
+  _UCCPR_L___________________________________, KC_MUTE, KC_APP,  TR_SNIP, TR_SDPI, TR_PDPI, \
+                    ZOOMRST, NUM,     KC_ENT,  _LAYER_TRANS_____________
 
 
 #define LAYER_NUMBER                                                                        \
-  KC_F7,   KC_F5,   KC_F3,   KC_F1,   KC_F9,   KC_F8,   KC_F10,  KC_F2,   KC_F4,   KC_F6,   \
-  KC_7,    KC_5,    KC_3,    KC_1,    KC_9,    KC_8,    KC_0,    KC_2,    KC_4,    KC_6,    \
-  KC_MUTE, KC_VOLD, KC_VOLU, KC_MNXT, KC_MPLY, KC_F11,  KC_F12,  TR_COMM, TR_DOT,  TR_MINS, \
+  KC_ESC,  KC_BTN3, KC_BTN2, KC_BTN1, KC_PSCR, ___x___, KC_7,    KC_8,    KC_9,    KC_COMM, \
+  _GACS_MODS________________________, FUNC,    ___x___, KC_4,    KC_5,    KC_6,    KC_DOT,  \
+  _UCCPR_L___________________________________, ___x___, KC_1,    KC_2,    KC_3,    TR_MINS, \
+                    _LAYER_TRANS_____________, _BASE_R4_ZERO____________
+
+
+#define LAYER_SYMBOL                                                                        \
+  ___x___, ___x___, KC_AMPR, TR_PERC, TR_GRV,  TR_EQL,  KC_HASH, KC_ASTR, ___x___, TR_DQUO, \
+  KC_CAPS, TR_LCBR, KC_RCBR, KC_EXLM, TR_SCLN, KC_AT,   KC_QUES, TR_LBRC, KC_RBRC, TR_SQUO, \
+  ___x___, TR_LABK, KC_RABK, KC_BSLS, TR_PIPE, KC_DLR,  KC_SLSH, TR_LPRN, KC_RPRN, TR_MINS, \
                     _LAYER_TRANS_____________, _LAYER_TRANS_____________
+
+
+#define LAYER_FUNCTION                                                                      \
+  _NONE_5____________________________________, ___x___, KC_F7,   KC_F8,   KC_F9,   KC_F10,  \
+  ___x___, ___x___, ___x___, ___x___, _______, KC_CAPS, KC_F4,   KC_F5,   KC_F6,   KC_F11,  \
+  _NONE_5____________________________________, ___x___, KC_F1,   KC_F2,   KC_F3,   KC_F12,  \
+                    _LAYER_TRANS_____________, _NONE_3__________________
 
 
 #define LAYER_CONFIG                                                                        \
@@ -210,6 +257,7 @@ enum keycodes {
   _NONE_5____________________________________, ___x___, TR_LSFT, ___x___, ___x___, TR_RMOD, \
   _NONE_5____________________________________, TR_RTOG, TR_RHUI, TR_RSAI, TR_RVAI, TR_RSPI, \
                     BASELYR, ___x___, ___x___, TR_DMP1, TR_DMR1, TR_RTOG
+
 
 /*
 If I was going to combine number and symbols together, it'd look like this

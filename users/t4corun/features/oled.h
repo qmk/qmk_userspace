@@ -13,8 +13,9 @@
 #define OLED_RENDER_LAYER_NAME        "Layer"
 #define OLED_RENDER_LAYER_BASE        " Def "
 #define OLED_RENDER_LAYER_NAVIGATION  " Nav "
-#define OLED_RENDER_LAYER_SYMBOL      " Sym "
 #define OLED_RENDER_LAYER_NUMBER      " Num "
+#define OLED_RENDER_LAYER_SYMBOL      " Sym "
+#define OLED_RENDER_LAYER_FUNCTION    " Fun "
 #define OLED_RENDER_LAYER_CONFIG      " Cfg "
 
 void              render_crkbd_logo(void);
