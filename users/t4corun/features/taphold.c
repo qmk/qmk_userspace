@@ -51,36 +51,29 @@ bool process_tap_hold_key(keyrecord_t* record, uint16_t tap_keycode, uint16_t ho
 
   // https://getreuer.info/posts/keyboards/triggers/index.html#tap-vs.-long-press
 
-  if ( record->tap.count > 0 ) {
-    // Key is being tapped
 
-    if (record->event.pressed) {
-      // Handle tap press event...
-      register_code16(tap_keycode);
-    
-    } else {
-      // Handle tap release event...
-      unregister_code16(tap_keycode);
+  if ( record->tap.count > 0 ) { // Key is being tapped
+
+    // register on press, unregister on release
+    record->event.pressed ? register_code16(tap_keycode) : unregister_code16(tap_keycode);
+
+  } else { // Key is being held
+
+    switch ( mode ) {
+
+      case HOLD_BRACKETS:
+        insert_brackets(tap_keycode, hold_keycode, WAIT_DELAY);
+        break;
+
+      case HOLD_DOUBLETP:
+        double_tap(tap_keycode, WAIT_DELAY);
+        break;
+
+      default:
+        record->event.pressed ? register_code16(hold_keycode) : unregister_code16(hold_keycode);
+        break;
     }
 
-  } else {
-    // Key is being held
-
-    if (record->event.pressed) {
-      // Handle tap press event...
-      switch ( mode ) {
-        case HOLD_BRACKETS:
-          insert_brackets(tap_keycode, hold_keycode, WAIT_DELAY);
-          break;
-        case HOLD_DOUBLETP:
-          double_tap(tap_keycode, WAIT_DELAY);
-          break;
-        default:
-          single_tap(tap_keycode);
-          break;
-      }
-
-    }
   }
 
   return false;

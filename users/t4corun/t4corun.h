@@ -240,7 +240,7 @@ enum keycodes {
 #define LAYER_SYMBOL                                                                        \
   ___x___, ___x___, KC_AMPR, TR_PERC, TR_GRV,  TR_EQL,  KC_HASH, KC_ASTR, ___x___, TR_DQUO, \
   KC_CAPS, TR_LCBR, KC_RCBR, KC_EXLM, TR_SCLN, KC_AT,   KC_QUES, TR_LBRC, KC_RBRC, TR_SQUO, \
-  ___x___, TR_LABK, KC_RABK, KC_BSLS, TR_PIPE, KC_DLR,  KC_SLSH, TR_LPRN, KC_RPRN, TR_MINS, \
+  ___x___, TR_LABK, KC_RABK, TR_BSLS, TR_PIPE, KC_DLR,  TR_SLSH, TR_LPRN, KC_RPRN, TR_MINS, \
                     _LAYER_TRANS_____________, _LAYER_TRANS_____________
 
 
