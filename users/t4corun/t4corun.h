@@ -21,19 +21,18 @@ enum keycodes {
   TH_LABK,
   TH_LBRC,
   TH_LPRN,
+  TH_DQUO,
   TH_SQUO,
-  
-  TH_EQL,
+
   TH_BSLS,
   TH_SLSH,
+  TH_PIPE,
 
   TH_COMM,
   TH_DOT,
   TH_PERC,
-  TH_EXLM,
-  TH_AT,
-  TH_QUES,
 
+  TH_EQL,
   TH_MINS,
   TH_GRV,
   TH_SCLN,

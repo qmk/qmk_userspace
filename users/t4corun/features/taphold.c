@@ -26,11 +26,11 @@ void insert_brackets(uint16_t left, uint16_t right, uint32_t ms) {
 void single_tap(uint16_t key) {
 
   tap_code16(key);
-  
+
 }
 
 void double_tap(uint16_t key, uint32_t ms) {
-  
+
   tap_code16(key);
   wait_ms(ms);
   tap_code16(key);
@@ -38,11 +38,13 @@ void double_tap(uint16_t key, uint32_t ms) {
 }
 
 void insert_brackets(uint16_t left, uint16_t right, uint32_t ms) {
+
   tap_code16(left);
   wait_ms(ms);
   tap_code16(right);
   wait_ms(ms);
   tap_code16(KC_LEFT);
+
 }
 
 bool process_tap_hold_key(keyrecord_t* record, uint16_t tap_keycode, uint16_t hold_keycode, int mode) {
