@@ -39,7 +39,6 @@ KEY_OVERRIDE_ENABLE = yes
 
 SRC +=                     \
 	t4corun.c              \
-	features/tapping.c     \
 	features/taphold.c     \
 	features/capsword.c    \
 	features/keyoverride.c \

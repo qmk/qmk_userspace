@@ -48,7 +48,6 @@ enum keycodes {
 
 // momentary layer
 #define NAV        MO(_NAVIGATION)
-#define NAV_0      LT(_NAVIGATION, KC_0)
 #define NUM        MO(_NUMBER)
 #define CONFIG     MO(_CONFIG)
 
@@ -166,7 +165,6 @@ enum keycodes {
 
 #define _BASE_L4_________________                   ___x___, NUM,     TR_LSFT
 #define _BASE_R4_________________                   KC_SPC,  NAV,     KC_MUTE
-#define _BASE_R4_ZERO____________                   KC_SPC,  NAV_0,   KC_MUTE
 #define _LAYER_TRANS_____________                   ___x___, _______, ___x___
 
 
@@ -202,9 +200,9 @@ enum keycodes {
 
 #define LAYER_NUMBER                                                                        \
   KC_ESC,  KC_BTN3, KC_BTN2, KC_BTN1, TR_GRV,  ___x___, KC_7,    KC_8,    KC_9,    KC_COMM, \
-  _GACS_MODS________________________, TR_SCLN, ___x___, KC_4,    KC_5,    KC_6,    KC_DOT,  \
+  _GACS_MODS________________________, TR_SCLN, KC_0,    KC_4,    KC_5,    KC_6,    KC_DOT,  \
   _UCCPR_L___________________________________, ___x___, KC_1,    KC_2,    KC_3,    KC_MINS, \
-                    _LAYER_TRANS_____________, _BASE_R4_ZERO____________
+                    _LAYER_TRANS_____________, _BASE_R4_________________
 
 
 #define LAYER_SYMBOL                                                                        \
