@@ -14,6 +14,7 @@ bool get_combo_must_tap(uint16_t index, combo_t *combo) {
     case KEY_ENT:
     case KEY_TAB:
       return true;
+      break;
 
     default:
       return false;
@@ -31,7 +32,8 @@ bool combo_should_trigger(uint16_t combo_index, combo_t *combo, uint16_t keycode
 
     case KEY_ENT:
     case KEY_TAB:
-      if ( get_highest_layer(layer_state) == _SYMBOL )  return false;
+      if ( get_highest_layer(layer_state) == _SYMBOL ) return false;
+      break;
 
     case MOUSE_BUTTON1:
     case MOUSE_BUTTON2:
@@ -40,8 +42,11 @@ bool combo_should_trigger(uint16_t combo_index, combo_t *combo, uint16_t keycode
     case MOUSE_BUTTON5:
     case MOUSE_DRGTOG:
       if ( get_highest_layer(layer_state) > _DEFAULT_LAYER_1 ) return false;
+      break;
+
+    default:
+      return true;
 
   }
 
-  return true;
 }
