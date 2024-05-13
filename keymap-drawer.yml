@@ -30,7 +30,7 @@ layers:
     - Space
     - Shift
     - Space
-    - {h: "NAV", t: "0"}
+    - NAV
     - {t: Mute, type: ghost}
   NAV:
     - [Esc, Home, ▲, End, Page Up, null, null, null, null, CONFIG ]
@@ -41,16 +41,16 @@ layers:
     - Ent
     - null
     - {type: held}
-    - null
+    - {type: ghost}
   NUM:
     - [Esc, Mouse 3, Mouse 2, Mouse 1, {h: "~", t: "`"}, null, "7", "8" ,"9", {s: "<", t: ","} ]
-    - [Gui, Alt, Ctrl, Shift, {h: ":", t: ";"}, null, "4", "5" ,"6", {s: ">", t: "."}]
+    - [Gui, Alt, Ctrl, Shift, {h: ":", t: ";"}, "0", "4", "5" ,"6", {s: ">", t: "."}]
     - [Undo, Cut, Copy, Paste, Redo, null, "1", "2" ,"3", {s: "_", t: "-"}]
     - {type: ghost}
     - {type: held}
     - null
     - Space
-    - {h: "NAV", t: "0"}
+    - NAV
     - {t: Mute, type: ghost}
   SYM:
     - [null, null, "&", {h: "%", t: "^"}, {h: "~", t: "`"}, {h: "+", t: "="}, "#", "*", null, {h: "\"\"", t: "\""}]

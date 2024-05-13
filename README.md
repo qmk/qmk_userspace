@@ -88,8 +88,8 @@ Enables additional keys to be mapped by pressing multiple keys simultaneously. P
 | `R` + `F`     | `Mouse Button 4`     | Back                                              |
 | `T` + `G`     | `Mouse Button 5`     | Forward                                           |
 | `T` + `G`     | `Drag Scroll Toggle` |                                                   |
-| `C` + `V`     | `Enter`              | Disabled on `SYMBOL` layer                        |
-| `U` + `I`     | `Tab`                | Disabled on `SYMBOL` layer                        |
+| `C` + `V`     | `Enter`              |                                                   |
+| `U` + `I`     | `Tab`                |                                                   |
 | `M` + `Comma` | `Backspace`          |                                                   |
 
 ### Key Overrides
