@@ -4,8 +4,8 @@ layout:
 layers:
   base_QWERTY:
     - [Q, W, E, R, T, Y, U, I ,O, P]
-    - [A, S, D, F, G, H, J, K ,L, {h: '"', t: ''''}]
-    - [Z, X, C, V, B, N, M, {h: '(', t: ','} , {h: ')', t: '.'}, {h: '_', t: '-'}]
+    - [A, S, D, F, G, H, J, K ,L, {h: "\"", t: "'"}]
+    - [Z, X, C, V, B, N, M, {h: "(", t: ","} , {h: ")", t: "."}, {h: "_", t: "-"}]
     - {type: ghost}
     - NUM
     - Shift
@@ -13,9 +13,9 @@ layers:
     - NAV
     - {t: Mute, type: ghost}
   base_COLEMAK_DH:
-    - [Q, W, F, P, B, J, L, U ,Y, {h: '"', t: ''''}]
+    - [Q, W, F, P, B, J, L, U ,Y, {h: "\"", t: "'"}]
     - [A, R, S, T, G, M, N, E ,I, O]
-    - [Z, X, C, D, V, K, H, {h: '(', t: ','} , {h: ')', t: '.'}, {h: '_', t: '-'}]
+    - [Z, X, C, D, V, K, H, {h: "(", t: ","} , {h: ")", t: "."}, {h: "_", t: "-"}]
     - {type: ghost}
     - NUM
     - Shift
@@ -23,9 +23,9 @@ layers:
     - NAV
     - {t: Mute, type: ghost}
   base_GAME:
-    - [Tab, Q, W, E, R, T, '7', '8' ,'9', Esc]
-    - [Ctrl, A, S, D, F, G, '4', '5' ,'6', '`']
-    - [Z, X, C, V, B, Alt, '1', '2' ,'3', Combo Toggle]
+    - [Tab, Q, W, E, R, T, "7", "8" ,"9", Esc]
+    - [Ctrl, A, S, D, F, G, "4", "5" ,"6", {s: "~", t: "`"}]
+    - [Z, X, C, V, B, Alt, "1", "2" ,"3", Combo Toggle]
     - {t: Enter, type: ghost}
     - Space
     - Shift
@@ -33,29 +33,29 @@ layers:
     - NAV
     - {t: Mute, type: ghost}
   NAV:
-    - [null, Home, ▲, End, Page Up, null, null, Caps Lock, Print Screen, CONFIG ]
+    - [Esc, Home, ▲, End, Page Up, null, null, null, null, CONFIG ]
     - [null, ◄, ▼, ►, Page Down, null, Shift, Ctrl, Alt, Gui ]
     - [Undo, Cut, Copy, Paste, Redo, null, App, Sniper Toggle, Sniper DPI, Pointer DPI ]
     - {t: Zoom Reset, type: ghost}
     - NUM
-    - Space
+    - Ent
     - null
     - {type: held}
-    - {t: Mute, type: ghost}
-  SYM:
-    - [Esc, Mouse 3, Mouse 2, Mouse 1, {h: '~', t: '`'}, {h: '==', t: '='}, '#', {h: '<>', t: '<'}, '>', {h: '^', t: '%'}]
-    - [Gui, Alt, Ctrl, Shift, {h: ':', t: ';'}, {h: '&', t: '@'}, {h: '*', t: '?'}, {h: '[]', t: '['}, ']', {h: '''''', t: ''''}]
-    - [Undo, Cut, Copy, Paste, Redo, {h: '\\', t: "\\"}, {h: '//', t: '/'}, {h: '()', t: '('}, ')', {h: '_', t: '-'}]
-    - {type: ghost}
-    - {type: held}
-    - null
-    - {h: '$', t: '!'}
-    - NAV
     - {type: ghost}
   NUM:
-    - [F7, F5, F3, F1, F9, F8, F10, F2, F4, F6]
-    - ['7', '5', '3', '1', '9', '8', '0', '2' , '4', '6' ]
-    - [Mute, Vol-, Vol+, Next, Play Pause, F11, F12, {h: '(', t: ','} , {h: ')', t: '.'}, {h: '_', t: '-'}]
+    - [Esc, Mouse 3, Mouse 2, Mouse 1, {h: "~", t: "`"}, null, "7", "8" ,"9", {s: "<", t: ","} ]
+    - [Gui, Alt, Ctrl, Shift, {h: ":", t: ";"}, "0", "4", "5" ,"6", {s: ">", t: "."}]
+    - [Undo, Cut, Copy, Paste, Redo, null, "1", "2" ,"3", {s: "_", t: "-"}]
+    - {type: ghost}
+    - {type: held}
+    - null
+    - Space
+    - NAV
+    - {t: Mute, type: ghost}
+  SYM:
+    - [null, null, "&", {h: "%", t: "^"}, {h: "~", t: "`"}, {h: "+", t: "="}, "#", "*", null, {h: "\"\"", t: "\""}]
+    - [Caps Lock, {h: "{}", t: "{"}, "}", "!", {h: ":", t: ";"}, "@", "?", {h: "[]", t: "]"}, "]", {h: "''", t: "'"}]
+    - [null, {h: "<>", t: "<"}, ">", {h: "\\\\", t: "\\"}, {h: "||", t: "|"}, "$", {h: "//", t: "/"}, {h: "()", t: "("}, ")", {h: "_", t: "-"}]
     - {type: ghost}
     - {type: held}
     - null
@@ -65,7 +65,7 @@ layers:
   CONFIG:
     - [null, null, null, null, null, null, null, EEPROM Clear, Boot Loader, {type: held}]
     - [null, null, null, null, null, null, Shift, null, null, RGB Mode]
-    - [null, null, null, null, null, RGB Toggle, RGB Hue, RGB Sat, RGB Vib, RGB Spd]
+    - [Mute, Vol-, Vol+, Next Song, Play Pause, RGB Toggle, RGB Hue, RGB Sat, RGB Vib, RGB Spd]
     - {t: Base Layer, type: ghost}
     - null
     - null
