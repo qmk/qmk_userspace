@@ -16,7 +16,6 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 */
 
 #pragma once
-#include "config_common.h"
 
 // Most configuration will be found in info.json
 
@@ -33,6 +32,7 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 // │ a u d i o                                       │
 // └─────────────────────────────────────────────────┘ 
 
+#define AUDIO_PIN B5
 #define AUDIO_DAC_SAMPLE_MAX 4095U
 #define AUDIO_VOICE_DEFAULT butts_fader
 

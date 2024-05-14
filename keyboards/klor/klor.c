@@ -172,7 +172,7 @@ const keypos_t PROGMEM hand_swap_config[MATRIX_ROWS][MATRIX_COLS] =
 
 // POLYDACTYL / YUBITSUME 
 // use this matrix if you use the polydactyl or yubitsume layout ────────────────────────────────────┐
-
+/*
 led_config_t g_led_config = { {
 //COL   00     01   02   03   04   05       ROW 
     { NO_LED,  18,  13,  12,   6,   5    },//00
@@ -209,7 +209,7 @@ led_config_t g_led_config = { {
     4, 4, 4, 4, 4, 1, 1
 } };
 // ────────────────────────────────────────────────────────────────────────────────────────────────────┘
-
+*/
 
 /*
 // KONRAD
