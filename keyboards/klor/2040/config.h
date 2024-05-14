@@ -1,3 +1,7 @@
+// Copyright 2022 @geigeigeist
+// SPDX-License-Identifier: GPL-2.0+
+// here you find only RP2040 specific configurations
+
 #pragma once
 #include "config_common.h"
 
