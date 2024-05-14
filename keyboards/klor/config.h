@@ -7,15 +7,14 @@
 // └─────────────────────────────────────────────────┘
 
 #ifdef OLED_ENABLE
-# define OLED_DISPLAY_128X64
+#    define OLED_DISPLAY_128X64
+#    define OLED_FONT_H  "./lib/glcdfont.c"
 #endif
 
 // ┌─────────────────────────────────────────────────┐
 // │ a u d i o                                       │
 // └─────────────────────────────────────────────────┘ 
 
-#define AUDIO_PIN B5
-#define AUDIO_VOICES
 #define AUDIO_DAC_SAMPLE_MAX 4095U
 #define AUDIO_VOICE_DEFAULT butts_fader
 

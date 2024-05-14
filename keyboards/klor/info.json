@@ -7,19 +7,13 @@
         "pid": "0x0001",
         "device_version": "1.3.0"
     },
-	"processor": "RP2040",
-	"bootloader": "rp2040",
+	"processor": "atmega32u4",
+	"bootloader": "caterina",
 	"matrix_pins": {
 		"cols": [ "F6", "F7", "B1", "B3", "B2", "B6" ],
 		"rows": [ "C6", "D7", "E6", "B4" ]
 	},
 	"diode_direction": "COL2ROW",
-	"features": {
-		"bootmagic": true,
-		"extrakey": true,
-		"encoder": true,
-		"oled": true
-	},
 	"build": {
 		"lto": true
 	},
@@ -54,16 +48,28 @@
 			}
 		}
 	},
+	"rgblight": {
+		"driver": "ws2812",
+		"led_count": 42,
+		"split_count": [21, 21]
+	},
     "rgb_matrix": {
         "driver": "ws2812",
 		"led_count": 42,
-		"split_count": [21,21],
+		"split_count": [21, 21],
 		"max_brightness": 180,
-		"sleep": true
+		"sleep": true,
+		"default": {
+			"hue": 35
+		}
     },
 	"ws2812": {
 		"pin": "D3",
 		"driver": "vendor"
+	},
+	"audio": {
+		"pins": [ "B5" ],
+		"voices": true
 	},
     "layouts": {
         "LAYOUT_polydactyl": {
