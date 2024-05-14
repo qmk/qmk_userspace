@@ -1,3 +1,6 @@
+# Ignore some warnings during the build, likely to be fixed before RP2040 PR is merged
+ALLOW_WARNINGS = yes
+
 # PIO serial/WS2812 drivers must be used on RP2040
 SERIAL_DRIVER = vendor
 WS2812_DRIVER = vendor
