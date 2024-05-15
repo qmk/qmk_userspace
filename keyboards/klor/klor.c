@@ -72,7 +72,7 @@
       }
 //#   define LAYOUT(...) LAYOUT_yubitsume(__VA_ARGS__)
 #elif defined(KLOR_SAEGEWERK)
-#   define LAYOUT(                                             \
+#   define LAYOUT_saegewerk(                                             \
            L01, L02, L03, L04, L05,           R00, R01, R02, R03, R04,   \
            L11, L12, L13, L14, L15,           R10, R11, R12, R13, R14,   \
            L21, L22, L23, L24, L25, L35, R30, R20, R21, R22, R23, R24,   \
@@ -88,7 +88,7 @@
           { ___,   R24,   R23,   R22,   R21,   R20 }, \
           { ___,   R34,   R33,   R32,   ___,   R30 }, \
       }
-//#   define LAYOUT(...) LAYOUT_saegewerk(__VA_ARGS__)
+#   define LAYOUT(...) LAYOUT_saegewerk(__VA_ARGS__)
 #endif //KLOR_POLYDACTL
 
 /*
