@@ -19,7 +19,6 @@
 
 
 #ifdef KLOR_POLYDACTL
-#   define LAYOUT LAYOUT_polydactyl
 #   define LAYOUT_polydactyl(                                                \
            L01, L02, L03, L04, L05,           R00, R01, R02, R03, R04,       \
       L10, L11, L12, L13, L14, L15,           R10, R11, R12, R13, R14, R15,  \
@@ -36,8 +35,8 @@
           { R25,   R24,   R23,   R22,   R21,   R20 }, \
           { ___,   R34,   R33,   R32,   R31,   R30 }, \
       }
+#   define LAYOUT(...) LAYOUT_polydactyl(__VA_ARGS__)
 #elif defined(KLOR_KONRAD)
-#   define LAYOUT LAYOUT_konrad
 #   define LAYOUT_konrad(                                                    \
            L01, L02, L03, L04, L05,           R00, R01, R02, R03, R04,       \
       L10, L11, L12, L13, L14, L15,           R10, R11, R12, R13, R14, R15,  \
@@ -54,8 +53,8 @@
           { R25,   R24,   R23,   R22,   R21,   R20 }, \
           { ___,   R34,   R33,   R32,   ___,   R30 }, \
       }
+#   define LAYOUT(...) LAYOUT_konrad(__VA_ARGS__)
 #elif defined(KLOR_YUBITSUME)
-#   define LAYOUT LAYOUT_yubitsume
 #   define LAYOUT_yubitsume(                                             \
            L01, L02, L03, L04, L05,           R00, R01, R02, R03, R04,   \
            L11, L12, L13, L14, L15,           R10, R11, R12, R13, R14,   \
@@ -73,7 +72,6 @@
           { ___,   R34,   R33,   R32,   R31,   R30 }, \
       }
 #elif defined(KLOR_SAEGEWERK)
-#   define LAYOUT LAYOUT_saegewerk
 #   define LAYOUT_saegewerk(                                             \
            L01, L02, L03, L04, L05,           R00, R01, R02, R03, R04,   \
            L11, L12, L13, L14, L15,           R10, R11, R12, R13, R14,   \
@@ -90,6 +88,7 @@
           { ___,   R24,   R23,   R22,   R21,   R20 }, \
           { ___,   R34,   R33,   R32,   ___,   R30 }, \
       }
+#   define LAYOUT(...) LAYOUT_saegewerk(__VA_ARGS__)
 #endif //KLOR_POLYDACTL
 
 
