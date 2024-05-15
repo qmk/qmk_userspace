@@ -25,6 +25,7 @@
         "encoder": true,
         "extrakey": false,
         "grave_esc": false,
+        "haptic": false,
         "magic": false,
         "mousekey": false,
         "music": false,
