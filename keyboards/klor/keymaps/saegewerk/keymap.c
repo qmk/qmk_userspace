@@ -95,7 +95,8 @@ enum custom_keycodes {
 // └────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────┘
 // ▝▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▘
 
-#define LAYOUT_KLOR(...) LAYOUT_saegewerk(__VA_ARGS__)
+//putting this here does make it work
+//#define LAYOUT_KLOR(...) LAYOUT_saegewerk(__VA_ARGS__)
 
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
