@@ -11,6 +11,5 @@ CONVERT_TO = promicro_rp2040
 #CONVERT_TO = blok
 #CONVERT_TO = elite_pi
 
-# AUDIO 
-AUDIO_ENABLE = yes
+# AUDIO
 AUDIO_DRIVER = pwm_hardware

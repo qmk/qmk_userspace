@@ -4,5 +4,9 @@ DYNAMIC_MACRO_ENABLE = no
 COMBO_ENABLE = no
 KEY_OVERRIDE_ENABLE = no
 
-#HAPTIC FEEBACK
+AUDIO_ENABLE = yes
+MUSIC_ENABLE = yes
 HAPTIC_ENABLE = no
+
+# Choose your layout
+KLOR_LAYOUT = polydactyl
