@@ -88,7 +88,7 @@
           { ___,   R24,   R23,   R22,   R21,   R20 }, \
           { ___,   R34,   R33,   R32,   ___,   R30 }, \
       }
-#   define LAYOUT_KLOR(...) LAYOUT_saegewerk(__VA_ARGS__)
+//#   define LAYOUT_KLOR(...) LAYOUT_saegewerk(__VA_ARGS__)
 #endif //KLOR_POLYDACTL
 
 /*
