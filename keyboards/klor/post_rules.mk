@@ -5,3 +5,5 @@ ifeq ($(filter $(KLOR_LAYOUT),$(VALID_KLOR_LAYOUTS)),)
 else
     OPT_DEFS += -DKLOR_$(strip $(shell echo $(KLOR_LAYOUT) | tr '[:lower:]' '[:upper:]'))
 endif
+
+$(info $(OPT_DEFS))
