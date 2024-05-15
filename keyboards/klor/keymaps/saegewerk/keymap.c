@@ -113,7 +113,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
                        │  CTRL   │  LOWER  │  SPACE  │                    │  ENTER  │  RAISE  │ BSPACE  │  
                        └─────────┴─────────┴─────────┘                    └─────────┴─────────┴─────────┘ */ 
 
-   [_QWERTY] = LAYOUT(
+   [_QWERTY] = LAYOUT_KLOR(
  //╷         ╷         ╷         ╷         ╷         ╷         ╷╷         ╷         ╷         ╷         ╷         ╷         ╷
     KC_Q,     KC_W,     KC_E,     KC_R,     KC_T,                          KC_Y,     KC_U,     KC_I,     KC_O,     KC_P,  
     KC_A,     KC_S,     KC_D,     KC_F,     KC_G,                          KC_H,     KC_J,     KC_K,     KC_L,     KC_SCLN,
@@ -135,7 +135,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
                        │  CTRL   │  LOWER  │  SPACE  │                    │  ENTER  │  RAISE  │  BSPCE  │  
                        └─────────┴─────────┴─────────┘                    └─────────┴─────────┴─────────┘ */ 
 
-   [_COLEMAK] = LAYOUT(
+   [_COLEMAK] = LAYOUT_KLOR(
  //╷         ╷         ╷         ╷         ╷         ╷         ╷╷         ╷         ╷         ╷         ╷         ╷         ╷
     KC_Q,     KC_W,     KC_F,     KC_P,     KC_G,                          KC_J,     KC_L,     KC_U,     KC_Y,     KC_SCLN,  
     GUI_A,    ALT_R,    CTL_S,    SHT_T,    KC_D,                          KC_H,     SHT_N,    CTL_E,    ALT_I,    GUI_O,
@@ -159,7 +159,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
                        │    ▼    │    ▼    │    ▼    │                    │    ▼    │ ADJUST  │    0    │  
                        └─────────┴─────────┴─────────┘                    └─────────┴─────────┴─────────┘ */ 
 
-   [_LOWER] = LAYOUT(
+   [_LOWER] = LAYOUT_KLOR(
  //╷         ╷         ╷         ╷         ╷         ╷         ╷╷         ╷         ╷         ╷         ╷         ╷         ╷
     KC_CAPS,  KC_NUM,   KC_UP,    KC_EQL,   KC_LCBR,                       KC_RCBR,  KC_P7,    KC_P8,    KC_P9,    KC_PPLS,
     KC_HOME,  KC_LEFT,  KC_DOWN,  KC_RGHT,  KC_LBRC,                       KC_RBRC,  KC_P4,    KC_P5,    KC_P6,    KC_MINS,
@@ -182,7 +182,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
                        │         │ ADJUST  │    ▼    │                    │    ▼    │    ▼    │    ▼    │  
                        └─────────┴─────────┴─────────┘                    └─────────┴─────────┴─────────┘ */ 
 
-   [_RAISE] = LAYOUT(
+   [_RAISE] = LAYOUT_KLOR(
  //╷         ╷         ╷         ╷         ╷         ╷         ╷╷         ╷         ╷         ╷         ╷         ╷         ╷
     KC_EXLM,  KC_AT,    KC_HASH,  KC_DLR,   KC_PERC,                       KC_CIRC,  KC_AMPR,  RALT(KC_U),RALT(KC_3),KC_BSLS,
     XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX,                       XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX,
@@ -205,7 +205,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
                        │    ▼    │    ▼    │    ▼    │                    │    ▼    │    ▼    │    ▼    │  
                        └─────────┴─────────┴─────────┘                    └─────────┴─────────┴─────────┘ */ 
 
-   [_ADJUST] = LAYOUT(
+   [_ADJUST] = LAYOUT_KLOR(
  //╷         ╷         ╷         ╷         ╷         ╷         ╷╷         ╷         ╷         ╷         ╷         ╷         ╷
     AU_TOGG,  HF_TOGG,  RGB_HUI,  RGB_MOD,  QK_BOOT,                       XXXXXXX,  KC_F7,    KC_F8,    KC_F9,    KC_F11,
     DB_TOGG,  QWERTY,   RGB_SAI,  XXXXXXX,  QK_MAKE,                       XXXXXXX,  KC_F4,    KC_F5,    KC_F6,    KC_F12,
