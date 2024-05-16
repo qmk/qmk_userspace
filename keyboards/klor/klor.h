@@ -32,11 +32,11 @@
 
 
 #ifdef KLOR_POLYDACTYL
-#   define LAYOUT_KLOR(...) LAYOUT_polydactyl(__VA_ARGS__)
+#   define KLOR(...) LAYOUT_polydactyl(__VA_ARGS__)
 #elif defined(KLOR_KONRAD)
-#   define LAYOUT_KLOR(...) LAYOUT_konrad(__VA_ARGS__)
+#   define KLOR(...) LAYOUT_konrad(__VA_ARGS__)
 #elif defined(KLOR_YUBITSUME)
-#   define LAYOUT_KLOR(...) LAYOUT_yubitsume(__VA_ARGS__)
+#   define KLOR(...) LAYOUT_yubitsume(__VA_ARGS__)
 #elif defined(KLOR_SAEGEWERK)
-#   define LAYOUT_KLOR(...) LAYOUT_saegewerk(__VA_ARGS__)
+#   define KLOR(...) LAYOUT_saegewerk(__VA_ARGS__)
 #endif //KLOR_POLYDACTL

@@ -31,6 +31,7 @@ Features
 
 - Can choose layout based on keymap rules.mk configuration. Before keyboard configuration would need to be changed
 - Converted as much as possible to data driven configuration: `info.json`
+- the build will automatically turn off audio, haptics, and rgb matrix for AVR MCU. A user can configure all rules in the keymap rules.mk for RP2040 and not have to edit code just for AVR firmware
 
 What I did not test
 
