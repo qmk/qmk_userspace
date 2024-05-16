@@ -31,12 +31,13 @@
 #define ___ KC_NO
 
 
+// it does not like it when the macro starts with LAYOUT...
 #ifdef KLOR_POLYDACTYL
-#   define KLOR(...) LAYOUT_polydactyl(__VA_ARGS__)
+#   define KLOR_LAYOUT(...) LAYOUT_polydactyl(__VA_ARGS__)
 #elif defined(KLOR_KONRAD)
-#   define KLOR(...) LAYOUT_konrad(__VA_ARGS__)
+#   define KLOR_LAYOUT(...) LAYOUT_konrad(__VA_ARGS__)
 #elif defined(KLOR_YUBITSUME)
-#   define KLOR(...) LAYOUT_yubitsume(__VA_ARGS__)
+#   define KLOR_LAYOUT(...) LAYOUT_yubitsume(__VA_ARGS__)
 #elif defined(KLOR_SAEGEWERK)
-#   define KLOR(...) LAYOUT_saegewerk(__VA_ARGS__)
+#   define KLOR_LAYOUT(...) LAYOUT_saegewerk(__VA_ARGS__)
 #endif //KLOR_POLYDACTL
