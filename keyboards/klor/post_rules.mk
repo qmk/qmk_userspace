@@ -1,9 +1,9 @@
-VALID_KLOR_LAYOUTS := polydactyl konrad yubitsume saegewerk
+VALID_KLOR_CONFIG := polydactyl konrad yubitsume saegewerk
 
-ifeq ($(filter $(KLOR_LAYOUT),$(VALID_KLOR_LAYOUTS)),)
-    $(call CATASTROPHIC_ERROR,Invalid KLOR_LAYOUT,KLOR_LAYOUT="$(KLOR_LAYOUT)" is not a valid KLOR Layout)
+ifeq ($(filter $(KLOR_CONFIG),$(VALID_KLOR_CONFIG)),)
+    $(call CATASTROPHIC_ERROR,Invalid KLOR_LAYOUT,KLOR_LAYOUT="$(KLOR_CONFIG)" is not a valid KLOR Layout)
 else
-    OPT_DEFS += -DKLOR_$(strip $(shell echo $(KLOR_LAYOUT) | tr '[:lower:]' '[:upper:]'))
+    OPT_DEFS += -DKLOR_$(strip $(shell echo $(KLOR_CONFIG) | tr '[:lower:]' '[:upper:]'))
 endif
 
 # Turn off features for AVR Processors due to memory size

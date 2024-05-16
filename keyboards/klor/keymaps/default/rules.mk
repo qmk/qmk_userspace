@@ -11,4 +11,4 @@ HAPTIC_ENABLE = no
 RGB_MATRIX_ENABLE = no
 
 # Choose your layout
-KLOR_LAYOUT = polydactyl
+KLOR_CONFIG = polydactyl

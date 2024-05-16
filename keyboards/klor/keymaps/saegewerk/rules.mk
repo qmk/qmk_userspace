@@ -11,4 +11,4 @@ HAPTIC_ENABLE = yes
 RGB_MATRIX_ENABLE = yes
 
 # Choose your layout
-KLOR_LAYOUT = saegewerk
+KLOR_CONFIG = saegewerk
