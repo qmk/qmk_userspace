@@ -14,4 +14,4 @@ LINK_TIME_OPTIMIZATION_ENABLE = yes
 # markstos: for combos!
 COMBO_ENABLE = yes
 
-TAP_DANCE_ENABLE = no
+TAP_DANCE_ENABLE = yes

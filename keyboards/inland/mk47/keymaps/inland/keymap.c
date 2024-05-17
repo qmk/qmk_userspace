@@ -37,6 +37,17 @@ combo_t key_combos[COMBO_COUNT] = {
 
 };
 
+// Tap Dance declarations
+enum {
+    TD_SPC_ENT,
+};
+
+// Tap Dance definitions
+tap_dance_action_t tap_dance_actions[] = {
+    // Tap once for Space, twice for Enter Lock
+    [TD_SPC_ENT] = ACTION_TAP_DANCE_DOUBLE(KC_SPC, KC_ENT),
+};
+
 bool process_record_user(uint16_t keycode, keyrecord_t *record) {
     switch (keycode) {
         case LOCKWIN:
@@ -141,14 +152,14 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
         OSM_ALT,    KC_Q,       KC_W,       KC_E,       KC_R,       KC_T,       KC_Y,       KC_U,       KC_I,       KC_O,       KC_P,      KC_BSLS,\
         OSM_SFT,    KC_A,       KC_S,       KC_D,       KC_F,       KC_G,       KC_H,       KC_J,       KC_K,       KC_L,       KC_SCLN,   KC_QUOT,\
         OSM_CTL,    KC_Z,       KC_X,       KC_C,       KC_V,       KC_B,       KC_N,       KC_M,       KC_COMM,    KC_DOT,     KC_SLSH,   OSL_FUN,\
-        XXXXXXX,    XXXXXXX,    XXXXXXX,    OSM_GUI,    LOW_TAB,    KC_SPC,     RSE_BSP,    KC_ENT,     OSM_RSFT,   XXXXXXX,    XXXXXXX\
+        XXXXXXX,    XXXXXXX,    XXXXXXX,    OSM_GUI,    LOW_TAB,    TD(TD_SPC_ENT), RSE_BSP,    OSM_RSFT,   XXXXXXX,    XXXXXXX,    XXXXXXX\
     ),
 
     [_LOWER] = LAYOUT_planck_mit(\
         KC_GRV,     KC_F1,      KC_F2,      KC_F3,      KC_F4,      KC_F5,      KC_F6,      KC_F7,      KC_F8,      KC_F9,      KC_F10,    KC_F12,\
         _______,    KC_1,       KC_2,       KC_3,       KC_4,       KC_5,       KC_6,       KC_7,       KC_8,       KC_9,       KC_0,      XXXXXXX,\
         _______,    XXXXXXX,    XXXXXXX,    KC_EQL,     KC_LBRC,    KC_LCBR,    KC_RCBR,    KC_RBRC,    KC_MINS,    XXXXXXX,    XXXXXXX,   XXXXXXX,\
-        _______,    XXXXXXX,    XXXXXXX,    KC_TRNS,    KC_TRNS,    KC_SPC,     KC_TRNS,    KC_TRNS,    KC_TRNS,    XXXXXXX,    XXXXXXX\
+        _______,    XXXXXXX,    XXXXXXX,    KC_TRNS,    KC_TRNS,    TD_SPC_ENT,     KC_TRNS,    KC_TRNS,    KC_TRNS,    XXXXXXX,    XXXXXXX\
     ),
  
     [_RAISE] = LAYOUT_planck_mit(\
@@ -159,9 +170,9 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     ),
 
     [_FUNC] = LAYOUT_planck_mit(\
-        _______,    C_ALT_D,    KC_NUM,     XXXXXXX,    XXXXXXX,    XXXXXXX,    KVM_SW,     XXXXXXX,    SNAP_TOP,   XXXXXXX,    RGB_TOG,    _______,\
-        _______,    XXXXXXX,    XXXXXXX,    XXXXXXX,    XXXXXXX,    XXXXXXX,    XXXXXXX,    SNAP_LFT,   SNAP_BTM,   SNAP_RT,    KC_CALC,    _______,\
-        _______,    XXXXXXX,    XXXXXXX,    XXXXXXX,    XXXXXXX,    XXXXXXX,    LOCKWIN,    QK_RBT,     QK_BOOT,    EE_CLR,     KC_SLEP,    _______,\
+        KC_TRNS,    XXXXXXX,    XXXXXXX,    XXXXXXX,    XXXXXXX,    XXXXXXX,    KVM_SW,     XXXXXXX,    SNAP_TOP,   XXXXXXX,    RGB_TOG,    _______,\
+        C_ALT_D,    XXXXXXX,    XXXXXXX,    XXXXXXX,    XXXXXXX,    XXXXXXX,    XXXXXXX,    SNAP_LFT,   SNAP_BTM,   SNAP_RT,    KC_CALC,    _______,\
+        KC_TRNS,    XXXXXXX,    XXXXXXX,    XXXXXXX,    XXXXXXX,    KC_NUM,     LOCKWIN,    QK_RBT,     QK_BOOT,    EE_CLR,     KC_SLEP,    _______,\
         XXXXXXX,    XXXXXXX,    XXXXXXX,    KC_TRNS,    KC_TRNS,    KC_TRNS,    KC_TRNS,    KC_TRNS,    KC_TRNS,    XXXXXXX,    XXXXXXX\
     )
 
