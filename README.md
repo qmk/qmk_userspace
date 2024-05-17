@@ -6,5 +6,6 @@ The keymap I use is available under [keyboards/splitkb/kyria/keymaps/tyosa](./ke
 
 # To-Do
 
-[] Switch KC_GUI key with Win+S on left thumb
-[] Add caps word qmk feature 
+- [] Switch KC_GUI key with Win+S on left thumb
+- [] Add caps word qmk feature
+- [] Add combos on accent keys (éèçàôù) to put them to uppercase -> single tap = lower, double tap = upper
