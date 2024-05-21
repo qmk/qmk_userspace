@@ -1,4 +1,4 @@
-/* Copyright 2021 Dztech
+/* Copyright 2020 MelGeek <melgeek001365@gmail.com>
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -13,8 +13,9 @@
  * You should have received a copy of the GNU General Public License
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
+
 #pragma once
 
-#define DYNAMIC_KEYMAP_LAYER_COUNT 2
-
+/* VIA related config */
 #define VIA_EEPROM_LAYOUT_OPTIONS_SIZE 2
+

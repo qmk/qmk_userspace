@@ -1,4 +1,4 @@
-/* Copyright 2021 Dztech
+/* Copyright 2020 bemeier
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -15,6 +15,4 @@
  */
 #pragma once
 
-#define DYNAMIC_KEYMAP_LAYER_COUNT 2
-
-#define VIA_EEPROM_LAYOUT_OPTIONS_SIZE 2
+#define VIA_EEPROM_CUSTOM_CONFIG_SIZE 20 
