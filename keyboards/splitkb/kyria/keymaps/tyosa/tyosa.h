@@ -21,7 +21,11 @@ enum custom_keycodes {
     KC_LEFT_ENC_MODE,           // left encoder mode
     KC_RIGHT_ENC_MODE,          // right encoder mode
     ALT_TAB,                    // alt-tab
-    QC_QUOT                     // non-dead quotes
+    QC_QUOT,                    // non-dead simple quote
+    QC_BACK,
+    QC_NEXT,
+    QC_PTAB,
+    QC_NTAB,
 };
 
 typedef struct _master_to_slave_t {
@@ -38,7 +42,7 @@ typedef struct _master_to_slave_t {
 #define  KC_LENC    LT(0, KC_LEFT_ENC_MODE)     // Left encoder
 #define  KC_RENC    LT(0, KC_RIGHT_ENC_MODE)    // Right encoder
 
-// Home row mods
+// Mods
 #define    HR_GA    LGUI_T(KC_A)
 #define    HR_AR    LALT_T(KC_R)
 #define    HR_CS    LCTL_T(KC_S)
@@ -47,6 +51,11 @@ typedef struct _master_to_slave_t {
 #define    HR_CE    LCTL_T(KC_E)
 #define    HR_AI    LALT_T(KC_I)
 #define    HR_GO    LGUI_T(KC_O)
+#define    HR_SL    LSFT_T(KC_UP)
+#define    HR_CD    LCTL_T(KC_DOWN)
+#define  OS_LSFT    OSM(MOD_LSFT)
+#define  OS_LCTL    OSM(MOD_LCTL)
+#define  MEH_SPC    MT(MOD_MEH, KC_SPC)
 
 // Thumb tap/hold
 #define  MEH_GUI    MEH_T(KC_LGUI)
@@ -58,6 +67,10 @@ typedef struct _master_to_slave_t {
 
 // Layer toggle
 #define   QC_NAV    TG(_NAV)
+#define  COLEMAK    TO(_COLEMAK_DH)
+#define      SYM    TO(_SYM)
+#define      NUM    TO(_NUM)
+#define      NAV    TO(_NAV)
 
 extern bool is_alt_tab_active;
 extern uint16_t alt_tab_timer;
