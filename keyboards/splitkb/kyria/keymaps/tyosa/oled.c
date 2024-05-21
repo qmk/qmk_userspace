@@ -1,4 +1,3 @@
-#include QMK_KEYBOARD_H
 #include "tyosa.h"
 #include "quantum.h"
 #include "luna.h"

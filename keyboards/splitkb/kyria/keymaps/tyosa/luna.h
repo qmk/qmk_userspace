@@ -1,4 +1,5 @@
 #pragma once
+#include "quantum.h"
 
 extern bool is_sneaking;
 extern bool is_barking;
