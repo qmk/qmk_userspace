@@ -9,3 +9,7 @@
 *.hex
 *.bin
 *.uf2
+
+# clangd
+.cache/
+.clangd/
