@@ -7,8 +7,8 @@
 enum layers {
     _DEFAULT = 0,
     _NAVI,
-    _SYMBOLS,
     _FUNCTION,
+    _SYMBOLS,
     _NUMERIC,
     _CONFIG
 };
@@ -57,25 +57,6 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
                                        _______, _______, _______, _______, _______, _______, _______, _______, _______, C(KC_C)
     ),
 /*
- * Symbols
- *
- * ,-------------------------------------------.                              ,------------------------------------------.
- * |        |  |   |  &   |  {   |  }   |  "   |                              |  $   |  [   |  ]   |  %   |  @   |       |
- * |--------+------+------+------+------+------|                              |------+------+------+------+------+-------|
- * |   -    |  *   |  +   |  (   |  )   |  =   |                              |  ;   |  <   |  >   |  /   |  \   |       |
- * |--------+------+------+------+------+------+-------------.  ,-------------+------+------+------+------+------+-------|
- * |        |      |      |  ~   |  `   |  '   |      |      |  |      |      |  #   |  ^   |  €   |      |      |       |
- * `----------------------+------+------+------+------+------|  |------+------+------+------+------+---------------------'
- *                        |      |      |      |      |      |  |      |      |      |      |      |
- *                        `----------------------------------'  `----------------------------------'
- */
-    [_SYMBOLS] = LAYOUT(
-        _______, ES_PIPE, ES_AMPR, ES_LCBR, ES_RCBR, ES_DQUO,                                     ES_DLR,  ES_LBRC, ES_RBRC, ES_PERC, ES_AT,        XXXXXXX,
-        ES_MINS, ES_ASTR, ES_PLUS, ES_LPRN, ES_RPRN, ES_EQL,                                      ES_SCLN, ES_LABK, ES_RABK, ES_SLSH, ES_BSLS,      XXXXXXX,
-        XXXXXXX, XXXXXXX, XXXXXXX, ES_TILD, ES_GRV,  ES_QUOT, _______, _______, _______, _______, ES_HASH, ES_CIRC, ES_EURO, XXXXXXX, MO(_NUMERIC), XXXXXXX,
-                                   _______, _______, _______, _______, _______, _______, _______, _______, _______, _______
-    ),
-/*
  * Function
  *
  * ,-------------------------------------------.                              ,-------------------------------------------.
@@ -94,6 +75,25 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
       XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,                                     XXXXXXX, KC_F1,   KC_F2,   KC_F3,   A(KC_F4), XXXXXXX,
       XXXXXXX, _______, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, _______, _______, _______, _______, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,  XXXXXXX,
                                  _______, _______, _______, _______, _______, _______, _______, _______, _______, _______
+    ),
+/*
+ * Symbols
+ *
+ * ,-------------------------------------------.                              ,------------------------------------------.
+ * |        |  |   |  &   |  {   |  }   |  "   |                              |  $   |  [   |  ]   |  %   |  @   |       |
+ * |--------+------+------+------+------+------|                              |------+------+------+------+------+-------|
+ * |   -    |  *   |  +   |  (   |  )   |  =   |                              |  ;   |  <   |  >   |  /   |  \   |       |
+ * |--------+------+------+------+------+------+-------------.  ,-------------+------+------+------+------+------+-------|
+ * |        |      |      |  ~   |  `   |  '   |      |      |  |      |      |  #   |  ^   |  €   |      |      |       |
+ * `----------------------+------+------+------+------+------|  |------+------+------+------+------+---------------------'
+ *                        |      |      |      |      |      |  |      |      |      |      |      |
+ *                        `----------------------------------'  `----------------------------------'
+ */
+    [_SYMBOLS] = LAYOUT(
+        _______, ES_PIPE, ES_AMPR, ES_LCBR, ES_RCBR, ES_DQUO,                                     ES_DLR,  ES_LBRC, ES_RBRC, ES_PERC, ES_AT,        XXXXXXX,
+        ES_MINS, ES_ASTR, ES_PLUS, ES_LPRN, ES_RPRN, ES_EQL,                                      ES_SCLN, ES_LABK, ES_RABK, ES_SLSH, ES_BSLS,      XXXXXXX,
+        XXXXXXX, XXXXXXX, XXXXXXX, ES_TILD, ES_GRV,  ES_QUOT, _______, _______, _______, _______, ES_HASH, ES_CIRC, ES_EURO, XXXXXXX, MO(_NUMERIC), XXXXXXX,
+                                   _______, _______, _______, _______, _______, _______, _______, _______, _______, _______
     ),
 /*
  * Numeric
@@ -212,11 +212,11 @@ bool oled_task_user(void) {
             case _NAVI:
                 oled_write_P(PSTR("Navi\n"), false);
                 break;
-            case _SYMBOLS:
-                oled_write_P(PSTR("Symbols\n"), false);
-                break;
             case _FUNCTION:
                 oled_write_P(PSTR("Function\n"), false);
+                break;
+            case _SYMBOLS:
+                oled_write_P(PSTR("Symbols\n"), false);
                 break;
             case _NUMERIC:
                 oled_write_P(PSTR("Numeric\n"), false);
@@ -242,8 +242,8 @@ bool oled_task_user(void) {
 const uint16_t PROGMEM encoder_map[][NUM_ENCODERS][NUM_DIRECTIONS] = {
     [_DEFAULT ] = { ENCODER_CCW_CW(XXXXXXX, XXXXXXX), ENCODER_CCW_CW(KC_TAB,     S(KC_TAB) ) },
     [  _NAVI  ] = { ENCODER_CCW_CW(XXXXXXX, XXXXXXX), ENCODER_CCW_CW(C(KC_RGHT), C(KC_LEFT)) },
-    [_SYMBOLS ] = { ENCODER_CCW_CW(XXXXXXX, XXXXXXX), ENCODER_CCW_CW(_______,    _______   ) },
     [_FUNCTION] = { ENCODER_CCW_CW(XXXXXXX, XXXXXXX), ENCODER_CCW_CW(_______,    _______   ) },
+    [_SYMBOLS ] = { ENCODER_CCW_CW(XXXXXXX, XXXXXXX), ENCODER_CCW_CW(_______,    _______   ) },
     [_NUMERIC ] = { ENCODER_CCW_CW(XXXXXXX, XXXXXXX), ENCODER_CCW_CW(_______,    _______   ) },
     [ _CONFIG ] = { ENCODER_CCW_CW(XXXXXXX, XXXXXXX), ENCODER_CCW_CW(_______,    _______   ) },
 };
