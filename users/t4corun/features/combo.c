@@ -33,7 +33,7 @@ bool combo_should_trigger(uint16_t combo_index, combo_t *combo, uint16_t keycode
 //  case MOUSE_BUTTON2:
 //  case MOUSE_BUTTON3:
 //  case MOUSE_BUTTON4:
-df//  case MOUSE_BUTTON5:
+//  case MOUSE_BUTTON5:
 
     case MOUSE_DRGTOG:
       if ( get_highest_layer(layer_state | default_layer_state) > _DEFAULT_LAYER_1 ) return false;

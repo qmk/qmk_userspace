@@ -222,7 +222,7 @@ enum keycodes {
 
 
 #define LAYER_NAVIGATION                                                                    \
-  KC_ESC,  KC_HOME, KC_UP,   KC_END,  KC_PGUP, ___x___, ___x___, fdSC_FILE, SC_SNIP, CONFIG,  \
+  KC_ESC,  KC_HOME, KC_UP,   KC_END,  KC_PGUP, ___x___, ___x___, SC_FILE, SC_SNIP, CONFIG,  \
   ___x___, KC_LEFT, KC_DOWN, KC_RGHT, KC_PGDN, ___x___, _SCAG_MODS________________________, \
   _UCCPR_L___________________________________, ___x___, KC_APP,  TR_SNIP, TR_SDPI, TR_PDPI, \
                     ZOOMRST, NUM,     KC_ENT,  _LAYER_TRANS_____________
