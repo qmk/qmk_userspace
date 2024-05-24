@@ -25,20 +25,23 @@ POINTING_DEVICE_ENABLE ?= no
 OLED_ENABLE ?= no
 ENCODER_ENABLE ?= no
 ENCODER_MAP_ENABLE ?= no
+HAPTIC_ENABLE ?= no
+AUDIO_ENABLE ?= no
 
 # qmk features we will force
 EXTRAKEY_ENABLE = yes
-AUDIO_ENABLE = no
 CAPS_WORD_ENABLE = yes
 MOUSEKEY_ENABLE = yes
 COMBO_ENABLE = yes
 KEY_OVERRIDE_ENABLE = yes
+MUSIC_MODE = no
 
 # ---------------------------------------------------------
 # include my code that will be common across all my keyboards
 
 SRC +=                     \
 	t4corun.c              \
+	features/tapping.c     \
 	features/taphold.c     \
 	features/capsword.c    \
 	features/keyoverride.c \

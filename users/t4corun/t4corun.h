@@ -47,7 +47,7 @@ enum keycodes {
 #define ___x___ KC_NO
 
 // momentary layer
-#define NAV        MO(_NAVIGATION)
+#define NAV        LT(_NAVIGATION, KC_0)
 #define NUM        MO(_NUMBER)
 #define CONFIG     MO(_CONFIG)
 
@@ -152,6 +152,36 @@ enum keycodes {
 #endif //RGB_MATRIX_ENABLE || RGBLIGHT_ENABLE
 
 
+#if defined(HAPTIC_ENABLE)
+#   define TR_HTOG HF_TOGG
+#   define TR_HFBK HF_FDBK
+#   define TR_HNXT HF_NEXT
+#   define TR_HCNU HF_CONU
+#   define TR_HRST HF_RST
+#else
+#   define TR_HTOG ___x___
+#   define TR_HFBK ___x___
+#   define TR_HNXT ___x___
+#   define TR_HCNU ___x___
+#   define TR_HRST ___x___
+#endif //HAPTIC_ENABLe
+
+
+#if defined(AUDIO_ENABLE)
+#   define TR_ATOG AU_TOGG
+#   define TR_CTOG CK_TOGG
+#   define TR_CKUP CK_UP
+#   define TR_CRST CK_RST
+#else
+#   define TR_ATOG ___x___
+#   define TR_CTOG ___x___
+#   define TR_CKUP ___x___
+#   define TR_CRST ___x___
+#endif //AUDIO_ENABLE
+
+
+
+
 #define _DEFAULT_LAYER_1 FIRST_DEFAULT_LAYER
 #define _DEFAULT_LAYER_2 (FIRST_DEFAULT_LAYER + 1)
 #define _DEFAULT_LAYER_3 (FIRST_DEFAULT_LAYER + 2)
@@ -192,15 +222,15 @@ enum keycodes {
 
 
 #define LAYER_NAVIGATION                                                                    \
-  KC_ESC,  KC_HOME, KC_UP,   KC_END,  KC_PGUP, ___x___, ___x___, ___x___, ___x___, CONFIG,  \
-  ___x___, KC_LEFT, KC_DOWN, KC_RGHT, KC_PGDN, ___x___, _SCAG_MODS________________________, \
-  _UCCPR_L___________________________________, ___x___, KC_APP,  TR_SNIP, TR_SDPI, TR_PDPI, \
+  KC_ESC,  KC_HOME, KC_UP,   KC_END,  KC_PGUP, ___x___, KC_APP,  SC_FILE, SC_SNIP, CONFIG,  \
+  ___x___, KC_LEFT, KC_DOWN, KC_RGHT, KC_PGDN, KC_BSPC, _SCAG_MODS________________________, \
+  _UCCPR_L___________________________________, ___x___, KC_TAB,  TR_SNIP, TR_SDPI, TR_PDPI, \
                     ZOOMRST, NUM,     KC_ENT,  _LAYER_TRANS_____________
 
 
 #define LAYER_NUMBER                                                                        \
   KC_ESC,  KC_BTN3, KC_BTN2, KC_BTN1, TR_GRV,  ___x___, KC_7,    KC_8,    KC_9,    KC_COMM, \
-  _GACS_MODS________________________, TR_SCLN, KC_0,    KC_4,    KC_5,    KC_6,    KC_DOT,  \
+  _GACS_MODS________________________, TR_SCLN, KC_BSPC, KC_4,    KC_5,    KC_6,    KC_DOT,  \
   _UCCPR_L___________________________________, ___x___, KC_1,    KC_2,    KC_3,    KC_MINS, \
                     _LAYER_TRANS_____________, _BASE_R4_________________
 
@@ -213,8 +243,7 @@ enum keycodes {
 
 
 #define LAYER_CONFIG                                                                        \
-  _NONE_5____________________________________, ___x___, ___x___, EE_CLR,  QK_BOOT, _______, \
-  _NONE_5____________________________________, ___x___, TR_LSFT, ___x___, ___x___, TR_RMOD, \
+  TR_HRST, TR_HCNU, TR_HNXT, TR_HFBK, TR_HTOG, ___x___, ___x___, EE_CLR,  QK_BOOT, _______, \
+  TR_CRST, TR_CKUP, TR_CTOG, ___x___, TR_ATOG, ___x___, TR_LSFT, ___x___, ___x___, TR_RMOD, \
   KC_MUTE, KC_VOLD, KC_VOLU, KC_MNXT, KC_MPLY, TR_RTOG, TR_RHUI, TR_RSAI, TR_RVAI, TR_RSPI, \
                     BASELYR, TR_DMR1, TR_DMP1, ___x___, ___x___, TR_RTOG
-

@@ -38,8 +38,9 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 #ifdef AUDIO_ENABLE     
 #    define KLOR_SOUND W__NOTE(_DS0), W__NOTE(_DS1), H__NOTE(_DS2), H__NOTE(_DS3), Q__NOTE(_DS4), Q__NOTE(_DS5), E__NOTE(_DS6), E__NOTE(_DS7), S__NOTE(_DS8), Q__NOTE(_GS0)
-#    define STARTUP_SONG SONG(KLOR_SOUND)
 #    define BYE_SOUND H__NOTE(_DS4), H__NOTE(_DS3), W__NOTE(_DS1)
+
+#    define STARTUP_SONG SONG(KLOR_SOUND)
 #    define GOODBYE_SONG SONG(BYE_SOUND)
 #    define DEFAULT_LAYER_SONGS \
         { SONG(QWERTY_SOUND), SONG(COLEMAK_SOUND) }
@@ -49,15 +50,15 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 // │ h a p t i c   f e e d b a c k                   │
 // └─────────────────────────────────────────────────┘ 
 
-#ifdef HAPTIC_ENABLE
-#    define FB_ERM_LRA 1
-#    define FB_BRAKEFACTOR 3 // For 1x:0, 2x:1, 3x:2, 4x:3, 6x:4, 8x:5, 16x:6, Disable Braking:7 
-#    define FB_LOOPGAIN 1 // For  Low:0, Medium:1, High:2, Very High:3 
-#    define RATED_VOLTAGE 2
-#    define V_PEAK 2.8
-#    define V_RMS 2.0 
-#    define F_LRA 150 // resonance freq 
-#    define DRV_GREETING       alert_750ms
+#if defined(HAPTIC_ENABLE) && defined(HAPTIC_DRV2605L)
+#    define DRV2605L_FB_ERM_LRA 1
+#    define DRV2605L_FB_BRAKEFACTOR 3 // For 1x:0, 2x:1, 3x:2, 4x:3, 6x:4, 8x:5, 16x:6, Disable Braking:7 
+#    define DRV2605L_FB_LOOPGAIN 1 // For  Low:0, Medium:1, High:2, Very High:3 
+#    define DRV2605L_RATED_VOLTAGE 2
+#    define DRV2605L_V_PEAK 2.8
+#    define DRV2605L_V_RMS 2.0 
+#    define DRV2605L_F_LRA 150 // resonance freq 
+#    define DRV2605L_GREETING DRV2605L_EFFECT_750_MS_ALERT_100
 #endif
 
 // ┌─────────────────────────────────────────────────┐

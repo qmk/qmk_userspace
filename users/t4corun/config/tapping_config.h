@@ -27,6 +27,7 @@
 #define WAIT_DELAY 5                        //custom variable to configure time between taps
 
 #define TAPPING_TERM 175
+#define TAPPING_TERM_PER_KEY
 
 #define QUICK_TAP_TERM 120
 

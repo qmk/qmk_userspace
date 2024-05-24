@@ -29,10 +29,17 @@ const key_override_t f10_override        = ko_make_with_layers(MOD_MASK_CSA,   K
 const key_override_t f11_override        = ko_make_with_layers(MOD_MASK_CSA,   KC_DOT,  KC_F11,  1<<_NUMBER);
 const key_override_t f12_override        = ko_make_with_layers(MOD_MASK_CSA,   KC_MINS, KC_F12,  1<<_NUMBER);
 
-const key_override_t mb1_override        = ko_make_with_layers(MOD_MASK_CTRL,  KC_BTN1, KC_PSCR, 1<<_NUMBER);
-const key_override_t mb2_override        = ko_make_with_layers(MOD_MASK_ALT,   KC_BTN2, SC_FILE, 1<<_NUMBER);
+const key_override_t mb2_override        = ko_make_with_layers(MOD_MASK_CTRL,  KC_BTN2, KC_BTN4, 1<<_NUMBER);
+const key_override_t mb3_override        = ko_make_with_layers(MOD_MASK_ALT,   KC_BTN3, KC_BTN5, 1<<_NUMBER);
 
+#if defined(HAPTIC_ENABLE)
+const key_override_t hfnext_override     = ko_make_with_layers(MOD_MASK_SHIFT, TR_HNXT, HF_PREV, 1<<_CONFIG);
+const key_override_t hfconu_override     = ko_make_with_layers(MOD_MASK_SHIFT, TR_HCNU, HF_COND, 1<<_CONFIG);
+#endif //HAPTIC_ENABLE
 
+#if defined(AUDIO_ENABLE)
+const key_override_t ckup_override       = ko_make_with_layers(MOD_MASK_SHIFT, CK_UP,   CK_DOWN, 1<<_CONFIG);
+#endif //AUDIO_ENABLE
 
 const key_override_t **key_overrides = (const key_override_t *[]) {
 
@@ -50,8 +57,18 @@ const key_override_t **key_overrides = (const key_override_t *[]) {
   &f10_override,
   &f11_override,
   &f12_override,
-  &mb1_override,
   &mb2_override,
+  &mb3_override,
+
+#if defined(HAPTIC_ENABLE)
+  &hfnext_override,
+  &hfconu_override,
+#endif //HAPTIC_ENABLE
+
+#if defined(AUDIO_ENABLE)
+  &ckup_override,
+#endif //AUDIO_ENABLE
+
   NULL // Null terminate the array of overrides!
 
 };

@@ -53,3 +53,11 @@
 #if defined(OLED_ENABLE)
 #	  include "config/oled_config.h"
 #endif
+
+#if defined(HAPTIC_ENABLE)
+#   include "config/haptic_config.h"
+#endif
+
+#if defined(AUDIO_ENABLE)
+#   include "config/audio_config.h"
+#endif
