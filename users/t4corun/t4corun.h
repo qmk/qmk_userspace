@@ -222,15 +222,15 @@ enum keycodes {
 
 
 #define LAYER_NAVIGATION                                                                    \
-  KC_ESC,  KC_HOME, KC_UP,   KC_END,  KC_PGUP, ___x___, KC_APP,  SC_FILE, SC_SNIP, CONFIG,  \
-  ___x___, KC_LEFT, KC_DOWN, KC_RGHT, KC_PGDN, KC_BSPC, _SCAG_MODS________________________, \
-  _UCCPR_L___________________________________, ___x___, KC_TAB,  TR_SNIP, TR_SDPI, TR_PDPI, \
+  KC_ESC,  KC_HOME, KC_UP,   KC_END,  KC_PGUP, ___x___, ___x___, fdSC_FILE, SC_SNIP, CONFIG,  \
+  ___x___, KC_LEFT, KC_DOWN, KC_RGHT, KC_PGDN, ___x___, _SCAG_MODS________________________, \
+  _UCCPR_L___________________________________, ___x___, KC_APP,  TR_SNIP, TR_SDPI, TR_PDPI, \
                     ZOOMRST, NUM,     KC_ENT,  _LAYER_TRANS_____________
 
 
 #define LAYER_NUMBER                                                                        \
   KC_ESC,  KC_BTN3, KC_BTN2, KC_BTN1, TR_GRV,  ___x___, KC_7,    KC_8,    KC_9,    KC_COMM, \
-  _GACS_MODS________________________, TR_SCLN, KC_BSPC, KC_4,    KC_5,    KC_6,    KC_DOT,  \
+  _GACS_MODS________________________, TR_SCLN, ___x___, KC_4,    KC_5,    KC_6,    KC_DOT,  \
   _UCCPR_L___________________________________, ___x___, KC_1,    KC_2,    KC_3,    KC_MINS, \
                     _LAYER_TRANS_____________, _BASE_R4_________________
 
