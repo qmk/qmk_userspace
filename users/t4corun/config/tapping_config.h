@@ -13,7 +13,6 @@
 #undef TAP_HOLD_CAPS_DELAY
 
 #undef TAPPING_TERM
-#undef TAPPING_TERM_PER_KEY
 
 #undef QUICK_TAP_TERM
 
@@ -27,7 +26,6 @@
 #define WAIT_DELAY 5                        //custom variable to configure time between taps
 
 #define TAPPING_TERM 175
-#define TAPPING_TERM_PER_KEY
 
 #define QUICK_TAP_TERM 120
 

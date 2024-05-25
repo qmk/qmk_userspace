@@ -41,7 +41,6 @@ MUSIC_MODE = no
 
 SRC +=                     \
 	t4corun.c              \
-	features/tapping.c     \
 	features/taphold.c     \
 	features/capsword.c    \
 	features/keyoverride.c \
