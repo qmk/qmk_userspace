@@ -2,20 +2,20 @@
 
 #include "t4corun.h"
 
-#define OLED_RENDER_KEYLOCK_NAME      "Lock:"
-#define OLED_RENDER_MODS_NAME         "Mods:"
 
-#define OLED_RENDER_LAYOUT_NAME       "Lyout"
-#define OLED_RENDER_LAYOUT_QWERTY     " qrty"
-#define OLED_RENDER_LAYOUT_COLEMAK_DH " cmDH"
-#define OLED_RENDER_LAYOUT_GAME       " Game"
+#define OLED_RENDER_KEYLOCK_NAME      "Lock"
+#define OLED_RENDER_MODS_NAME         "Mods"
+#define OLED_RENDER_FEATURE_NAME      "Feat"
 
-#define OLED_RENDER_LAYER_NAME        "Layer"
-#define OLED_RENDER_LAYER_BASE        " Def "
-#define OLED_RENDER_LAYER_NAVIGATION  " Nav "
-#define OLED_RENDER_LAYER_NUMBER      " Num "
-#define OLED_RENDER_LAYER_SYMBOL      " Sym "
-#define OLED_RENDER_LAYER_CONFIG      " Cfg "
+#define OLED_RENDER_LAYOUT_QWERTY     "QWRTY"
+#define OLED_RENDER_LAYOUT_COLEMAK_DH "CLMAK"
+#define OLED_RENDER_LAYOUT_GAME       "GAME"
+
+#define OLED_RENDER_LAYER_BASE        " Def"
+#define OLED_RENDER_LAYER_NAVIGATION  " Nav"
+#define OLED_RENDER_LAYER_NUMBER      " Num"
+#define OLED_RENDER_LAYER_SYMBOL      " Sym"
+#define OLED_RENDER_LAYER_CONFIG      " Cfg"
 
 void              render_crkbd_logo(void);
 void              render_rollow_logo(void);
@@ -24,9 +24,43 @@ void              render_default_layer_state(void);
 void              render_layer_state(void);
 void              render_keylock_status(void);
 void              render_mod_status(void);
+void              render_feature_status(void);
 void              render_oled_main(void);
 bool              oled_task_user(void);
 oled_rotation_t   oled_init_user(oled_rotation_t rotation);
+
+static const char PROGMEM sep_v32[]    = {0xC0, 0xC0, 0xC0, 0xC0, 0xC0, 0};
+
+static const char PROGMEM num_on[]     = {0x91, 0};
+static const char PROGMEM num_off[]    = {0xDC, 0};
+
+static const char PROGMEM caps_on[]    = {0x93, 0};
+static const char PROGMEM caps_off[]   = {0xD9, 0};
+
+static const char PROGMEM scroll_on[]  = {0x8F, 0};
+static const char PROGMEM scroll_off[] = {0xD8, 0};
+
+static const char PROGMEM shift_on[]   = {0x8F, 0};
+static const char PROGMEM shift_off[]  = {0xD8, 0};
+
+static const char PROGMEM ctrl_on[]    = {0x93, 0};
+static const char PROGMEM ctrl_off[]   = {0xD9, 0};
+
+static const char PROGMEM alt_on[]     = {0xD6, 0};
+static const char PROGMEM alt_off[]    = {0xDA, 0};
+
+static const char PROGMEM gui_on[]     = {0xD7, 0};
+static const char PROGMEM gui_off[]    = {0xDB, 0};
+
+static const char PROGMEM rgb_on[]     = {0xD4, 0xD5, 0};
+static const char PROGMEM rgb_off[]    = {0xDD, 0xDE, 0};-
+
+static const char PROGMEM audio_on[]   = {0xAF, 0xB0, 0};
+static const char PROGMEM audio_off[]  = {0xCF, 0xD0, 0};
+
+static const char PROGMEM haptic_on[]  = {0xB1, 0xB2, 0};
+static const char PROGMEM haptic_off[] = {0xB3, 0xB4, 0};
+
 
 static const char PROGMEM crkbd_logo[] = {
   0x80, 0x81, 0x82, 0x83, 0x84, 0x85, 0x86, 0x87, 0x88, 0x89, 0x8a, 0x8b, 0x8c, 0x8d, 0x8e, 0x8f, 0x90, 0x91, 0x92, 0x93, 0x94,
