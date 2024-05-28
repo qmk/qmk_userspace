@@ -29,37 +29,40 @@ void              render_oled_main(void);
 bool              oled_task_user(void);
 oled_rotation_t   oled_init_user(oled_rotation_t rotation);
 
-static const char PROGMEM sep_v32[]    = {0xC0, 0xC0, 0xC0, 0xC0, 0xC0, 0};
+static const char PROGMEM sep_v32[]     = {0xC0, 0xC0, 0xC0, 0xC0, 0xC0, 0};
 
-static const char PROGMEM num_on[]     = {0x91, 0};
-static const char PROGMEM num_off[]    = {0xDC, 0};
+static const char PROGMEM num_on[]      = {0x91, 0};
+static const char PROGMEM num_off[]     = {0xAD, 0};
 
-static const char PROGMEM caps_on[]    = {0x93, 0};
-static const char PROGMEM caps_off[]   = {0xD9, 0};
+static const char PROGMEM caps_on[]     = {0x93, 0};
+static const char PROGMEM caps_off[]    = {0xCD, 0};
 
-static const char PROGMEM scroll_on[]  = {0x8F, 0};
-static const char PROGMEM scroll_off[] = {0xD8, 0};
+static const char PROGMEM scroll_on[]   = {0x8F, 0};
+static const char PROGMEM scroll_off[]  = {0x8D, 0};
 
-static const char PROGMEM shift_on[]   = {0x8F, 0};
-static const char PROGMEM shift_off[]  = {0xD8, 0};
+static const char PROGMEM shift_on[]    = {0x87, 0x88, 0};
+static const char PROGMEM shift_off[]   = {0x85, 0x86, 0};
 
-static const char PROGMEM ctrl_on[]    = {0x93, 0};
-static const char PROGMEM ctrl_off[]   = {0xD9, 0};
+static const char PROGMEM ctrl_on[]     = {0xAB, 0xAC, 0};
+static const char PROGMEM ctrl_off[]    = {0xA9, 0xAA, 0};
 
-static const char PROGMEM alt_on[]     = {0xD6, 0};
-static const char PROGMEM alt_off[]    = {0xDA, 0};
+static const char PROGMEM alt_on[]      = {0xA7, 0xA8, 0};
+static const char PROGMEM alt_off[]     = {0xA5, 0xA6, 0};
 
-static const char PROGMEM gui_on[]     = {0xD7, 0};
-static const char PROGMEM gui_off[]    = {0xDB, 0};
+static const char PROGMEM gui_on[]      = {0x8B, 0x8C, 0};
+static const char PROGMEM gui_off[]     = {0x89, 0x8A, 0};
 
-static const char PROGMEM rgb_on[]     = {0xD4, 0xD5, 0};
-static const char PROGMEM rgb_off[]    = {0xDD, 0xDE, 0};-
+static const char PROGMEM rgb_on[]      = {0xC7, 0xC8, 0};
+static const char PROGMEM rgb_off[]     = {0xC5, 0xC6, 0};
 
-static const char PROGMEM audio_on[]   = {0xAF, 0xB0, 0};
-static const char PROGMEM audio_off[]  = {0xCF, 0xD0, 0};
+static const char PROGMEM dragscr_on[]  = {0xBD, 0xBE, 0};
+static const char PROGMEM dragscr_off[] = {0x9D, 0x9E, 0};
 
-static const char PROGMEM haptic_on[]  = {0xB1, 0xB2, 0};
-static const char PROGMEM haptic_off[] = {0xB3, 0xB4, 0};
+static const char PROGMEM audio_on[]    = {0xAF, 0xB0, 0};
+static const char PROGMEM audio_off[]   = {0xCF, 0xD0, 0};
+
+static const char PROGMEM haptic_on[]   = {0xB1, 0xB2, 0};
+static const char PROGMEM haptic_off[]  = {0xB3, 0xB4, 0};
 
 
 static const char PROGMEM crkbd_logo[] = {

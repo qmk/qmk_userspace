@@ -2,6 +2,13 @@
 #include QMK_KEYBOARD_H
 #include "features/taphold.h"
 
+bool drag_scroll_is_enabled(void);
+
+bool isLunaSneaking(void);
+bool isLunaJumping(void);
+bool isLunaShowedJump(void);
+
+void setLunaShowedJump(bool state);
 
 enum layers {
   _QWERTY = 0,

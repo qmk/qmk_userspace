@@ -1,6 +1,14 @@
 #include "t4corun.h"
 
-static uint8_t current_base_layer = _DEFAULT_LAYER_1;
+static uint8_t current_base_layer  = _DEFAULT_LAYER_1;
+static bool drag_scroll_enabled = false;
+
+
+/* Luna variables */
+static bool isSneaking = false;
+static bool isJumping  = false;
+static bool showedJump = true;
+
 
 layer_state_t layer_state_set_user(layer_state_t  state) {
 
@@ -8,9 +16,66 @@ layer_state_t layer_state_set_user(layer_state_t  state) {
 
 }
 
+bool drag_scroll_is_enabled(void) {
+
+  /*
+    Keeps track of Ploopy Nano drag scroll from the keyboard side
+    It doesn't actually talk to the Ploopy Nano so there is a chance 
+    This may be out of sync
+    
+    Used to enable OLED indicator
+  */
+  return drag_scroll_enabled;
+
+}
+
+bool isLunaSneaking(void) {
+
+  return isSneaking;
+
+}
+
+bool isLunaJumping(void) {
+
+  return isJumping;
+
+}
+
+bool isLunaShowedJump(void) {
+
+  return showedJump;
+}
+
+void setLunaShowedJump(bool state) {
+
+  showedJump = state;
+}
+
 bool process_record_user(uint16_t keycode, keyrecord_t *record) {
 
   switch (keycode) {
+
+    /* KEYBOARD PET STATUS START */
+
+    case TR_LCTL:
+      if (record->event.pressed) {
+        isSneaking = true;
+      } else {
+        isSneaking = false;
+      }
+      break;
+    case KC_SPC:
+      if (record->event.pressed) {
+        isJumping  = true;
+        showedJump = false;
+      } else {
+        isJumping = false;
+      }
+    break;
+
+    /* KEYBOARD PET STATUS END */
+
+
 
     case BASELYR:
       if (record->event.pressed) {
@@ -39,6 +104,9 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
         // double_tap(KC_NUM, KC_NUM, WAIT_DELAY);
         double_tap(KC_NUM, WAIT_DELAY);
 
+        //I realize this may not work for the Charybdis nano
+        drag_scroll_enabled = !drag_scroll_enabled;
+        
       }
       return false;
 

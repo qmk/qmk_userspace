@@ -35,6 +35,7 @@ MOUSEKEY_ENABLE = yes
 COMBO_ENABLE = yes
 KEY_OVERRIDE_ENABLE = yes
 MUSIC_MODE = no
+WPM_ENABLE = yes
 
 # ---------------------------------------------------------
 # include my code that will be common across all my keyboards
