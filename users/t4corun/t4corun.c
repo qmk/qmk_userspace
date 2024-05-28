@@ -1,81 +1,46 @@
 #include "t4corun.h"
 
+// Keeps track of base layer so we can make one key to cycle through them
+// instead of making a key for each one */
 static uint8_t current_base_layer  = _DEFAULT_LAYER_1;
+
+// Should keep track of the Ploopy Nano drag scroll mode
+// There is a possibility of this being out of sync
 static bool drag_scroll_enabled = false;
 
-
-/* Luna variables */
-static bool isSneaking = false;
-static bool isJumping  = false;
+// Luna Pet Variables
+static bool isJumping = false;
 static bool showedJump = true;
 
 
-layer_state_t layer_state_set_user(layer_state_t  state) {
 
-  return update_tri_layer_state(state, _NAVIGATION, _NUMBER, _SYMBOL);;
+// Allows the OLED code to get the drag scroll mode
+bool drag_scroll_is_enabled(void) { return drag_scroll_enabled; }
 
-}
+// Allows the OLED code to see when space bar is pressed
+bool isLunaJumping(void) { return isJumping; }
+bool isJumpShown(void) { return showedJump; }
 
-bool drag_scroll_is_enabled(void) {
+// Allows the OLED code to clear the space bar status when render is complete
+void setLunaJumped(void) { showedJump = true;}
 
-  /*
-    Keeps track of Ploopy Nano drag scroll from the keyboard side
-    It doesn't actually talk to the Ploopy Nano so there is a chance 
-    This may be out of sync
-    
-    Used to enable OLED indicator
-  */
-  return drag_scroll_enabled;
+// Hold Navigation and Number to get Symbol
+layer_state_t layer_state_set_user(layer_state_t  state) { return update_tri_layer_state(state, _NAVIGATION, _NUMBER, _SYMBOL); }
 
-}
-
-bool isLunaSneaking(void) {
-
-  return isSneaking;
-
-}
-
-bool isLunaJumping(void) {
-
-  return isJumping;
-
-}
-
-bool isLunaShowedJump(void) {
-
-  return showedJump;
-}
-
-void setLunaShowedJump(bool state) {
-
-  showedJump = state;
-}
-
+// Customize behavior for existing keycodes or create new ones
 bool process_record_user(uint16_t keycode, keyrecord_t *record) {
 
   switch (keycode) {
 
-    /* KEYBOARD PET STATUS START */
-
-    case TR_LCTL:
-      if (record->event.pressed) {
-        isSneaking = true;
-      } else {
-        isSneaking = false;
-      }
-      break;
     case KC_SPC:
       if (record->event.pressed) {
-        isJumping  = true;
+        isJumping = true;
         showedJump = false;
-      } else {
+      }
+      else {
         isJumping = false;
       }
-    break;
-
-    /* KEYBOARD PET STATUS END */
-
-
+      break;
 
     case BASELYR:
       if (record->event.pressed) {
@@ -86,7 +51,6 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
       }
       return false;
 
-
     case RBSELYR:
       if (record->event.pressed) { 
 
@@ -95,7 +59,6 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
 
       }
       return false;
-
 
     case PN_DRGS:
       if (record->event.pressed) {
@@ -109,7 +72,6 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
         
       }
       return false;
-
 
     case PN_PDPI:
       if (record->event.pressed) {
@@ -168,5 +130,6 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
 
   }
 
+  // let QMK process the normal behavior if not handled above
   return true;
 }

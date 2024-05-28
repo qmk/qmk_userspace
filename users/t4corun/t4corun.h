@@ -3,12 +3,9 @@
 #include "features/taphold.h"
 
 bool drag_scroll_is_enabled(void);
-
-bool isLunaSneaking(void);
 bool isLunaJumping(void);
-bool isLunaShowedJump(void);
-
-void setLunaShowedJump(bool state);
+bool isJumpShown(void);
+void setLunaJumped(void);
 
 enum layers {
   _QWERTY = 0,
