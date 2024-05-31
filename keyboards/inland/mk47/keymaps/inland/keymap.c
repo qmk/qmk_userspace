@@ -1,4 +1,5 @@
 #include QMK_KEYBOARD_H
+#include "print.h"
 
 void keyboard_post_init_user(void) {
 #ifdef RGB_MATRIX_ENABLE
@@ -7,7 +8,20 @@ void keyboard_post_init_user(void) {
     //rgb_matrix_mode(RGB_MATRIX_SOLID_REACTIVE);
     rgb_matrix_sethsv(HSV_PURPLE);
 #endif
+    debug_enable=true;
+    debug_matrix=true;
+    debug_keyboard=true;
 }
+
+// Each layer gets a name for readability, which is then used in the keymap matrix below.
+// The underscores don't mean anything - you can have a layer called STUFF or any other name.
+// Layer names don't all need to be of the same length, obviously, and you can also skip them
+// entirely and just use numbers.
+#define _QWERTY 0
+#define _LOWER  1
+#define _RAISE  2
+#define _FUNC   3
+#define _SPCHRS 4
 
 enum custom_keycodes {
     DEFAULT = SAFE_RANGE,
@@ -15,7 +29,7 @@ enum custom_keycodes {
     RAISE,
     FUNC,
     LOCKWIN,
-    M_JIGL,
+    KC_JIGG,
     C_ALT_D,
     SNAP_LFT,
     SNAP_RT,
@@ -48,8 +62,50 @@ tap_dance_action_t tap_dance_actions[] = {
     [TD_SPC_ENT] = ACTION_TAP_DANCE_DOUBLE(KC_SPC, KC_ENT),
 };
 
+__attribute__((weak))
+bool process_record_keymap(uint16_t keycode, keyrecord_t *record) { return true; }
+
+__attribute__((weak))
+bool process_record_secrets(uint16_t keycode, keyrecord_t *record) { return true; }
+
+/*declare boolean for jiggler*/
+bool is_jiggling = false;
+
+/*timers*/
+uint32_t idle_timeout = 30000; // (after 30s)
+uint32_t mouse_interval = 10000; // (every 10s)
+
+static uint32_t idle_callback(uint32_t trigger_time, void* cb_arg) {
+    // now idle
+    SEND_STRING(SS_TAP(X_F15));
+    return mouse_interval;
+}
+
 bool process_record_user(uint16_t keycode, keyrecord_t *record) {
+
+     // on every key event start or extend `idle_callback()` deferred execution after IDLE_TIMEOUT_MS
+    static deferred_token idle_token = INVALID_DEFERRED_TOKEN;
+
+    if (!extend_deferred_exec(idle_token, idle_timeout)) {
+        idle_token = defer_exec(idle_timeout, idle_callback, NULL);
+    }
+
+#ifdef CONSOLE_ENABLE
+    // uprintf("KL: kc: 0x%04X, col: %2u, row: %2u, pressed: %u, time: %5u, int: %u, count: %u\n", keycode, record->event.key.col, record->event.key.row, record->event.pressed, record->event.time, record->tap.interrupted, record->tap.count);
+#endif
+
     switch (keycode) {
+        case KC_JIGG:
+            if (record->event.pressed) {
+                    is_jiggling = !is_jiggling; /*flip boolean to true*/
+                    if(is_jiggling) {
+                        layer_on(_SPCHRS);
+                    } else {
+                        layer_off(_SPCHRS);
+                    }
+            }
+
+            break;
         case LOCKWIN:
             if (record->event.pressed) {
                 // when keycode LOCKWIN is pressed
@@ -118,17 +174,11 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
             }
         break;
     }
-    return true;
+    // return true;
+    return process_record_keymap(keycode, record) && process_record_secrets(keycode, record);
 }
 
-// Each layer gets a name for readability, which is then used in the keymap matrix below.
-// The underscores don't mean anything - you can have a layer called STUFF or any other name.
-// Layer names don't all need to be of the same length, obviously, and you can also skip them
-// entirely and just use numbers.
-#define _QWERTY 0
-#define _LOWER  1
-#define _RAISE  2
-#define _FUNC   3
+
 
 // For _QWERTY layer
 #define OSL_FUN  OSL(_FUNC)
@@ -159,7 +209,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
         KC_GRV,     KC_F1,      KC_F2,      KC_F3,      KC_F4,      KC_F5,      KC_F6,      KC_F7,      KC_F8,      KC_F9,      KC_F10,    KC_F12,\
         _______,    KC_1,       KC_2,       KC_3,       KC_4,       KC_5,       KC_6,       KC_7,       KC_8,       KC_9,       KC_0,      XXXXXXX,\
         _______,    XXXXXXX,    XXXXXXX,    KC_EQL,     KC_LBRC,    KC_LCBR,    KC_RCBR,    KC_RBRC,    KC_MINS,    XXXXXXX,    XXXXXXX,   XXXXXXX,\
-        _______,    XXXXXXX,    XXXXXXX,    KC_TRNS,    KC_TRNS,    TD_SPC_ENT,     KC_TRNS,    KC_TRNS,    KC_TRNS,    XXXXXXX,    XXXXXXX\
+        _______,    XXXXXXX,    XXXXXXX,    KC_TRNS,    KC_TRNS,    TD_SPC_ENT, KC_TRNS,    KC_TRNS,    KC_TRNS,    XXXXXXX,    XXXXXXX\
     ),
  
     [_RAISE] = LAYOUT_planck_mit(\
@@ -173,7 +223,14 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
         KC_TRNS,    XXXXXXX,    XXXXXXX,    XXXXXXX,    XXXXXXX,    XXXXXXX,    KVM_SW,     XXXXXXX,    SNAP_TOP,   XXXXXXX,    RGB_TOG,    _______,\
         C_ALT_D,    XXXXXXX,    XXXXXXX,    XXXXXXX,    XXXXXXX,    XXXXXXX,    XXXXXXX,    SNAP_LFT,   SNAP_BTM,   SNAP_RT,    KC_CALC,    _______,\
         KC_TRNS,    XXXXXXX,    XXXXXXX,    XXXXXXX,    XXXXXXX,    KC_NUM,     LOCKWIN,    QK_RBT,     QK_BOOT,    EE_CLR,     KC_SLEP,    _______,\
-        XXXXXXX,    XXXXXXX,    XXXXXXX,    KC_TRNS,    KC_TRNS,    KC_TRNS,    KC_TRNS,    KC_TRNS,    KC_TRNS,    XXXXXXX,    XXXXXXX\
+        XXXXXXX,    XXXXXXX,    XXXXXXX,    KC_TRNS,    KC_TRNS,    KC_TRNS,    KC_TRNS,    KC_TRNS,    KC_TRNS,    XXXXXXX,    KC_JIGG\
+    ),
+
+    [_SPCHRS] = LAYOUT_planck_mit(\
+        XXXXXXX,    XXXXXXX,    XXXXXXX,    XXXXXXX,    XXXXXXX,    XXXXXXX,    KC_PMNS,    KC_PPLS,    KC_7,       KC_8,       KC_9,       _______,\
+        C_ALT_D,    XXXXXXX,    XXXXXXX,    XXXXXXX,    XXXXXXX,    XXXXXXX,    KC_PAST,    KC_PSLS,    KC_4,       KC_5,       KC_6,       _______,\
+        XXXXXXX,    XXXXXXX,    XXXXXXX,    XXXXXXX,    XXXXXXX,    XXXXXXX,    XXXXXXX,    XXXXXXX,    KC_1,       KC_2,       KC_3,       OSL_FUN,\
+        XXXXXXX,    XXXXXXX,    XXXXXXX,    OSM_GUI,    LOW_TAB,    TD(TD_SPC_ENT), RSE_BSP,    OSM_RSFT,    KC_PDOT,    XXXXXXX,    KC_JIGG\
     )
 
 };
@@ -207,6 +264,9 @@ bool rgb_matrix_indicators_advanced_user(uint8_t led_min, uint8_t led_max) {
 
 	    case _FUNC:
             rgb_matrix_set_color(i, RGB_RED);
+            break;
+        case _SPCHRS:
+            rgb_matrix_set_color(i, RGB_YELLOW);
             break;
 
         }

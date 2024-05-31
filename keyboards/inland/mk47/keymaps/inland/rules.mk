@@ -8,6 +8,8 @@ VIA_ENABLE = no
 # markstos: enable media keys
 EXTRAKEY_ENABLE = yes
 
+DEFERRED_EXEC_ENABLE = yes
+
 # markstos: smaller file size, little down-side
 LINK_TIME_OPTIMIZATION_ENABLE = yes
 
