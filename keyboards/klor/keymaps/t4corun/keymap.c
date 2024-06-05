@@ -32,16 +32,15 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
 #if defined(ENCODER_MAP_ENABLE)
 
-/* These are horizontal encoders. Found I have to make it opposite the rotary encoders for it to feel intuitive*/
 const uint16_t PROGMEM encoder_map[][NUM_ENCODERS][NUM_DIRECTIONS] = {
 
-  [_QWERTY]     = { ENCODER_CCW_CW(KC_WH_D, KC_WH_U), ENCODER_CCW_CW(KC_VOLU, KC_VOLD)  },
-  [_COLEMAK_DH] = { ENCODER_CCW_CW(KC_WH_D, KC_WH_U), ENCODER_CCW_CW(KC_VOLU, KC_VOLD)  },
-  [_GAME]       = { ENCODER_CCW_CW(KC_WH_D, KC_WH_U), ENCODER_CCW_CW(KC_VOLU, KC_VOLD)  },
-  [_NAVIGATION] = { ENCODER_CCW_CW(ZOOMIN,  ZOOMOUT), ENCODER_CCW_CW(___x___, ___x___)  },
-  [_NUMBER]     = { ENCODER_CCW_CW(___x___, ___x___), ENCODER_CCW_CW(KC_RGHT, KC_LEFT)  },
+  [_QWERTY]     = { ENCODER_CCW_CW(KC_WH_U, KC_WH_D), ENCODER_CCW_CW(KC_VOLD, KC_VOLU)  },
+  [_COLEMAK_DH] = { ENCODER_CCW_CW(KC_WH_U, KC_WH_D), ENCODER_CCW_CW(KC_VOLD, KC_VOLU)  },
+  [_GAME]       = { ENCODER_CCW_CW(KC_WH_U, KC_WH_D), ENCODER_CCW_CW(KC_VOLD, KC_VOLU)  },
+  [_NAVIGATION] = { ENCODER_CCW_CW(ZOOMOUT, ZOOMIN),  ENCODER_CCW_CW(___x___, ___x___)  },
+  [_NUMBER]     = { ENCODER_CCW_CW(___x___, ___x___), ENCODER_CCW_CW(KC_LEFT, KC_RGHT)  },
   [_SYMBOL]     = { ENCODER_CCW_CW(___x___, ___x___), ENCODER_CCW_CW(___x___, ___x___)  },
-  [_CONFIG]     = { ENCODER_CCW_CW(BASELYR, RBSELYR), ENCODER_CCW_CW(TR_RMOD, TR_RRMD)  }
+  [_CONFIG]     = { ENCODER_CCW_CW(RBSELYR, BASELYR), ENCODER_CCW_CW(TR_RRMD, TR_RMOD)  }
 
 };
 
