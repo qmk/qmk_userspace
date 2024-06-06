@@ -1,52 +1,46 @@
-#include "oled32.h"
+#include "oled.h"
 
 #if defined(WPM_ENABLE)
   #include "luna.c"
 #endif
 
 
-// Prints the current base layer
-// (e.g. Qwerty, Colemak DH, etc)
-void render_default_layer_state(void) {
+// Shows the currently enabled Layer name
+void render_layer_state(void) {
 
-  switch (get_highest_layer(default_layer_state)) {
-    case _QWERTY:
-      oled_write_P(PSTR(OLED_RENDER_LAYOUT_QWERTY), false);
+  switch (get_highest_layer(layer_state)) {
+    case _NAVIGATION:
+      oled_write_P(PSTR(OLED_RENDER_LAYER_2), false);
       break;
-    case _COLEMAK_DH:
-      oled_write_P(PSTR(OLED_RENDER_LAYOUT_COLEMAK_DH), false);
+    case _NUMBER:
+      oled_write_P(PSTR(OLED_RENDER_LAYER_3), false);
       break;
-    case _GAME:
-      oled_write_ln_P(PSTR(OLED_RENDER_LAYOUT_GAME), false);
+    case _SYMBOL:
+      oled_write_P(PSTR(OLED_RENDER_LAYER_4), false);
+      break;
+    case _CONFIG:
+      oled_write_P(PSTR(OLED_RENDER_LAYER_5), false);
+      break;
+    default:
+      switch (get_highest_layer(default_layer_state)) {
+        case _DEFAULT_LAYER_2:
+          oled_write_P(PSTR(OLED_RENDER_DEFAULT_LAYER2), false);
+          break;
+        case _DEFAULT_LAYER_3:
+          oled_write_P(PSTR(OLED_RENDER_DEFAULT_LAYER3), false);
+          break;
+        default:
+          oled_write_P(PSTR(OLED_RENDER_DEFAULT_LAYER1), false);
+          break;
+      }
       break;
   }
 
 }
 
-// Shows the currently enabled Layer name
-// Also shows where on the layer stack it is
-void render_layer_state(void) {
+// Graphic to show which layer on the stack is enabled
+void render_layer_state_graphic(void) {
 
-  switch (get_highest_layer(layer_state)) {
-    case _NAVIGATION:
-      oled_write_ln_P(PSTR(OLED_RENDER_LAYER_NAVIGATION), false);
-      break;
-    case _NUMBER:
-      oled_write_ln_P(PSTR(OLED_RENDER_LAYER_NUMBER), false);
-      break;
-    case _SYMBOL:
-      oled_write_ln_P(PSTR(OLED_RENDER_LAYER_SYMBOL), false);
-      break;
-    case _CONFIG:
-      oled_write_ln_P(PSTR(OLED_RENDER_LAYER_CONFIG), false);
-      break;
-    default:
-      oled_write_ln_P(PSTR(OLED_RENDER_LAYER_BASE), false);
-      break;
-  }
-
-  oled_write_ln_P(PSTR(" "),false);
- 
   switch (get_highest_layer(layer_state)) {
     case _NAVIGATION:
       oled_write_P(lyr_nav, false );
@@ -68,42 +62,51 @@ void render_layer_state(void) {
 }
 
 // Shows the Host LED State (Num lock, caps lock , scroll lock)
-void render_keylock_status(void) {
+void render_keylock_status(bool vertical) {
 
-  oled_write_ln_P(PSTR(OLED_RENDER_KEYLOCK_NAME), false);
-  oled_write_P(PSTR(" "), false);
+  if (vertical) {
+    oled_write_ln_P(PSTR(OLED_RENDER_KEYLOCK_NAME), false);
+    oled_write_P(PSTR(" "), false);
+  }
 
   host_keyboard_led_state().num_lock ? oled_write_P(num_on, false ) : oled_write_P(num_off, false );
   host_keyboard_led_state().caps_lock || is_caps_word_on() ? oled_write_P(caps_on, false ) : oled_write_P(caps_off, false );
-  host_keyboard_led_state().scroll_lock ? oled_write_ln_P(scroll_on, false ) : oled_write_ln_P(scroll_off, false );
+  host_keyboard_led_state().scroll_lock ? oled_write_P(scroll_on, false ) : oled_write_P(scroll_off, false );
 
 }
 
-
 // Indicates which modifies are enabled
-void render_mod_status(void) {
+void render_mod_status(bool vertical) {
 
   uint8_t current_mod = get_mods();
   uint8_t current_osm = get_oneshot_mods();
 
-  oled_write_ln_P(PSTR(OLED_RENDER_MODS_NAME), false);
-  oled_write_P(PSTR(" "), false);
+  if (vertical) {
+    oled_write_ln_P(PSTR(OLED_RENDER_MODS_NAME), false);
+    oled_write_P(PSTR(" "), false);
+  }
 
   (current_mod | current_osm) & MOD_MASK_SHIFT ? oled_write_P(shift_on, false) : oled_write_P(shift_off, false );
   (current_mod | current_osm) & MOD_MASK_CTRL ? oled_write_P(ctrl_on, false ) : oled_write_P(ctrl_off, false );
 
-  oled_write_P(PSTR(" "), false);
+  if (vertical) {
+    oled_write_P(PSTR(" "), false);
+  }
 
   (current_mod | current_osm) & MOD_MASK_ALT ? oled_write_P(alt_on, false ): oled_write_P(alt_off, false );
   (current_mod | current_osm) & MOD_MASK_GUI ? oled_write_P(gui_on, false ): oled_write_P(gui_off, false );
 
 }
 
-// Indicates which features are turned on or off
-void render_feature_status(void) {
 
-oled_write_ln_P(PSTR(OLED_RENDER_FEATURE_NAME), false);
-oled_write_P(PSTR(" "), false);
+// Indicates which features are turned on or off
+void render_feature_status(bool vertical) {
+
+  if (vertical) {
+    oled_write_ln_P(PSTR(OLED_RENDER_FEATURE_NAME), false);
+    oled_write_P(PSTR(" "), false);
+  }
+
 
 #if defined(RGB_MATRIX_ENABLE)
   rgb_matrix_is_enabled() ? oled_write_P(rgb_on, false) : oled_write_P(rgb_off, false);
@@ -114,7 +117,9 @@ oled_write_P(PSTR(" "), false);
   // only works on master side
   drag_scroll_is_enabled() ? oled_write_P(dragscr_on, false) : oled_write_P(dragscr_off, false);
 
-  oled_write_P(PSTR(" "), false);
+  if (vertical) {
+    oled_write_P(PSTR(" "), false);
+  }
 
 #if defined(AUDIO_ENABLE)
   is_audio_on() ? oled_write_P(sound_on, false) : oled_write_P(sound_off, false);
@@ -134,35 +139,79 @@ oled_write_P(PSTR(" "), false);
 // Coordinate the OLED rendering
 bool oled_task_user(void) {
 
+#if defined(OLED_DISPLAY_128X64)
+  
+  if (is_keyboard_master()) {
+
+    oled_set_cursor(0,0);
+    render_layer_state();
+
+    oled_set_cursor(0,1);
+    oled_write_P(sep_v, false);
+
+    oled_set_cursor(0,4);
+    render_mod_status(false);
+
+    oled_set_cursor(0,5);
+    oled_write_P(sep_v, false);
+
+    oled_set_cursor(0,7);
+    render_keylock_status(false);
+
+    oled_set_cursor(13,7);
+    render_feature_status(false);
+
+    oled_set_cursor(15,3);
+    oled_write_P(klor_small_face_1, false);
+
+    oled_set_cursor(15,4);
+    oled_write_P(klor_small_face_2, false);
+  } else {
+
+    oled_set_cursor(0,0);
+    oled_write_raw_P(klor_face, sizeof(klor_face));
+
+  }
+
+#else
   //process_record_user is only processed on master side
   //split side OLED does not respond to key presses custom behaviors
   if (is_keyboard_master()) {
 
-    render_keylock_status();
+    oled_set_cursor(0,0);
+    render_keylock_status(true);
 
-    oled_write_ln_P(PSTR(" "), false);
-    render_feature_status();
+    oled_set_cursor(0,3);
+    render_feature_status(true);
 
 #if defined(WPM_ENABLE)
-    oled_write_ln_P(PSTR(" "), false);
-    oled_write_ln_P(PSTR(OLED_RENDER_WPM_NAME), false);
-    oled_write_P(PSTR(" "), false);
+
+    oled_set_cursor(0,7);
+    oled_write_P(PSTR(OLED_RENDER_WPM_NAME), false);
+
+    oled_set_cursor(1,8);
     oled_write_P(get_u8_str(get_current_wpm(), ' '), false);
 
     render_luna();
+
 #endif //WPM_ENABLE
 
   } else {
 
-    render_default_layer_state();
+    oled_set_cursor(0,0);
     render_layer_state();
 
-    oled_write_ln_P(PSTR(" "), false);
-    render_mod_status();
+    oled_set_cursor(0,2);
+    render_layer_state_graphic();
 
-    oled_write_ln_P(PSTR(" "), false);
+    oled_set_cursor(0,7);
+    render_mod_status(true);
+
+    oled_set_cursor(0,13);
     oled_write_P(qmk_logo_small, false);
   }
+
+#endif
 
   return false;
 
@@ -172,8 +221,12 @@ bool oled_task_user(void) {
 oled_rotation_t oled_init_user(oled_rotation_t rotation) {
   
   //OLED_ROTATION_270 for Rollow/Corne/Swoop
-  //OLED_ROTATION_0 for KLOR
+  //OLED_ROTATION_180 for KLOR
 
+#if defined(OLED_DISPLAY_128X64)
+  return OLED_ROTATION_180;
+#else
   return OLED_ROTATION_270;
+#endif
 
 }

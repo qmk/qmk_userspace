@@ -7,31 +7,42 @@
 #define OLED_RENDER_FEATURE_NAME      "Feat"
 #define OLED_RENDER_WPM_NAME          "Wpm"
 
-#define OLED_RENDER_LAYOUT_QWERTY     "QWRTY"
-#define OLED_RENDER_LAYOUT_COLEMAK_DH "CLMAK"
-#define OLED_RENDER_LAYOUT_GAME       "GAME"
+#if defined(OLED_DISPLAY_128X64)
+#   define OLED_RENDER_DEFAULT_LAYER1    "QWERTY    "
+#   define OLED_RENDER_DEFAULT_LAYER2    "COLEMAK DH"
+#   define OLED_RENDER_DEFAULT_LAYER3    "GAME      "
 
-#define OLED_RENDER_LAYER_BASE        " Def"
-#define OLED_RENDER_LAYER_NAVIGATION  " Nav"
-#define OLED_RENDER_LAYER_NUMBER      " Num"
-#define OLED_RENDER_LAYER_SYMBOL      " Sym"
-#define OLED_RENDER_LAYER_CONFIG      " Cfg"
+#   define OLED_RENDER_LAYER_2           "Navigation"
+#   define OLED_RENDER_LAYER_3           "Number    "
+#   define OLED_RENDER_LAYER_4           "Symbol    "
+#   define OLED_RENDER_LAYER_5           "Config    "
+#else
+//128x32 are ? x 5 char wide
+#   define OLED_RENDER_DEFAULT_LAYER1    "Qwrty"
+#   define OLED_RENDER_DEFAULT_LAYER2    "Clmak"
+#   define OLED_RENDER_DEFAULT_LAYER3    "Game "
+
+#   define OLED_RENDER_LAYER_2           " Nav "
+#   define OLED_RENDER_LAYER_3           " Num "
+#   define OLED_RENDER_LAYER_4           " Sym "
+#   define OLED_RENDER_LAYER_5           " Cfg "
+#endif
 
 // LUNA PET Variables
 #if defined(WPM_ENABLE)
 #   define OLED_LUNA_X                   0
-#   define OLED_LUNA_Y                   5
+#   define OLED_LUNA_Y                   13
 #   define OLED_LUNA_MIN_WALK_SPEED      10
 #   define OLED_LUNA_MIN_RUN_SPEED       40
 #   define OLED_LUNA_ANIM_FRAME_DURATION 200  // how long each frame lasts in ms
 #   define OLED_LUNA_ANIM_SIZE           96   // number of bytes in array. If you change sprites, minimize for adequate firmware size. max is 1024
 #endif //WPM_ENABLE
 
-void render_default_layer_state(void);
 void render_layer_state(void);
-void render_keylock_status(void);
-void render_mod_status(void);
-void render_feature_status(void);
+void render_layer_state_graphic(void);
+void render_keylock_status(bool vertical);
+void render_mod_status(bool vertical);
+void render_feature_status(bool vertical);
 
 
 static const char PROGMEM scroll_off[]  = {0x8D, 0};
@@ -108,8 +119,12 @@ static const char PROGMEM qmk_logo_small[] = {
   0xE1, 0xDD, 0xDE, 0xDF, 0xE1, 0x00
 };
 
+#if defined(OLED_DISPLAY_128X64)
 
-#if defined(KEYBOARD_klor)
+static const char PROGMEM sep_v[] = {0xC0, 0xC0, 0xC0, 0xC0, 0xC0, 0xC0, 0xC0, 0xC0, 0xC0, 0xC0, 0xC0, 0xC0, 0xC0, 0xC0, 0xC0, 0xC0, 0xC0, 0xC0, 0xC0, 0xC0, 0xC0, 0};
+
+static const char PROGMEM klor_small_face_1[] = {0x80, 0x81, 0x82, 0x83, 0x84, 0xE1, 0};
+static const char PROGMEM klor_small_face_2[] = {0xA0, 0xA1, 0xA2, 0xA3, 0xA4, 0xE1, 0};
 
 static const char PROGMEM klor_face[] = {
     0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 
@@ -146,4 +161,4 @@ static const char PROGMEM klor_face[] = {
     0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00
 };
 
-#endif // KEYBOARD_klor
+#endif // OLED_DISPLAY_128X64

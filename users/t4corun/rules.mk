@@ -53,11 +53,7 @@ INTROSPECTION_KEYMAP_C += features/combo.c
 # include optional code for enabled features for each keyboard
 
 ifeq ($(strip $(OLED_ENABLE)), yes)
-  ifeq ($(filter $(KEYBOARD), klor klor/2040),)
-    SRC += features/oled32.c
-  else
-    SRC += features/oled64.c
-  endif
+  SRC += features/oled.c
 endif
 
 ifeq ($(strip $(AUDIO_ENABLE)), yes)
