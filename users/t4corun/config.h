@@ -16,15 +16,13 @@
 #undef LOCKING_SUPPORT_ENABLE
 #undef LOCKING_RESYNC_ENABLE
 
-
-
 //Clear variables we plan to use that might be set elsewhere
 #undef USB_POLLING_INTERVAL_MS
+#undef LAYER_STATE_8BIT
 
 //Set common configuration for all keyboards
 #define USB_POLLING_INTERVAL_MS 1
-
-
+#define LAYER_STATE_8BIT
 
 
 
@@ -52,4 +50,12 @@
 
 #if defined(OLED_ENABLE)
 #	  include "config/oled_config.h"
+#endif
+
+#if defined(HAPTIC_ENABLE)
+#   include "config/haptic_config.h"
+#endif
+
+#if defined(AUDIO_ENABLE)
+#   include "config/audio_config.h"
 #endif

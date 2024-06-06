@@ -139,7 +139,10 @@
 #define RGB_MATRIX_DEFAULT_SPD 32
 
 //Set per keyboard configuration
-#if defined(KEYBOARD_bastardkb_charybdis_3x5) || defined(KEYBOARD_dztech_dz60rgb_v2_1) || defined(KEYBOARD_bluebell_swoop)
+#if defined(KEYBOARD_bastardkb_charybdis_3x5) \
+  || defined(KEYBOARD_dztech_dz60rgb_v2_1)    \
+  || defined(KEYBOARD_bluebell_swoop)         \
+  || defined(KEYBOARD_klor_2040)
 
 #   define ENABLE_RGB_MATRIX_BREATHING
 #   define ENABLE_RGB_MATRIX_BAND_PINWHEEL_VAL
@@ -165,7 +168,7 @@
 #   define ENABLE_RGB_MATRIX_BREATHING
 #   define ENABLE_RGB_MATRIX_CYCLE_OUT_IN
 #   define RGB_MATRIX_DEFAULT_MODE RGB_MATRIX_BREATHING
-#endif //defined(KEYBOARD_bastardkb_charybdis_3x5) || defined(KEYBOARD_dztech_dz60rgb_v2_1)
+#endif //KEYBOARD_bastardkb_charybdis_3x5...
 
 //heatmap specific settings
 #if defined(ENABLE_RGB_MATRIX_TYPING_HEATMAP)

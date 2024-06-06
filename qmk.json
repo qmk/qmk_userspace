@@ -1,11 +1,14 @@
 {
     "userspace_version": "1.0",
     "build_targets": [
-		["ploopyco/trackball_nano", "lkbm"],
+
 		["crkbd/rev1", "t4corun"],
 		["bastardkb/charybdis/3x5/v2/splinky_3", "t4corun"],
 		["planck/rev6", "t4corun"],
 		["bluebell/swoop", "t4corun"],
-		["barbellboards/rollow", "t4corun"]
+		["barbellboards/rollow", "t4corun"],
+		["klor/2040", "t4corun"],
+		["klor/2040", "saegewerk"]
+
 	]
 }

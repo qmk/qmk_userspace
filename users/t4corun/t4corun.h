@@ -2,6 +2,10 @@
 #include QMK_KEYBOARD_H
 #include "features/taphold.h"
 
+bool drag_scroll_is_enabled(void);
+bool isLunaJumping(void);
+bool isJumpShown(void);
+void setLunaJumped(void);
 
 enum layers {
   _QWERTY = 0,
@@ -152,6 +156,36 @@ enum keycodes {
 #endif //RGB_MATRIX_ENABLE || RGBLIGHT_ENABLE
 
 
+#if defined(HAPTIC_ENABLE)
+#   define TR_HTOG HF_TOGG
+#   define TR_HFBK HF_FDBK
+#   define TR_HNXT HF_NEXT
+#   define TR_HCNU HF_CONU
+#   define TR_HRST HF_RST
+#else
+#   define TR_HTOG ___x___
+#   define TR_HFBK ___x___
+#   define TR_HNXT ___x___
+#   define TR_HCNU ___x___
+#   define TR_HRST ___x___
+#endif //HAPTIC_ENABLe
+
+
+#if defined(AUDIO_ENABLE)
+#   define TR_ATOG AU_TOGG
+#   define TR_CTOG CK_TOGG
+#   define TR_CKUP CK_UP
+#   define TR_CRST CK_RST
+#else
+#   define TR_ATOG ___x___
+#   define TR_CTOG ___x___
+#   define TR_CKUP ___x___
+#   define TR_CRST ___x___
+#endif //AUDIO_ENABLE
+
+
+
+
 #define _DEFAULT_LAYER_1 FIRST_DEFAULT_LAYER
 #define _DEFAULT_LAYER_2 (FIRST_DEFAULT_LAYER + 1)
 #define _DEFAULT_LAYER_3 (FIRST_DEFAULT_LAYER + 2)
@@ -192,7 +226,7 @@ enum keycodes {
 
 
 #define LAYER_NAVIGATION                                                                    \
-  KC_ESC,  KC_HOME, KC_UP,   KC_END,  KC_PGUP, ___x___, ___x___, ___x___, ___x___, CONFIG,  \
+  KC_ESC,  KC_HOME, KC_UP,   KC_END,  KC_PGUP, ___x___, ___x___, SC_FILE, SC_SNIP, CONFIG,  \
   ___x___, KC_LEFT, KC_DOWN, KC_RGHT, KC_PGDN, ___x___, _SCAG_MODS________________________, \
   _UCCPR_L___________________________________, ___x___, KC_APP,  TR_SNIP, TR_SDPI, TR_PDPI, \
                     ZOOMRST, NUM,     KC_ENT,  _LAYER_TRANS_____________
@@ -213,8 +247,7 @@ enum keycodes {
 
 
 #define LAYER_CONFIG                                                                        \
-  _NONE_5____________________________________, ___x___, ___x___, EE_CLR,  QK_BOOT, _______, \
-  _NONE_5____________________________________, ___x___, TR_LSFT, ___x___, ___x___, TR_RMOD, \
+  TR_HRST, TR_HCNU, TR_HNXT, TR_HFBK, TR_HTOG, ___x___, ___x___, EE_CLR,  QK_BOOT, _______, \
+  TR_CRST, TR_CKUP, TR_CTOG, ___x___, TR_ATOG, ___x___, TR_LSFT, ___x___, ___x___, TR_RMOD, \
   KC_MUTE, KC_VOLD, KC_VOLU, KC_MNXT, KC_MPLY, TR_RTOG, TR_RHUI, TR_RSAI, TR_RVAI, TR_RSPI, \
                     BASELYR, TR_DMR1, TR_DMP1, ___x___, ___x___, TR_RTOG
-

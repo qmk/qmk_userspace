@@ -13,7 +13,6 @@
 #undef TAP_HOLD_CAPS_DELAY
 
 #undef TAPPING_TERM
-#undef TAPPING_TERM_PER_KEY
 
 #undef QUICK_TAP_TERM
 

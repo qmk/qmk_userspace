@@ -1,17 +1,46 @@
 #include "t4corun.h"
 
-static uint8_t current_base_layer = _DEFAULT_LAYER_1;
+// Keeps track of base layer so we can make one key to cycle through them
+// instead of making a key for each one */
+static uint8_t current_base_layer  = _DEFAULT_LAYER_1;
 
-layer_state_t layer_state_set_user(layer_state_t  state) {
+// Should keep track of the Ploopy Nano drag scroll mode
+// There is a possibility of this being out of sync
+static bool drag_scroll_enabled = false;
 
-  state = update_tri_layer_state(state, _NAVIGATION, _NUMBER, _SYMBOL);
-  return state;
+// Luna Pet Variables
+static bool isJumping = false;
+static bool showedJump = true;
 
-}
 
+
+// Allows the OLED code to get the drag scroll mode
+bool drag_scroll_is_enabled(void) { return drag_scroll_enabled; }
+
+// Allows the OLED code to see when space bar is pressed
+bool isLunaJumping(void) { return isJumping; }
+bool isJumpShown(void) { return showedJump; }
+
+// Allows the OLED code to clear the space bar status when render is complete
+void setLunaJumped(void) { showedJump = true;}
+
+// Hold Navigation and Number to get Symbol
+layer_state_t layer_state_set_user(layer_state_t  state) { return update_tri_layer_state(state, _NAVIGATION, _NUMBER, _SYMBOL); }
+
+// Customize behavior for existing keycodes or create new ones
 bool process_record_user(uint16_t keycode, keyrecord_t *record) {
 
   switch (keycode) {
+
+    case KC_SPC:
+      if (record->event.pressed) {
+        isJumping = true;
+        showedJump = false;
+      }
+      else {
+        isJumping = false;
+      }
+      break;
 
     case BASELYR:
       if (record->event.pressed) {
@@ -22,7 +51,6 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
       }
       return false;
 
-
     case RBSELYR:
       if (record->event.pressed) { 
 
@@ -32,7 +60,6 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
       }
       return false;
 
-
     case PN_DRGS:
       if (record->event.pressed) {
 
@@ -40,9 +67,11 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
         // double_tap(KC_NUM, KC_NUM, WAIT_DELAY);
         double_tap(KC_NUM, WAIT_DELAY);
 
+        //I realize this may not work for the Charybdis nano
+        drag_scroll_enabled = !drag_scroll_enabled;
+        
       }
       return false;
-
 
     case PN_PDPI:
       if (record->event.pressed) {
@@ -101,5 +130,6 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
 
   }
 
+  // let QMK process the normal behavior if not handled above
   return true;
 }

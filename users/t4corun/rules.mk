@@ -10,8 +10,9 @@
 # ?= means set the value if its not defined elsewhere
 
 
-
-LTO_ENABLE ?= yes
+# optional features
+# use these values if not defined at the keyboard level
+LTO_ENABLE ?= no
 MAGIC_ENABLE ?= no
 CONSOLE_ENABLE ?= no
 UNICODE_ENABLE ?= no
@@ -25,14 +26,17 @@ POINTING_DEVICE_ENABLE ?= no
 OLED_ENABLE ?= no
 ENCODER_ENABLE ?= no
 ENCODER_MAP_ENABLE ?= no
+HAPTIC_ENABLE ?= no
+AUDIO_ENABLE ?= no
+WPM_ENABLE ?= yes
 
-# qmk features we will force
+# qmk features we will force as these are critical for my workflow
 EXTRAKEY_ENABLE = yes
-AUDIO_ENABLE = no
 CAPS_WORD_ENABLE = yes
 MOUSEKEY_ENABLE = yes
 COMBO_ENABLE = yes
 KEY_OVERRIDE_ENABLE = yes
+
 
 # ---------------------------------------------------------
 # include my code that will be common across all my keyboards
@@ -46,8 +50,12 @@ SRC +=                     \
 INTROSPECTION_KEYMAP_C += features/combo.c
 
 # ---------------------------------------------------------
-# include my code for enabled features for each keyboard
+# include optional code for enabled features for each keyboard
 
 ifeq ($(strip $(OLED_ENABLE)), yes)
-	SRC += features/oled.c
+  SRC += features/oled.c
+endif
+
+ifeq ($(strip $(AUDIO_ENABLE)), yes)
+  MUSIC_MODE = no
 endif

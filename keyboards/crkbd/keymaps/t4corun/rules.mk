@@ -1,6 +1,7 @@
 # override userspace defaults
 
 DYNAMIC_MACRO_ENABLE = no
+WPM_ENABLE = no
 
 # override keyboard defaults
 #	keyboards\crkbd\info.json
