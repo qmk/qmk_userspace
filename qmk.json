@@ -7,7 +7,8 @@
 		["planck/rev6", "t4corun"],
 		["bluebell/swoop", "t4corun"],
 		["barbellboards/rollow", "t4corun"],
-		["klor/2040", "t4corun"]
+		["klor/2040", "t4corun"],
+		["ploopyco/trackball_nano", "t4corun"]
 
 	]
 }

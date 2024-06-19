@@ -115,7 +115,7 @@ void render_feature_status(bool vertical) {
 #endif //RGB_MATRIX_ENABLED
 
   // only works on master side
-  drag_scroll_is_enabled() ? oled_write_P(dragscr_on, false) : oled_write_P(dragscr_off, false);
+  host_keyboard_led_state().scroll_lock ? oled_write_P(dragscr_on, false) : oled_write_P(dragscr_off, false);
 
   if (vertical) {
     oled_write_P(PSTR(" "), false);
