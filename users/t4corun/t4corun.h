@@ -2,11 +2,11 @@
 #include QMK_KEYBOARD_H
 #include "features/taphold.h"
 
-bool drag_scroll_is_enabled(void);
 bool isLunaJumping(void);
 bool isJumpShown(void);
 void setLunaJumped(void);
 
+// put the default base layers first
 enum layers {
   _QWERTY = 0,
   FIRST_DEFAULT_LAYER = 0,
@@ -17,6 +17,11 @@ enum layers {
   _SYMBOL,
   _CONFIG
 };
+
+// start at the second layer
+#define _DEFAULT_LAYER_2 (FIRST_DEFAULT_LAYER + 1)
+#define _DEFAULT_LAYER_3 (FIRST_DEFAULT_LAYER + 2)
+#define NUM_DEFAULT_LAYERS 3
 
 enum keycodes {
   //These are only here to make the taphold/defines unique
@@ -41,8 +46,7 @@ enum keycodes {
   TH_SCLN,
   TH_QUOT,
 
-  PN_DRGS,
-  PN_PDPI,
+  PN_BOOT,
 
   BASELYR,
   RBSELYR
@@ -84,34 +88,29 @@ enum keycodes {
 
 // tap hoLd. These will be intercepted and overridden. The LT will be ignored
 // Brackets: open and close brackets and put the cursor inside
-#define TR_LCBR  LT(_DEFAULT_LAYER_1, TH_LCBR)
-#define TR_LABK  LT(_DEFAULT_LAYER_1, TH_LABK)
-#define TR_LBRC  LT(_DEFAULT_LAYER_1, TH_LBRC)
-#define TR_LPRN  LT(_DEFAULT_LAYER_1, TH_LPRN)
-#define TR_DQUO  LT(_DEFAULT_LAYER_1, TH_DQUO)
-#define TR_SQUO  LT(_DEFAULT_LAYER_1, TH_SQUO)
+#define TR_LCBR  LT(FIRST_DEFAULT_LAYER, TH_LCBR)
+#define TR_LABK  LT(FIRST_DEFAULT_LAYER, TH_LABK)
+#define TR_LBRC  LT(FIRST_DEFAULT_LAYER, TH_LBRC)
+#define TR_LPRN  LT(FIRST_DEFAULT_LAYER, TH_LPRN)
+#define TR_DQUO  LT(FIRST_DEFAULT_LAYER, TH_DQUO)
+#define TR_SQUO  LT(FIRST_DEFAULT_LAYER, TH_SQUO)
 
 // double tap
-#define TR_BSLS  LT(_DEFAULT_LAYER_1, TH_BSLS)
-#define TR_SLSH  LT(_DEFAULT_LAYER_1, TH_SLSH)
-#define TR_PIPE  LT(_DEFAULT_LAYER_1, TH_PIPE)
+#define TR_BSLS  LT(FIRST_DEFAULT_LAYER, TH_BSLS)
+#define TR_SLSH  LT(FIRST_DEFAULT_LAYER, TH_SLSH)
+#define TR_PIPE  LT(FIRST_DEFAULT_LAYER, TH_PIPE)
 
 // Custom override without holding shift
-#define TR_COMM  LT(_DEFAULT_LAYER_1, TH_COMM)
-#define TR_DOT   LT(_DEFAULT_LAYER_1, TH_DOT)
-#define TR_PERC  LT(_DEFAULT_LAYER_1, TH_PERC)
+#define TR_COMM  LT(FIRST_DEFAULT_LAYER, TH_COMM)
+#define TR_DOT   LT(FIRST_DEFAULT_LAYER, TH_DOT)
+#define TR_PERC  LT(FIRST_DEFAULT_LAYER, TH_PERC)
 
 // auto shift
-#define TR_EQL   LT(_DEFAULT_LAYER_1, TH_EQL)
-#define TR_MINS  LT(_DEFAULT_LAYER_1, TH_MINS)
-#define TR_GRV   LT(_DEFAULT_LAYER_1, TH_GRV)
-#define TR_SCLN  LT(_DEFAULT_LAYER_1, TH_SCLN)
-#define TR_QUOT  LT(_DEFAULT_LAYER_1, TH_QUOT)
-
-// Tells the process_tap_hold_key what kind of hold action is wanted
-#define HOLD_SINGLETP 0
-#define HOLD_DOUBLETP 1
-#define HOLD_BRACKETS 2
+#define TR_EQL   LT(FIRST_DEFAULT_LAYER, TH_EQL)
+#define TR_MINS  LT(FIRST_DEFAULT_LAYER, TH_MINS)
+#define TR_GRV   LT(FIRST_DEFAULT_LAYER, TH_GRV)
+#define TR_SCLN  LT(FIRST_DEFAULT_LAYER, TH_SCLN)
+#define TR_QUOT  LT(FIRST_DEFAULT_LAYER, TH_QUOT)
 
 
 #if defined(KEYBOARD_bastardkb_charybdis_3x5)
@@ -122,9 +121,9 @@ enum keycodes {
 #   define TR_PDPI DPI_MOD  //pointer dpi
 #else
 #   define TR_SNIP ___x___
-#   define TR_DRGS PN_DRGS  //use host status for ploopy nano drag scroll
+#   define TR_DRGS KC_SCRL  //use host status for ploopy nano drag scroll
 #   define TR_SDPI ___x___
-#   define TR_PDPI PN_PDPI  //use host status for ploopy nano dpi switch
+#   define TR_PDPI KC_NUM   //use host status for ploopy nano dpi switch
 #endif //KEYBOARD_bastardkb_charybdis_3x5
 
 
@@ -184,13 +183,6 @@ enum keycodes {
 #endif //AUDIO_ENABLE
 
 
-
-
-#define _DEFAULT_LAYER_1 FIRST_DEFAULT_LAYER
-#define _DEFAULT_LAYER_2 (FIRST_DEFAULT_LAYER + 1)
-#define _DEFAULT_LAYER_3 (FIRST_DEFAULT_LAYER + 2)
-#define NUM_BASE_LAYER 3
-
 #define _NONE_3__________________                   ___x___, ___x___, ___x___
 #define _NONE_5____________________________________ ___x___, ___x___, ___x___, ___x___, ___x___
 #define _GACS_MODS________________________          TR_LGUI, TR_LALT, TR_LCTL, TR_LSFT
@@ -227,7 +219,7 @@ enum keycodes {
 
 #define LAYER_NAVIGATION                                                                    \
   KC_ESC,  KC_HOME, KC_UP,   KC_END,  KC_PGUP, ___x___, ___x___, SC_FILE, SC_SNIP, CONFIG,  \
-  ___x___, KC_LEFT, KC_DOWN, KC_RGHT, KC_PGDN, ___x___, _SCAG_MODS________________________, \
+  KC_CAPS, KC_LEFT, KC_DOWN, KC_RGHT, KC_PGDN, ___x___, _SCAG_MODS________________________, \
   _UCCPR_L___________________________________, ___x___, KC_APP,  TR_SNIP, TR_SDPI, TR_PDPI, \
                     ZOOMRST, NUM,     KC_ENT,  _LAYER_TRANS_____________
 
@@ -240,14 +232,14 @@ enum keycodes {
 
 
 #define LAYER_SYMBOL                                                                        \
-  ___x___, ___x___, KC_AMPR, TR_PERC, TR_GRV,  TR_EQL,  KC_HASH, KC_ASTR, ___x___, TR_DQUO, \
-  KC_CAPS, TR_LCBR, KC_RCBR, KC_EXLM, TR_SCLN, KC_AT,   KC_QUES, TR_LBRC, KC_RBRC, TR_SQUO, \
-  ___x___, TR_LABK, KC_RABK, TR_BSLS, TR_PIPE, KC_DLR,  TR_SLSH, TR_LPRN, KC_RPRN, TR_MINS, \
+  ___x___, ___x___, KC_AT,   KC_DLR,  TR_GRV,  TR_EQL,  KC_HASH, KC_ASTR, ___x___, TR_DQUO, \
+  ___x___, TR_LCBR, KC_RCBR, KC_EXLM, TR_SCLN, KC_AMPR, KC_QUES, TR_LBRC, KC_RBRC, TR_SQUO, \
+  ___x___, TR_LABK, KC_RABK, TR_BSLS, TR_PIPE, TR_PERC, TR_SLSH, TR_LPRN, KC_RPRN, TR_MINS, \
                     _LAYER_TRANS_____________, _LAYER_TRANS_____________
 
 
 #define LAYER_CONFIG                                                                        \
-  TR_HRST, TR_HCNU, TR_HNXT, TR_HFBK, TR_HTOG, ___x___, ___x___, EE_CLR,  QK_BOOT, _______, \
+  TR_HRST, TR_HCNU, TR_HNXT, TR_HFBK, TR_HTOG, ___x___, PN_BOOT, EE_CLR,  QK_BOOT, _______, \
   TR_CRST, TR_CKUP, TR_CTOG, ___x___, TR_ATOG, ___x___, TR_LSFT, ___x___, ___x___, TR_RMOD, \
   KC_MUTE, KC_VOLD, KC_VOLU, KC_MNXT, KC_MPLY, TR_RTOG, TR_RHUI, TR_RSAI, TR_RVAI, TR_RSPI, \
                     BASELYR, TR_DMR1, TR_DMP1, ___x___, ___x___, TR_RTOG
