@@ -6,37 +6,52 @@
 
 
 // Shows the currently enabled Layer name
-void render_layer_state(void) {
+void render_default_layer_state(void) {
 
-  switch (get_highest_layer(layer_state)) {
-    case _NAVIGATION:
-      oled_write_P(PSTR(OLED_RENDER_LAYER_2), false);
+  switch (get_highest_layer(default_layer_state)) {
+    case _DEFAULT_LAYER_2:
+      oled_write_P(PSTR(OLED_RENDER_DEFAULT_LAYER2), false);
       break;
-    case _NUMBER:
-      oled_write_P(PSTR(OLED_RENDER_LAYER_3), false);
-      break;
-    case _SYMBOL:
-      oled_write_P(PSTR(OLED_RENDER_LAYER_4), false);
-      break;
-    case _CONFIG:
-      oled_write_P(PSTR(OLED_RENDER_LAYER_5), false);
-      break;
+    case _DEFAULT_LAYER_3:
+      oled_write_P(PSTR(OLED_RENDER_DEFAULT_LAYER3), false);
+      break;           
     default:
-      switch (get_highest_layer(default_layer_state)) {
-        case _DEFAULT_LAYER_2:
-          oled_write_P(PSTR(OLED_RENDER_DEFAULT_LAYER2), false);
-          break;
-        case _DEFAULT_LAYER_3:
-          oled_write_P(PSTR(OLED_RENDER_DEFAULT_LAYER3), false);
-          break;
-        default:
-          oled_write_P(PSTR(OLED_RENDER_DEFAULT_LAYER1), false);
-          break;
-      }
+      oled_write_P(PSTR(OLED_RENDER_DEFAULT_LAYER1), false);
       break;
   }
 
 }
+
+
+// Shows the currently enabled Layer name
+void render_layer_state(void) {
+
+  oled_write_P(PSTR(OLED_RENDER_LAYER_2), get_highest_layer(layer_state) == _NAVIGATION);
+  oled_write_P(PSTR(OLED_RENDER_LAYER_3), get_highest_layer(layer_state) == _NUMBER);
+  oled_write_P(PSTR(OLED_RENDER_LAYER_4), get_highest_layer(layer_state) == _SYMBOL);
+  oled_write_P(PSTR(OLED_RENDER_LAYER_5), get_highest_layer(layer_state) == _CONFIG);
+
+/*
+  switch (get_highest_layer(layer_state)) {
+    case _NAVIGATION:
+      oled_write_P(PSTR(OLED_RENDER_LAYER_2), get_highest_layer(layer_state) == _NAVIGATION);
+      break;
+    case _NUMBER:
+      oled_write_P(PSTR(OLED_RENDER_LAYER_3), get_highest_layer(layer_state) == _NUMBER);
+      break;
+    case _SYMBOL:
+      oled_write_P(PSTR(OLED_RENDER_LAYER_4), get_highest_layer(layer_state) == _SYMBOL);
+      break;
+    case _CONFIG:
+      oled_write_P(PSTR(OLED_RENDER_LAYER_5), get_highest_layer(layer_state) == _CONFIG);
+      break;
+    default:
+      oled_write_P(PSTR(OLED_RENDER_LAYER_1), false);
+      break;
+  }
+*/
+}
+
 
 // Graphic to show which layer on the stack is enabled
 void render_layer_state_graphic(void) {
@@ -64,15 +79,17 @@ void render_layer_state_graphic(void) {
 // Shows the Host LED State (Num lock, caps lock , scroll lock)
 void render_keylock_status(bool vertical) {
 
+  /*
   if (vertical) {
     oled_write_ln_P(PSTR(OLED_RENDER_KEYLOCK_NAME), false);
     oled_write_P(PSTR(" "), false);
   }
+  */
+
 
   host_keyboard_led_state().num_lock ? oled_write_P(num_on, false ) : oled_write_P(num_off, false );
   host_keyboard_led_state().caps_lock || is_caps_word_on() ? oled_write_P(caps_on, false ) : oled_write_P(caps_off, false );
   host_keyboard_led_state().scroll_lock ? oled_write_P(scroll_on, false ) : oled_write_P(scroll_off, false );
-
 }
 
 // Indicates which modifies are enabled
@@ -81,20 +98,25 @@ void render_mod_status(bool vertical) {
   uint8_t current_mod = get_mods();
   uint8_t current_osm = get_oneshot_mods();
 
-  if (vertical) {
-    oled_write_ln_P(PSTR(OLED_RENDER_MODS_NAME), false);
-    oled_write_P(PSTR(" "), false);
-  }
+  oled_set_cursor(1,1);
+  (current_mod | current_osm) & MOD_MASK_SHIFT ? oled_write_P(shift_on_upper, false) : oled_write_P(shift_off_upper, false );
+  oled_set_cursor(1,2);
+  (current_mod | current_osm) & MOD_MASK_SHIFT ? oled_write_P(shift_on_lower, false) : oled_write_P(shift_off_lower, false );
 
-  (current_mod | current_osm) & MOD_MASK_SHIFT ? oled_write_P(shift_on, false) : oled_write_P(shift_off, false );
-  (current_mod | current_osm) & MOD_MASK_CTRL ? oled_write_P(ctrl_on, false ) : oled_write_P(ctrl_off, false );
+  oled_set_cursor(1,4);
+  (current_mod | current_osm) & MOD_MASK_CTRL ? oled_write_P(ctrl_on_upper, false ) : oled_write_P(ctrl_off_upper, false );
+  oled_set_cursor(1,5);
+  (current_mod | current_osm) & MOD_MASK_CTRL ? oled_write_P(ctrl_on_lower, false ) : oled_write_P(ctrl_off_lower, false );
 
-  if (vertical) {
-    oled_write_P(PSTR(" "), false);
-  }
+  oled_set_cursor(1,7);
+  (current_mod | current_osm) & MOD_MASK_ALT ? oled_write_P(alt_on_upper, false ) : oled_write_P(alt_off_upper, false );
+  oled_set_cursor(1,8);
+  (current_mod | current_osm) & MOD_MASK_ALT ? oled_write_P(alt_on_lower, false ) : oled_write_P(alt_off_lower, false );
 
-  (current_mod | current_osm) & MOD_MASK_ALT ? oled_write_P(alt_on, false ): oled_write_P(alt_off, false );
-  (current_mod | current_osm) & MOD_MASK_GUI ? oled_write_P(gui_on, false ): oled_write_P(gui_off, false );
+  oled_set_cursor(1,10);
+  (current_mod | current_osm) & MOD_MASK_GUI ? oled_write_P(gui_on_upper, false ) : oled_write_P(gui_off_upper, false );
+  oled_set_cursor(1,11);
+  (current_mod | current_osm) & MOD_MASK_GUI ? oled_write_P(gui_on_lower, false ) : oled_write_P(gui_off_lower, false );
 
 }
 
@@ -179,18 +201,17 @@ bool oled_task_user(void) {
   if (is_keyboard_master()) {
 
     oled_set_cursor(0,0);
-    render_keylock_status(true);
+    render_default_layer_state();
+    render_layer_state();
 
+    //render_keylock_status(true);
+
+    /*
     oled_set_cursor(0,3);
     render_feature_status(true);
+    */
 
 #if defined(WPM_ENABLE)
-
-    oled_set_cursor(0,7);
-    oled_write_P(PSTR(OLED_RENDER_WPM_NAME), false);
-
-    oled_set_cursor(1,8);
-    oled_write_P(get_u8_str(get_current_wpm(), ' '), false);
 
     render_luna();
 
@@ -199,16 +220,11 @@ bool oled_task_user(void) {
   } else {
 
     oled_set_cursor(0,0);
-    render_layer_state();
-
-    oled_set_cursor(0,2);
-    render_layer_state_graphic();
-
-    oled_set_cursor(0,7);
     render_mod_status(true);
 
-    oled_set_cursor(0,13);
-    oled_write_P(qmk_logo_small, false);
+    oled_set_cursor(1,14);
+    render_keylock_status(true);
+
   }
 
 #endif

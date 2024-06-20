@@ -12,4 +12,9 @@
 
 //Set common configuration for all keyboards
 #define OLED_TIMEOUT 60000 //1 min
-#define OLED_FONT_H "./lib/font.c"
+
+#if defined(OLED_DISPLAY_128X64)
+#   define OLED_FONT_H "./lib/font.c"
+#else
+#   define OLED_FONT_H "./lib/font_narrow.c"
+#endif //OLED_DISPLAY_128X64
