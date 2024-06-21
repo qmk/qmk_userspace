@@ -2,9 +2,22 @@
 
 #include "t4corun.h"
 
-// LUNA PET Variables
+
+#if defined(OLED_DISPLAY_128X64)
+#   define OLED_LUNA_COL              15
+#   define OLED_LUNA_LINE             5
+#else
+#   define OLED_LUNA_COL              0
+#   define OLED_LUNA_LINE             12
+#endif 
+
+#define OLED_LUNA_MIN_WALK_SPEED      10
+#define OLED_LUNA_MIN_RUN_SPEED       40
+#define OLED_LUNA_ANIM_FRAME_DURATION 200  // how long each frame lasts in ms
+#define OLED_LUNA_ANIM_SIZE           96   // number of bytes in array. If you change sprites, minimize for adequate firmware size. max is 1024
+
 void render_luna(void);
-void animate_luna(int LUNA_X, int LUNA_Y);
+void animate_luna(int col, int line);
 
 // Luna Sit
 static const char PROGMEM sit[2][OLED_LUNA_ANIM_SIZE] = {

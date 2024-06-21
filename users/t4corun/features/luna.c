@@ -17,12 +17,12 @@ void render_luna(void) {
 
   if (timer_elapsed32(luna_anim_timer) > OLED_LUNA_ANIM_FRAME_DURATION) {
     luna_anim_timer = timer_read32();
-    animate_luna(OLED_LUNA_X, OLED_LUNA_Y);
+    animate_luna(OLED_LUNA_COL, OLED_LUNA_LINE);
   }
 
 }
 
-void animate_luna(int LUNA_X, int LUNA_Y) {
+void animate_luna(int col, int line) {
 
   uint8_t current_mod = get_mods();
   uint8_t current_osm = get_oneshot_mods();
@@ -31,16 +31,16 @@ void animate_luna(int LUNA_X, int LUNA_Y) {
   // Only works when Luna is rendered on Master Slide
   if (isLunaJumping() || !isJumpShown()) {
     /* clear */
-    oled_set_cursor(LUNA_X, LUNA_Y + 2);
+    oled_set_cursor(col, line + 2);
     oled_write("     ", false);
-    oled_set_cursor(LUNA_X, LUNA_Y - 1);
+    oled_set_cursor(col, line - 1);
 
     setLunaJumped();
   } else {
     /* clear */
-    oled_set_cursor(LUNA_X, LUNA_Y - 1);
+    oled_set_cursor(col, line - 1);
     oled_write("     ", false);
-    oled_set_cursor(LUNA_X, LUNA_Y);
+    oled_set_cursor(col, line);
   }
 
   luna_current_frame = (luna_current_frame + 1) % 2;

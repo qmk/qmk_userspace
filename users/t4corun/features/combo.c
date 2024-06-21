@@ -29,7 +29,7 @@ bool combo_should_trigger(uint16_t combo_index, combo_t *combo, uint16_t keycode
   switch (combo_index) {
 
 
-//  case MOUSE_BUTTON1:
+    case MOUSE_BUTTON1:
 //  case MOUSE_BUTTON2:
 //  case MOUSE_BUTTON3:
 //  case MOUSE_BUTTON4:
