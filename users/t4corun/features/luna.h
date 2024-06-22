@@ -17,7 +17,7 @@
 #define OLED_LUNA_ANIM_SIZE           96   // number of bytes in array. If you change sprites, minimize for adequate firmware size. max is 1024
 
 void render_luna(void);
-void animate_luna(int col, int line);
+void animate_luna(uint8_t col, uint8_t line);
 
 // Luna Sit
 static const char PROGMEM sit[2][OLED_LUNA_ANIM_SIZE] = {

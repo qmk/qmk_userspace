@@ -22,7 +22,7 @@ void render_luna(void) {
 
 }
 
-void animate_luna(int col, int line) {
+void animate_luna(uint8_t col, uint8_t line) {
 
   uint8_t current_mod = get_mods();
   uint8_t current_osm = get_oneshot_mods();
@@ -47,25 +47,14 @@ void animate_luna(int col, int line) {
 
   // Animate based on status
   if (host_keyboard_led_state().caps_lock || is_caps_word_on()) {
-
     oled_write_raw_P(bark[luna_current_frame], OLED_LUNA_ANIM_SIZE);
-
   } else if ((current_mod | current_osm) & MOD_MASK_CTRL) {
-
     oled_write_raw_P(sneak[luna_current_frame], OLED_LUNA_ANIM_SIZE);
-
   } else if (get_current_wpm() <= OLED_LUNA_MIN_WALK_SPEED) {
-
     oled_write_raw_P(sit[luna_current_frame], OLED_LUNA_ANIM_SIZE);
-
   } else if (get_current_wpm() <= OLED_LUNA_MIN_RUN_SPEED) {
-
     oled_write_raw_P(walk[luna_current_frame], OLED_LUNA_ANIM_SIZE);
-
   } else {
-
     oled_write_raw_P(run[luna_current_frame], OLED_LUNA_ANIM_SIZE);
-
   }
-
-}  
+}

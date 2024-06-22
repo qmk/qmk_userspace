@@ -32,9 +32,9 @@ void render_default_layer_state(uint8_t col, uint8_t line, bool moveCursor);
 void render_layer_state(uint8_t col, uint8_t line, bool moveCursor);
 void render_layer_state_list(uint8_t col, uint8_t line, bool moveCursor);
 
-void render_keylock_status(uint8_t col, uint8_t line);
 void render_mod_status(uint8_t col, uint8_t line);
 void render_mod_status_vertical(uint8_t col, uint8_t line);
+void render_keylock_status(uint8_t col, uint8_t line);
 
 void render_klor_face_small(uint8_t col, uint8_t line);
 
