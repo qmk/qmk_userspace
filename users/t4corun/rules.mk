@@ -64,12 +64,12 @@ endif
 
 ifeq ($(strip $(OLED_ENABLE)), yes)
   SRC += features/oled.c
-endif
+endifs
 
 ifeq ($(strip $(AUDIO_ENABLE)), yes)
   MUSIC_MODE = no
 endif
 
-ifeq ($(strip $(HOST_STATE_AUTO_MOUSE)), yes)
-  SRC += features/hoststateautomouse.c
-endif
+#ifeq ($(strip $(HOST_STATE_AUTO_MOUSE)), yes)
+#  SRC += features/hoststateautomouse.c
+#endif

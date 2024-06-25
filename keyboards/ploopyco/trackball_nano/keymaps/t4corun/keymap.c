@@ -15,12 +15,10 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 #include "t4corun.h"
 
-//const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {{{ KC_NO }}};
-
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
-  [0] = LAYOUT( KC_NO ),
-  [1] = LAYOUT( KC_NO )
+  [0] = LAYOUT( KC_NO )
+  //, [1] = LAYOUT( KC_NO )
 
 };
 
@@ -34,10 +32,13 @@ void keyboard_post_init_user(void) {
 
 }
 
+/*
 void pointing_device_init_user(void) {
     set_auto_mouse_enable(true);
 }
+*/
 
+/*
 layer_state_t layer_state_set_user(layer_state_t state) { 
   switch(get_highest_layer(state)) {
     case 1:
@@ -54,7 +55,7 @@ layer_state_t layer_state_set_user(layer_state_t state) {
 
   return state;
 }
-
+*/
 
 bool led_update_user(led_t led_state) {
 
@@ -64,13 +65,13 @@ bool led_update_user(led_t led_state) {
         auto_mouse_reset_trigger(true);
         scroll_lock_state = led_state.scroll_lock;
     }
-/*
+
     // when num lock is pressed, cycle dpi
     if ( num_lock_state != led_state.num_lock ) {
         cycle_dpi();
         num_lock_state = led_state.num_lock;
     }
-*/
+
     // when all three are enabled, go to bootloader
     if ( led_state.num_lock && led_state.caps_lock && led_state.scroll_lock ) {
         reset_keyboard();
