@@ -37,8 +37,6 @@ MOUSEKEY_ENABLE ?= yes
 COMBO_ENABLE ?= yes
 KEY_OVERRIDE_ENABLE ?= yes
 
-# custom features
-HOST_STATE_AUTO_MOUSE ?= yes  #allows kb to enable mouse layer on Ploopy Nano movement
 
 # ---------------------------------------------------------
 # include my code that will be common across all my keyboards
@@ -64,12 +62,8 @@ endif
 
 ifeq ($(strip $(OLED_ENABLE)), yes)
   SRC += features/oled.c
-endifs
+endif
 
 ifeq ($(strip $(AUDIO_ENABLE)), yes)
   MUSIC_MODE = no
 endif
-
-#ifeq ($(strip $(HOST_STATE_AUTO_MOUSE)), yes)
-#  SRC += features/hoststateautomouse.c
-#endif
