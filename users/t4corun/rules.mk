@@ -31,12 +31,14 @@ AUDIO_ENABLE ?= no
 WPM_ENABLE ?= yes
 
 # qmk features we will force as these are critical for my workflow
-EXTRAKEY_ENABLE = yes
-CAPS_WORD_ENABLE = yes
-MOUSEKEY_ENABLE = yes
-COMBO_ENABLE = yes
-KEY_OVERRIDE_ENABLE = yes
+EXTRAKEY_ENABLE ?= yes
+CAPS_WORD_ENABLE ?= yes
+MOUSEKEY_ENABLE ?= yes
+COMBO_ENABLE ?= yes
+KEY_OVERRIDE_ENABLE ?= yes
 
+# custom features
+HOST_STATE_AUTO_MOUSE ?= yes  #allows kb to enable mouse layer on Ploopy Nano movement
 
 # ---------------------------------------------------------
 # include my code that will be common across all my keyboards
@@ -44,13 +46,21 @@ KEY_OVERRIDE_ENABLE = yes
 SRC +=                     \
 	t4corun.c              \
 	features/taphold.c     \
-	features/capsword.c    \
-	features/keyoverride.c \
-
-INTROSPECTION_KEYMAP_C += features/combo.c
 
 # ---------------------------------------------------------
-# include optional code for enabled features for each keyboard
+# include additional code for enabled features for each keyboard
+
+ifeq ($(strip $(COMBO_ENABLE)), yes)
+  INTROSPECTION_KEYMAP_C += features/combo.c
+endif
+
+ifeq ($(strip $(KEY_OVERRIDE_ENABLE)), yes)
+  SRC += features/keyoverride.c
+endif
+
+ifeq ($(strip $(CAPS_WORD_ENABLE)), yes)
+  SRC += features/capsword.c
+endif
 
 ifeq ($(strip $(OLED_ENABLE)), yes)
   SRC += features/oled.c
@@ -58,4 +68,8 @@ endif
 
 ifeq ($(strip $(AUDIO_ENABLE)), yes)
   MUSIC_MODE = no
+endif
+
+ifeq ($(strip $(HOST_STATE_AUTO_MOUSE)), yes)
+  SRC += features/hoststateautomouse.c
 endif

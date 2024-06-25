@@ -7,6 +7,7 @@ CAPS_WORD_ENABLE = no
 MOUSEKEY_ENABLE = no
 COMBO_ENABLE = no
 KEY_OVERRIDE_ENABLE = no
+HOST_STATE_AUTO_MOUSE = no
 
 # override keyboard defaults
 #	keyboards\ploopyco\trackball_nano\info.json

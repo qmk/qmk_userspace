@@ -1,5 +1,5 @@
 # override userspace defaults
-
+HOST_STATE_AUTO_MOUSE = no
 
 # override keyboard defaults
 #	keyboards\bastardkb\info.json
