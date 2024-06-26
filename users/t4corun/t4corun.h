@@ -132,9 +132,13 @@ enum keycodes {
 #if defined(DYNAMIC_MACRO_ENABLE)
 #  define TR_DMR1 DM_REC1
 #  define TR_DMP1 DM_PLY1
+#  define TR_DMR2 DM_REC2
+#  define TR_DMP2 DM_PLY2
 #else
 #  define TR_DMR1 ___x___
 #  define TR_DMP1 ___x___
+#  define TR_DMR2 ___x___
+#  define TR_DMP2 ___x___
 #endif //DYNAMIC_MACRO_ENABLE
 
 
