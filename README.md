@@ -14,7 +14,6 @@ The custom layout optimizes for programming (SQL, Powershell, C) and minimizes h
 Notes:
 
 - Outside thumb keys are encoder clicks. Some keyboards may have extra thumb keys
-- Pressing Pointer DPI and Drag Scroll Toggle together will enter Ploopy Nano's boot loader
 
 ![image](my_keymap.png)
 
@@ -40,7 +39,7 @@ One Shot Mods is here to minimize holding, simplify layers, and avoid misfires f
 
 ### Mouse Keys
 
-This layout is designed to be used with a Ploopy Nano. Mouse buttons and scroll wheel is handled on the keyboard side via combos. There are macros with the host status (Caps lock, Num Lock) to toggle Ploopy Nano settings and switch to drag scrolling (simulates scroll wheel)
+This layout is designed to be used with a Ploopy Nano. Mouse buttons and scroll wheel is handled on the keyboard side via combos. There are macros with the host status (Scroll lock, Num Lock) to switch DPI and enable momentary drag scrolling
 
 ### Caps Word
 
@@ -82,30 +81,22 @@ Enables additional keys to be mapped by pressing multiple keys simultaneously. P
 
 | Combo         | Result               | Comment                                           |
 | ------------- | -------------------- | ------------------------------------------------- |
-| `D` + `F`     | `Mouse Button 1`     | Left click. Mouse buttons only work on base layer |
-| `S` + `D`     | `Mouse Button 2`     | RIght click                                       |
-| `F` + `G`     | `Mouse Button 3`     | Middle click                                      |
-| `R` + `F`     | `Mouse Button 4`     | Back                                              |
-| `T` + `G`     | `Mouse Button 5`     | Forward                                           |
-| `T` + `G`     | `Drag Scroll Toggle` |                                                   |
-| `C` + `V`     | `Enter`              |                                                   |
-| `U` + `I`     | `Tab`                |                                                   |
-| `M` + `Comma` | `Backspace`          |                                                   |
+| `C` + `V`     | `KC_BTN1`            | Left click. Mouse buttons only work on base layer |
+| `X` + `V`     | `Drag Scroll Toggle` | Actual command varies per board                   |
+| `D` + `F`     | `KC_ENT`             |                                                   |
+| `J` + `K`     | `KC_TAB`             |                                                   |
+| `M` + `Comma` | `KC_BSPC`            |                                                   |
 
 ### Key Overrides
 
-Enables us to customize the result of applying certain mods to keycodes. For example, Shift + Backspace will give Delete. Primarily used to minimize the number of layers required and the layout itself
+Enables us to customize the result of applying certain mods to keycodes. For example, Shift + Backspace will give Delete. Primarily used to minimize the number of layers and the layout
 
-| Shortcut              | Result               | Comment                                                                       |
-| --------------------- | -------------------- | ----------------------------------------------------------------------------- |
-| `Shift` + `Backspace` | `Delete`             | Backspace is a combo. There are no dedicated backspace and delete keys mapped |
-| `Shift` + `Next Song` | `Prev Song`          | Only works on `NAVIGATION` layer                                              |
-| `Meh` + `1...9`       | `F1...F9`            | Only works on `NUMBER` layer. Meh is Shift + Ctrl + Alt.                      |
-| `Meh` + `Comma`       | `F10`                | Only works on `NUMBER` layer                                                  |
-| `Meh` + `Dot`         | `F11`                | Only works on `NUMBER` layer                                                  |
-| `Meh` + `Minus`       | `F12`                | Only works on `NUMBER` layer                                                  |
-| `Ctrl` + `Mouse 1`    | `Print Screen`       | Only works on `NUMBER` layer                                                  |
-| `Alt` + `Mouse 2`     | `Open File Explorer` | Only works on `NUMBER` layer. Keyboard Shortcut `GUI` + `E`                   |
+| Shortcut            | Result    | Comment                                                                       |
+| ------------------- | --------- | ----------------------------------------------------------------------------- |
+| `Shift` + `KC_BSPC` | `KC_DEL`  | Backspace is a combo. There are no dedicated backspace and delete keys mapped |
+| `Shift` + `HF_NEXT` | `HF_PREV` | Only works on `CONFIG` layer  Only for keyboards with Haptic feedback enabled |
+| `Shift` + `HF_CONU` | `HF_COND` | Only works on `CONFIG` layer. Only for keyboards with Haptic feedback enabled |
+| `Shift` + `CK_UP`   | `CK_DOWN` | Only works on `CONFIG` layer. Only for keyboards with Audio enabled           |
 
 ## Optional Features
 
@@ -115,31 +106,36 @@ These features can be disabled due to MCU size constraints or because certain ke
 
 Enables trackball functionality on certain boards (e.g., Ploopy Nano and Bastardkb Charybdis Nano). The board definitions enables unique functionality:
 
-- Charybdis Nano: "Sniper" precision tracking, drag Scroll, DPI changes
-- Ploopy Nano: Ties with Host Status LED macros to enable drag scroll, dpi changes, and bootloader
+- Charybdis Nano: "Sniper" precision tracking, toggle/momentary drag scroll, DPI changes
+- Ploopy Nano: Ties with Host State for momentary drag scroll, dpi changes, and bootloader
 
 Note: `MOUSEKEY_ENABLE` do not need to be enabled in tandem with this to get the mouse buttons.
+Note: Enabling Num Lock, Caps Lock, and Scroll Lock simultaneously will tell the Ploopy Nano to enter bootloader mode
 
 ### RGB Matrix
 
-Taste the rainbow for boards with RGB LEDs and large MCU memory footprints. Enables RGB lighting effects and layer/host status indicators. Review the keyboard files to identify the key position for each LED and update the preprocessor definitions in `config\rgbmatrix_config.h`
+Enable RGB lighting effects for large MCU memory footprints. Review the keyboard files to identify the key position for each LED and update the preprocessor definitions in `config.h`
 
 ### OLED
 
-Enables keyboard status visualization. Shows currently selected layer, active modifiers, and host status (e.g, Num / Caps / Scroll Lock)
+Enables keyboard status visualization. Shows information like selected layer, active modifiers, and host state (e.g, Num / Caps / Scroll Lock), and Luna pet animation
+
+### Haptic Feedback and Audio
+
+Basic keyboard buzzing and key click audio for the Geist KLOR.
 
 ## Target Keyboards
 
 All boards use my keymaps unless noted
 
-- Ploopy Nano: `lkbm` keymap
+- Ploopy Nano
 - Bastardkb Charybdis Nano 3x5
-- Crkbd 3x6
 - Planck Rev6
 - Ferris Swoop
 - Barbell Rollow (non-tree)
+- Geist KLOR (non-tree)
 - DZRGB60v2 (coming)
-- Geist KLOR (coming)
+- Crkbd 3x6 (deprecated)
 
 ## Links
 

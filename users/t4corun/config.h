@@ -130,6 +130,8 @@
 *  https://docs.qmk.fm/features/rgb_matrix
 */
 #if defined(RGB_MATRIX_ENABLE)
+#  undef  RGB_MATRIX_DEFAULT_VAL
+
 #  define RGB_MATRIX_SLEEP
 #  define RGB_MATRIX_TIMEOUT 60000 //1 min
 

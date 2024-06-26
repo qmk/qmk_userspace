@@ -42,7 +42,7 @@ void render_layer_state(uint8_t col, uint8_t line, bool moveCursor) {
     case _SYMBOL:
       oled_write_P(PSTR(OLED_RENDER_LAYER_4), false);
       break;
-    case _MOUSE:
+    case _MOUSE_FUNC:
       oled_write_P(PSTR(OLED_RENDER_LAYER_5), false);
       break;
     case _CONFIG:
@@ -65,7 +65,7 @@ void render_layer_state_list(uint8_t col, uint8_t line, bool moveCursor) {
   oled_write_P(PSTR(OLED_RENDER_LAYER_2), get_highest_layer(layer_state) == _NAVIGATION);
   oled_write_P(PSTR(OLED_RENDER_LAYER_3), get_highest_layer(layer_state) == _NUMBER);
   oled_write_P(PSTR(OLED_RENDER_LAYER_4), get_highest_layer(layer_state) == _SYMBOL);
-  oled_write_P(PSTR(OLED_RENDER_LAYER_5), get_highest_layer(layer_state) == _MOUSE);
+  oled_write_P(PSTR(OLED_RENDER_LAYER_5), get_highest_layer(layer_state) == _MOUSE_FUNC);
   oled_write_P(PSTR(OLED_RENDER_LAYER_6), get_highest_layer(layer_state) == _CONFIG);
 }
 
