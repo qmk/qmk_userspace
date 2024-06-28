@@ -15,8 +15,8 @@ Intentionally did not convert all the override/autoshit tap holds to this format
 const key_override_t delete_override     = ko_make_basic(MOD_MASK_SHIFT, KC_BSPC, KC_DEL);
 
 #if defined(HAPTIC_ENABLE)
-const key_override_t hfnext_override     = ko_make_with_layers(MOD_MASK_SHIFT, TR_HNXT, HF_PREV, 1<<_CONFIG);
-const key_override_t hfconu_override     = ko_make_with_layers(MOD_MASK_SHIFT, TR_HCNU, HF_COND, 1<<_CONFIG);
+const key_override_t hfnext_override     = ko_make_with_layers(MOD_MASK_SHIFT, HF_NEXT, HF_PREV, 1<<_CONFIG);
+const key_override_t hfconu_override     = ko_make_with_layers(MOD_MASK_SHIFT, HF_CONU, HF_COND, 1<<_CONFIG);
 #endif //HAPTIC_ENABLE
 
 #if defined(AUDIO_ENABLE)
