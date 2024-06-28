@@ -59,6 +59,7 @@ enum keycodes {
 #define NAV     MO(_NAVIGATION)
 #define NUM     MO(_NUMBER)
 #define MF_Z    LT(_MOUSE_FUNC, KC_Z)
+#define MOU_FUN TG(_MOUSE_FUNC)
 #define CONFIG  MO(_CONFIG)
 
 // Windows Shortcuts
@@ -231,7 +232,7 @@ enum keycodes {
 
 
 #define LAYER_NUMBER                                                                        \
-  KC_ESC,  SC_SNIP, SC_FILE, ___x___, TR_GRV,  ___x___, KC_7,    KC_8,    KC_9,    KC_COMM, \
+  KC_ESC,  SC_SNIP, SC_FILE, MOU_FUN, TR_GRV,  ___x___, KC_7,    KC_8,    KC_9,    KC_COMM, \
   _GACS_MODS________________________, TR_SCLN, KC_0,    KC_4,    KC_5,    KC_6,    KC_DOT,  \
   _UCCPR_L___________________________________, ___x___, KC_1,    KC_2,    KC_3,    KC_MINS, \
                     _LAYER_TRANS_____________, _BASE_R4_________________
@@ -245,7 +246,7 @@ enum keycodes {
 
 
 #define LAYER_MOUSE_FUNC                                                                    \
-  ___x___, KC_MPRV, KC_MNXT, KC_MPLY, ___x___, ___x___, KC_F7,   KC_F8,   KC_F9,   KC_F10,  \
+  MOU_FUN, KC_MPRV, KC_MNXT, KC_MPLY, ___x___, ___x___, KC_F7,   KC_F8,   KC_F9,   KC_F10,  \
   _GACS_MODS________________________, TR_DRGS, ___x___, KC_F4,   KC_F5,   KC_F6,   KC_F11,  \
   _______, KC_BTN5, KC_BTN4, KC_BTN3, TR_SNIP, ___x___, KC_F1,   KC_F2,   KC_F3,   KC_F12,  \
                     ___x___, KC_BTN1, KC_BTN2, TR_PDPI, TR_SDPI, ___x___
