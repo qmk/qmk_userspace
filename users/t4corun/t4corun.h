@@ -196,7 +196,7 @@ enum keycodes {
 #define _SCAG_MODS________________________          TR_LSFT, TR_LCTL, TR_LALT, TR_LGUI
 #define _UCCPR_L___________________________________ SC_UNDO, SC_CUT,  SC_COPY, SC_PAST, SC_REDO
 
-#define _BASE_L4_________________                   ___x___, NUM,     TR_LSFT
+#define _BASE_L4_________________                   KC_BTN1, NUM,     TR_LSFT
 #define _BASE_R4_________________                   KC_SPC,  NAV,     KC_MUTE
 #define _LAYER_TRANS_____________                   ___x___, _______, ___x___
 
@@ -248,8 +248,8 @@ enum keycodes {
 #define LAYER_MOUSE_FUNC                                                                    \
   MOU_FUN, KC_MPRV, KC_MNXT, KC_MPLY, ___x___, ___x___, KC_F7,   KC_F8,   KC_F9,   KC_F10,  \
   _GACS_MODS________________________, TR_DRGS, ___x___, KC_F4,   KC_F5,   KC_F6,   KC_F11,  \
-  _______, KC_BTN5, KC_BTN4, KC_BTN3, TR_SNIP, ___x___, KC_F1,   KC_F2,   KC_F3,   KC_F12,  \
-                    ___x___, KC_BTN1, KC_BTN2, TR_PDPI, TR_SDPI, ___x___
+  _______, ___x___, KC_BTN5, KC_BTN4, TR_SNIP, ___x___, KC_F1,   KC_F2,   KC_F3,   KC_F12,  \
+                    KC_BTN1, KC_BTN2, KC_BTN3, TR_PDPI, TR_SDPI, ___x___
 
 
 #define LAYER_CONFIG                                                                        \
