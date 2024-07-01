@@ -18,8 +18,9 @@ void setLunaJumped(void) { showedJump = true;}
 
 
 // Hold Navigation and Number to get Symbol
-layer_state_t layer_state_set_user(layer_state_t  state) { return update_tri_layer_state(state, _NAVIGATION, _NUMBER, _SYMBOL); }
-
+layer_state_t layer_state_set_user(layer_state_t state) { 
+  return update_tri_layer_state(state, _NAVIGATION, _NUMBER, _SYMBOL); 
+}
 
 // Customize behavior for existing keycodes or create new ones
 bool process_record_user(uint16_t keycode, keyrecord_t *record) {
@@ -49,6 +50,7 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
         tap_code(KC_SCRL);
       }
       return false;
+
 
     // makes num lock a hold instead of toggle
     // prevents accidental ploopy nano going into bootloader
