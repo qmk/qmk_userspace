@@ -31,11 +31,11 @@ bool process_tap_hold_key(keyrecord_t* record, uint16_t tap_keycode, uint16_t ho
     switch (mode) {
 
       case HOLD_BRACKETS:
-        record->event.pressed ? insert_brackets(tap_keycode, hold_keycode, WAIT_DELAY) : 0;
+        record->event.pressed ? insert_brackets(tap_keycode, hold_keycode, TAP_CODE_DELAY) : 0;
         break;
 
       case HOLD_DOUBLETP:
-        record->event.pressed ? double_tap(tap_keycode, WAIT_DELAY) : 0;
+        record->event.pressed ? double_tap(tap_keycode, TAP_CODE_DELAY) : 0;
         break;
 
       default:

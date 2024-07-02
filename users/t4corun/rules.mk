@@ -33,9 +33,8 @@ WPM_ENABLE ?= yes
 # qmk features we will force as these are critical for my workflow
 EXTRAKEY_ENABLE ?= yes
 CAPS_WORD_ENABLE ?= yes
-MOUSEKEY_ENABLE ?= yes
+MOUSEKEY_ENABLE = yes
 COMBO_ENABLE ?= yes
-KEY_OVERRIDE_ENABLE ?= yes
 
 
 # ---------------------------------------------------------
@@ -50,10 +49,6 @@ SRC +=                     \
 
 ifeq ($(strip $(COMBO_ENABLE)), yes)
   INTROSPECTION_KEYMAP_C += features/combo.c
-endif
-
-ifeq ($(strip $(KEY_OVERRIDE_ENABLE)), yes)
-  SRC += features/keyoverride.c
 endif
 
 ifeq ($(strip $(CAPS_WORD_ENABLE)), yes)

@@ -25,12 +25,16 @@
 *  https://docs.qmk.fm/tap_hold
 *  https://docs.qmk.fm/one_shot_keys
 */
-#define TAP_CODE_DELAY 5                    //time before tap is released
-#define TAP_HOLD_CAPS_DELAY TAP_CODE_DELAY  //turning down delay for caps lock so ploopy can do DPI switching
-#define WAIT_DELAY 5                        //custom variable to configure time between taps
+#undef TAP_CODE_DELAY
+#undef TAPPING_TERM
+#undef QUICK_TAP_TERM
 
+#undef ONESHOT_TAP_TOGGLE
+#undef ONESHOT_TIMEOUT
+
+
+#define TAP_CODE_DELAY 5
 #define TAPPING_TERM 175
-
 #define QUICK_TAP_TERM 120
 
 #define ONESHOT_TAP_TOGGLE 3
@@ -46,6 +50,9 @@
 *  #undef CAPS_WORD_INVERT_ON_SHIFT
 */
 #if defined(CAPS_WORD_ENABLE)
+#  undef DOUBLE_TAP_SHIFT_TURNS_ON_CAPS_WORD
+#  undef CAPS_WORD_IDLE_TIMEOUT
+
 #  define DOUBLE_TAP_SHIFT_TURNS_ON_CAPS_WORD
 #  define CAPS_WORD_IDLE_TIMEOUT 2000
 #endif //CAPS_WORD_ENABLE
@@ -56,12 +63,14 @@
 *  https://docs.qmk.fm/features/combo
 */
 #if defined(COMBO_ENABLE)
+#  undef COMBO_ONLY_FROM_LAYER
+#  undef EXTRA_SHORT_COMBOS
+#  undef COMBO_TERM
+#  undef COMBO_SHOULD_TRIGGER
+
 #  define COMBO_ONLY_FROM_LAYER 0 //this will always setup combos based off of QWERTY layout
 #  define EXTRA_SHORT_COMBOS
-
 #  define COMBO_TERM 35
-
-#  define COMBO_MUST_TAP_PER_COMBO
 #  define COMBO_SHOULD_TRIGGER
 #endif //COMBO_ENABLE
 
@@ -71,6 +80,15 @@
 *  https://docs.qmk.fm/features/split_keyboard
 */
 #if defined(SPLIT_KEYBOARD)
+#  undef SPLIT_TRANSPORT_MIRROR
+#  undef SPLIT_LAYER_STATE_ENABLE
+#  undef SPLIT_LED_STATE_ENABLE
+#  undef SPLIT_MODS_ENABLE
+#  undef SPLIT_OLED_ENABLE
+#  undef SPLIT_ACTIVITY_ENABLE
+#  undef SPLIT_WPM_ENABLE
+#  undef MASTER_RIGHT
+
 #  define SPLIT_TRANSPORT_MIRROR
 #  define SPLIT_LAYER_STATE_ENABLE
 #  define SPLIT_LED_STATE_ENABLE
@@ -87,6 +105,9 @@
 *  https://docs.qmk.fm/features/oled_driver
 */
 #if defined(OLED_ENABLE)
+#  undef OLED_TIMEOUT
+#  undef OLED_FONT_H
+
 #  define OLED_TIMEOUT 60000 //1 min
 #  define OLED_FONT_H "./lib/font.c"
 #endif //OLED_ENABLE
@@ -98,6 +119,9 @@
 */
 #if defined(HAPTIC_ENABLE)
 #  if defined(HAPTIC_DRV2605L)
+#    undef DRV2605L_GREETING
+#    undef DRV2605L_DEFAULT_MODE
+
 #    define DRV2605L_GREETING DRV2605L_EFFECT_750_MS_ALERT_100
 #    define DRV2605L_DEFAULT_MODE DRV2605L_EFFECT_STRONG_CLICK_1_100
 #  endif //HAPTIC_DRV2605L
@@ -110,9 +134,16 @@
 *  https://docs.qmk.fm/squeezing_avr#audio-settings
 */
 #if defined(AUDIO_ENABLE)
+#  undef KLOR_SOUND
+#  undef BYE_SOUND
+#  undef NO_MUSIC_MODE
+#  undef AUDIO_CLICKY
+#  undef STARTUP_SONG
+#  undef GOODBYE_SONG
+#  undef DEFAULT_LAYER_SONGS
+
 #  define KLOR_SOUND W__NOTE(_DS0), W__NOTE(_DS1), H__NOTE(_DS2), H__NOTE(_DS3), Q__NOTE(_DS4), Q__NOTE(_DS5), E__NOTE(_DS6), E__NOTE(_DS7), S__NOTE(_DS8), Q__NOTE(_GS0)
 #  define BYE_SOUND H__NOTE(_DS4), H__NOTE(_DS3), W__NOTE(_DS1)
-
 #  define NO_MUSIC_MODE
 #  define AUDIO_CLICKY
 #  define STARTUP_SONG SONG(KLOR_SOUND)
@@ -130,7 +161,20 @@
 *  https://docs.qmk.fm/features/rgb_matrix
 */
 #if defined(RGB_MATRIX_ENABLE)
-#  undef  RGB_MATRIX_DEFAULT_VAL
+#  undef RGB_MATRIX_SLEEP
+#  undef RGB_MATRIX_TIMEOUT
+
+#  undef RGB_MATRIX_MAXIMUM_BRIGHTNESS
+#  undef RGB_MATRIX_DEFAULT_HUE
+#  undef RGB_MATRIX_DEFAULT_SAT
+#  undef RGB_MATRIX_DEFAULT_VAL
+#  undef RGB_MATRIX_DEFAULT_SPD
+
+#  undef RGB_MATRIX_TYPING_HEATMAP_DECREASE_DELAY_MS
+#  undef RGB_MATRIX_TYPING_HEATMAP_SPREAD
+#  undef RGB_MATRIX_TYPING_HEATMAP_AREA_LIMIT
+#  undef RGB_MATRIX_TYPING_HEATMAP_INCREASE_STEP
+
 
 #  define RGB_MATRIX_SLEEP
 #  define RGB_MATRIX_TIMEOUT 60000 //1 min

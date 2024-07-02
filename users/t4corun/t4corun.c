@@ -1,8 +1,12 @@
 #include "t4corun.h"
 
-// Keeps track of base layer so we can make one key to cycle through them
-// instead of making a key for each one */
-static uint8_t current_base_layer  = FIRST_DEFAULT_LAYER;
+
+// Keeps track of base layer so only one key is needed 
+// to cycle through them vs making three individual ones
+static uint8_t current_base_layer = FIRST_DEFAULT_LAYER;
+
+// keep track of current mods to override existing keys
+static uint8_t current_mods;
 
 // Luna Pet Variables
 static bool isJumping = false;
@@ -25,6 +29,8 @@ layer_state_t layer_state_set_user(layer_state_t state) {
 // Customize behavior for existing keycodes or create new ones
 bool process_record_user(uint16_t keycode, keyrecord_t *record) {
 
+  current_mods = get_mods() | get_oneshot_mods();
+  
   switch (keycode) {
 
     // use the host state status to boot the Ploopy Nano
@@ -89,6 +95,30 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
 
       }
       return false;
+
+#if defined(HAPTIC_ENABLE)
+    case TR_HNXT:
+      if (record->event.pressed) {
+        if( current_mods & MOD_MASK_SHIFT ) {
+          haptic_mode_decrease();
+        } else {
+          haptic_mode_increase();
+        }
+      }
+      return false;
+#endif
+
+#if defined(AUDIO_ENABLE)
+    case TR_CKUP:
+      if (record->event.pressed) {
+        if( current_mods & MOD_MASK_SHIFT ) {
+          clicky_freq_down();
+        } else {
+          clicky_freq_up();
+        }
+      }
+      return false;
+#endif
 
 
     //https://docs.qmk.fm/#/mod_tap?id=changing-both-tasp-and-hold

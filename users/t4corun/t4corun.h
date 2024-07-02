@@ -47,7 +47,10 @@ enum keycodes {
   TH_SCLN,
   TH_QUOT,
 
-  PN_BOOT,
+  PN_BOOT,  // Press to enter Ploopy Nano Bootloader
+
+  TR_HNXT,  // HF_NEXT or HF_PREV when shift is held
+  TR_CKUP,  // CK_UP or CK_DOWN when shift is held
 
   BASELYR,
   RBSELYR
@@ -70,11 +73,6 @@ enum keycodes {
 #define SC_REDO LCTL(KC_Y)
 #define SC_SNIP LGUI(LSFT(KC_S))
 #define SC_FILE LGUI(KC_E)
-
-// Zoom for encoders
-#define ZOOMIN  LCTL(KC_WH_U)
-#define ZOOMOUT LCTL(KC_WH_D)
-#define ZOOMRST LCTL(KC_0)
 
 /*
 - Any keycodes with prefix TR has behavior dependent on if the feature is enabled.
@@ -130,66 +128,6 @@ enum keycodes {
 #endif //KEYBOARD_bastardkb_charybdis_3x5
 
 
-#if defined(DYNAMIC_MACRO_ENABLE)
-#  define TR_DMR1 DM_REC1
-#  define TR_DMP1 DM_PLY1
-#  define TR_DMR2 DM_REC2
-#  define TR_DMP2 DM_PLY2
-#else
-#  define TR_DMR1 ___x___
-#  define TR_DMP1 ___x___
-#  define TR_DMR2 ___x___
-#  define TR_DMP2 ___x___
-#endif //DYNAMIC_MACRO_ENABLE
-
-
-#if defined(RGB_MATRIX_ENABLE) || defined(RGBLIGHT_ENABLE)
-#  define TR_RHUI RGB_HUI
-#  define TR_RSAI RGB_SAI
-#  define TR_RVAI RGB_VAI
-#  define TR_RSPI RGB_SPI
-#  define TR_RTOG RGB_TOG
-#  define TR_RMOD RGB_MOD
-#  define TR_RRMD RGB_RMOD
-#else
-#  define TR_RHUI ___x___
-#  define TR_RSAI ___x___
-#  define TR_RVAI ___x___
-#  define TR_RSPI ___x___
-#  define TR_RTOG ___x___
-#  define TR_RMOD ___x___
-#  define TR_RRMD ___x___
-#endif //RGB_MATRIX_ENABLE || RGBLIGHT_ENABLE
-
-
-#if defined(HAPTIC_ENABLE)
-#  define TR_HTOG HF_TOGG
-#  define TR_HFBK HF_FDBK
-#  define TR_HNXT HF_NEXT
-#  define TR_HCNU HF_CONU
-#  define TR_HRST HF_RST
-#else
-#  define TR_HTOG ___x___
-#  define TR_HFBK ___x___
-#  define TR_HNXT ___x___
-#  define TR_HCNU ___x___
-#  define TR_HRST ___x___
-#endif //HAPTIC_ENABLe
-
-
-#if defined(AUDIO_ENABLE)
-#  define TR_ATOG AU_TOGG
-#  define TR_CTOG CK_TOGG
-#  define TR_CKUP CK_UP
-#  define TR_CRST CK_RST
-#else
-#  define TR_ATOG ___x___
-#  define TR_CTOG ___x___
-#  define TR_CKUP ___x___
-#  define TR_CRST ___x___
-#endif //AUDIO_ENABLE
-
-
 #define _NONE_3__________________                   ___x___, ___x___, ___x___
 #define _NONE_5____________________________________ ___x___, ___x___, ___x___, ___x___, ___x___
 #define _GACS_MODS________________________          TR_LGUI, TR_LALT, TR_LCTL, TR_LSFT
@@ -225,35 +163,37 @@ enum keycodes {
 
 
 #define LAYER_NAVIGATION                                                                    \
-  KC_ESC,  KC_HOME, KC_UP,   KC_END,  KC_PGUP, ___x___, ___x___, ___x___, KC_CAPS, CONFIG,  \
-  ___x___, KC_LEFT, KC_DOWN, KC_RGHT, KC_PGDN, ___x___, _SCAG_MODS________________________, \
-  _UCCPR_L___________________________________, ___x___, KC_APP,  KC_VOLD, KC_VOLU, KC_MUTE, \
-                    ZOOMRST, NUM,     KC_ENT,  _LAYER_TRANS_____________
+  KC_ESC,  KC_HOME, KC_UP,   KC_END,  KC_PGUP, ___x___, KC_APP,  ___x___, ___x___, CONFIG,  \
+  ___x___, KC_LEFT, KC_DOWN, KC_RGHT, KC_PGDN, KC_BSPC, _SCAG_MODS________________________, \
+  _UCCPR_L___________________________________, KC_DEL,  KC_TAB,  KC_VOLD, KC_VOLU, KC_MUTE, \
+                    ___x___, NUM,     KC_ENT,  _LAYER_TRANS_____________
 
 
 #define LAYER_NUMBER                                                                        \
-  KC_ESC,  SC_SNIP, SC_FILE, MOU_FUN, TR_GRV,  ___x___, KC_7,    KC_8,    KC_9,    KC_COMM, \
-  _GACS_MODS________________________, TR_SCLN, KC_0,    KC_4,    KC_5,    KC_6,    KC_DOT,  \
-  _UCCPR_L___________________________________, ___x___, KC_1,    KC_2,    KC_3,    KC_MINS, \
+  KC_ESC,  SC_SNIP, SC_FILE, MOU_FUN, TR_GRV,  KC_ENT,  KC_7,    KC_8,    KC_9,    KC_COMM, \
+  _GACS_MODS________________________, TR_SCLN, KC_BSPC, KC_4,    KC_5,    KC_6,    KC_DOT,  \
+  _UCCPR_L___________________________________, KC_0,    KC_1,    KC_2,    KC_3,    KC_MINS, \
                     _LAYER_TRANS_____________, _BASE_R4_________________
 
 
 #define LAYER_SYMBOL                                                                        \
-  ___x___, ___x___, KC_AT,   KC_DLR,  TR_GRV,  TR_EQL,  KC_HASH, KC_ASTR, ___x___, TR_DQUO, \
-  ___x___, TR_LCBR, KC_RCBR, KC_EXLM, TR_SCLN, KC_AMPR, KC_QUES, TR_LBRC, KC_RBRC, TR_SQUO, \
-  ___x___, TR_LABK, KC_RABK, TR_BSLS, TR_PIPE, TR_PERC, TR_SLSH, TR_LPRN, KC_RPRN, TR_MINS, \
+  KC_ESC,  ___x___, KC_AT,   KC_DLR,  TR_GRV,  TR_EQL,  KC_HASH, KC_ASTR, ___x___, TR_DQUO, \
+  KC_AMPR, TR_LCBR, KC_RCBR, KC_EXLM, TR_SCLN, KC_BSPC, KC_QUES, TR_LBRC, KC_RBRC, TR_SQUO, \
+  TR_PERC, TR_LABK, KC_RABK, TR_BSLS, TR_PIPE, KC_DEL,  TR_SLSH, TR_LPRN, KC_RPRN, TR_MINS, \
                     _LAYER_TRANS_____________, _LAYER_TRANS_____________
+
 
 
 #define LAYER_MOUSE_FUNC                                                                    \
   MOU_FUN, KC_MPRV, KC_MNXT, KC_MPLY, ___x___, ___x___, KC_F7,   KC_F8,   KC_F9,   KC_F10,  \
-  _GACS_MODS________________________, TR_DRGS, ___x___, KC_F4,   KC_F5,   KC_F6,   KC_F11,  \
+  _GACS_MODS________________________, TR_DRGS, KC_CAPS, KC_F4,   KC_F5,   KC_F6,   KC_F11,  \
   _______, ___x___, KC_BTN5, KC_BTN4, TR_SNIP, ___x___, KC_F1,   KC_F2,   KC_F3,   KC_F12,  \
-                    KC_BTN1, KC_BTN2, KC_BTN3, TR_PDPI, TR_SDPI, ___x___
+                    KC_BTN1, KC_BTN3, KC_BTN2, TR_PDPI, TR_SDPI, ___x___
 
 
 #define LAYER_CONFIG                                                                        \
-  TR_HRST, TR_HCNU, TR_HNXT, TR_HFBK, TR_HTOG, ___x___, PN_BOOT, EE_CLR,  QK_BOOT, _______, \
-  TR_CRST, TR_CKUP, TR_CTOG, ___x___, TR_ATOG, ___x___, TR_LSFT, ___x___, ___x___, BASELYR, \
-  ___x___, ___x___, ___x___, ___x___, TR_RTOG, TR_RMOD, TR_RHUI, TR_RSAI, TR_RVAI, TR_RSPI, \
-                    BASELYR, TR_DMR1, TR_DMP1, TR_DMP2, TR_DMR2, TR_RTOG
+  ___x___, HF_RST,  TR_HNXT, HF_FDBK, HF_TOGG, BASELYR, PN_BOOT, EE_CLR,  QK_BOOT, _______, \
+  RGB_MOD, CK_RST,  TR_CKUP, CK_TOGG, AU_TOGG, ___x___, TR_LSFT, ___x___, ___x___, ___x___, \
+  RGB_HUI, RGB_SAI, RGB_VAI, RGB_SPI, RGB_TOG, ___x___, ___x___, ___x___, ___x___, ___x___, \
+                    ___x___, DM_REC1, DM_PLY1, ___x___, ___x___, ___x___
+
