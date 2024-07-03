@@ -8,10 +8,10 @@ static uint8_t current_base_layer = FIRST_DEFAULT_LAYER;
 // keep track of current mods to override existing keys
 static uint8_t current_mods;
 
-// enables alt tab for the encoder
-static bool is_alt_tab_active = false;
-static bool is_alt_shift_tab_active = false;
-static uint16_t alt_tab_timer = 0;
+// enables encoder to handle alt/ctrl tab and ctrl scroll wheel
+static bool hold_forward_active = false;
+static bool hold_reverse_active = false;
+static uint16_t hold_mod_timer = 0;
 
 #if defined(WPM_ENABLE)
 // Luna Pet Variables
@@ -75,6 +75,7 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
       }
       return false;
 
+#if defined(WPM_ENABLE)
     case KC_SPC:
       if (record->event.pressed) {
         isJumping = true;
@@ -84,6 +85,7 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
         isJumping = false;
       }
       break;
+#endif // WPM_ENABLE
 
     case BASELYR:
       if (record->event.pressed) {
@@ -103,31 +105,51 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
       }
       return false;
 
-    case ALT_TAB:
+    case FWD_TAB:
       if (record->event.pressed) {
-        if (!is_alt_tab_active || (current_mods & MOD_MASK_SHIFT)) {
-          is_alt_tab_active = true;
-          register_code(KC_LALT);
+        if (!hold_forward_active || (current_mods & MOD_MASK_SHIFT)) {
+          hold_forward_active = true;
           unregister_code(KC_LSFT);
         }
-        alt_tab_timer = timer_read();
+        hold_mod_timer = timer_read();
         register_code(KC_TAB);
       } else {
         unregister_code(KC_TAB);
       }
       return false;
 
-    case RALT_TB:
+    case BCK_TAB:
       if (record->event.pressed) {
-        if (!is_alt_shift_tab_active || !(current_mods & MOD_MASK_SHIFT)) {
-          is_alt_shift_tab_active = true;
-          register_code(KC_LALT);
+        if (!hold_reverse_active || !(current_mods & MOD_MASK_SHIFT)) {
+          hold_reverse_active = true;
           register_code(KC_LSFT);
         }
-        alt_tab_timer = timer_read();
+        hold_mod_timer = timer_read();
         register_code(KC_TAB);
       } else {
         unregister_code(KC_TAB);
+      }
+      return false;
+
+    case ZOOMIN:
+    case ZOOMOUT:
+      if (record->event.pressed) {
+        if (!hold_forward_active) {
+          hold_forward_active = true;
+          register_code(KC_LCTL);
+        }
+        hold_mod_timer = timer_read();
+        if (keycode == ZOOMIN) {
+          register_code(KC_WH_U);
+        } else {
+          register_code(KC_WH_D);
+        }
+      } else {
+        if (keycode == ZOOMIN) {
+          unregister_code(KC_WH_U);
+        } else {
+          unregister_code(KC_WH_D);
+        }
       }
       return false;
 
@@ -208,13 +230,13 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
 }
 
 void matrix_scan_user(void) {
-  // timer for the super alt-tab
-  if (is_alt_tab_active || is_alt_shift_tab_active) {
-    if (timer_elapsed(alt_tab_timer) > ALT_TAB_TIMEOUT) {
-      unregister_code(KC_LALT);
+  // timer for the hold mods
+  if (hold_forward_active || hold_reverse_active) {
+    if (timer_elapsed(hold_mod_timer) > HOLD_MOD_TIMEOUT) {
       unregister_code(KC_LSFT);
-      is_alt_tab_active = false;
-      is_alt_shift_tab_active = false;
+      unregister_code(KC_LCTL);
+      hold_forward_active = false;
+      hold_reverse_active = false;
     }
   }
 }

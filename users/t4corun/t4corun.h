@@ -8,7 +8,7 @@ bool isJumpShown(void);
 void setLunaJumped(void);
 #endif // WPM_ENABLE
 
-#define ALT_TAB_TIMEOUT 1000
+#define HOLD_MOD_TIMEOUT 1000
 
 // put the default base layers first
 enum layers {
@@ -56,8 +56,11 @@ enum keycodes {
   TR_HNXT,  // HF_NEXT or HF_PREV when shift is held
   TR_CKUP,  // CK_UP or CK_DOWN when shift is held
 
-  ALT_TAB,
-  RALT_TB,
+  FWD_TAB,
+  BCK_TAB,
+
+  ZOOMIN,
+  ZOOMOUT,
 
   BASELYR,
   RBSELYR
@@ -83,8 +86,6 @@ enum keycodes {
 #define SC_WIN  LGUI(KC_TAB)
 
 // Zoom for encoders
-#define ZOOMIN  LCTL(KC_PLUS)
-#define ZOOMOUT LCTL(KC_MINS)
 #define ZOOMRST LCTL(KC_0)
 
 /*
