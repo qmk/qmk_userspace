@@ -1,7 +1,6 @@
 #pragma once
 #include "t4corun.h"
 
-
 const uint16_t PROGMEM mou_btn2_combo[] = { KC_C,    KC_V,    COMBO_END };
 const uint16_t PROGMEM mou_drg_combo[]  = { KC_X,    KC_V,    COMBO_END };
 

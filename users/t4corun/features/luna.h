@@ -1,7 +1,5 @@
 #pragma once
-
 #include "t4corun.h"
-
 
 #if defined(OLED_DISPLAY_128X64)
 #   define OLED_LUNA_COL              15

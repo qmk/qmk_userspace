@@ -52,14 +52,14 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 /* The encoder presses are handled in the keymap */
 const uint16_t PROGMEM encoder_map[][NUM_ENCODERS][NUM_DIRECTIONS] = {
 
-  [_QWERTY]     = { ENCODER_CCW_CW(KC_WH_U, KC_WH_D), ENCODER_CCW_CW(KC_VOLD, KC_VOLU) },
-  [_COLEMAK_DH] = { ENCODER_CCW_CW(KC_WH_U, KC_WH_D), ENCODER_CCW_CW(KC_VOLD, KC_VOLU) },
-  [_GAME]       = { ENCODER_CCW_CW(KC_WH_U, KC_WH_D), ENCODER_CCW_CW(KC_VOLD, KC_VOLU) },
-  [_NAVIGATION] = { ENCODER_CCW_CW(___x___, ___x___), ENCODER_CCW_CW(___x___, ___x___) },
-  [_NUMBER]     = { ENCODER_CCW_CW(___x___, ___x___), ENCODER_CCW_CW(KC_LEFT, KC_RGHT) },
-  [_SYMBOL]     = { ENCODER_CCW_CW(___x___, ___x___), ENCODER_CCW_CW(___x___, ___x___) },
-  [_MOUSE_FUNC] = { ENCODER_CCW_CW(KC_WH_U, KC_WH_D), ENCODER_CCW_CW(KC_VOLD, KC_VOLU) },
-  [_CONFIG]     = { ENCODER_CCW_CW(RBSELYR, BASELYR), ENCODER_CCW_CW(RBSELYR, BASELYR) }
+  [_QWERTY]     = { ENCODER_CCW_CW(KC_WH_U,  KC_WH_D), ENCODER_CCW_CW(KC_VOLD, KC_VOLU) },
+  [_COLEMAK_DH] = { ENCODER_CCW_CW(KC_WH_U,  KC_WH_D), ENCODER_CCW_CW(KC_VOLD, KC_VOLU) },
+  [_GAME]       = { ENCODER_CCW_CW(KC_WH_U,  KC_WH_D), ENCODER_CCW_CW(KC_VOLD, KC_VOLU) },
+  [_NAVIGATION] = { ENCODER_CCW_CW(___x___,  ___x___), ENCODER_CCW_CW(___x___, ___x___) },
+  [_NUMBER]     = { ENCODER_CCW_CW(___x___,  ___x___), ENCODER_CCW_CW(RALT_TB, ALT_TAB) },
+  [_SYMBOL]     = { ENCODER_CCW_CW(___x___,  ___x___), ENCODER_CCW_CW(___x___, ___x___) },
+  [_MOUSE_FUNC] = { ENCODER_CCW_CW(KC_WH_U,  KC_WH_D), ENCODER_CCW_CW(ZOOMOUT, ZOOMIN)  },
+  [_CONFIG]     = { ENCODER_CCW_CW(RGB_RMOD, RGB_MOD), ENCODER_CCW_CW(RBSELYR, BASELYR) }
 
 };
 

@@ -1,11 +1,7 @@
 #include "capsword.h"
 
-//static bool caps_word_state = false;
-
-bool caps_word_press_user(uint16_t keycode) {
-
+bool caps_word_press_user (uint16_t keycode) {
   switch (keycode) {
-
     // Keycodes that continue Caps Word, with shift applied.
     case KC_A ... KC_Z:
 
@@ -22,7 +18,5 @@ bool caps_word_press_user(uint16_t keycode) {
 
     default:
       return false;  // Deactivate Caps Word.
-
   }
-
 }

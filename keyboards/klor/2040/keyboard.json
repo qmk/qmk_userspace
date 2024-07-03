@@ -187,7 +187,7 @@
         },
         "LAYOUT_saegewerk": {
             "layout": [
-                {"label": "L01", "matrix": [0, 1], "x": 1, "y": 0.9},
+                {"label": "L01", "matrix": [0, 1], "x": 1, "y": 0},
                 {"label": "L02", "matrix": [0, 2], "x": 0.5, "y": 2},
                 {"label": "L03", "matrix": [0, 3], "x": 0, "y": 3},
                 {"label": "L04", "matrix": [0, 4], "x": 0.5, "y": 4},
@@ -229,7 +229,7 @@
         },
         "LAYOUT_yubitsume": {
             "layout": [
-                {"label": "L01", "matrix": [0, 1], "x": 1, "y": 0.9},
+                {"label": "L01", "matrix": [0, 1], "x": 1, "y": 0},
                 {"label": "L02", "matrix": [0, 2], "x": 0.5, "y": 2},
                 {"label": "L03", "matrix": [0, 3], "x": 0, "y": 3},
                 {"label": "L04", "matrix": [0, 4], "x": 0.5, "y": 4},

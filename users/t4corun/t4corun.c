@@ -8,6 +8,12 @@ static uint8_t current_base_layer = FIRST_DEFAULT_LAYER;
 // keep track of current mods to override existing keys
 static uint8_t current_mods;
 
+// enables alt tab for the encoder
+static bool is_alt_tab_active = false;
+static bool is_alt_shift_tab_active = false;
+static uint16_t alt_tab_timer = 0;
+
+#if defined(WPM_ENABLE)
 // Luna Pet Variables
 static bool isJumping = false;
 static bool showedJump = true;
@@ -18,13 +24,14 @@ bool isJumpShown(void) { return showedJump; }
 
 // Allows the OLED code to clear the space bar status when render is complete
 void setLunaJumped(void) { showedJump = true;}
-
+#endif // WPM_ENABLE
 
 
 // Hold Navigation and Number to get Symbol
 layer_state_t layer_state_set_user(layer_state_t state) { 
   return update_tri_layer_state(state, _NAVIGATION, _NUMBER, _SYMBOL); 
 }
+
 
 // Customize behavior for existing keycodes or create new ones
 bool process_record_user(uint16_t keycode, keyrecord_t *record) {
@@ -93,6 +100,34 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
         current_base_layer = (current_base_layer - 1) % NUM_DEFAULT_LAYERS; 
         set_single_persistent_default_layer(current_base_layer);
 
+      }
+      return false;
+
+    case ALT_TAB:
+      if (record->event.pressed) {
+        if (!is_alt_tab_active || (current_mods & MOD_MASK_SHIFT)) {
+          is_alt_tab_active = true;
+          register_code(KC_LALT);
+          unregister_code(KC_LSFT);
+        }
+        alt_tab_timer = timer_read();
+        register_code(KC_TAB);
+      } else {
+        unregister_code(KC_TAB);
+      }
+      return false;
+
+    case RALT_TB:
+      if (record->event.pressed) {
+        if (!is_alt_shift_tab_active || !(current_mods & MOD_MASK_SHIFT)) {
+          is_alt_shift_tab_active = true;
+          register_code(KC_LALT);
+          register_code(KC_LSFT);
+        }
+        alt_tab_timer = timer_read();
+        register_code(KC_TAB);
+      } else {
+        unregister_code(KC_TAB);
       }
       return false;
 
@@ -170,4 +205,16 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
 
   // let QMK process the normal behavior if not handled above
   return true;
+}
+
+void matrix_scan_user(void) {
+  // timer for the super alt-tab
+  if (is_alt_tab_active || is_alt_shift_tab_active) {
+    if (timer_elapsed(alt_tab_timer) > ALT_TAB_TIMEOUT) {
+      unregister_code(KC_LALT);
+      unregister_code(KC_LSFT);
+      is_alt_tab_active = false;
+      is_alt_shift_tab_active = false;
+    }
+  }
 }

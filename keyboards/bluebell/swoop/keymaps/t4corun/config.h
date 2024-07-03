@@ -18,3 +18,9 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 #define RGB_MATRIX_LED_COUNT 36
 #define RGB_MATRIX_SPLIT  { 18,  18 }
+
+#undef ENCODER_RESOLUTION
+#undef ENCODER_RESOLUTION_RIGHT
+
+#define ENCODER_RESOLUTION 4
+#define ENCODER_RESOLUTION_RIGHT 4

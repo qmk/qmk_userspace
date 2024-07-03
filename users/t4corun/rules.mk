@@ -31,9 +31,9 @@ AUDIO_ENABLE ?= no
 WPM_ENABLE ?= yes
 
 # qmk features we will force as these are critical for my workflow
-EXTRAKEY_ENABLE ?= yes
-CAPS_WORD_ENABLE ?= yes
+EXTRAKEY_ENABLE = yes
 MOUSEKEY_ENABLE = yes
+CAPS_WORD_ENABLE ?= yes
 COMBO_ENABLE ?= yes
 
 

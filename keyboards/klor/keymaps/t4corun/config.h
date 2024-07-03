@@ -1,1 +1,7 @@
-# pragma once
+#pragma once
+
+#undef ENCODER_RESOLUTION
+#undef ENCODER_RESOLUTION_RIGHT
+
+#define ENCODER_RESOLUTION 4
+#define ENCODER_RESOLUTION_RIGHT 4

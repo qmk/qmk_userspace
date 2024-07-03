@@ -1,8 +1,10 @@
 #include "combo.h"
 
-bool combo_should_trigger(uint16_t combo_index, combo_t *combo, uint16_t keycode, keyrecord_t *record) {
+bool combo_should_trigger (uint16_t combo_index, combo_t *combo, uint16_t keycode, keyrecord_t *record) {
   // disable all combos on config layer
-  if ( get_highest_layer(layer_state | default_layer_state) == _CONFIG ) return false;
+  if (get_highest_layer(layer_state | default_layer_state) == _CONFIG) {
+    return false;
+  }
 
   switch (combo_index) {
     case MOUSE_BUTTON2:
