@@ -89,19 +89,15 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
 
     case BASELYR:
       if (record->event.pressed) {
-
         current_base_layer = (current_base_layer + 1) % NUM_DEFAULT_LAYERS; 
         set_single_persistent_default_layer(current_base_layer);
-
       }
       return false;
 
     case RBSELYR:
       if (record->event.pressed) { 
-
         current_base_layer = (current_base_layer - 1) % NUM_DEFAULT_LAYERS; 
         set_single_persistent_default_layer(current_base_layer);
-
       }
       return false;
 
@@ -118,7 +114,7 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
       }
       return false;
 
-    case BCK_TAB:
+    case REV_TAB:
       if (record->event.pressed) {
         if (!hold_reverse_active || !(current_mods & MOD_MASK_SHIFT)) {
           hold_reverse_active = true;
