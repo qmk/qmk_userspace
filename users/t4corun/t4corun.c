@@ -102,21 +102,15 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
       return false;
 
     case FWD_TAB:
-      if (record->event.pressed) {
-        if (!hold_forward_active || (current_mods & MOD_MASK_SHIFT)) {
-          hold_forward_active = true;
-          unregister_code(KC_LSFT);
-        }
-        hold_mod_timer = timer_read();
-        register_code(KC_TAB);
-      } else {
-        unregister_code(KC_TAB);
-      }
-      return false;
-
     case REV_TAB:
       if (record->event.pressed) {
-        if (!hold_reverse_active || !(current_mods & MOD_MASK_SHIFT)) {
+        if (keycode == FWD_TAB && !hold_forward_active) {
+          hold_forward_active = true;
+          hold_reverse_active = false;
+          unregister_code(KC_LSFT);
+        }
+        if (keycode == REV_TAB && !hold_reverse_active) {
+          hold_forward_active = false;
           hold_reverse_active = true;
           register_code(KC_LSFT);
         }
@@ -148,6 +142,36 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
         }
       }
       return false;
+
+#if defined(RGB_MATRIX_ENABLE)
+    case FWD_RGB:
+    case REV_RGB:
+      if (record->event.pressed) {
+        switch (current_mods) {
+          case MOD_BIT(KC_LSFT):
+            keycode == FWD_RGB ? rgb_matrix_increase_hue() : rgb_matrix_decrease_hue();
+            break;
+
+          case MOD_BIT(KC_LCTL):
+            keycode == FWD_RGB ? rgb_matrix_increase_sat() : rgb_matrix_decrease_sat();
+            break;
+
+          case MOD_BIT(KC_LALT):
+            keycode == FWD_RGB ? rgb_matrix_increase_val() : rgb_matrix_decrease_val();
+            break;
+          
+          case MOD_BIT(KC_LGUI):
+            keycode == FWD_RGB ? rgb_matrix_increase_speed() : rgb_matrix_decrease_speed();
+            break;
+
+          default:
+            keycode == FWD_RGB ? rgb_matrix_step() : rgb_matrix_step_reverse();
+            break;    
+        }
+      }
+      return false;
+#endif
+
 
 #if defined(HAPTIC_ENABLE)
     case TR_HNXT:
