@@ -2,6 +2,8 @@
 #include QMK_KEYBOARD_H
 #include "features/taphold.h"
 
+void set_default_layer(bool forward);
+
 #if defined(WPM_ENABLE)
 bool isLunaJumping(void);
 bool isJumpShown(void);
@@ -53,20 +55,21 @@ enum keycodes {
 
   PN_BOOT,  // Press to enter Ploopy Nano Bootloader
 
-  TR_HNXT,  // HF_NEXT or HF_PREV when shift is held
-  TR_CKUP,  // CK_UP or CK_DOWN when shift is held
+  FWD_TAB,  // enables encoder to alt-tab/alt+shift-tab
+  REV_TAB,  // alt-tab/alt+shift-tab or ctrl-tab/ctrl+shift tab
 
-  FWD_TAB,
-  REV_TAB,
-
-  FWD_RGB,
+  FWD_RGB,  // enables overloaded encoder to adjust RGB mode and settings
   REV_RGB,
 
-  ZOOMIN,
+  FWD_CFG,  // enables overloaded encoder to adjust other features
+  REV_CFG,  // e.g. haptic freq, click freq
+
+  TOG_CFG,  // enables overloaded key press to toggle features on or off
+
+  ZOOMIN,   // enables encoder to mouse wheel zoom 
   ZOOMOUT,
 
-  BASELYR,
-  RBSELYR
+  BASELYR   // enables key press to change base layer
 };
 
 #define ___x___ KC_NO
@@ -184,11 +187,11 @@ enum keycodes {
 
 
 #define LAYER_NAVIGATION                                                                    \
-  KC_ESC,  KC_HOME, KC_UP,   KC_END,  KC_PGUP, ___x___, KC_APP,  ___x___, DM_REC1, DM_PLY1, \
-  KC_CAPS, KC_LEFT, KC_DOWN, KC_RGHT, KC_PGDN, KC_BSPC, _SCAG_MODS________________________, \
+  KC_ESC,  KC_HOME, KC_UP,   KC_END,  KC_PGUP, KC_CAPS, KC_APP,  DM_REC1, DM_PLY1, BASELYR, \
+  ___x___, KC_LEFT, KC_DOWN, KC_RGHT, KC_PGDN, KC_BSPC, _SCAG_MODS________________________, \
   _UCCPR_L___________________________________, KC_DEL,  KC_TAB,  KC_VOLD, KC_VOLU, KC_MUTE, \
                     ___x___, NUM,     KC_ENT,  _LAYER_TRANS_____________,                   \
-                                      SCR_TOP, ___x___
+                                      SCR_TOP, BASELYR
 
 
 #define LAYER_NUMBER                                                                        \
@@ -196,101 +199,20 @@ enum keycodes {
   _GACS_MODS________________________, KC_TAB,  ___x___, KC_4,    KC_5,    KC_6,    KC_DOT,  \
   _UCCPR_L___________________________________, ___x___, KC_1,    KC_2,    KC_3,    KC_MINS, \
                     _LAYER_TRANS_____________, KC_0,    NAV,     ___x___,                   \
-                                      ___x___, SC_WIN
+                                      BASELYR, SC_WIN
 
 
 #define LAYER_SYMBOL                                                                        \
-  QK_BOOT, ___x___, KC_AT,   KC_DLR,  TR_GRV,  TR_EQL,  KC_HASH, KC_ASTR, ___x___, ___x___, \
-  PN_BOOT, TR_LCBR, KC_RCBR, TR_PIPE, TR_SCLN, KC_AMPR, KC_QUES, TR_LBRC, KC_RBRC, ___x___, \
-  BASELYR, TR_LABK, KC_RABK, TR_BSLS, KC_EXLM, TR_PERC, TR_SLSH, TR_LPRN, KC_RPRN, ___x___, \
+  ___x___, ___x___, KC_AT,   KC_DLR,  TR_GRV,  TR_EQL,  KC_HASH, KC_ASTR, ___x___, ___x___, \
+  ___x___, TR_LCBR, KC_RCBR, TR_PIPE, TR_SCLN, KC_AMPR, KC_QUES, TR_LBRC, KC_RBRC, ___x___, \
+  ___x___, TR_LABK, KC_RABK, TR_BSLS, KC_EXLM, TR_PERC, TR_SLSH, TR_LPRN, KC_RPRN, ___x___, \
                     _LAYER_TRANS_____________, _LAYER_TRANS_____________,                   \
                                       ___x___, ___x___
 
 
 #define LAYER_MOUSE_FUNC                                                                    \
-  MOU_FUN, RGB_HUI, RGB_SAI, RGB_VAI, RGB_SPI, HF_TOGG, KC_F7,   KC_F8,   KC_F9,   KC_F10,  \
-  _GACS_MODS________________________, TR_DRGS, AU_TOGG, KC_F4,   KC_F5,   KC_F6,   KC_F11,  \
-  _______, RGB_MOD, KC_BTN5, KC_BTN4, TR_SNIP, RGB_TOG, KC_F1,   KC_F2,   KC_F3,   KC_F12,  \
-                    KC_BTN1, KC_BTN3, KC_BTN2, TR_PDPI, TR_SDPI, ___x___,                   \
+  MOU_FUN, QK_BOOT, PN_BOOT, TR_PDPI, TR_SDPI, TOG_CFG, KC_F7,   KC_F8,   KC_F9,   KC_F10,  \
+  _GACS_MODS________________________, TR_DRGS, FWD_CFG, KC_F4,   KC_F5,   KC_F6,   KC_F11,  \
+  _______, ___x___, KC_BTN5, KC_BTN4, TR_SNIP, REV_CFG, KC_F1,   KC_F2,   KC_F3,   KC_F12,  \
+                    KC_BTN1, KC_BTN3, KC_BTN2, REV_RGB, FWD_RGB, ___x___,                   \
                                       SCR_TOP, ZOOMRST
-
-/*
-
-#define LAYER_CONFIG                                                                        \
-  ___x___, HF_RST,  TR_HNXT, HF_FDBK, HF_TOGG, BASELYR, PN_BOOT, EE_CLR,  QK_BOOT, _______, \
-  RGB_MOD, CK_RST,  TR_CKUP, CK_TOGG, AU_TOGG, ___x___, TR_LSFT, ___x___, ___x___, ___x___, \
-  RGB_HUI, RGB_SAI, RGB_VAI, RGB_SPI, RGB_TOG, ___x___, ___x___, ___x___, ___x___, ___x___, \
-                    ___x___, DM_REC1, DM_PLY1, ___x___, ___x___, ___x___,                   \
-                                      ___x___, ___x___
-*/
-
-
-
-
-
-/*
-#define LAYER_QWERTY                                                                        \
-  KC_Q,    KC_W,    KC_E,    KC_R,    KC_T,    KC_Y,    KC_U,    KC_I,    KC_O,    KC_P,    \
-  KC_A,    KC_S,    KC_D,    KC_F,    KC_G,    KC_H,    KC_J,    KC_K,    KC_L,    TR_QUOT, \
-  MF_Z,    KC_X,    KC_C,    KC_V,    KC_B,    KC_N,    KC_M,    TR_COMM, TR_DOT,  TR_MINS, \
-                    _BASE_L4_________________, _BASE_R4_________________,                   \
-                                      SCR_TOP, KC_MUTE
-
-
-#define LAYER_COLEMAK_DH                                                                    \
-  KC_Q,    KC_W,    KC_F,    KC_P,    KC_B,    KC_J,    KC_L,    KC_U,    KC_Y,    TR_QUOT, \
-  KC_A,    KC_R,    KC_S,    KC_T,    KC_G,    KC_M,    KC_N,    KC_E,    KC_I,    KC_O,    \
-  MF_Z,    KC_X,    KC_C,    KC_D,    KC_V,    KC_K,    KC_H,    TR_COMM, TR_DOT,  TR_MINS, \
-                    _BASE_L4_________________, _BASE_R4_________________,                   \
-                                      SCR_TOP, KC_MUTE
-
-
-#define LAYER_GAME                                                                          \
-  KC_TAB,  KC_Q,    KC_W,    KC_E,    KC_R,    KC_T,    KC_7,    KC_8,    KC_9,    KC_ESC,  \
-  KC_LCTL, KC_A,    KC_S,    KC_D,    KC_F,    KC_G,    KC_4,    KC_5,    KC_6,    KC_GRV,  \
-  KC_Z,    KC_X,    KC_C,    KC_V,    KC_B,    KC_LALT, KC_1,    KC_2,    KC_3,    CM_TOGG, \
-                    KC_ENT,  KC_SPC,  KC_LSFT, _BASE_R4_________________,                   \
-                                      SCR_TOP, KC_MUTE
-
-
-#define LAYER_NAVIGATION                                                                    \
-  KC_ESC,  KC_HOME, KC_UP,   KC_END,  KC_PGUP, ___x___, KC_APP,  ___x___, ___x___, CONFIG,  \
-  ___x___, KC_LEFT, KC_DOWN, KC_RGHT, KC_PGDN, KC_BSPC, _SCAG_MODS________________________, \
-  _UCCPR_L___________________________________, KC_DEL,  KC_TAB,  KC_VOLD, KC_VOLU, KC_MUTE, \
-                    ___x___, NUM,     KC_ENT,  _LAYER_TRANS_____________,                   \
-                                      SCR_TOP, ___x___
-
-
-#define LAYER_NUMBER                                                                        \
-  KC_ESC,  SC_SNIP, SC_FILE, MOU_FUN, KC_ENT,  ___x___, KC_7,    KC_8,    KC_9,    KC_COMM, \
-  _GACS_MODS________________________, KC_TAB,  KC_BSPC, KC_4,    KC_5,    KC_6,    KC_DOT,  \
-  _UCCPR_L___________________________________, KC_DEL,  KC_1,    KC_2,    KC_3,    KC_MINS, \
-                    _LAYER_TRANS_____________, KC_0,    NAV,     ___x___,                   \
-                                      ___x___, SC_WIN
-
-
-#define LAYER_SYMBOL                                                                        \
-  KC_ESC,  ___x___, KC_AT,   KC_DLR,  TR_GRV,  TR_EQL,  KC_HASH, KC_ASTR, ___x___, TR_DQUO, \
-  KC_AMPR, TR_LCBR, KC_RCBR, TR_PIPE, TR_SCLN, KC_BSPC, KC_QUES, TR_LBRC, KC_RBRC, TR_SQUO, \
-  TR_PERC, TR_LABK, KC_RABK, TR_BSLS, KC_EXLM, KC_DEL,  TR_SLSH, TR_LPRN, KC_RPRN, TR_MINS, \
-                    _LAYER_TRANS_____________, _LAYER_TRANS_____________,                   \
-                                      ___x___, ___x___
-
-
-#define LAYER_MOUSE_FUNC                                                                    \
-  MOU_FUN, KC_MPRV, KC_MNXT, KC_MPLY, ___x___, ___x___, KC_F7,   KC_F8,   KC_F9,   KC_F10,  \
-  _GACS_MODS________________________, TR_DRGS, KC_CAPS, KC_F4,   KC_F5,   KC_F6,   KC_F11,  \
-  _______, ___x___, KC_BTN5, KC_BTN4, TR_SNIP, ___x___, KC_F1,   KC_F2,   KC_F3,   KC_F12,  \
-                    KC_BTN1, KC_BTN3, KC_BTN2, TR_PDPI, TR_SDPI, ___x___,                   \
-                                      SCR_TOP, ZOOMRST
-
-
-#define LAYER_CONFIG                                                                        \
-  ___x___, HF_RST,  TR_HNXT, HF_FDBK, HF_TOGG, BASELYR, PN_BOOT, EE_CLR,  QK_BOOT, _______, \
-  RGB_MOD, CK_RST,  TR_CKUP, CK_TOGG, AU_TOGG, ___x___, TR_LSFT, ___x___, ___x___, ___x___, \
-  RGB_HUI, RGB_SAI, RGB_VAI, RGB_SPI, RGB_TOG, ___x___, ___x___, ___x___, ___x___, ___x___, \
-                    ___x___, DM_REC1, DM_PLY1, ___x___, ___x___, ___x___,                   \
-                                      ___x___, ___x___
-
-
-*/

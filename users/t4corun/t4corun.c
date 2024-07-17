@@ -32,6 +32,13 @@ layer_state_t layer_state_set_user(layer_state_t state) {
   return update_tri_layer_state(state, _NAVIGATION, _NUMBER, _SYMBOL); 
 }
 
+// helper function to adjust default layer
+void set_default_layer(bool forward) {
+  current_base_layer = forward ? 
+    (current_base_layer + 1) % NUM_DEFAULT_LAYERS : 
+    (current_base_layer - 1) % NUM_DEFAULT_LAYERS;
+  set_single_persistent_default_layer(current_base_layer);
+}
 
 // Customize behavior for existing keycodes or create new ones
 bool process_record_user(uint16_t keycode, keyrecord_t *record) {
@@ -57,22 +64,14 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
     // makes scroll lock a hold instead of toggle
     // enables momentary drag scroll on ploopy nano
     case KC_SCRL:
-      if (record->event.pressed) {
-        tap_code(KC_SCRL);
-      } else {
-        tap_code(KC_SCRL);
-      }
+      record->event.pressed ? tap_code(KC_SCRL) : tap_code(KC_SCRL);
       return false;
 
 
     // makes num lock a hold instead of toggle
     // prevents accidental ploopy nano going into bootloader
     case KC_NUM:
-      if (record->event.pressed) {
-        tap_code(KC_NUM);
-      } else {
-        tap_code(KC_NUM);
-      }
+      record->event.pressed ? tap_code(KC_NUM) : tap_code(KC_NUM);
       return false;
 
 #if defined(WPM_ENABLE)
@@ -89,15 +88,7 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
 
     case BASELYR:
       if (record->event.pressed) {
-        current_base_layer = (current_base_layer + 1) % NUM_DEFAULT_LAYERS; 
-        set_single_persistent_default_layer(current_base_layer);
-      }
-      return false;
-
-    case RBSELYR:
-      if (record->event.pressed) { 
-        current_base_layer = (current_base_layer - 1) % NUM_DEFAULT_LAYERS; 
-        set_single_persistent_default_layer(current_base_layer);
+        set_default_layer(true);
       }
       return false;
 
@@ -121,33 +112,11 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
       }
       return false;
 
-    case ZOOMIN:
-    case ZOOMOUT:
-      if (record->event.pressed) {
-        if (!hold_forward_active) {
-          hold_forward_active = true;
-          register_code(KC_LCTL);
-        }
-        hold_mod_timer = timer_read();
-        if (keycode == ZOOMIN) {
-          register_code(KC_WH_U);
-        } else {
-          register_code(KC_WH_D);
-        }
-      } else {
-        if (keycode == ZOOMIN) {
-          unregister_code(KC_WH_U);
-        } else {
-          unregister_code(KC_WH_D);
-        }
-      }
-      return false;
-
-#if defined(RGB_MATRIX_ENABLE)
     case FWD_RGB:
     case REV_RGB:
       if (record->event.pressed) {
         switch (current_mods) {
+#if defined(RGB_MATRIX_ENABLE)
           case MOD_BIT(KC_LSFT):
             keycode == FWD_RGB ? rgb_matrix_increase_hue() : rgb_matrix_decrease_hue();
             break;
@@ -164,39 +133,80 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
             keycode == FWD_RGB ? rgb_matrix_increase_speed() : rgb_matrix_decrease_speed();
             break;
 
-          default:
+          case MOD_BIT(KC_LSFT) | MOD_BIT(KC_LCTL):
             keycode == FWD_RGB ? rgb_matrix_step() : rgb_matrix_step_reverse();
+            break;
+#endif //RGB_MATRIX_ENABLE
+          default:
+            keycode == FWD_RGB ? set_default_layer(true) : set_default_layer(false);
             break;    
         }
       }
       return false;
-#endif
 
-
+    case FWD_CFG:
+    case REV_CFG:
+      if (record->event.pressed) {
+        switch (current_mods) {
 #if defined(HAPTIC_ENABLE)
-    case TR_HNXT:
-      if (record->event.pressed) {
-        if( current_mods & MOD_MASK_SHIFT ) {
-          haptic_mode_decrease();
-        } else {
-          haptic_mode_increase();
-        }
-      }
-      return false;
-#endif
-
+          case MOD_BIT(KC_LSFT):
+            keycode == FWD_CFG ? haptic_mode_increase() : haptic_mode_decrease();
+            break;
+#endif //HAPTIC_ENABLE
 #if defined(AUDIO_ENABLE)
-    case TR_CKUP:
-      if (record->event.pressed) {
-        if( current_mods & MOD_MASK_SHIFT ) {
-          clicky_freq_down();
-        } else {
-          clicky_freq_up();
+          case MOD_BIT(KC_LCTL):
+            keycode == FWD_CFG ? clicky_freq_up() : clicky_freq_down();
+            break;
+#endif //AUDIO_ENABLE
+          default:
+            keycode == FWD_CFG ? set_default_layer(true) : set_default_layer(false);
+            break;    
         }
       }
       return false;
-#endif
 
+    case ZOOMIN:
+    case ZOOMOUT:
+      if (record->event.pressed) {
+        if (!hold_forward_active) {
+          hold_forward_active = true;
+          register_code(KC_LCTL);
+        }
+        hold_mod_timer = timer_read();
+        keycode == ZOOMIN ? register_code(KC_WH_U) : register_code(KC_WH_D);
+      } else {
+        keycode == ZOOMIN ? unregister_code(KC_WH_U) : unregister_code(KC_WH_D);
+      }
+      return false;
+
+    case TOG_CFG:
+      if (record->event.pressed) {
+        switch (current_mods) {
+#if defined(RGB_MATRIX_ENABLE)
+          case MOD_BIT(KC_LSFT):
+            rgb_matrix_toggle();
+            break;
+#endif //RGB_MATRIX_ENABLE
+#if defined(HAPTIC_ENABLE)
+          case MOD_BIT(KC_LCTL):
+            haptic_toggle();
+            break;
+#endif //HAPTIC_ENABLE
+#if defined(AUDIO_ENABLE)
+          case MOD_BIT(KC_LALT):
+            is_audio_on() ? audio_off(): audio_on();
+            break;
+          
+          case MOD_BIT(KC_LGUI):
+            clicky_toggle();
+            break;
+#endif //AUDIO_ENABLE
+
+          default:
+            set_default_layer(true);
+            break;    
+        }
+      }
 
     //https://docs.qmk.fm/#/mod_tap?id=changing-both-tasp-and-hold
     //https://getreuer.info/posts/keyboards/triggers/index.html#tap-vs.-long-press
