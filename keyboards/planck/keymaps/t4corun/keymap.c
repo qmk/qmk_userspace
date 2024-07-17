@@ -19,14 +19,11 @@ LAYOUT_planck_wrapper (                                                         
 #define PLANCK(...) LAYOUT_3x5_keymap(__VA_ARGS__)
 
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
-
   [_QWERTY]     = PLANCK(LAYER_QWERTY),
   [_COLEMAK_DH] = PLANCK(LAYER_COLEMAK_DH),
   [_GAME]       = PLANCK(LAYER_GAME),
   [_NAVIGATION] = PLANCK(LAYER_NAVIGATION),
   [_NUMBER]     = PLANCK(LAYER_NUMBER),
   [_SYMBOL]     = PLANCK(LAYER_SYMBOL),
-  [_MOUSE_FUNC] = PLANCK(LAYER_MOUSE_FUNC),
-  [_CONFIG]     = PLANCK(LAYER_CONFIG)
-
+  [_MOUSE_FUNC] = PLANCK(LAYER_MOUSE_FUNC)
 };

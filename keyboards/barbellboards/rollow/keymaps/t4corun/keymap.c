@@ -19,16 +19,13 @@ LAYOUT_rollow_wrapper (                             \
 #define ROLLOW(...) LAYOUT_3x5_3_keymap(__VA_ARGS__)
 
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
-
   [_QWERTY]     = ROLLOW(LAYER_QWERTY),
   [_COLEMAK_DH] = ROLLOW(LAYER_COLEMAK_DH),
   [_GAME]       = ROLLOW(LAYER_GAME),
   [_NAVIGATION] = ROLLOW(LAYER_NAVIGATION),
   [_NUMBER]     = ROLLOW(LAYER_NUMBER),
   [_SYMBOL]     = ROLLOW(LAYER_SYMBOL),
-  [_MOUSE_FUNC] = ROLLOW(LAYER_MOUSE_FUNC),
-  [_CONFIG]     = ROLLOW(LAYER_CONFIG)
-
+  [_MOUSE_FUNC] = ROLLOW(LAYER_MOUSE_FUNC)
 };
 
 
@@ -36,16 +33,13 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
 /* These are horizontal encoders. Found I have to make it opposite the rotary encoders for it to feel intuitive*/
 const uint16_t PROGMEM encoder_map[][NUM_ENCODERS][NUM_DIRECTIONS] = {
-
   [_QWERTY]     = { ENCODER_CCW_CW(KC_WH_D, KC_WH_U), ENCODER_CCW_CW(KC_VOLU, KC_VOLD) },
   [_COLEMAK_DH] = { ENCODER_CCW_CW(KC_WH_D, KC_WH_U), ENCODER_CCW_CW(KC_VOLU, KC_VOLD) },
   [_GAME]       = { ENCODER_CCW_CW(KC_WH_D, KC_WH_U), ENCODER_CCW_CW(KC_VOLU, KC_VOLD) },
-  [_NAVIGATION] = { ENCODER_CCW_CW(KC_RGHT, KC_LEFT), ENCODER_CCW_CW(___x___, ___x___) },
+  [_NAVIGATION] = { ENCODER_CCW_CW(KC_RGHT, KC_LEFT), ENCODER_CCW_CW(FWD_CFG, REV_CFG) },
   [_NUMBER]     = { ENCODER_CCW_CW(___x___, ___x___), ENCODER_CCW_CW(FWD_TAB, REV_TAB) },
   [_SYMBOL]     = { ENCODER_CCW_CW(___x___, ___x___), ENCODER_CCW_CW(___x___, ___x___) },
-  [_MOUSE_FUNC] = { ENCODER_CCW_CW(KC_WH_D, KC_WH_U), ENCODER_CCW_CW(ZOOMIN,  ZOOMOUT) },
-  [_CONFIG]     = { ENCODER_CCW_CW(BASELYR, RBSELYR), ENCODER_CCW_CW(BASELYR, RBSELYR) }
-
+  [_MOUSE_FUNC] = { ENCODER_CCW_CW(KC_WH_D, KC_WH_U), ENCODER_CCW_CW(ZOOMIN,  ZOOMOUT) }
 };
 
 #endif

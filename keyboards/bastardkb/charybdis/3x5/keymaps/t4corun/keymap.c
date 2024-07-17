@@ -34,14 +34,11 @@ LAYOUT_cnano_wrapper (                              \
 #define CNANO(...) LAYOUT_3x5_3_keymap(__VA_ARGS__)
 
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
-
   [_QWERTY]     = CNANO(LAYER_QWERTY),
   [_COLEMAK_DH] = CNANO(LAYER_COLEMAK_DH),
   [_GAME]       = CNANO(LAYER_GAME),
   [_NAVIGATION] = CNANO(LAYER_NAVIGATION),
   [_NUMBER]     = CNANO(LAYER_NUMBER),
   [_SYMBOL]     = CNANO(LAYER_SYMBOL),
-  [_MOUSE_FUNC] = CNANO(LAYER_MOUSE_FUNC),
-  [_CONFIG]     = CNANO(LAYER_CONFIG)
-
+  [_MOUSE_FUNC] = CNANO(LAYER_MOUSE_FUNC)
 };

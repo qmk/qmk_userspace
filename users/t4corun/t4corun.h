@@ -22,8 +22,7 @@ enum layers {
   _NAVIGATION,
   _NUMBER,
   _SYMBOL,
-  _MOUSE_FUNC,
-  _CONFIG
+  _MOUSE_FUNC
 };
 
 // start at the second layer
@@ -54,21 +53,17 @@ enum keycodes {
   TH_SCLN,
   TH_QUOT,
 
-  FWD_TAB,  // enables encoder to alt-tab/alt+shift-tab
-  REV_TAB,  // alt-tab/alt+shift-tab or ctrl-tab/ctrl+shift tab
+  FWD_TAB,  // turn encoder for tab and shift tab
+  REV_TAB,  // hold alt or ctrl while turning for window / tab switching
 
-  FWD_RGB,  // enables overloaded encoder to adjust RGB mode and settings
-  REV_RGB,
-
-  FWD_CFG,  // enables overloaded encoder to adjust other features
-  REV_CFG,  // e.g. haptic freq, click freq
-
-  TOG_CFG,  // enables overloaded key press to toggle features on or off
-
-  ZOOMIN,   // enables encoder to mouse wheel zoom 
+  ZOOMIN,   // turn encoder for mouse wheel zoom
   ZOOMOUT,
 
-  BASELYR   // enables key press to change base layer
+  FWD_CFG,  // turn encoder while holding mod combinations to adjust features
+  REV_CFG,  // e.g. RGB settings, haptic frequency, click frequency, base layer
+
+  TOG_CFG   // press key while holding mod combinations to toggle features or enter bootloader
+
 };
 
 #define ___x___ KC_NO
@@ -95,8 +90,8 @@ enum keycodes {
 #define SCR_TOP LCTL(KC_HOME)
 
 /*
-- Any keycodes with prefix TR has behavior dependent on if the feature is enabled.
 - If the feature is disabled then the key is just the normal key
+- Any keycodes with prefix TR has behavior dependent on if the feature is enabled.
 - We will only define things that are used across different layers. Entire layers are turned off in the keymap
 */
 
@@ -180,17 +175,17 @@ enum keycodes {
 #define LAYER_GAME                                                                          \
   KC_TAB,  KC_Q,    KC_W,    KC_E,    KC_R,    KC_T,    KC_7,    KC_8,    KC_9,    KC_ESC,  \
   KC_LCTL, KC_A,    KC_S,    KC_D,    KC_F,    KC_G,    KC_4,    KC_5,    KC_6,    KC_GRV,  \
-  KC_Z,    KC_X,    KC_C,    KC_V,    KC_B,    KC_LALT, KC_1,    KC_2,    KC_3,    CM_TOGG, \
+  KC_Z,    KC_X,    KC_C,    KC_V,    KC_B,    KC_LALT, KC_1,    KC_2,    KC_3,    ___x___, \
                     KC_ENT,  KC_SPC,  KC_LSFT, _BASE_R4_________________,                   \
                                       SCR_TOP, KC_MUTE
 
 
 #define LAYER_NAVIGATION                                                                    \
-  KC_ESC,  KC_HOME, KC_UP,   KC_END,  KC_PGUP, KC_CAPS, KC_APP,  ___x___, DM_REC1, DM_PLY1, \
+  KC_ESC,  KC_HOME, KC_UP,   KC_END,  KC_PGUP, KC_CAPS, KC_APP,  ___x___, ___x___, ___x___, \
   ___x___, KC_LEFT, KC_DOWN, KC_RGHT, KC_PGDN, KC_BSPC, _SCAG_MODS________________________, \
   _UCCPR_L___________________________________, KC_DEL,  KC_TAB,  KC_VOLD, KC_VOLU, KC_MUTE, \
                     ___x___, NUM,     KC_ENT,  _LAYER_TRANS_____________,                   \
-                                      SCR_TOP, BASELYR
+                                      SCR_TOP, TOG_CFG
 
 
 #define LAYER_NUMBER                                                                        \
@@ -198,13 +193,13 @@ enum keycodes {
   _GACS_MODS________________________, KC_TAB,  ___x___, KC_4,    KC_5,    KC_6,    KC_DOT,  \
   _UCCPR_L___________________________________, ___x___, KC_1,    KC_2,    KC_3,    KC_MINS, \
                     _LAYER_TRANS_____________, KC_0,    NAV,     ___x___,                   \
-                                      BASELYR, SC_WIN
+                                      ___x___, SC_WIN
 
 
 #define LAYER_SYMBOL                                                                        \
-  ___x___, ___x___, KC_AT,   KC_DLR,  TR_GRV,  TR_EQL,  KC_HASH, KC_ASTR, ___x___, ___x___, \
-  ___x___, TR_LCBR, KC_RCBR, TR_PIPE, TR_SCLN, KC_AMPR, KC_QUES, TR_LBRC, KC_RBRC, ___x___, \
-  ___x___, TR_LABK, KC_RABK, TR_BSLS, KC_EXLM, TR_PERC, TR_SLSH, TR_LPRN, KC_RPRN, ___x___, \
+  ___x___, ___x___, KC_AT,   KC_DLR,  TR_GRV,  TR_EQL,  KC_HASH, KC_ASTR, ___x___, TR_DQUO, \
+  ___x___, TR_LCBR, KC_RCBR, TR_PIPE, TR_SCLN, KC_AMPR, KC_QUES, TR_LBRC, KC_RBRC, TR_SQUO, \
+  ___x___, TR_LABK, KC_RABK, TR_BSLS, KC_EXLM, TR_PERC, TR_SLSH, TR_LPRN, KC_RPRN, TR_MINS, \
                     _LAYER_TRANS_____________, _LAYER_TRANS_____________,                   \
                                       ___x___, ___x___
 
@@ -213,5 +208,5 @@ enum keycodes {
   MOU_FUN, ___x___, ___x___, TR_PDPI, TR_SDPI, TOG_CFG, KC_F7,   KC_F8,   KC_F9,   KC_F10,  \
   _GACS_MODS________________________, TR_DRGS, FWD_CFG, KC_F4,   KC_F5,   KC_F6,   KC_F11,  \
   _______, KC_BTN1, KC_BTN5, KC_BTN4, TR_SNIP, REV_CFG, KC_F1,   KC_F2,   KC_F3,   KC_F12,  \
-                    KC_BTN1, KC_BTN3, KC_BTN2, REV_RGB, FWD_RGB, ___x___,                   \
+                    KC_BTN1, KC_BTN3, KC_BTN2, DM_PLY1, DM_REC1, ___x___,                   \
                                       SCR_TOP, ZOOMRST

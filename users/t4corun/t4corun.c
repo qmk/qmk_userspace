@@ -23,13 +23,13 @@ bool isLunaJumping(void) { return isJumping; }
 bool isJumpShown(void) { return showedJump; }
 
 // Allows the OLED code to clear the space bar status when render is complete
-void setLunaJumped(void) { showedJump = true;}
+void setLunaJumped(void) { showedJump = true; }
 #endif // WPM_ENABLE
 
 
 // Hold Navigation and Number to get Symbol
 layer_state_t layer_state_set_user(layer_state_t state) { 
-  return update_tri_layer_state(state, _NAVIGATION, _NUMBER, _SYMBOL); 
+  return update_tri_layer_state(state, _NAVIGATION, _NUMBER, _SYMBOL);
 }
 
 // helper function to adjust default layer
@@ -43,7 +43,6 @@ void set_default_layer(bool forward) {
 // helper function to put ploopy nano into bootloader
 // my ploopy nano will reset when num/caps/scroll lock is enabled
 void reset_ploopynano(void) {
-
   // turn on all three host states
   if(!host_keyboard_led_state().num_lock) { tap_code(KC_NUM); }
   if(!host_keyboard_led_state().caps_lock) { tap_code(KC_CAPS); }
@@ -68,13 +67,13 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
       record->event.pressed ? tap_code(KC_SCRL) : tap_code(KC_SCRL);
       return false;
 
-
     // makes num lock a hold instead of toggle
     // prevents accidental ploopy nano going into bootloader
     case KC_NUM:
       record->event.pressed ? tap_code(KC_NUM) : tap_code(KC_NUM);
       return false;
 
+    // controls luna pet OLED animation
 #if defined(WPM_ENABLE)
     case KC_SPC:
       if (record->event.pressed) {
@@ -87,24 +86,20 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
       break;
 #endif // WPM_ENABLE
 
-    case BASELYR:
-      if (record->event.pressed) {
-        set_default_layer(true);
-      }
-      return false;
-
+    // turn encoder for tab and shift tab
+    // hold alt or ctrl while turning for window / tab switching
     case FWD_TAB:
     case REV_TAB:
       if (record->event.pressed) {
         if (keycode == FWD_TAB && !hold_forward_active) {
           hold_forward_active = true;
           hold_reverse_active = false;
-          unregister_code(KC_LSFT);
+          unregister_mods(MOD_MASK_SHIFT);
         }
         if (keycode == REV_TAB && !hold_reverse_active) {
           hold_forward_active = false;
           hold_reverse_active = true;
-          register_code(KC_LSFT);
+          register_mods(MOD_MASK_SHIFT);
         }
         hold_mod_timer = timer_read();
         register_code(KC_TAB);
@@ -113,65 +108,13 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
       }
       return false;
 
-    case FWD_RGB:
-    case REV_RGB:
-      if (record->event.pressed) {
-        switch (current_mods) {
-#if defined(RGB_MATRIX_ENABLE)
-          case MOD_BIT(KC_LSFT):
-            keycode == FWD_RGB ? rgb_matrix_increase_hue() : rgb_matrix_decrease_hue();
-            break;
-
-          case MOD_BIT(KC_LCTL):
-            keycode == FWD_RGB ? rgb_matrix_increase_sat() : rgb_matrix_decrease_sat();
-            break;
-
-          case MOD_BIT(KC_LALT):
-            keycode == FWD_RGB ? rgb_matrix_increase_val() : rgb_matrix_decrease_val();
-            break;
-          
-          case MOD_BIT(KC_LGUI):
-            keycode == FWD_RGB ? rgb_matrix_increase_speed() : rgb_matrix_decrease_speed();
-            break;
-
-          case MOD_BIT(KC_LSFT) | MOD_BIT(KC_LCTL):
-            keycode == FWD_RGB ? rgb_matrix_step() : rgb_matrix_step_reverse();
-            break;
-#endif //RGB_MATRIX_ENABLE
-          default:
-            keycode == FWD_RGB ? set_default_layer(true) : set_default_layer(false);
-            break;    
-        }
-      }
-      return false;
-
-    case FWD_CFG:
-    case REV_CFG:
-      if (record->event.pressed) {
-        switch (current_mods) {
-#if defined(HAPTIC_ENABLE)
-          case MOD_BIT(KC_LSFT):
-            keycode == FWD_CFG ? haptic_mode_increase() : haptic_mode_decrease();
-            break;
-#endif //HAPTIC_ENABLE
-#if defined(AUDIO_ENABLE)
-          case MOD_BIT(KC_LCTL):
-            keycode == FWD_CFG ? clicky_freq_up() : clicky_freq_down();
-            break;
-#endif //AUDIO_ENABLE
-          default:
-            keycode == FWD_CFG ? set_default_layer(true) : set_default_layer(false);
-            break;    
-        }
-      }
-      return false;
-
+    // turn encoder for mouse wheel zoom
     case ZOOMIN:
     case ZOOMOUT:
       if (record->event.pressed) {
         if (!hold_forward_active) {
           hold_forward_active = true;
-          register_code(KC_LCTL);
+          register_mods(MOD_MASK_CTRL);
         }
         hold_mod_timer = timer_read();
         keycode == ZOOMIN ? register_code(KC_WH_U) : register_code(KC_WH_D);
@@ -180,43 +123,90 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
       }
       return false;
 
-    case TOG_CFG:
+    // turn encoder while holding mod combinations to adjust features
+    // e.g. RGB settings, haptic frequency, click frequency, base layer
+    case FWD_CFG:
+    case REV_CFG:
       if (record->event.pressed) {
+        if (!hold_forward_active) {
+          hold_forward_active = true;
+        }
+        hold_mod_timer = timer_read();
         switch (current_mods) {
 #if defined(RGB_MATRIX_ENABLE)
           case MOD_BIT(KC_LSFT):
-            rgb_matrix_toggle();
+            keycode == FWD_CFG ? rgb_matrix_increase_hue() : rgb_matrix_decrease_hue();
+            break;
+          case MOD_BIT(KC_LCTL):
+            keycode == FWD_CFG ? rgb_matrix_increase_sat() : rgb_matrix_decrease_sat();
+            break;
+          case MOD_BIT(KC_LALT):
+            keycode == FWD_CFG ? rgb_matrix_increase_val() : rgb_matrix_decrease_val();
+            break;        
+          case MOD_BIT(KC_LGUI):
+            keycode == FWD_CFG ? rgb_matrix_increase_speed() : rgb_matrix_decrease_speed();
+            break;
+          case MOD_BIT(KC_LSFT) | MOD_BIT(KC_LCTL):
+            keycode == FWD_CFG ? rgb_matrix_step() : rgb_matrix_step_reverse();
             break;
 #endif //RGB_MATRIX_ENABLE
 #if defined(HAPTIC_ENABLE)
+          case MOD_BIT(KC_LCTL) | MOD_BIT(KC_LALT):
+            keycode == FWD_CFG ? haptic_mode_increase() : haptic_mode_decrease();
+            break;
+#endif //HAPTIC_ENABLE
+#if defined(AUDIO_ENABLE)
+          case MOD_BIT(KC_LALT) | MOD_BIT(KC_LGUI):
+            keycode == FWD_CFG ? clicky_freq_up() : clicky_freq_down();
+            break;
+#endif //AUDIO_ENABLE
+          default:
+            keycode == FWD_CFG ? set_default_layer(true) : set_default_layer(false);
+            break;
+        }
+      }
+      return false;
+
+    // press key while holding mod combinations to toggle features or enter bootloader
+    case TOG_CFG:
+      if (record->event.pressed) {
+        switch (current_mods) {
+          case MOD_BIT(KC_LSFT):
+            reset_keyboard();
+            break;
           case MOD_BIT(KC_LCTL):
+            reset_ploopynano();
+            break;
+#if defined(RGB_MATRIX_ENABLE)
+          case MOD_BIT(KC_LALT):
+            rgb_matrix_toggle();
+            break;
+#endif //RGB_MATRIX_ENABLE
+#if defined(COMBO_ENABLE)
+          case MOD_BIT(KC_LGUI):
+            combo_toggle();
+            break;
+#endif //COMBO_ENABLE
+#if defined(HAPTIC_ENABLE)
+          case MOD_BIT(KC_LSFT) | MOD_BIT(KC_LCTL):
             haptic_toggle();
             break;
 #endif //HAPTIC_ENABLE
 #if defined(AUDIO_ENABLE)
-          case MOD_BIT(KC_LALT):
+          case MOD_BIT(KC_LCTL) | MOD_BIT(KC_LALT):
             is_audio_on() ? audio_off(): audio_on();
             break;
           
-          case MOD_BIT(KC_LGUI):
+          case MOD_BIT(KC_LALT) | MOD_BIT(KC_LGUI):
             clicky_toggle();
             break;
 #endif //AUDIO_ENABLE
-
-
-          case MOD_BIT(KC_LSFT) | MOD_BIT(KC_LCTL):
-            reset_keyboard();
-            break;
-
-          case MOD_BIT(KC_LCTL) | MOD_BIT(KC_LALT):
-            reset_ploopynano();
-            break;
-
           default:
             set_default_layer(true);
-            break;    
+            break;
         }
       }
+      unregister_mods(MOD_MASK_CSAG);
       return false;
 
     //https://docs.qmk.fm/#/mod_tap?id=changing-both-tasp-and-hold
@@ -274,8 +264,7 @@ void matrix_scan_user(void) {
   // timer for the hold mods
   if (hold_forward_active || hold_reverse_active) {
     if (timer_elapsed(hold_mod_timer) > HOLD_MOD_TIMEOUT) {
-      unregister_code(KC_LSFT);
-      unregister_code(KC_LCTL);
+      unregister_mods(MOD_MASK_CSAG);
       hold_forward_active = false;
       hold_reverse_active = false;
     }

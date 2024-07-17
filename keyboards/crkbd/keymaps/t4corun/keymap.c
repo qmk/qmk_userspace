@@ -34,14 +34,11 @@ LAYOUT_crkbd_wrapper (                                            \
 #define CRKBD(...) LAYOUT_3x5_3_keymap(__VA_ARGS__)
 
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
-
   [_QWERTY]     = CRKBD(LAYER_QWERTY),
   [_COLEMAK_DH] = CRKBD(LAYER_COLEMAK_DH),
   [_GAME]       = CRKBD(LAYER_GAME),
   [_NAVIGATION] = CRKBD(LAYER_NAVIGATION),
   [_NUMBER]     = CRKBD(LAYER_NUMBER),
   [_SYMBOL]     = CRKBD(LAYER_SYMBOL),
-  [_MOUSE_FUNC] = CRKBD(LAYER_MOUSE_FUNC),
-  [_CONFIG]     = CRKBD(LAYER_CONFIG)
-
+  [_MOUSE_FUNC] = CRKBD(LAYER_MOUSE_FUNC)
 };

@@ -35,16 +35,13 @@ LAYOUT_swoop_wrapper (                              \
 #define SWOOP(...) LAYOUT_3x5_3_keymap(__VA_ARGS__)
 
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
-
   [_QWERTY]     = SWOOP(LAYER_QWERTY),
   [_COLEMAK_DH] = SWOOP(LAYER_COLEMAK_DH),
   [_GAME]       = SWOOP(LAYER_GAME),
   [_NAVIGATION] = SWOOP(LAYER_NAVIGATION),
   [_NUMBER]     = SWOOP(LAYER_NUMBER),
   [_SYMBOL]     = SWOOP(LAYER_SYMBOL),
-  [_MOUSE_FUNC] = SWOOP(LAYER_MOUSE_FUNC),
-  [_CONFIG]     = SWOOP(LAYER_CONFIG)
-
+  [_MOUSE_FUNC] = SWOOP(LAYER_MOUSE_FUNC)
 };
 
 
@@ -52,16 +49,13 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
 /* The encoder presses are handled in the keymap */
 const uint16_t PROGMEM encoder_map[][NUM_ENCODERS][NUM_DIRECTIONS] = {
-
   [_QWERTY]     = { ENCODER_CCW_CW(KC_WH_U,  KC_WH_D), ENCODER_CCW_CW(KC_VOLD, KC_VOLU) },
   [_COLEMAK_DH] = { ENCODER_CCW_CW(KC_WH_U,  KC_WH_D), ENCODER_CCW_CW(KC_VOLD, KC_VOLU) },
   [_GAME]       = { ENCODER_CCW_CW(KC_WH_U,  KC_WH_D), ENCODER_CCW_CW(KC_VOLD, KC_VOLU) },
-  [_NAVIGATION] = { ENCODER_CCW_CW(KC_LEFT,  KC_RGHT), ENCODER_CCW_CW(___x___, ___x___) },
+  [_NAVIGATION] = { ENCODER_CCW_CW(KC_LEFT,  KC_RGHT), ENCODER_CCW_CW(REV_CFG, FWD_CFG) },
   [_NUMBER]     = { ENCODER_CCW_CW(___x___,  ___x___), ENCODER_CCW_CW(REV_TAB, FWD_TAB) },
   [_SYMBOL]     = { ENCODER_CCW_CW(___x___,  ___x___), ENCODER_CCW_CW(___x___, ___x___) },
-  [_MOUSE_FUNC] = { ENCODER_CCW_CW(KC_WH_U,  KC_WH_D), ENCODER_CCW_CW(ZOOMOUT, ZOOMIN)  },
-  [_CONFIG]     = { ENCODER_CCW_CW(RGB_RMOD, RGB_MOD), ENCODER_CCW_CW(RBSELYR, BASELYR) }
-
+  [_MOUSE_FUNC] = { ENCODER_CCW_CW(KC_WH_U,  KC_WH_D), ENCODER_CCW_CW(ZOOMOUT, ZOOMIN)  }
 };
 
 #endif //ENCODER_MAP_ENABLE
