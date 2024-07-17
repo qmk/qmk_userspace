@@ -3,6 +3,7 @@
 #include "features/taphold.h"
 
 void set_default_layer(bool forward);
+void reset_ploopynano(void);
 
 #if defined(WPM_ENABLE)
 bool isLunaJumping(void);
@@ -52,8 +53,6 @@ enum keycodes {
   TH_GRV,
   TH_SCLN,
   TH_QUOT,
-
-  PN_BOOT,  // Press to enter Ploopy Nano Bootloader
 
   FWD_TAB,  // enables encoder to alt-tab/alt+shift-tab
   REV_TAB,  // alt-tab/alt+shift-tab or ctrl-tab/ctrl+shift tab
@@ -187,7 +186,7 @@ enum keycodes {
 
 
 #define LAYER_NAVIGATION                                                                    \
-  KC_ESC,  KC_HOME, KC_UP,   KC_END,  KC_PGUP, KC_CAPS, KC_APP,  DM_REC1, DM_PLY1, BASELYR, \
+  KC_ESC,  KC_HOME, KC_UP,   KC_END,  KC_PGUP, KC_CAPS, KC_APP,  ___x___, ___x___, ___x___, \
   ___x___, KC_LEFT, KC_DOWN, KC_RGHT, KC_PGDN, KC_BSPC, _SCAG_MODS________________________, \
   _UCCPR_L___________________________________, KC_DEL,  KC_TAB,  KC_VOLD, KC_VOLU, KC_MUTE, \
                     ___x___, NUM,     KC_ENT,  _LAYER_TRANS_____________,                   \
@@ -211,7 +210,7 @@ enum keycodes {
 
 
 #define LAYER_MOUSE_FUNC                                                                    \
-  MOU_FUN, QK_BOOT, PN_BOOT, TR_PDPI, TR_SDPI, TOG_CFG, KC_F7,   KC_F8,   KC_F9,   KC_F10,  \
+  MOU_FUN, DM_REC1, DM_PLY1, TR_PDPI, TR_SDPI, TOG_CFG, KC_F7,   KC_F8,   KC_F9,   KC_F10,  \
   _GACS_MODS________________________, TR_DRGS, FWD_CFG, KC_F4,   KC_F5,   KC_F6,   KC_F11,  \
   _______, ___x___, KC_BTN5, KC_BTN4, TR_SNIP, REV_CFG, KC_F1,   KC_F2,   KC_F3,   KC_F12,  \
                     KC_BTN1, KC_BTN3, KC_BTN2, REV_RGB, FWD_RGB, ___x___,                   \

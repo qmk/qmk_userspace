@@ -40,26 +40,27 @@ void set_default_layer(bool forward) {
   set_single_persistent_default_layer(current_base_layer);
 }
 
+// helper function to put ploopy nano into bootloader
+// my ploopy nano will reset when num/caps/scroll lock is enabled
+void reset_ploopynano(void) {
+
+  // turn on all three host states
+  if(!host_keyboard_led_state().num_lock) { tap_code(KC_NUM); }
+  if(!host_keyboard_led_state().caps_lock) { tap_code(KC_CAPS); }
+  if(!host_keyboard_led_state().scroll_lock) { tap_code(KC_SCRL); }
+
+  // then turn them off
+  tap_code(KC_NUM);
+  tap_code(KC_CAPS);
+  tap_code(KC_SCRL);
+}
+
 // Customize behavior for existing keycodes or create new ones
 bool process_record_user(uint16_t keycode, keyrecord_t *record) {
 
   current_mods = get_mods() | get_oneshot_mods();
   
   switch (keycode) {
-
-    // use the host state status to boot the Ploopy Nano
-    // will effectively turn on num lock/caps lock/scroll lock then back off
-    case PN_BOOT:
-      if (record->event.pressed) {
-        if(!host_keyboard_led_state().num_lock) { tap_code(KC_NUM); }
-        if(!host_keyboard_led_state().caps_lock) { tap_code(KC_CAPS); }
-        if(!host_keyboard_led_state().scroll_lock) { tap_code(KC_SCRL); }
-      } else {
-        if(host_keyboard_led_state().num_lock) { tap_code(KC_NUM); }
-        if(host_keyboard_led_state().caps_lock) { tap_code(KC_CAPS); }
-        if(host_keyboard_led_state().scroll_lock) { tap_code(KC_SCRL); }
-      }
-      return false;
 
     // makes scroll lock a hold instead of toggle
     // enables momentary drag scroll on ploopy nano
@@ -202,11 +203,21 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
             break;
 #endif //AUDIO_ENABLE
 
+
+          case MOD_BIT(KC_LSFT) | MOD_BIT(KC_LCTL):
+            reset_keyboard();
+            break;
+
+          case MOD_BIT(KC_LCTL) | MOD_BIT(KC_LALT):
+            reset_ploopynano();
+            break;
+
           default:
             set_default_layer(true);
             break;    
         }
       }
+      return false;
 
     //https://docs.qmk.fm/#/mod_tap?id=changing-both-tasp-and-hold
     //https://getreuer.info/posts/keyboards/triggers/index.html#tap-vs.-long-press
