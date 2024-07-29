@@ -190,16 +190,16 @@ enum keycodes {
 
 #define LAYER_NUMBER                                                                        \
   KC_ESC,  SC_SNIP, SC_FILE, MOU_FUN, KC_ENT,  ___x___, KC_7,    KC_8,    KC_9,    KC_COMM, \
-  _GACS_MODS________________________, KC_TAB,  ___x___, KC_4,    KC_5,    KC_6,    KC_DOT,  \
-  _UCCPR_L___________________________________, ___x___, KC_1,    KC_2,    KC_3,    KC_MINS, \
+  _GACS_MODS________________________, KC_TAB,  KC_BSPC, KC_4,    KC_5,    KC_6,    KC_DOT,  \
+  _UCCPR_L___________________________________, KC_DEL,  KC_1,    KC_2,    KC_3,    KC_MINS, \
                     _LAYER_TRANS_____________, KC_0,    NAV,     ___x___,                   \
                                       ___x___, SC_WIN
 
 
 #define LAYER_SYMBOL                                                                        \
   ___x___, ___x___, KC_AT,   KC_DLR,  TR_GRV,  TR_EQL,  KC_HASH, KC_ASTR, ___x___, TR_DQUO, \
-  ___x___, TR_LCBR, KC_RCBR, TR_PIPE, TR_SCLN, KC_AMPR, KC_QUES, TR_LBRC, KC_RBRC, TR_SQUO, \
-  ___x___, TR_LABK, KC_RABK, TR_BSLS, KC_EXLM, TR_PERC, TR_SLSH, TR_LPRN, KC_RPRN, TR_MINS, \
+  KC_AMPR, TR_LCBR, KC_RCBR, TR_PIPE, TR_SCLN, KC_BSPC, KC_QUES, TR_LBRC, KC_RBRC, TR_SQUO, \
+  TR_PERC, TR_LABK, KC_RABK, TR_BSLS, KC_EXLM, KC_DEL,  TR_SLSH, TR_LPRN, KC_RPRN, TR_MINS, \
                     _LAYER_TRANS_____________, _LAYER_TRANS_____________,                   \
                                       ___x___, ___x___
 

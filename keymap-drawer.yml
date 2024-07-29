@@ -48,8 +48,8 @@ layers:
     - type: held
   NUM:
     - [Esc, Snip Tool, File Explorer, MOUSE Toggle, Enter, null, "7", "8" ,"9", "," ]
-    - [Gui, Alt, Ctrl, Shift, Tab, null, "4", "5" ,"6", "."]
-    - [Undo, Cut, Copy, Paste, Redo, null, "1", "2" ,"3", "-"]
+    - [Gui, Alt, Ctrl, Shift, Tab, Back Space, "4", "5" ,"6", "."]
+    - [Undo, Cut, Copy, Paste, Redo, Delete, "1", "2" ,"3", "-"]
     - null
     - type: held
     - null
@@ -59,8 +59,8 @@ layers:
     - NAV
   SYM:
     - [null, null, "@", "$", {h: "~", t: "`"}, {h: "+", t: "="}, "#", "*", null, {h: "\"\"", t: "\""}]
-    - [null, {h: "{}", t: "{"}, "}", {h: "||", t: "|"}, {h: ":", t: ";"}, "&", "?", {h: "[]", t: "]"}, "]", {h: "''", t: "'"}]
-    - [null, {h: "<>", t: "<"}, ">", {h: "\\\\", t: "\\"}, "!", {h: "%", t: "^"}, {h: "//", t: "/"}, {h: "()", t: "("}, ")", {h: "_", t: "-"}]
+    - ["&", {h: "{}", t: "{"}, "}", {h: "||", t: "|"}, {h: ":", t: ";"}, Back Space, "?", {h: "[]", t: "]"}, "]", {h: "''", t: "'"}]
+    - [{h: "%", t: "^"}, {h: "<>", t: "<"}, ">", {h: "\\\\", t: "\\"}, "!", Delete, {h: "//", t: "/"}, {h: "()", t: "("}, ")", {h: "_", t: "-"}]
     - null
     - type: held
     - null
