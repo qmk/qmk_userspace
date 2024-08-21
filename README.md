@@ -4,16 +4,16 @@ My userspace for building QMK firmware via GitHub Actions. This does not require
 
 ## Layout
 
-The custom layout optimizes for programming (SQL, Powershell, C) and minimizes holds for comfort. It started from [Manna Harbor Miryoku](https://github.com/manna-harbour/miryoku) and took heavy influence from [Jonas Hietala T-34](https://www.jonashietala.se/series/t-34/). The keymap designed for split 3x5, two thumbs keys, dual encoders, and combined with a Ploopy Nano trackball mouse. Design themes:
+The custom layout optimizes for programming (SQL, Powershell, C) and minimizes holds for comfort. It started from [Manna Harbor Miryoku](https://github.com/manna-harbour/miryoku) and took heavy influence from [Jonas Hietala T-34](https://www.jonashietala.se/series/t-34/). Design Themes:
 
+- The keymap designed for my ideal board: split 3x5 boards with five thumb keys, right side encoder, combined with a Ploopy Nano trackball mouse
+- The userspace supports a sixth thumb key and left side encoder as well
 - Releasing all keys always brings you back to base layer
-- Patterns to layout design to reduce learning curve (e.g., Shortcuts in same place on multiple layers)
-- Symbols important for powershell / writing are positioned under stronger fingers
-- Game keymap that doesn't require massive game key bind changes. Tested on Resident Evil 4 Remake
-
-Notes:
-
-- Outside thumb keys are encoder clicks. Some keyboards may have extra thumb keys
+- Layers are designed orthogonally with a single purpose per hand and are accessed by holding a thumb key on the opposite hand
+- Reworking Symbols for programming focus
+  - Common symbols are positioned under stronger fingers
+  - Custom behavior from holds
+- Advanced encoder map functionality to minimize/simplify layers
 
 ![image](my_keymap.png)
 
@@ -27,7 +27,7 @@ Notes:
 
 A single keymap layout can be shared with multiple keyboards by using C preprocessor macros. These macros are referenced in the keyboard JSON files, and the build process will expand them into a transient keymap.c file during compile time.
 
-In this userspace, the base split 3x5_3 layout can be adapted for other split keyboards by expanding it with macros. For example, there is a wrapper that will add extra columns to the base layout for a Corne's 42-key 3x6_3 layout.
+In this userspace, the base split 3x5_3 with dual encoders layout can be adapted for other split keyboards by expanding it with macros. For example, there is a wrapper that will add extra columns to the base layout for a Corne's 42-key 3x6_3 layout.
 
 ### Tri-Layer
 
@@ -77,26 +77,54 @@ Opted to implement overrides here instead of using built-in Key Override functio
 
 ### Combos
 
-Enables additional keys to be mapped by pressing multiple keys simultaneously. Primarily used to implement mouse buttons and make important keys (tab, backspace, etc) available on base layer. Combos are mapped based on the QWERTY layout but will work on any layer*. All Combos are disabled when `CONFIG` layer is active
+Enables additional keys to be mapped by pressing multiple keys simultaneously. Primarily used to enable mouse functionality on base layer
 
 | Combo         | Result               | Comment                                           |
 | ------------- | -------------------- | ------------------------------------------------- |
-| `C` + `V`     | `KC_BTN1`            | Left click. Mouse buttons only work on base layer |
-| `X` + `V`     | `Drag Scroll Toggle` | Actual command varies per board                   |
-| `D` + `F`     | `KC_ENT`             |                                                   |
-| `J` + `K`     | `KC_TAB`             |                                                   |
-| `M` + `Comma` | `KC_BSPC`            |                                                   |
+| `C` + `V`     | `KC_BTN2`            | Left click. Mouse buttons only work on base layer |
+| `X` + `V`     | `Drag Scroll Hold`   | Actual command varies per board                   |
 
-### Key Overrides
+### Advanced Encoder Functionality
 
-Enables us to customize the result of applying certain mods to keycodes. For example, Shift + Backspace will give Delete. Primarily used to minimize the number of layers and the layout
+Implemented custom keycodes for encoders to enable modifiers to change encoder output and enable window/tab switching and mouse wheel zoom. The purpose is to remove seldomly used feature configuration keys to simplify the keymap
 
-| Shortcut            | Result    | Comment                                                                       |
-| ------------------- | --------- | ----------------------------------------------------------------------------- |
-| `Shift` + `KC_BSPC` | `KC_DEL`  | Backspace is a combo. There are no dedicated backspace and delete keys mapped |
-| `Shift` + `HF_NEXT` | `HF_PREV` | Only works on `CONFIG` layer  Only for keyboards with Haptic feedback enabled |
-| `Shift` + `HF_CONU` | `HF_COND` | Only works on `CONFIG` layer. Only for keyboards with Haptic feedback enabled |
-| `Shift` + `CK_UP`   | `CK_DOWN` | Only works on `CONFIG` layer. Only for keyboards with Audio enabled           |
+#### Tabbing
+
+The NUM layer right side encoder will `tab` and `shift+tab`. Holding `alt` or `ctrl` will allow Window or Browser tab switching
+
+#### Zoom
+
+The MOUSE_FUNCTION layer right side encoder will send `ctrl+mouse wheel up` and `ctrl+mouse wheel down` without having to hold modifiers
+
+#### Configuration changes
+
+The NAV layer right side encoder behavior depends on what modifier is held. Refer to the table below
+
+| Held Modifier | Result                                               |
+| ------------- | ---------------------------------------------------- |
+| None          | Cycles through base layers: QWERTY, COLEMAK DH, GAME |
+| Shift         | Changes RGB Matrix Hue                               |
+| Ctrl          | Changes RGB Matrix Sat                               |
+| Alt           | Changes RGB Matrix Brightness                        |
+| Gui           | Changes RGB Matrix Animation Speed                   |
+| Shift+Ctrl    | Changes RGB Matrix Animation                         |
+| Ctrl+Alt      | Changes Haptic Feedback Frequency                    |
+| Alt+Gui       | Changes Audio Click Frequency                        |
+
+### Advanced Config Toggle
+
+Implemented a custom keycode to enable modifiers to affect which feature is toggled. Similar to the Advanced Encoder, the purpose is to remove seldomly used keycodes and simplify the keymap. Refer to the table below
+
+| Held Modifier | Result                                               |
+| ------------- | ---------------------------------------------------- |
+| None          | Cycles through base layers: QWERTY, COLEMAK DH, GAME |
+| Shift         | Enter Bootloader                                     |
+| Ctrl          | Enter Ploopy Nano Bootloader                         |
+| Alt           | Toggle RGB Matrix On/Off                             |
+| Gui           | Toggle Combos On/Off                                 |
+| Shift+Ctrl    | Toggle Haptic Feedback On/Off                        |
+| Ctrl+Alt      | Toggle Audio On/Off                                  |
+| Alt+Gui       | Toggle Audio Clicks On/Off                           |
 
 ## Optional Features
 

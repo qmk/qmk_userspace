@@ -16,23 +16,18 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #include "t4corun.h"
 
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
-
   [0] = LAYOUT( KC_NO )
-
 };
 
 static bool num_lock_state = false;
 static bool scroll_lock_state = false;
 
 void keyboard_post_init_user(void) {
-
     num_lock_state  = host_keyboard_led_state().num_lock;
     scroll_lock_state  = host_keyboard_led_state().scroll_lock;
-
 }
 
 bool led_update_user(led_t led_state) {
-
     // when scroll lock is pressed, toggle drag scroll state
     if ( scroll_lock_state != led_state.scroll_lock ) {
         toggle_drag_scroll();

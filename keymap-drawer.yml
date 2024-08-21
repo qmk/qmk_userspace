@@ -1,92 +1,95 @@
 layout:
-  qmk_keyboard: bluebell/swoop
-  qmk_layout: LAYOUT_split_3x5_3
+  qmk_keyboard: waterfowl
+  qmk_layout: LAYOUT
 layers:
   base_QWERTY:
-    - [Q, W, E, R, T, Y, U, I ,O, P]
+    - [Q, W, E, R, T, Y, U, I, O, P]
     - [A, S, D, F, G, H, J, K ,L, {h: "\"", t: "'"}]
     - [{h: "MOUSE", t: "Z"}, X, C, V, B, N, M, {h: "(", t: ","} , {h: ")", t: "."}, {h: "_", t: "-"}]
-    - {type: ghost}
+    - MB1
     - NUM
     - Shift
+    - {t: "Ctrl Home", type: ghost}
+    - {t: "Mute", type: ghost}
     - Space
     - NAV
-    - {t: Mute, type: ghost}
   base_COLEMAK_DH:
     - [Q, W, F, P, B, J, L, U ,Y, {h: "\"", t: "'"}]
     - [A, R, S, T, G, M, N, E ,I, O]
     - [{h: "MOUSE", t: "Z"}, X, C, D, V, K, H, {h: "(", t: ","} , {h: ")", t: "."}, {h: "_", t: "-"}]
-    - {type: ghost}
+    - MB1
     - NUM
     - Shift
+    - {t: "Ctrl Home", type: ghost}
+    - {t: "Mute", type: ghost}
     - Space
     - NAV
-    - {t: Mute, type: ghost}
   base_GAME:
     - [Tab, Q, W, E, R, T, "7", "8" ,"9", Esc]
     - [Ctrl, A, S, D, F, G, "4", "5" ,"6", {s: "~", t: "`"}]
-    - [Z, X, C, V, B, Alt, "1", "2" ,"3", Combo Toggle]
-    - {t: Enter, type: ghost}
+    - [Z, X, C, V, B, Alt, "1", "2" ,"3", null]
+    - Enter
     - Space
     - Shift
+    - {t: "Ctrl Home", type: ghost}
+    - {t: "Mute", type: ghost}
     - Space
     - NAV
-    - {t: Mute, type: ghost}
   NAV:
-    - [Esc, Home, ▲, End, Page Up, null, null, null, Caps Lock, CONFIG ]
-    - [null, ◄, ▼, ►, Page Down, null, Shift, Ctrl, Alt, Gui ]
-    - [Undo, Cut, Copy, Paste, Redo, null, App, Vol -, Vol +, Mute ]
-    - {t: Zoom Reset, type: ghost}
+    - [Esc, Home, ▲, End, Page Up, Caps Lock, App, null, null, null ]
+    - [null, ◄, ▼, ►, Page Down, Back Space, Shift, Ctrl, Alt, Gui ]
+    - [Undo, Cut, Copy, Paste, Redo, Delete, Tab, Vol -, Vol +, Mute ]
+    - null
     - NUM
-    - Ent
+    - Enter
+    - {t: "Ctrl Home", type: ghost}
+    - {t: "Config Toggle", type: ghost}
     - null
-    - {type: held}
-    - {type: ghost}
+    - type: held
   NUM:
-    - [Esc, Win Snip, File Explorer, null, {h: "~", t: "`"}, null, "7", "8" ,"9", {s: "<", t: ","} ]
-    - [Gui, Alt, Ctrl, Shift, {h: ":", t: ";"}, "0", "4", "5" ,"6", {s: ">", t: "."}]
-    - [Undo, Cut, Copy, Paste, Redo, null, "1", "2" ,"3", {s: "_", t: "-"}]
-    - {type: ghost}
-    - {type: held}
+    - [Esc, Snip Tool, File Explorer, MOUSE Toggle, Enter, null, "7", "8" ,"9", "," ]
+    - [Gui, Alt, Ctrl, Shift, Tab, Back Space, "4", "5" ,"6", "."]
+    - [Undo, Cut, Copy, Paste, Redo, Delete, "1", "2" ,"3", "-"]
     - null
-    - Space
+    - type: held
+    - null
+    - type: ghost
+    - {t: "Win Tab", type: ghost}
+    - 0
     - NAV
-    - {t: Mute, type: ghost}
   SYM:
     - [null, null, "@", "$", {h: "~", t: "`"}, {h: "+", t: "="}, "#", "*", null, {h: "\"\"", t: "\""}]
-    - [null, {h: "{}", t: "{"}, "}", "!", {h: ":", t: ";"}, "&", "?", {h: "[]", t: "]"}, "]", {h: "''", t: "'"}]
-    - [null, {h: "<>", t: "<"}, ">", {h: "\\\\", t: "\\"}, {h: "||", t: "|"}, {h: "%", t: "^"}, {h: "//", t: "/"}, {h: "()", t: "("}, ")", {h: "_", t: "-"}]
-    - {type: ghost}
-    - {type: held}
+    - ["&", {h: "{}", t: "{"}, "}", {h: "||", t: "|"}, {h: ":", t: ";"}, Back Space, "?", {h: "[]", t: "]"}, "]", {h: "''", t: "'"}]
+    - [{h: "%", t: "^"}, {h: "<>", t: "<"}, ">", {h: "\\\\", t: "\\"}, "!", Delete, {h: "//", t: "/"}, {h: "()", t: "("}, ")", {h: "_", t: "-"}]
     - null
+    - type: held
     - null
-    - {type: held}
-    - {type: ghost}
+    - type: ghost
+    - type: ghost
+    - null
+    - type: held
   MOUSE_FUNCTION:
-    - [null, Prev Song, Next Song, Play Pause, Null, null, F7, F8 ,F9, F10]
-    - [Gui, Alt, Ctrl, Shift, Drag Scroll, null, F4, F5 ,F6, F11]
-    - [{type: held}, Mouse 5, Mouse 4, Mouse 3, Sniper, null, F1, F2 ,F3, F12]
-    - {type: ghost}
-    - "Mouse 1"
-    - "Mouse 2"
-    - "Pointer DPI"
-    - "Sniper DPI"
-    - {t: Mute, type: ghost}
-  CONFIG:
-    - [Haptic Reset, Haptic Strength+, Haptic Waveform+, Haptic Feedback Toggle, Haptic Toggle, null, Nano Reboot, EEPROM Clear, Boot Loader, {type: held}]
-    - [Audio Click Reset, Audio Click+, Audio Click Toggle, null, Audio Toggle, null, Shift, null, null, Base Layer]
-    - [null, null, null, null, RGB Toggle, RGB Mode, RGB Hue, RGB Sat, RGB Vib, RGB Spd]
-    - {t: Base Layer, type: ghost}
-    - Macro Rec 1
-    - Macro Play 1
-    - Macro Play 2
-    - Macro Rec 2
-    - {t: RGB Toggle, type: ghost}
+    - [MOUSE Toggle, null, null, Pointer DPI, Sniper DPI, Config Toggle, F7, F8 ,F9, F10]
+    - [Gui, Alt, Ctrl, Shift, Drag Scroll, Next Config, F4, F5 ,F6, F11]
+    - [{type: held}, MB1, MB5, MB4, Sniper, Prev Config, F1, F2 ,F3, F12]
+    - MB1
+    - MB3
+    - MB2
+    - {t: "Ctrl Home", type: ghost}
+    - {t: "Zoom Reset", type: ghost}
+    - "Macro Play"
+    - "Macro Rec"
 combos:
-  - { p: [22, 23], k: MB1, l: [base_QWERTY] }
-  - { p: [21, 23], k: DrgScr Tog, l: [base_QWERTY] }
-  - { p: [16, 17], k: Tab, l: [base_QWERTY] }
-  - { p: [12, 13], k: Enter, l: [base_QWERTY] }
-  - { p: [26, 27], k: Bksp, l: [base_QWERTY] }
-draw_config:
-  small_pad: 6
+  - { p: [22, 23], k: MB2, l: [base_QWERTY] }
+  - { p: [21, 23], k: Drag Scroll, l: [base_QWERTY], a: bottom }
+  - { p: [33, 33], k: "Enc: MWheel", l: [base_QWERTY], a: bottom, d: false, w: 50}
+  - { p: [34, 34], k: "Enc: Volume", l: [base_QWERTY], a: bottom, d: false, w: 50 }
+  - { p: [33, 33], k: "Enc: MWheel", l: [base_COLEMAK_DH], a: bottom, d: false, w: 50}
+  - { p: [34, 34], k: "Enc: Volume", l: [base_COLEMAK_DH], a: bottom, d: false }
+  - { p: [33, 33], k: "Enc: MWheel", l: [base_GAME], a: bottom, d: false, w: 50}
+  - { p: [34, 34], k: "Enc: Volume", l: [base_GAME], a: bottom, d: false, w: 50 }
+  - { p: [33, 33], k: "Enc: ◄,►", l: [NAV], a: bottom, d: false}
+  - { p: [34, 34], k: "Enc: Cfg", l: [NAV], a: bottom, d: false }
+  - { p: [34, 34], k: "Enc: Tab", l: [NUM], a: bottom, d: false }
+  - { p: [33, 33], k: "Enc: MWheel", l: [MOUSE_FUNCTION], a: bottom, d: false, w: 50}
+  - { p: [34, 34], k: "Enc: Zoom", l: [MOUSE_FUNCTION], a: bottom, d: false }
