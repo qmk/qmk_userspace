@@ -41,7 +41,9 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   [_NAVIGATION] = SWOOP(LAYER_NAVIGATION),
   [_NUMBER]     = SWOOP(LAYER_NUMBER),
   [_SYMBOL]     = SWOOP(LAYER_SYMBOL),
-  [_MOUSE_FUNC] = SWOOP(LAYER_MOUSE_FUNC)
+  [_MOUSE]      = SWOOP(LAYER_MOUSE),
+  [_FUNCTION]   = SWOOP(LAYER_FUNCTION),
+  [_CONFIG]     = SWOOP(LAYER_CONFIG)
 };
 
 
@@ -49,13 +51,15 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
 /* The encoder presses are handled in the keymap */
 const uint16_t PROGMEM encoder_map[][NUM_ENCODERS][NUM_DIRECTIONS] = {
-  [_QWERTY]     = { ENCODER_CCW_CW(KC_WH_U,  KC_WH_D), ENCODER_CCW_CW(KC_VOLD, KC_VOLU) },
-  [_COLEMAK_DH] = { ENCODER_CCW_CW(KC_WH_U,  KC_WH_D), ENCODER_CCW_CW(KC_VOLD, KC_VOLU) },
-  [_GAME]       = { ENCODER_CCW_CW(KC_WH_U,  KC_WH_D), ENCODER_CCW_CW(KC_VOLD, KC_VOLU) },
-  [_NAVIGATION] = { ENCODER_CCW_CW(KC_LEFT,  KC_RGHT), ENCODER_CCW_CW(REV_CFG, FWD_CFG) },
-  [_NUMBER]     = { ENCODER_CCW_CW(___x___,  ___x___), ENCODER_CCW_CW(REV_TAB, FWD_TAB) },
-  [_SYMBOL]     = { ENCODER_CCW_CW(___x___,  ___x___), ENCODER_CCW_CW(___x___, ___x___) },
-  [_MOUSE_FUNC] = { ENCODER_CCW_CW(KC_WH_U,  KC_WH_D), ENCODER_CCW_CW(ZOOMOUT, ZOOMIN)  }
+  [_QWERTY]     = { ENCODER_CCW_CW(KC_WH_U, KC_WH_D), ENCODER_CCW_CW(KC_VOLD, KC_VOLU) },
+  [_COLEMAK_DH] = { ENCODER_CCW_CW(KC_WH_U, KC_WH_D), ENCODER_CCW_CW(KC_VOLD, KC_VOLU) },
+  [_GAME]       = { ENCODER_CCW_CW(KC_WH_U, KC_WH_D), ENCODER_CCW_CW(KC_VOLD, KC_VOLU) },
+  [_NAVIGATION] = { ENCODER_CCW_CW(KC_LEFT, KC_RGHT), ENCODER_CCW_CW(___x___, ___x___) },
+  [_NUMBER]     = { ENCODER_CCW_CW(___x___, ___x___), ENCODER_CCW_CW(REV_TAB, FWD_TAB) },
+  [_SYMBOL]     = { ENCODER_CCW_CW(___x___, ___x___), ENCODER_CCW_CW(___x___, ___x___) },
+  [_MOUSE]      = { ENCODER_CCW_CW(KC_WH_U, KC_WH_D), ENCODER_CCW_CW(ZOOMOUT, ZOOMIN)  },
+  [_FUNCTION]   = { ENCODER_CCW_CW(___x___, ___x___), ENCODER_CCW_CW(___x___, ___x___) },
+  [_CONFIG]     = { ENCODER_CCW_CW(REV_CFG, FWD_CFG), ENCODER_CCW_CW(REV_CFG, FWD_CFG) }
 };
 
 #endif //ENCODER_MAP_ENABLE
@@ -73,7 +77,7 @@ const uint16_t PROGMEM encoder_map[][NUM_ENCODERS][NUM_DIRECTIONS] = {
  *             17  07  00  18  25  35                64
  */
 
-led_config_t g_led_config = { 
+led_config_t g_led_config = {
   {
     // Key matrix to LED index
     // I still don't understand but make it match the split layout?
@@ -109,7 +113,7 @@ led_config_t g_led_config = {
     {204,0},   {204,21},  {204,43}, //29
     {224,43},  {224,21},  {224,0},  //32 outer column
     {163,64}                        //35 outer thumb
-  } 
+  }
   , {
     // LED index to flag
     // Start from 0 and go to the end
@@ -118,7 +122,7 @@ led_config_t g_led_config = {
     LED_FLAG_KEYLIGHT, LED_FLAG_KEYLIGHT, LED_FLAG_KEYLIGHT, LED_FLAG_KEYLIGHT,
     LED_FLAG_KEYLIGHT, LED_FLAG_KEYLIGHT, LED_FLAG_KEYLIGHT, LED_FLAG_KEYLIGHT,
     LED_FLAG_KEYLIGHT, LED_FLAG_KEYLIGHT, LED_FLAG_KEYLIGHT, LED_FLAG_KEYLIGHT,
-    LED_FLAG_KEYLIGHT, LED_FLAG_KEYLIGHT, 
+    LED_FLAG_KEYLIGHT, LED_FLAG_KEYLIGHT,
     // Right 1-18
     LED_FLAG_KEYLIGHT, LED_FLAG_KEYLIGHT, LED_FLAG_KEYLIGHT, LED_FLAG_KEYLIGHT,
     LED_FLAG_KEYLIGHT, LED_FLAG_KEYLIGHT, LED_FLAG_KEYLIGHT, LED_FLAG_KEYLIGHT,

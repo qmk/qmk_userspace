@@ -42,8 +42,14 @@ void render_layer_state (uint8_t col, uint8_t line, bool moveCursor) {
     case _SYMBOL:
       oled_write_P(PSTR(OLED_RENDER_LAYER_4), false);
       break;
-    case _MOUSE_FUNC:
+    case _MOUSE:
       oled_write_P(PSTR(OLED_RENDER_LAYER_5), false);
+      break;
+    case _FUNCTION:
+      oled_write_P(PSTR(OLED_RENDER_LAYER_6), false);
+      break;
+    case _CONFIG:
+      oled_write_P(PSTR(OLED_RENDER_LAYER_7), false);
       break;
     default:
       oled_write_P(PSTR(OLED_RENDER_LAYER_1), false);
@@ -64,7 +70,9 @@ void render_layer_state_list (uint8_t col, uint8_t line, bool moveCursor) {
   oled_write_P(PSTR(OLED_RENDER_LAYER_2), current_layer == _NAVIGATION);
   oled_write_P(PSTR(OLED_RENDER_LAYER_3), current_layer == _NUMBER);
   oled_write_P(PSTR(OLED_RENDER_LAYER_4), current_layer == _SYMBOL);
-  oled_write_P(PSTR(OLED_RENDER_LAYER_5), current_layer == _MOUSE_FUNC);
+  oled_write_P(PSTR(OLED_RENDER_LAYER_5), current_layer == _MOUSE);
+  oled_write_P(PSTR(OLED_RENDER_LAYER_6), current_layer == _FUNCTION);
+  oled_write_P(PSTR(OLED_RENDER_LAYER_7), current_layer == _CONFIG);
 }
 
 
@@ -183,12 +191,12 @@ void render_oled_128x64 (void) {
 /*
 base lyr: current lyr
 ---------------------
-                     
- mod  mod  mod  mod  
- mod  mod  mod  mod  
-                     
--------------- xxxxx 
- NCS xx xx xx  xxxxx 
+
+ mod  mod  mod  mod
+ mod  mod  mod  mod
+
+-------------- xxxxx
+ NCS xx xx xx  xxxxx
 */
     render_default_layer_state(0,0, true);
     render_layer_state(0,0, false);

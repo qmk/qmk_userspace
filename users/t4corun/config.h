@@ -17,7 +17,6 @@
 
 //Set common configuration for all keyboards
 #define USB_POLLING_INTERVAL_MS 1
-#define LAYER_STATE_8BIT
 
 
 
@@ -44,7 +43,7 @@
 
 /* Caps Word
 *  https://docs.qmk.fm/features/caps_word
-* 
+*
 *  Explore these
 *  #undef BOTH_SHIFTS_TURNS_ON_CAPS_WORD
 *  #undef CAPS_WORD_INVERT_ON_SHIFT
@@ -66,11 +65,15 @@
 #  undef COMBO_ONLY_FROM_LAYER
 #  undef EXTRA_SHORT_COMBOS
 #  undef COMBO_TERM
+#  undef COMBO_TERM_PER_COMBO
+#  undef COMBO_MUST_HOLD_PER_COMBO
 #  undef COMBO_SHOULD_TRIGGER
 
 #  define COMBO_ONLY_FROM_LAYER 0 //this will always setup combos based off of QWERTY layout
 #  define EXTRA_SHORT_COMBOS
 #  define COMBO_TERM 35
+#  define COMBO_TERM_PER_COMBO
+#  define COMBO_MUST_HOLD_PER_COMBO
 #  define COMBO_SHOULD_TRIGGER
 #endif //COMBO_ENABLE
 
