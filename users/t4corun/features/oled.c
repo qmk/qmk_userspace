@@ -48,9 +48,6 @@ void render_layer_state (uint8_t col, uint8_t line, bool moveCursor) {
     case _FUNCTION:
       oled_write_P(PSTR(OLED_RENDER_LAYER_6), false);
       break;
-    case _CONFIG:
-      oled_write_P(PSTR(OLED_RENDER_LAYER_7), false);
-      break;
     default:
       oled_write_P(PSTR(OLED_RENDER_LAYER_1), false);
       break;
@@ -72,7 +69,6 @@ void render_layer_state_list (uint8_t col, uint8_t line, bool moveCursor) {
   oled_write_P(PSTR(OLED_RENDER_LAYER_4), current_layer == _SYMBOL);
   oled_write_P(PSTR(OLED_RENDER_LAYER_5), current_layer == _MOUSE);
   oled_write_P(PSTR(OLED_RENDER_LAYER_6), current_layer == _FUNCTION);
-  oled_write_P(PSTR(OLED_RENDER_LAYER_7), current_layer == _CONFIG);
 }
 
 

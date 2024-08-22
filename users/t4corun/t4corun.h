@@ -23,8 +23,7 @@ enum layers {
   _NUMBER,
   _SYMBOL,
   _MOUSE,
-  _FUNCTION,
-  _CONFIG
+  _FUNCTION
 };
 
 // start at the second layer
@@ -76,7 +75,6 @@ enum keycodes {
 #define MOU_A   LT(_MOUSE, KC_A)
 #define MOU_TOG TG(_MOUSE)
 #define FUNC    MO(_FUNCTION)
-#define CONFIG  MO(_CONFIG)
 
 // Windows Shortcuts
 #define SC_COPY LCTL(KC_C)
@@ -184,11 +182,11 @@ enum keycodes {
 
 
 #define LAYER_NAVIGATION                                                                    \
-  KC_ESC,  KC_HOME, KC_UP,   KC_END,  KC_PGUP, ___x___, KC_APP,  ___x___, ___x___, ___x___, \
+  KC_ESC,  KC_HOME, KC_UP,   KC_END,  KC_PGUP, ___x___, KC_APP,  DM_PLY1, DM_REC1, ___x___, \
   ___x___, KC_LEFT, KC_DOWN, KC_RGHT, KC_PGDN, KC_BSPC, _SCAG_MODS________________________, \
-  _UCCPR_L___________________________________, KC_DEL,  KC_TAB,  ___x___, ___x___, ___x___, \
+  _UCCPR_L___________________________________, KC_DEL,  KC_TAB,  KC_VOLD, KC_VOLU, KC_MUTE, \
                     ___x___, NUM,     KC_ENT,  _LAYER_TRANS_____________,                   \
-                                      SCR_TOP, TOG_CFG
+                                      SCR_TOP, ___x___
 
 
 #define LAYER_NUMBER                                                                        \
@@ -216,16 +214,9 @@ enum keycodes {
 
 
 #define LAYER_FUNCTION                                                                      \
-  ___x___, ___x___, ___x___, ___x___, KC_NUM,  KC_PSCR, KC_F7,   KC_F8,   KC_F9,   KC_F10,  \
-  _GACS_MODS________________________, KC_CAPS, KC_BRK,  KC_F4,   KC_F5,   KC_F6,   KC_F11,  \
-  ___x___, ___x___, ___x___, ___x___, KC_SCRL, KC_INS,  KC_F1,   KC_F2,   KC_F3,   KC_F12,  \
-                    _NONE_3__________________, DM_PLY1, DM_REC1, ___x___,                   \
-                                      ___x___, ___x___
-
-
-#define LAYER_CONFIG                                                                        \
-  _NONE_5____________________________________, ___x___, KC_VOLD, KC_VOLU, KC_MUTE, QK_BOOT, \
-  ___x___, FWD_CFG, REV_CFG, TOG_CFG, ___x___, ___x___, _SCAG_MODS________________________, \
-  _NONE_5____________________________________, _NONE_5____________________________________, \
-                    _NONE_3__________________, _NONE_3__________________,                   \
+  QK_BOOT, KC_MPRV, KC_MNXT, KC_MPLY, DM_REC1, KC_PSCR, KC_F7,   KC_F8,   KC_F9,   KC_F10,  \
+  _GACS_MODS________________________, DM_PLY1, KC_BRK,  KC_F4,   KC_F5,   KC_F6,   KC_F11,  \
+  ___x___, KC_NUM,  KC_CAPS, KC_SCRL, KC_INS,  TOG_CFG, KC_F1,   KC_F2,   KC_F3,   KC_F12,  \
+                    _NONE_3__________________, FWD_CFG, REV_CFG, ___x___,                   \
                                       TOG_CFG, TOG_CFG
+

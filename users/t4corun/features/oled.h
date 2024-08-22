@@ -13,7 +13,6 @@
 #   define OLED_RENDER_LAYER_4           "Symbol    "
 #   define OLED_RENDER_LAYER_5           "Mouse     "
 #   define OLED_RENDER_LAYER_6           "Function  "
-#   define OLED_RENDER_LAYER_7           "Config    "
 #else
 //128x32 are ? x 5 char wide
 #   define OLED_RENDER_DEFAULT_LAYER1    "Qwrty"
@@ -26,7 +25,6 @@
 #   define OLED_RENDER_LAYER_4           " Sym "
 #   define OLED_RENDER_LAYER_5           " Mou "
 #   define OLED_RENDER_LAYER_6           " Fun "
-#   define OLED_RENDER_LAYER_7           " Cfg "
 #endif
 
 void render_oled_128x64 (void);

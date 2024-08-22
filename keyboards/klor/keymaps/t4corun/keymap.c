@@ -26,8 +26,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   [_NUMBER]     = KLOR(LAYER_NUMBER),
   [_SYMBOL]     = KLOR(LAYER_SYMBOL),
   [_MOUSE]      = KLOR(LAYER_MOUSE),
-  [_FUNCTION]   = KLOR(LAYER_FUNCTION),
-  [_CONFIG]     = KLOR(LAYER_CONFIG)
+  [_FUNCTION]   = KLOR(LAYER_FUNCTION)
 };
 
 
@@ -41,8 +40,7 @@ const uint16_t PROGMEM encoder_map[][NUM_ENCODERS][NUM_DIRECTIONS] = {
   [_NUMBER]     = { ENCODER_CCW_CW(___x___, ___x___), ENCODER_CCW_CW(REV_TAB, FWD_TAB) },
   [_SYMBOL]     = { ENCODER_CCW_CW(___x___, ___x___), ENCODER_CCW_CW(___x___, ___x___) },
   [_MOUSE]      = { ENCODER_CCW_CW(KC_WH_U, KC_WH_D), ENCODER_CCW_CW(ZOOMOUT, ZOOMIN)  },
-  [_FUNCTION]   = { ENCODER_CCW_CW(___x___, ___x___), ENCODER_CCW_CW(___x___, ___x___) },
-  [_CONFIG]     = { ENCODER_CCW_CW(REV_CFG, FWD_CFG), ENCODER_CCW_CW(REV_CFG, FWD_CFG) }
+  [_FUNCTION]   = { ENCODER_CCW_CW(REV_CFG, FWD_CFG), ENCODER_CCW_CW(REV_CFG, FWD_CFG) }
 };
 
 #endif

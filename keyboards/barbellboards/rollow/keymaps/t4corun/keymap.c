@@ -26,8 +26,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   [_NUMBER]     = ROLLOW(LAYER_NUMBER),
   [_SYMBOL]     = ROLLOW(LAYER_SYMBOL),
   [_MOUSE]      = ROLLOW(LAYER_MOUSE),
-  [_FUNCTION]   = ROLLOW(LAYER_FUNCTION),
-  [_CONFIG]     = ROLLOW(LAYER_CONFIG)
+  [_FUNCTION]   = ROLLOW(LAYER_FUNCTION)
 };
 
 
@@ -42,8 +41,7 @@ const uint16_t PROGMEM encoder_map[][NUM_ENCODERS][NUM_DIRECTIONS] = {
   [_NUMBER]     = { ENCODER_CCW_CW(___x___, ___x___), ENCODER_CCW_CW(FWD_TAB, REV_TAB) },
   [_SYMBOL]     = { ENCODER_CCW_CW(___x___, ___x___), ENCODER_CCW_CW(___x___, ___x___) },
   [_MOUSE]      = { ENCODER_CCW_CW(KC_WH_D, KC_WH_U), ENCODER_CCW_CW(ZOOMIN,  ZOOMOUT) },
-  [_FUNCTION]   = { ENCODER_CCW_CW(___x___, ___x___), ENCODER_CCW_CW(___x___, ___x___) },
-  [_CONFIG]     = { ENCODER_CCW_CW(FWD_CFG, REV_CFG), ENCODER_CCW_CW(FWD_CFG, REV_CFG) }
+  [_FUNCTION]   = { ENCODER_CCW_CW(FWD_CFG, REV_CFG), ENCODER_CCW_CW(FWD_CFG, REV_CFG) }
 };
 
 #endif
