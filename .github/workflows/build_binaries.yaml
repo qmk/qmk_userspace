@@ -11,10 +11,6 @@ jobs:
     uses: qmk/.github/.github/workflows/qmk_userspace_build.yml@main
     with:
       qmk_repo: qmk/qmk_firmware
-      qmk_ref: master
-
-  publish:
-    name: 'QMK Userspace Publish'
-    uses: qmk/.github/.github/workflows/qmk_userspace_publish.yml@main
-    if: always() && !cancelled()
-    needs: build
+      qmk_ref: develop
+      preparation_command: |
+        find qmk_firmware -type d -path '*/keyboards/*/keymaps/via' -name 'via' -print -exec rm -rf '{}' \; -prune
