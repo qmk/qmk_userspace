@@ -235,6 +235,8 @@ bool caps_word_press_user(uint16_t keycode) {
     switch (keycode) {
         // Configure keycodes that continue caps word
         case KC_A ... KC_Z:
+            add_weak_mods(MOD_BIT(KC_LSFT)); // Apply shift to alphas.
+            return true;
         case KC_1 ... KC_0:
         case KC_BSPC:
         case KC_DEL:
