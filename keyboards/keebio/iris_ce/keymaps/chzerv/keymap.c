@@ -61,7 +61,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   //┌────────┬────────┬────────┬────────┬────────┬────────┐                          ┌────────┬────────┬────────┬────────┬────────┬────────┐
      _______, _______, _______, _______, _______, _______,                            _______, _______, _______, _______, _______, _______,
   //├────────┼────────┼────────┼────────┼────────┼────────┤                          ├────────┼────────┼────────┼────────┼────────┼────────┤
-     _______, _______, TAB_EXT, TAB_NXT, TAB_PRV, TAB_NEW,                            KC_HOME, KC_PGDN, KC_PGUP, KC_END,  XXXXXXX, KC_BSPC,
+     _______, _______, TAB_EXT, TAB_PRV, TAB_NXT, TAB_NEW,                            KC_HOME, KC_PGDN, KC_PGUP, KC_END,  XXXXXXX, KC_BSPC,
   //├────────┼────────┼────────┼────────┼────────┼────────┤                          ├────────┼────────┼────────┼────────┼────────┼────────┤
      _______, OSM_G,   OSM_A,   OSM_S,   OSM_C,   _______,                            KC_LEFT, KC_DOWN, KC_UP,   KC_RIGHT,SELWORD, XXXXXXX,
   //├────────┼────────┼────────┼────────┼────────┼────────┼────────┐        ┌────────┼────────┼────────┼────────┼────────┼────────┼────────┤
@@ -101,6 +101,21 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     )
 };
 
+// Combine MT (mod-tap) with OSM (one-shot modifiers).
+// For example, the key `MT(MOD_LCTL, KC_ESC)` will act as `Escape` when tapped
+// and as a one-shot `Control` when held.
+// https://getreuer.info/posts/keyboards/faqs/index.html#one-shot-mod-tap-osm-mt
+static bool one_shot_mod_tap(uint16_t keycode, keyrecord_t* record) {
+    if (record->tap.count == 0) { // key is being held
+       if (record->event.pressed) {
+           const uint8_t mods = QK_MOD_TAP_GET_MODS(keycode);
+           add_oneshot_mods(((mods & 0x10) == 0) ? mods : (mods << 4));
+       }
+       return false; // skip the default handling
+    }
+    return true; // default handling
+}
+
 bool process_record_user(uint16_t keycode, keyrecord_t* record) {
     // Macros
     if (record->event.pressed) {
@@ -114,7 +129,10 @@ bool process_record_user(uint16_t keycode, keyrecord_t* record) {
         }
     }
 
-    // Other macros...
+    switch (keycode) {
+        case CTL_ESC:
+            return one_shot_mod_tap(keycode, record);
+    }
 
     // Select word
     if (!process_select_word(keycode, record, SELWORD)) { return false; }
