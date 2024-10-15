@@ -1,6 +1,5 @@
 #include QMK_KEYBOARD_H
 #include "features/select_word.h"
-#include "features/autocorrection.h"
 #include "features/achordion.h"
 
 // Select word (https://getreuer.info/posts/keyboards/select-word/index.html)
@@ -159,8 +158,6 @@ bool process_record_user(uint16_t keycode, keyrecord_t* record) {
 
     // Select word
     if (!process_select_word(keycode, record, SELWORD)) { return false; }
-
-    if (!process_autocorrection(keycode, record)) { return false; }
 
     return true;
 }
