@@ -18,6 +18,14 @@ This repository is a valid QMK external userspace as documented [here](https://d
    qmk flash -kb keebio/iris_ce/rev1 -km chzerv
    ```
 
+## TODO
+
+- [ ] My symbol layer needs a bit more tweaking
+- **If** we keep using HRMs:
+  - [ ] Re-enable Achordion's Bilateral Combinations
+    - Need to first create exceptions for common shortcuts
+  - [ ] Further tweak Achordion so we don't have any misfires
+
 # Credits
 
 - [Pascal Getreuer's QMK keymap](https://github.com/getreuer/qmk-keymap/tree/main)
