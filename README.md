@@ -21,10 +21,7 @@ This repository is a valid QMK external userspace as documented [here](https://d
 ## TODO
 
 - [ ] My symbol layer needs a bit more tweaking
-- **If** we keep using HRMs:
-  - [ ] Re-enable Achordion's Bilateral Combinations
-    - Need to first create exceptions for common shortcuts
-  - [ ] Further tweak Achordion so we don't have any misfires
+- [x] Make my `Control/Escape` mod-tap send a one-shot `Ctrl` when held
 
 # Credits
 
