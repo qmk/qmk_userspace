@@ -90,9 +90,9 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   //┌────────┬────────┬────────┬────────┬────────┬────────┐                          ┌────────┬────────┬────────┬────────┬────────┬────────┐
      KC_F12,  KC_F1,   KC_F2,   KC_F3,   KC_F4,   KC_F5,                              KC_F6,   KC_F7,   KC_F8,   KC_F9,   KC_F10,  KC_F11,
   //├────────┼────────┼────────┼────────┼────────┼────────┤                          ├────────┼────────┼────────┼────────┼────────┼────────┤
-     XXXXXXX, MS_BTN1, MS_UP,   MS_BTN2, MS_BTN3, XXXXXXX,                            UG_TOGG, KC_MPRV, KC_MPLY, KC_MNXT, XXXXXXX, KC_PSCR,
+     XXXXXXX, XXXXXXX, MS_UP,   MS_WHLD, MS_WHLU, MS_BTN3,                            UG_TOGG, KC_MPRV, KC_MPLY, KC_MNXT, XXXXXXX, KC_PSCR,
   //├────────┼────────┼────────┼────────┼────────┼────────┤                          ├────────┼────────┼────────┼────────┼────────┼────────┤
-     _______, MS_LEFT, MS_DOWN, MS_RGHT, DT_UP,   DT_DOWN,                            UG_NEXT, KC_VOLD, KC_MUTE, KC_VOLU, XXXXXXX, EE_CLR,
+     _______, MS_LEFT, MS_DOWN, MS_RGHT, MS_BTN1, MS_BTN2,                            UG_NEXT, KC_VOLD, KC_MUTE, KC_VOLU, XXXXXXX, EE_CLR,
   //├────────┼────────┼────────┼────────┼────────┼────────┼────────┐        ┌────────┼────────┼────────┼────────┼────────┼────────┼────────┤
      _______, KC_UNDO, KC_CUT,  KC_COPY, KC_PASTE,XXXXXXX, XXXXXXX,          _______, XXXXXXX, KC_BRID, XXXXXXX, KC_BRIU, XXXXXXX, QK_BOOT,
   //└────────┴────────┴────────┴───┬────┴───┬────┴───┬────┴───┬────┘        └───┬────┴───┬────┴───┬────┴───┬────┴────────┴────────┴────────┘
