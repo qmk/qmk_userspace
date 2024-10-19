@@ -13,7 +13,7 @@ enum custom_layers {
     _BASE,
     _SYM,
     _NAV,
-    _FUN
+    _FUN,
 };
 
 // Aliases for mappings
@@ -37,7 +37,6 @@ enum custom_layers {
 #define WORD_N C(KC_RIGHT)
 #define WORD_P C(KC_LEFT)
 #define TMUX_ C(KC_SPC) // TMUX prefix key (Ctrl+Spc)
-
 
 //+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++//
 // KEYMAP //
@@ -108,7 +107,7 @@ bool process_record_user(uint16_t keycode, keyrecord_t* record) {
                 SEND_STRING("../");
                 return false;
             case LITERAL:
-                SEND_STRING("\"${}\""SS_TAP(X_LEFT)SS_TAP(X_LEFT));
+                SEND_STRING("\"${}\"" SS_TAP(X_LEFT) SS_TAP(X_LEFT));
                 return false;
         }
     }
@@ -120,9 +119,7 @@ bool process_record_user(uint16_t keycode, keyrecord_t* record) {
 }
 
 void matrix_scan_user(void) {
-
     select_word_task();
-  // Other tasks...
 }
 
 //
