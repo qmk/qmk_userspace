@@ -43,7 +43,7 @@ enum custom_layers {
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     [_BASE] = LAYOUT(
   //┌────────┬────────┬────────┬────────┬────────┬────────┐                          ┌────────┬────────┬────────┬────────┬────────┬────────┐
-     KC_GRV,  KC_1,    KC_2,    KC_3,    KC_4,    KC_5,                               KC_6,    KC_7,    KC_8,    KC_9,    KC_0,    KC_DEL,
+     KC_GRV,  KC_1,    KC_2,    KC_3,    KC_4,    KC_5,                               KC_6,    KC_7,    KC_8,    KC_9,    KC_0,    KC_MINS,
   //├────────┼────────┼────────┼────────┼────────┼────────┤                          ├────────┼────────┼────────┼────────┼────────┼────────┤
      KC_TAB,  KC_Q,    KC_W,    KC_E,    KC_R,    KC_T,                               KC_Y,    KC_U,    KC_I,    KC_O,    KC_P,    KC_BSLS,
   //├────────┼────────┼────────┼────────┼────────┼────────┤                          ├────────┼────────┼────────┼────────┼────────┼────────┤
@@ -112,8 +112,39 @@ bool process_record_user(uint16_t keycode, keyrecord_t* record) {
         }
     }
 
+    // Keys
+    switch (keycode) {
+        // https://getreuer.info/posts/keyboards/macros3/index.html#shift-backspace-delete
+        case KC_BSPC: {
+            static uint16_t registered_key = KC_NO;
+
+            if (record->event.pressed) { // On key press
+                const uint8_t mods = get_mods();
+                uint8_t shift_mods = (mods | get_oneshot_mods()) & MOD_MASK_SHIFT;
+
+                if (shift_mods) { // At least one shift key is held.
+                    registered_key = KC_DEL;
+                    if (shift_mods != MOD_MASK_SHIFT) {
+                        del_oneshot_mods(MOD_MASK_SHIFT);
+                        unregister_mods(MOD_MASK_SHIFT);
+                    }
+                } else {
+                    registered_key = KC_BSPC;
+                }
+
+                register_code(registered_key);
+                set_mods(mods);
+            } else { // On key release
+                unregister_code(registered_key);
+            }
+        }
+            return false;
+    }
+
     // Select word
-    if (!process_select_word(keycode, record, SELWORD)) { return false; }
+    if (!process_select_word(keycode, record, SELWORD)) {
+        return false;
+    }
 
     return true;
 }
