@@ -1,7 +1,6 @@
 #include QMK_KEYBOARD_H
 #include "features/select_word.h"
 
-// Select word (https://getreuer.info/posts/keyboards/select-word/index.html)
 enum custom_keycodes {
     SELWORD = SAFE_RANGE,
     UPDIR,
@@ -29,14 +28,22 @@ enum custom_layers {
 #define OSM_A OSM(MOD_LALT)
 #define OSM_S OSM(MOD_LSFT)
 #define OSM_C OSM(MOD_LCTL)
+#define OSM_HYP OSM(MOD_HYPR)
+#define OSM_MEH OSM(MOD_MEH)
 
+// Navigating inside the browser
 #define TAB_NXT C(KC_PGDN)
 #define TAB_PRV C(KC_PGUP)
 #define TAB_NEW C(KC_T)
-#define TAB_EXT C(KC_W)
-#define WORD_N C(KC_RIGHT)
-#define WORD_P C(KC_LEFT)
-#define TMUX_ C(KC_SPC) // TMUX prefix key (Ctrl+Spc)
+#define TAB_CL C(KC_W)
+#define TAB_RE C(S(KC_T))
+#define SRCHBAR C(KC_L)
+
+#define SELALL C(KC_A)  // Select all
+#define TMUX_ C(KC_SPC) // TMUX prefix key
+#define REDO C(S(KC_Z))
+#define WORD_PR C(KC_LEFT)  // Previous word
+#define WORD_NX C(KC_RIGHT) // Next word
 
 //+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++//
 // KEYMAP //
@@ -60,13 +67,13 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   //┌────────┬────────┬────────┬────────┬────────┬────────┐                          ┌────────┬────────┬────────┬────────┬────────┬────────┐
      _______, _______, _______, _______, _______, _______,                            _______, _______, _______, _______, _______, _______,
   //├────────┼────────┼────────┼────────┼────────┼────────┤                          ├────────┼────────┼────────┼────────┼────────┼────────┤
-     _______, _______, TAB_EXT, TAB_PRV, TAB_NXT, TAB_NEW,                            KC_HOME, KC_PGDN, KC_PGUP, KC_END,  XXXXXXX, KC_BSPC,
+     SRCHBAR, TAB_RE,  TAB_CL,  TAB_PRV, TAB_NXT, TAB_NEW,                            KC_HOME, KC_PGDN, KC_PGUP, KC_END,  _______, _______,
   //├────────┼────────┼────────┼────────┼────────┼────────┤                          ├────────┼────────┼────────┼────────┼────────┼────────┤
-     _______, OSM_G,   OSM_A,   OSM_S,   OSM_C,   _______,                            KC_LEFT, KC_DOWN, KC_UP,   KC_RIGHT,SELWORD, XXXXXXX,
+     OSM_MEH, OSM_G,   OSM_A,   OSM_S,   OSM_C,   OSM_HYP,                            KC_LEFT, KC_DOWN, KC_UP,   KC_RIGHT,_______, _______,
   //├────────┼────────┼────────┼────────┼────────┼────────┼────────┐        ┌────────┼────────┼────────┼────────┼────────┼────────┼────────┤
-     _______, KC_UNDO, KC_CUT,  KC_COPY, KC_PSTE, _______, _______,          _______, WORD_P,  _______, _______, WORD_N, _______, _______,
+     REDO,    KC_UNDO, KC_CUT,  KC_COPY, KC_PSTE, XXXXXXX, _______,          _______, WORD_PR, XXXXXXX, XXXXXXX, WORD_NX, _______, _______,
   //└────────┴────────┴────────┴───┬────┴───┬────┴───┬────┴───┬────┘        └───┬────┴───┬────┴───┬────┴───┬────┴────────┴────────┴────────┘
-                                    _______, _______, _______,                   _______, _______, _______
+                                    _______, _______, _______,                   SELALL,  SELWORD, _______
                                 // └────────┴────────┴────────┘                 └────────┴────────┴────────┘
     ),
 
