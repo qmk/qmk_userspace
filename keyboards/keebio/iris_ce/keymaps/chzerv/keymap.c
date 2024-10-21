@@ -1,181 +1,62 @@
 #include QMK_KEYBOARD_H
-#include "features/select_word.h"
 
-enum custom_keycodes {
-    SELWORD = SAFE_RANGE,
-    UPDIR,
-    LITERAL,
-};
+#include "chzerv.c"
 
-// Layers
-enum custom_layers {
-    _BASE,
-    _SYM,
-    _NAV,
-    _FUN,
-};
-
-// Aliases for mappings
-#define MO_SYM MO(_SYM)
-#define MO_NAV MO(_NAV)
-#define FUN_ENT LT(_FUN, KC_ENT)
-
-// `Escape` when tapped, `Control` when held
-#define CTL_ESC MT(MOD_LCTL, KC_ESC)
-
-// One shot modifiers, used in the navigation layer (_NAV)
-#define OSM_G OSM(MOD_LGUI)
-#define OSM_A OSM(MOD_LALT)
-#define OSM_S OSM(MOD_LSFT)
-#define OSM_C OSM(MOD_LCTL)
-#define OSM_HYP OSM(MOD_HYPR)
-#define OSM_MEH OSM(MOD_MEH)
-
-// Navigating inside the browser
-#define TAB_NXT C(KC_PGDN)
-#define TAB_PRV C(KC_PGUP)
-#define TAB_NEW C(KC_T)
-#define TAB_CL C(KC_W)
-#define TAB_RE C(S(KC_T))
-#define SRCHBAR C(KC_L)
-
-#define SELALL C(KC_A)  // Select all
-#define TMUX_ C(KC_SPC) // TMUX prefix key
-#define REDO C(S(KC_Z))
-#define WORD_PR C(KC_LEFT)  // Previous word
-#define WORD_NX C(KC_RIGHT) // Next word
-
-//+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++//
-// KEYMAP //
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
-    [_BASE] = LAYOUT(
+
+  [_BASE] = LAYOUT(
   //┌────────┬────────┬────────┬────────┬────────┬────────┐                          ┌────────┬────────┬────────┬────────┬────────┬────────┐
      KC_GRV,  KC_1,    KC_2,    KC_3,    KC_4,    KC_5,                               KC_6,    KC_7,    KC_8,    KC_9,    KC_0,    KC_MINS,
   //├────────┼────────┼────────┼────────┼────────┼────────┤                          ├────────┼────────┼────────┼────────┼────────┼────────┤
      KC_TAB,  KC_Q,    KC_W,    KC_E,    KC_R,    KC_T,                               KC_Y,    KC_U,    KC_I,    KC_O,    KC_P,    KC_BSLS,
   //├────────┼────────┼────────┼────────┼────────┼────────┤                          ├────────┼────────┼────────┼────────┼────────┼────────┤
-     CTL_ESC, KC_A,    KC_S,    KC_D,    KC_F,    KC_G,                               KC_H,    KC_J,    KC_K,    KC_L,    KC_SCLN, KC_QUOT,
+     KC_ESC,  KC_A,    KC_S,    KC_D,    KC_F,    KC_G,                               KC_H,    KC_J,    KC_K,    KC_L,    KC_SCLN, KC_QUOT,
   //├────────┼────────┼────────┼────────┼────────┼────────┼────────┐        ┌────────┼────────┼────────┼────────┼────────┼────────┼────────┤
-     OSM_S,   KC_Z,    KC_X,    KC_C,    KC_V,    KC_B,    TMUX_,            KC_BSPC, KC_N,    KC_M,    KC_COMM, KC_DOT,  KC_SLSH, OSM_S,
+     OSM_LS,  KC_Z,    KC_X,    KC_C,    KC_V,    KC_B,    XXXXXXX,          CW_TOGG, KC_N,    KC_M,    KC_COMM, KC_DOT,  KC_SLSH, OSM_RS,
   //└────────┴────────┴────────┴───┬────┴───┬────┴───┬────┴───┬────┘        └───┬────┴───┬────┴───┬────┴───┬────┴────────┴────────┴────────┘
-                                    KC_LGUI, MO_NAV,  FUN_ENT,                   KC_SPC,  MO_SYM,  OSM_A
+                                    KC_LGUI, BS_NAV,  CTL_ENT,                   KC_SPC,  MO_SYM,  OSM_A
                                 // └────────┴────────┴────────┘                 └────────┴────────┴────────┘
-    ),
+  ),
 
-    // The number row stays so we can do `Mod+Number` for navigating DE/WM workspaces
-    [_NAV] = LAYOUT(
+  [_NAV] = LAYOUT(
   //┌────────┬────────┬────────┬────────┬────────┬────────┐                          ┌────────┬────────┬────────┬────────┬────────┬────────┐
      _______, _______, _______, _______, _______, _______,                            _______, _______, _______, _______, _______, _______,
   //├────────┼────────┼────────┼────────┼────────┼────────┤                          ├────────┼────────┼────────┼────────┼────────┼────────┤
-     SRCHBAR, TAB_RE,  TAB_CL,  TAB_PRV, TAB_NXT, TAB_NEW,                            KC_HOME, KC_PGDN, KC_PGUP, KC_END,  _______, _______,
+     _______, TAB_RE,  TAB_CL,  TAB_PR,  TAB_NX, G(KC_ENT),                           WORD_PR, SELALL,  SELLINE, WORD_NX, _______, _______,
   //├────────┼────────┼────────┼────────┼────────┼────────┤                          ├────────┼────────┼────────┼────────┼────────┼────────┤
-     OSM_MEH, OSM_G,   OSM_A,   OSM_S,   OSM_C,   OSM_HYP,                            KC_LEFT, KC_DOWN, KC_UP,   KC_RIGHT,_______, _______,
+     _______, OSM_G,   OSM_A,   OSM_LS,  OSM_C,   OSM_CS,                             KC_LEFT, KC_DOWN, KC_UP,   KC_RGHT, _______, UPDIR,
   //├────────┼────────┼────────┼────────┼────────┼────────┼────────┐        ┌────────┼────────┼────────┼────────┼────────┼────────┼────────┤
-     REDO,    KC_UNDO, KC_CUT,  KC_COPY, KC_PSTE, XXXXXXX, _______,          _______, WORD_PR, XXXXXXX, XXXXXXX, WORD_NX, _______, _______,
+     REDO,    KC_UNDO, KC_CUT,  KC_COPY, KC_PSTE, _______, _______,          _______, KC_HOME, KC_PGDN, KC_PGUP, KC_END,  _______, _______,
   //└────────┴────────┴────────┴───┬────┴───┬────┴───┬────┴───┬────┘        └───┬────┴───┬────┴───┬────┴───┬────┴────────┴────────┴────────┘
-                                    _______, _______, _______,                   SELALL,  SELWORD, _______
+                                    _______, _______, _______,                   _______, _______, LLOCK
                                 // └────────┴────────┴────────┘                 └────────┴────────┴────────┘
-    ),
+  ),
 
-    [_SYM] = LAYOUT(
+  [_SYM] = LAYOUT(
   //┌────────┬────────┬────────┬────────┬────────┬────────┐                          ┌────────┬────────┬────────┬────────┬────────┬────────┐
      _______, KC_EXLM, KC_AT,   KC_HASH, KC_DLR,  KC_PERC,                            KC_CIRC, KC_AMPR, KC_ASTR, KC_LPRN, KC_RPRN, KC_MINS,
   //├────────┼────────┼────────┼────────┼────────┼────────┤                          ├────────┼────────┼────────┼────────┼────────┼────────┤
-     _______, KC_QUOT, KC_LT,   KC_GT,   KC_DQUO, KC_GRV,                             LITERAL, KC_LBRC, KC_RBRC, KC_COLN,  KC_AT,   _______,
+     _______, KC_QUOT, KC_LT,   KC_GT,   KC_DQUO, KC_GRV,                             ARROW,   KC_LCBR, KC_RCBR, KC_AT,   XXXXXXX, LITERAL,
   //├────────┼────────┼────────┼────────┼────────┼────────┤                          ├────────┼────────┼────────┼────────┼────────┼────────┤
-     _______, KC_HASH, KC_EQL,  KC_UNDS, KC_DLR,  KC_ASTR,                            KC_SLSH, KC_LPRN, KC_RPRN, KC_SCLN, KC_QUES, _______,
+     KC_HASH, KC_EXLM, KC_EQL,  KC_UNDS, KC_DLR,  KC_ASTR,                            KC_SLSH, KC_LPRN, KC_RPRN, KC_COLN, KC_SCLN, UPDIR,
   //├────────┼────────┼────────┼────────┼────────┼────────┼────────┐        ┌────────┼────────┼────────┼────────┼────────┼────────┼────────┤
-     _______, KC_PIPE, KC_AMPR, KC_MINS, KC_PLUS, KC_PERC, UPDIR,            _______, KC_TILD, KC_LCBR, KC_RCBR, KC_RCBR, KC_SLSH, _______,
+     _______, KC_PIPE, KC_AMPR, KC_MINS, KC_PLUS, KC_PERC, _______,          _______, KC_TILD, KC_LBRC, KC_RBRC, KC_DOT,  KC_QUES, USRNAME,
   //└────────┴────────┴────────┴───┬────┴───┬────┴───┬────┴───┬────┘        └───┬────┴───┬────┴───┬────┴───┬────┴────────┴────────┴────────┘
-                                    _______, _______, _______,                   _______, _______, _______
+                                    _______, _______, _______,                   _______, _______, LLOCK
                                 // └────────┴────────┴────────┘                 └────────┴────────┴────────┘
-    ),
+  ),
 
-    [_FUN] = LAYOUT(
+  [_FUN] = LAYOUT(
   //┌────────┬────────┬────────┬────────┬────────┬────────┐                          ┌────────┬────────┬────────┬────────┬────────┬────────┐
      KC_F12,  KC_F1,   KC_F2,   KC_F3,   KC_F4,   KC_F5,                              KC_F6,   KC_F7,   KC_F8,   KC_F9,   KC_F10,  KC_F11,
   //├────────┼────────┼────────┼────────┼────────┼────────┤                          ├────────┼────────┼────────┼────────┼────────┼────────┤
-     XXXXXXX, XXXXXXX, MS_UP,   MS_WHLD, MS_WHLU, MS_BTN3,                            UG_TOGG, KC_MPRV, KC_MPLY, KC_MNXT, XXXXXXX, KC_PSCR,
+     XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,                            UG_TOGG, KC_MPRV, KC_MPLY, KC_MNXT, XXXXXXX, KC_PSCR,
   //├────────┼────────┼────────┼────────┼────────┼────────┤                          ├────────┼────────┼────────┼────────┼────────┼────────┤
-     _______, MS_LEFT, MS_DOWN, MS_RGHT, MS_BTN1, MS_BTN2,                            UG_NEXT, KC_VOLD, KC_MUTE, KC_VOLU, XXXXXXX, EE_CLR,
+     XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,                            UG_NEXT, KC_VOLD, KC_MUTE, KC_VOLU, XXXXXXX, EE_CLR,
   //├────────┼────────┼────────┼────────┼────────┼────────┼────────┐        ┌────────┼────────┼────────┼────────┼────────┼────────┼────────┤
-     _______, KC_UNDO, KC_CUT,  KC_COPY, KC_PASTE,XXXXXXX, XXXXXXX,          _______, XXXXXXX, KC_BRID, XXXXXXX, KC_BRIU, XXXXXXX, QK_BOOT,
+     XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,          XXXXXXX, XXXXXXX, KC_BRID, XXXXXXX, KC_BRIU, XXXXXXX, QK_BOOT,
   //└────────┴────────┴────────┴───┬────┴───┬────┴───┬────┴───┬────┘        └───┬────┴───┬────┴───┬────┴───┬────┴────────┴────────┴────────┘
-                                    _______, _______, _______,                   _______, CW_TOGG, _______
+                                    XXXXXXX, XXXXXXX, XXXXXXX,                   XXXXXXX, XXXXXXX, LLOCK
                                 // └────────┴────────┴────────┘                 └────────┴────────┴────────┘
-    )
+  )
 };
-
-bool process_record_user(uint16_t keycode, keyrecord_t* record) {
-    // Macros
-    if (record->event.pressed) {
-        switch (keycode) {
-            case UPDIR:
-                SEND_STRING("../");
-                return false;
-            case LITERAL:
-                SEND_STRING("\"${}\"" SS_TAP(X_LEFT) SS_TAP(X_LEFT));
-                return false;
-        }
-    }
-
-    // Keys
-    switch (keycode) {
-        // https://getreuer.info/posts/keyboards/macros3/index.html#shift-backspace-delete
-        case KC_BSPC: {
-            static uint16_t registered_key = KC_NO;
-
-            if (record->event.pressed) { // On key press
-                const uint8_t mods = get_mods();
-                uint8_t shift_mods = (mods | get_oneshot_mods()) & MOD_MASK_SHIFT;
-
-                if (shift_mods) { // At least one shift key is held.
-                    registered_key = KC_DEL;
-                    if (shift_mods != MOD_MASK_SHIFT) {
-                        del_oneshot_mods(MOD_MASK_SHIFT);
-                        unregister_mods(MOD_MASK_SHIFT);
-                    }
-                } else {
-                    registered_key = KC_BSPC;
-                }
-
-                register_code(registered_key);
-                set_mods(mods);
-            } else { // On key release
-                unregister_code(registered_key);
-            }
-        }
-            return false;
-    }
-
-    // Select word
-    if (!process_select_word(keycode, record, SELWORD)) {
-        return false;
-    }
-
-    return true;
-}
-
-void matrix_scan_user(void) {
-    select_word_task();
-}
-
-//
-// Caps Word configuration
-// https://docs.qmk.fm/features/caps_word
-//
-bool caps_word_press_user(uint16_t keycode) {
-    switch (keycode) {
-        // Configure keycodes that continue caps word
-        case KC_A ... KC_Z:
-            add_weak_mods(MOD_BIT(KC_LSFT)); // Apply shift to alphas.
-            return true;
-        case KC_1 ... KC_0:
-        case KC_BSPC:
-        case KC_DEL:
-        case KC_UNDS:
-            return true;
-        default:
-            return false; // Deactivate Caps Word
-    }
-}
