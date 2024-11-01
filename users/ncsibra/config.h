@@ -1,0 +1,16 @@
+#pragma once
+
+#undef TAPPING_TOGGLE
+#undef TAPPING_TERM
+
+#define FORCE_NKRO
+
+#define LEADER_TIMEOUT 500
+#define TAPPING_TOGGLE 3
+#define TAPPING_TERM 200
+#define PREVENT_STUCK_MODIFIERS
+#define PERMISSIVE_HOLD
+#define RETRO_TAPPING
+
+#define COMBO_COUNT 1
+#define COMBO_TERM 200
