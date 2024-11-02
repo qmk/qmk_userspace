@@ -1,20 +1,5 @@
 #include "ncsibra.h"
 
-// Add reconfigurable functions here, for keymap customization
-// This allows for a global, userspace functions, and continued
-// customization of the keymap.  Use _keymap instead of _user
-// functions in the keymaps
-__attribute__ ((weak))
-void matrix_init_keymap(void) {}
-
-__attribute__ ((weak))
-void matrix_scan_keymap(void) {}
-
-__attribute__ ((weak))
-bool process_record_keymap(uint16_t keycode, keyrecord_t *record) {
-  return true;
-}
-
 // Tap hold keys
 static taphold_t th_events[] = {
   { .is_pressed = false, .is_double = false, .timer = 0, .kc_tap = KC_ESC,  .kc_hold = KC_F11 },
@@ -40,8 +25,7 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
     return false;
   }
 
-  return process_record_user_taphold(keycode, record)
-      && process_record_keymap(keycode, record);
+  return process_record_user_taphold(keycode, record);
 };
 
 static uint16_t prev_th_key = KC_NO;
@@ -94,4 +78,9 @@ void matrix_scan_tap_hold(taphold_state state) {
           th_event->is_pressed = false;
       }
   }
+}
+
+
+void matrix_scan_user(void) {
+    matrix_scan_tap_hold(HELD);
 }

@@ -79,7 +79,7 @@ enum keycodes {
   _______,  _______,  _______,  _______,  _______,       _______,  _______,  KC_LCTL,         KC_LCTL,  _______,  _______,  XXXXXXX
 
 #define RAISE_LAYER \
-  QK_RBT,   XXXXXXX,  XXXXXXX,  XXXXXXX,  DF(_QWERTY), XXXXXXX,       XXXXXXX,     DF(_COLEMAK), XXXXXXX,  XXXXXXX,    XXXXXXX, TO(_WOW), \
+  QK_BOOT,  XXXXXXX,  XXXXXXX,  XXXXXXX,  DF(_QWERTY), XXXXXXX,       XXXXXXX,     DF(_COLEMAK), XXXXXXX,  XXXXXXX,    XXXXXXX, TO(_WOW), \
   DB_TOGG,  XXXXXXX,  XXXXXXX,  KC_LSFT,  XXXXXXX,     XXXXXXX,       XXXXXXX,     KC_HOME,      KC_UP,    KC_END,     XXXXXXX,  KC_DEL, \
   _______,  KC_LGUI,  KC_LALT,  XXXXXXX,  KC_LCTL,     XXXXXXX,       XXXXXXX,     KC_LEFT,      KC_DOWN,  KC_RIGHT,   XXXXXXX,  _______, \
   KC_CAPS,  _______,  _______,  _______,  _______,     _______,       XXXXXXX,     KC_PGUP,      XXXXXXX,  KC_PGDN,    XXXXXXX,  _______, \
@@ -99,7 +99,7 @@ enum keycodes {
   KC_TAB,         KC_H,     KC_Q,     KC_W,     KC_E,     KC_R,    KC_Y,     KC_U,    KC_I,     KC_O,     KC_P,        KC_QUOT, \
   KC_TAB,         KC_LSFT,  KC_A,     KC_S,     KC_D,     KC_F,    KC_H,     KC_J,    KC_K,     KC_L,     KC_SCLN,     KC_ENT, \
   KC_LSFT,        KC_Z,     KC_X,     KC_N,     KC_C,     KC_V,    KC_N,     KC_M,    KC_COMM,  KC_DOT,   KC_SLSH,     KC_RSFT, \
-  KC_M,           KC_Y,     KC_LALT,  KC_LCTL,  KC_SPC,   KC_P,    KC_BSPC,  KC_DEL,  KC_DEL,   KC_LGUI,  KC_PSCREEN,  TO(_COLEMAK)
+  KC_M,           KC_Y,     KC_LALT,  KC_LCTL,  KC_SPC,   KC_P,    KC_BSPC,  KC_DEL,  KC_DEL,   KC_LGUI,  KC_PSCR,     TO(_COLEMAK)
 
 // tap-hold settings
 #define TH_DELAY 300

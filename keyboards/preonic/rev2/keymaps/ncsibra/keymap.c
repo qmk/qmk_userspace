@@ -13,10 +13,6 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 [_RAISE] = LAYOUT_wrapper(RAISE_LAYER),
 
 [_NUM] = LAYOUT_wrapper(NUM_LAYER),
-};
 
-bool process_record_keymap(uint16_t keycode, keyrecord_t *record) {
-  return true;
+[_WOW] = LAYOUT_wrapper(WOW_LAYER),
 };
-
-void matrix_scan_keymap(void) {}
