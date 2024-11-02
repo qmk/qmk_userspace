@@ -3,8 +3,6 @@
 
 // copied from https://github.com/Exidex/qmk_firmware/blob/custom/keyboards/beekeeb/piantor_pro/readme.md
 
-// ================ mostly callum's oneshot mods
-
 typedef enum {
     osl_up_unqueued, // default, waiting for layer to be pressed
     osl_up_queued, // layer pressed and released without pressing mod key, next modifier press will have layer enabled, on all mod release layer will be disabled

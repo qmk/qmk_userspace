@@ -2,6 +2,7 @@
     "userspace_version": "1.1",
     "build_targets": [
         ["atreus62", "ncsibra"],
-        ["preonic/rev2", "ncsibra"]
+        ["preonic/rev2", "ncsibra"],
+        ["preonic/rev3_drop", "ncsibra"]
     ]
 }
