@@ -8,7 +8,7 @@ These are the latest compatible commit hashes between the firmware and userspace
 Userspace most likely will point to latest main branch commit,
 but note down anyway.
 
-| Repo      | Commit                                   |
-|-----------|------------------------------------------|
-| Firmware  | 465cbc87de0f9e92663cf4bb1a5e89739dbb5904 |
-| Userspace | ebfb3873cb34cb2e69dc9b7f30304a5450ae31f4 |
+| Repo      | Commit                                                                                                                               |
+|-----------|--------------------------------------------------------------------------------------------------------------------------------------|
+| Firmware  | [465cbc87de0f9e92663cf4bb1a5e89739dbb5904](https://github.com/qmk/qmk_firmware/commit/465cbc87de0f9e92663cf4bb1a5e89739dbb5904)      |
+| Userspace | [ebfb3873cb34cb2e69dc9b7f30304a5450ae31f4](https://github.com/ncsibra/qmk_userspace/commit/ebfb3873cb34cb2e69dc9b7f30304a5450ae31f4) |
