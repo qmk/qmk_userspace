@@ -1,4 +1,6 @@
-SRC += ncsibra.c
+SRC += ncsibra.c \
+	osl.c \
+	tap_hold.c
 
 CONSOLE_ENABLE = yes
 NKRO_ENABLE = yes

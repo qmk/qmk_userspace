@@ -18,7 +18,8 @@ enum layers {
   _LOWER,
   _RAISE,
   _NUM,
-  _WOW
+  _WOW,
+  _MOD,
 };
 
 enum keycodes {
@@ -40,6 +41,15 @@ enum keycodes {
   TH_9,
   TH_0,
   TH_BSPC,
+
+  // Custom oneshot layer implementation.
+  OSL_MOD_LAYER,
+
+  // Custom oneshot mods implementation.
+  OSM_SHFT,
+  OSM_CTRL,
+  OSM_ALT,
+  OSM_GUI,
 
   NEW_SAFE_RANGE
 };
@@ -81,7 +91,7 @@ enum keycodes {
 #define RAISE_LAYER \
   QK_BOOT,  XXXXXXX,  XXXXXXX,  XXXXXXX,  DF(_QWERTY), XXXXXXX,       XXXXXXX,     DF(_COLEMAK), XXXXXXX,  XXXXXXX,    XXXXXXX, TO(_WOW), \
   DB_TOGG,  XXXXXXX,  XXXXXXX,  KC_LSFT,  XXXXXXX,     XXXXXXX,       XXXXXXX,     KC_HOME,      KC_UP,    KC_END,     XXXXXXX,  KC_DEL, \
-  _______,  KC_LGUI,  KC_LALT,  XXXXXXX,  KC_LCTL,     XXXXXXX,       XXXXXXX,     KC_LEFT,      KC_DOWN,  KC_RIGHT,   XXXXXXX,  _______, \
+  _______,  KC_LGUI,  KC_LALT,  KC_LSFT,  KC_LCTL,     XXXXXXX,       XXXXXXX,     KC_LEFT,      KC_DOWN,  KC_RIGHT,   XXXXXXX,  _______, \
   KC_CAPS,  _______,  _______,  _______,  _______,     _______,       XXXXXXX,     KC_PGUP,      XXXXXXX,  KC_PGDN,    XXXXXXX,  _______, \
   _______,  _______,  _______,  _______,  _______,     LCTL(KC_SPC),  _______,     _______,      _______,  TG(_RAISE), _______,  _______
 
@@ -101,25 +111,10 @@ enum keycodes {
   KC_LSFT,        KC_Z,     KC_X,     KC_N,     KC_C,     KC_V,    KC_N,     KC_M,    KC_COMM,  KC_DOT,   KC_SLSH,     KC_RSFT, \
   KC_M,           KC_Y,     KC_LALT,  KC_LCTL,  KC_SPC,   KC_P,    KC_BSPC,  KC_DEL,  KC_DEL,   KC_LGUI,  KC_PSCR,     TO(_COLEMAK)
 
-// tap-hold settings
-#define TH_DELAY 300
 
-#define TH_EVENTS_COUNT 12
-#define TH_FIRST TH_ESC
-#define TH_LAST TH_BSPC
-
-typedef struct {
-    bool is_pressed;
-    bool is_double;
-    uint16_t timer;
-    uint16_t kc_tap;
-    uint16_t kc_hold;
-} taphold_t;
-
-typedef enum {
-    TAPPED,
-    HELD,
-} taphold_state;
-
-void matrix_scan_tap_hold(taphold_state state);
-bool process_record_user_taphold(uint16_t keycode, keyrecord_t *record);
+#define MOD_LAYER \
+  _______,  _______,  _______,  _______,   _______,  _______,  _______,  _______,  _______,  _______,  _______,  _______, \
+  _______,  _______,  _______,  OSM_SHFT,  _______,  _______,  _______,  _______,  _______,  _______,  _______,  _______, \
+  _______,  OSM_GUI,  OSM_ALT,  OSM_SHFT,  OSM_CTRL, _______,  _______,  _______,  _______,  _______,  _______,  _______, \
+  _______,  _______,  _______,  _______,   _______,  _______,  _______,  _______,  _______,  _______,  _______,  _______, \
+  _______,  _______,  _______,  _______,   _______,  _______,  _______,  _______,  _______,  _______,  _______,  OSL_MOD_LAYER

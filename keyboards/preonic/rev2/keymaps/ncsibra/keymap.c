@@ -15,4 +15,6 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 [_NUM] = LAYOUT_wrapper(NUM_LAYER),
 
 [_WOW] = LAYOUT_wrapper(WOW_LAYER),
+
+[_MOD] = LAYOUT_wrapper(MOD_LAYER),
 };
