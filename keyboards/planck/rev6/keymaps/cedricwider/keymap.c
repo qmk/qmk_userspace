@@ -368,7 +368,7 @@ uint16_t get_quick_tap_term(uint16_t keycode, keyrecord_t *record) {
     switch (keycode) {
         case SHFTT:
         case SHFTA:
-            return 150;
+            return 130;
         default:
             return QUICK_TAP_TERM;
     }
@@ -378,8 +378,6 @@ bool get_permissive_hold(uint16_t keycode, keyrecord_t *record) {
     switch (keycode) {
         case CK_LWR:
         case CK_RSE:
-        case SHFTT:
-        case SHFTA:
             // Immediately select the hold action when another key is tapped.
             return true;
         default:
