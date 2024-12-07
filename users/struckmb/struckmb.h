@@ -22,7 +22,13 @@
 #define LOW_TAB LT(LAYER_LOWER, KC_TAB)
 #define RSE_BSP LT(LAYER_RAISE, KC_BSPC)
 #define ATT(kc) LT(LAYER_ATTIC, kc)
-#define SY(kc) LT(LAYER_SYMBOL, kc)
+#ifdef TAP_DANCE_ENABLE
+#    define SY_L(kc) TD(SYM_L)
+#    define SY_R(kc) TD(SYM_R)
+#else
+#    define SY_L(kc) LT(LAYER_SYMBOL, kc)
+#    define SY_R(kc) LT(LAYER_SYMBOL, kc)
+#endif // TAP_DANCE_ENABLE
 #ifdef MOUSEKEY_ENABLE
 #    define MS(kc) LT(LAYER_POINTER, kc)
 #else
@@ -76,15 +82,6 @@ enum userspace_layers {
 enum userspace_custom_keycodes {
     // Safe stuff
     BS_SAFE = SAFE_RANGE,
-#ifdef QWERTY_ENABLE
-    DL_QWER,
-#endif // ifdef QWERTY_ENABLE
-#ifdef BONE_ENABLE
-    DL_BONE,
-#endif // ifdef BONE_ENABLE
-#ifdef COLEMAK_DH_ENABLE
-    DL_CODH,
-#endif // ifdef COLEMAK_DH_ENABLE
     DL_PREV,
     DL_NEXT,
     NO_MODS,
@@ -99,8 +96,8 @@ enum userspace_custom_keycodes {
 /* AS_START, AS_END, // Dummy key codes for combo definitions */
 #endif // ASETNIOP_ENABLE
     DE_RSQU,
-// Encoder button
 #ifdef ENCODER_ENABLE
+    // Encoder button(s)
     BS_ENC0,
     BS_ENC1,
 #endif // ENCODER_ENABLE
@@ -110,36 +107,61 @@ enum userspace_custom_keycodes {
 
 // Fallbacks to first base layer
 #ifndef QWERTY_ENABLE
-#    define DL_QWER DF(0)
+#    define LAYER_QWERTY 0
 #endif // ifndef QWERTY_ENABLE
 #ifndef BONE_ENABLE
-#    define DL_BONE DF(0)
+#    define LAYER_BONE 0
 #endif // ifndef BONE_ENABLE
 #ifndef COLEMAK_DH_ENABLE
-#    define DL_CODH DF(0)
+#    define LAYER_COLEMAK_DH 0
 #endif // ifndef COLEMAK_DH_ENABLE
-// non-sticky layers (return after reset):
-#ifdef GAME_ENABLE
-#    define DL_GAME DF(LAYER_GAME)
-#else
-#    define DL_GAME DF(0)
+#ifndef GAME_ENABLE
+#    define LAYER_GAME 0
 #endif /* ifndef GAME_ENABLE */
-#ifdef ARTSENIO_ENABLE
-#    define DL_ARTS DF(LAYER_ARTSENIO)
+#ifndef ARTSENIO_ENABLE
+#    define LAYER_ARTSENIO 0
+#else // artsenio specific layer keys
 #    define AR_A LT(L_ARTS_PAR, DE_A)
 #    define AR_E LT(L_ARTS_SYM, DE_E)
 #    define AR_S LT(L_ARTS_NUM, DE_S)
 #    define AR_O DE_O
-#else
-#    define DL_ARTS DF(0)
 #endif /* ifndef ARTSENIO_ENABLE */
-#ifdef ASETNIOP_ENABLE
-#    define DL_ASET DF(LAYER_ASETNIOP)
-#else
-#    define DL_ASET DF(0)
+#ifndef ASETNIOP_ENABLE
+#    define LAYER_ASETNIOP 0
 #endif /* ifndef ASETNIOP_ENABLE */
+// sticky layers (withstands reset):
+#define DL_QWER PDF(LAYER_QWERTY)
+#define DL_BONE PDF(LAYER_BONE)
+#define DL_CODH PDF(LAYER_COLEMAK_DH)
+// non-sticky layers (return to saved after reset):
+#define DL_GAME DF(LAYER_GAME)
+#define DL_ARTS DF(LAYER_ARTSENIO)
+#define DL_ASET DF(LAYER_ASETNIOP)
 
-// KEYMAS
+#ifdef TAP_DANCE_ENABLE
+// Tap Dance keycodes
+enum td_keycodes {
+    // Toggle symbol layer if held, key based on current base layer, else
+    SYM_L,
+    SYM_R
+};
+
+// Define a type containing as many tapdance states as you need
+typedef enum { TD_NONE, TD_UNKNOWN, TD_SINGLE_TAP, TD_SINGLE_HOLD, TD_DOUBLE_SINGLE_TAP } td_state_t;
+
+// Declare your tapdance functions:
+
+// Function to determine the current tapdance state
+td_state_t cur_dance(tap_dance_state_t *state);
+
+// `finished` and `reset` functions for each tapdance keycode
+void symL_finished(tap_dance_state_t *state, void *user_data);
+void symL_reset(tap_dance_state_t *state, void *user_data);
+void symR_finished(tap_dance_state_t *state, void *user_data);
+void symR_reset(tap_dance_state_t *state, void *user_data);
+#endif // TAP_DANCE_ENABLE
+
+// /// // /* KEYMAPS */ // /// //
 // first and last column keys for base layer
 #define _0L1_1_ ALT_BSP
 #define _0L2_1_ CTL_ESC
@@ -172,10 +194,10 @@ enum userspace_custom_keycodes {
  *  y │ x │ c │ v │ b         n │ m │ , │ . │ ß │(Ent)
  */
 #    define _QL1_5_ DE_Q, DE_W, DE_E, DE_R, DE_T
-#    define _QL2_5_ SY(DE_A), DE_S, DE_D, DE_F, DE_G
+#    define _QL2_5_ SY_L(DE_A), DE_S, DE_D, DE_F, DE_G
 #    define _QL3_5_ MS(DE_Y), DE_X, DE_C, DE_V, DE_B
 #    define _QR1_5_ DE_Z, DE_U, DE_I, DE_O, DE_P
-#    define _QR2_5_ DE_H, DE_J, DE_K, DE_L, SY(DE_ODIA)
+#    define _QR2_5_ DE_H, DE_J, DE_K, DE_L, SY_R(DE_ODIA)
 #    define _QR3_5_ DE_N, DE_M, DE_COMM, DE_DOT, MS(DE_SS)
 //
 #    define _QL1_6_ _0L1_1_, _QL1_5_
@@ -198,10 +220,10 @@ enum userspace_custom_keycodes {
  *  f │ v │ ü │ ä │ ö         y │ z │ , │ . │ k │(Ent)
  */
 #    define _BL1_5_ DE_J, DE_D, DE_U, DE_A, DE_X
-#    define _BL2_5_ SY(DE_C), DE_T, DE_I, DE_E, DE_O
+#    define _BL2_5_ SY_L(DE_C), DE_T, DE_I, DE_E, DE_O
 #    define _BL3_5_ MS(DE_F), DE_V, DE_UDIA, DE_ADIA, DE_ODIA
 #    define _BR1_5_ DE_P, DE_H, DE_L, DE_M, DE_W
-#    define _BR2_5_ DE_B, DE_N, DE_R, DE_S, SY(DE_G)
+#    define _BR2_5_ DE_B, DE_N, DE_R, DE_S, SY_R(DE_G)
 #    define _BR3_5_ DE_Y, DE_Z, DE_COMM, DE_DOT, MS(DE_K)
 //
 #    define _BL1_6_ _0L1_1_, _BL1_5_
@@ -224,10 +246,10 @@ enum userspace_custom_keycodes {
  *  z │ x │ c │ d │ v         k │ h │ , │ . │ ß │(Ent)
  */
 #    define _CL1_5_ DE_Q, DE_W, DE_F, DE_P, DE_B
-#    define _CL2_5_ SY(DE_A), DE_R, DE_S, DE_T, DE_G
+#    define _CL2_5_ SY_L(DE_A), DE_R, DE_S, DE_T, DE_G
 #    define _CL3_5_ MS(DE_Z), DE_X, DE_C, DE_D, DE_V
 #    define _CR1_5_ DE_J, DE_L, DE_U, DE_Y, DE_ODIA
-#    define _CR2_5_ DE_M, DE_N, DE_E, DE_I, SY(DE_O)
+#    define _CR2_5_ DE_M, DE_N, DE_E, DE_I, SY_R(DE_O)
 #    define _CR3_5_ DE_K, DE_H, DE_COMM, DE_DOT, MS(DE_SS)
 //
 #    define _CL1_6_ _0L1_1_, _CL1_5_
@@ -357,9 +379,9 @@ enum userspace_custom_keycodes {
 #define _RR2_5_ OSM_MEH, OSM_SFT, OSM_CTL, OSM_ALT, OSM_GUI
 #define _RR3_5_ KC_PSCR, CW_TOGG, KC_PAUS, OSM_AGR, KC_SCRL
 //
-#define _RL1_6_ KC_LALT, _LR1_5_
-#define _RL2_6_ KC_LCTL, _LR2_5_
-#define _RL3_6_ KC_LGUI, _LR3_5_
+#define _RL1_6_ KC_LALT, _RL1_5_
+#define _RL2_6_ KC_LCTL, _RL2_5_
+#define _RL3_6_ KC_LGUI, _RL3_5_
 #define _RR1_6_ _RR1_5_, KC_LALT
 #define _RR2_6_ _RR2_5_, KC_RCTL
 #define _RR3_6_ _RR3_5_, KC_RGUI
@@ -410,9 +432,9 @@ enum userspace_custom_keycodes {
 #endif
 
 /* Attic: Adjustments and missing stuff
- * QBt│ECl│LAs│LAr│ •         ¡ │ ‹ │ « │ » │ ›
+ * QBt│ECl│LAs│LAr│           ¡ │ ‹ │ « │ » │ ›
  * ───┼───┼───┼───┼───       ───┼───┼───┼───┼───
- * LyG│Ly←│Ly→│BsL│MDX        ¿ │ … │ ‚ │ ‘ │ ’
+ * LyG│Ly←│Ly→│BsL│MDX        ¿ │ • │ ‚ │ ‘ │ ’ │(…)
  * ───┼───┼───┼───┼───       ───┼───┼───┼───┼───
  * R_T│R_M│R_M│R_M│R_M       n-–│m-—│ „ │ “ │ ”
  *          ┌───┬───┬───┐ ┌───┬───┬───┐
@@ -420,18 +442,18 @@ enum userspace_custom_keycodes {
  *          └───┴───┴───┘ └───┴───┴───┘
  *            *                     *
  */
-#define _AL1_5_ QK_BOOT, EE_CLR, DL_ASET, DL_ARTS, DE_MDDT
+#define _AL1_5_ QK_BOOT, EE_CLR, DL_ASET, DL_ARTS, KC_NO
 #define _AL2_5_ DL_GAME, DL_PREV, DL_NEXT, DL_QWER, NO_MODS
 #define _AL3_5_ RGB_TOG, RGB_SAI, RGB_HUI, RGB_VAI, RGB_MOD
 #define _AR1_5_ DE_IEXL, DE_LSAQ, DE_LDAQ, DE_RDAQ, DE_RSAQ
-#define _AR2_5_ DE_IQUE, DE_ELLP, DE_SLQU, DE_LSQU, DE_RSQU
+#define _AR2_5_ DE_IQUE, DE_MDDT, DE_SLQU, DE_LSQU, DE_RSQU
 #define _AR3_5_ DE_NDSH, DE_MDSH, DE_DLQU, DE_LDQU, DE_RDQU
 //
 #define _AL1_6_ KC_NO, _AL1_5_
 #define _AL2_6_ KC_NO, _AL2_5_
 #define _AL3_6_ KC_NO, _AL3_5_
 #define _AR1_6_ _AR1_5_, KC_NO
-#define _AR2_6_ _AR2_5_, KC_NO
+#define _AR2_6_ _AR2_5_, DE_ELLP
 #define _AR3_6_ _AR3_5_, KC_NO
 //
 #define _AL4_2_ KC_BRID, KC_TRNS
