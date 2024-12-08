@@ -38,8 +38,6 @@
 // // first and last column for 6 column keyboards:
 #define SFT_ENT LSFT_T(KC_ENT)
 #define SFT_SPC RSFT_T(KC_SPC)
-#define ALT_BSP LALT_T(KC_BSPC)
-#define CTL_ESC LCTL_T(KC_ESC)
 
 /// Enumeration of layers
 enum userspace_layers {
@@ -162,25 +160,31 @@ void symR_reset(tap_dance_state_t *state, void *user_data);
 #endif // TAP_DANCE_ENABLE
 
 // /// // /* KEYMAPS */ // /// //
-// first and last column keys for base layer
-#define _0L1_1_ ALT_BSP
-#define _0L2_1_ CTL_ESC
-#define _0L3_1_ LGUI_T(KC_NUBS)
+
+/* first and last column base layer keys for 6x3 keyboards
+ *          ┌─────┬───┬───┐ ┌───┬───┬───┐
+ *          │A/BSp│Ent│Tab│ │Bsp│Spc│Del│
+ *          └─────┴───┴LOW┘ └RSE┴───┴───┘
+ *            *                     *
+ */
+#define _0L1_1_ LALT_T(KC_BSPC)
+#define _0L2_1_ LCTL_T(KC_ESC)
+#define _0L3_1_ LGUI_T(KC_APP)
 // R1 and R2 depend on layout
 #define _0R1_1_(kc) LALT_T(kc)
 #define _0R2_1_(kc) RCTL_T(kc)
 #define _0R3_1_(kc) RGUI_T(kc)
 // thumbs
-#define _0L4_2_ KC_ESC, LOW_TAB
-#define _0L4_3_ KC_ESC, SFT_ENT, LOW_TAB
+#define _0L4_2_ SFT_ENT, LOW_TAB
+#define _0L4_3_ KC_ESC, _0L4_2_
 #define _0R4_2_ RSE_BSP, SFT_SPC
-#define _0R4_3_ _0R4_2_, KC_APP
+#define _0R4_3_ _0R4_2_, KC_DEL
 
 /* THUMBS for base layers
  *          ┌───┬───┬───┐ ┌───┬───┬───┐
- *          │Esc│Ent│Tab│ │Bsp│Spc│App│
+ *          │Esc│Ent│Tab│ │Bsp│Spc│Del│
  *          └───┴───┴LOW┘ └RSE┴───┴───┘
- *                *                 *
+ *            *                     *
  */
 #define _THUMBS_3_2_ _0L4_3_, _0R4_2_
 #define _THUMBS_3_3_ _0L4_3_, _0R4_3_
@@ -303,11 +307,11 @@ void symR_reset(tap_dance_state_t *state, void *user_data);
  *  # │ $ │ | │ ~ │ ´         + │ % │ " │ ' │ ;
  *      (with dynamic tapping term enabled:)
  *          ┌───┬───┬───┐ ┌───┬───┬───┐
- *          │PTT│Sft│TT+│ │TT-│Spc│CWT│
+ *          │PTT│ § │TT+│ │TT-│Spc│CWT│
  *          └───┴───┴───┘ └───┴───┴───┘
  *            *    (otherwise:)     *
  *          ┌───┬───┬───┐ ┌───┬───┬───┐
- *          │ ° │Sft│ ` │ │AGr│Spc│CWT│
+ *          │ ° │ § │ ` │ │AGr│Spc│CWT│
  *          └───┴───┴───┘ └───┴───┴───┘
  */
 #define _SL1_5_ DE_AT, DE_UNDS, DE_LBRC, DE_RBRC, DE_CIRC
@@ -325,31 +329,31 @@ void symR_reset(tap_dance_state_t *state, void *user_data);
 #define _SR3_6_ _SR3_5_, KC_RGUI
 //
 #ifdef DYNAMIC_TAPPING_TERM_ENABLE
-#    define _SL4_2_ KC_LSFT, DT_DOWN
+#    define _SL4_2_ DE_SECT, DT_DOWN
 #    define _SL4_3_ DT_PRNT, _SL4_2_
 #    define _SR4_2_ DT_UP, KC_SPC
 #else
-#    define _SL4_2_ KC_LSFT, DE_GRV
+#    define _SL4_2_ DE_SECT, DE_GRV
 #    define _SL4_3_ DE_DEG, _SL4_2_
 #    define _SR4_2_ KC_RALT, KC_SPC
 #endif // DYNAMIC_TAPPING_TERM_ENABLE
 #define _SR4_3_ _SR4_2_, CW_TOGG
 //
-#define _SYMBOLS_3x5_ _SL1_5_, _SR1_5_, _SL2_5_, _SR2_5_, _SL3_5_, _SR3_5_
-#define _SYMBOLS_3x6_ _SL1_6_, _SR1_6_, _SL2_6_, _SR2_6_, _SL3_6_, _SR3_6_
+#define _SYMBL_3x5_ _SL1_5_, _SR1_5_, _SL2_5_, _SR2_5_, _SL3_5_, _SR3_5_
+#define _SYMBL_3x6_ _SL1_6_, _SR1_6_, _SL2_6_, _SR2_6_, _SL3_6_, _SR3_6_
 
 /* Lower: Numbers and function keys
- * F1 │F2 │F3 │F4 │ §         / │ 7 │ 8 │ 9 │ -
+ * F1 │F2 │F3 │F4 │ £         / │ 7 │ 8 │ 9 │ -
  * ───┼───┼───┼───┼───       ───┼───┼───┼───┼───
  * F5 │F6 │F7 │F8 │ €         + │ 4 │ 5 │ 6 │ .
  * ───┼───┼───┼───┼───       ───┼───┼───┼───┼───
  * F9 │F10│F11│F12│ ¢         0 │ 1 │ 2 │ 3 │ ,
  *          ┌───┬───┬───┐ ┌───┬───┬───┐
- *          │Bsp│Sft│(v)│ │Del│Sft│XXX│
+ *          │ $ │Sft│(v)│ │Bsp│Spc│App│
  *          └───┴───┴───┘ └ATT┴───┴───┘
  *            *                     *
  */
-#define _LL1_5_ KC_F1, KC_F2, KC_F3, KC_F4, DE_SECT
+#define _LL1_5_ KC_F1, KC_F2, KC_F3, KC_F4, DE_PND
 #define _LL2_5_ KC_F5, KC_F6, KC_F7, KC_F8, DE_EURO
 #define _LL3_5_ KC_F9, KC_F10, KC_F11, KC_F12, DE_CENT
 #define _LR1_5_ DE_SLSH, DE_7, DE_8, DE_9, DE_MINS
@@ -364,9 +368,9 @@ void symR_reset(tap_dance_state_t *state, void *user_data);
 #define _LR3_6_ _LR3_5_, KC_RGUI
 //
 #define _LL4_2_ KC_LSFT, KC_TRNS
-#define _LL4_3_ KC_BSPC, _LL4_2_
-#define _LR4_2_ ATT(KC_DEL), KC_LSFT
-#define _LR4_3_ _LR4_2_, KC_NO
+#define _LL4_3_ DE_DLR, _LL4_2_
+#define _LR4_2_ ATT(KC_BSPC), KC_SPC
+#define _LR4_3_ _LR4_2_, KC_APP
 //
 #define _LOWER_3x5_ _LL1_5_, _LR1_5_, _LL2_5_, _LR2_5_, _LL3_5_, _LR3_5_
 #define _LOWER_3x6_ _LL1_6_, _LR1_6_, _LL2_6_, _LR2_6_, _LL3_6_, _LR3_6_
@@ -376,15 +380,15 @@ void symR_reset(tap_dance_state_t *state, void *user_data);
  * ───┼───┼───┼───┼───       ───┼───┼───┼───┼───
  * Hme│ ← │ ↓ │ → │End       Meh│Sft│Ctl│Alt│Gui
  * ───┼───┼───┼───┼───       ───┼───┼───┼───┼───
- * App│Cut│Cpy│Pst│PDn       PSc│CWT│Pse│AGr│SLk
+ * Esc│Cut│Cpy│Pst│PDn       PSc│CWT│Pse│AGr│SLk
  *          ┌───┬───┬───┐ ┌───┬───┬───┐
- *          │V ×│V -│Bsp│ │(v)│V +│V ×│
+ *          │Prv│V -│V ×│ │(v)│V +│Nxt│
  *          └───┴───┴ATT┘ └───┴───┴───┘
  *            *                     *
  */
 #define _RL1_5_ KC_PGUP, KC_BSPC, KC_UP, KC_DEL, KC_INS
 #define _RL2_5_ KC_HOME, KC_LEFT, KC_DOWN, KC_RGHT, KC_END
-#define _RL3_5_ KC_APP, KC_CUT, KC_COPY, KC_PSTE, KC_PGDN
+#define _RL3_5_ KC_ESC, KC_CUT, KC_COPY, KC_PSTE, KC_PGDN
 #define _RR1_5_ KC_MPRV, KC_MSTP, KC_MPLY, KC_MNXT, KC_EJCT
 #define _RR2_5_ OSM_MEH, OSM_SFT, OSM_CTL, OSM_ALT, OSM_GUI
 #define _RR3_5_ KC_PSCR, CW_TOGG, KC_PAUS, OSM_AGR, KC_SCRL
@@ -396,10 +400,10 @@ void symR_reset(tap_dance_state_t *state, void *user_data);
 #define _RR2_6_ _RR2_5_, KC_RCTL
 #define _RR3_6_ _RR3_5_, KC_RGUI
 //
-#define _RL4_2_ KC_VOLD, ATT(KC_BSPC)
-#define _RL4_3_ KC_MUTE, _RL4_2_
-#define _RR4_2_ KC_TRNS, KC_VOLU
-#define _RR4_3_ _LR4_2_, KC_MUTE
+#define _RL4_2_ LSFT_T(KC_VOLD), ATT(KC_MUTE)
+#define _RL4_3_ KC_MPRV, _RL4_2_
+#define _RR4_2_ KC_TRNS, LSFT_T(KC_VOLU)
+#define _RR4_3_ _RR4_2_, KC_MNXT
 //
 #define _RAISE_3x5_ _RL1_5_, _RR1_5_, _RL2_5_, _RR2_5_, _RL3_5_, _RR3_5_
 #define _RAISE_3x6_ _RL1_6_, _RR1_6_, _RL2_6_, _RR2_6_, _RL3_6_, _RR3_6_
@@ -437,22 +441,22 @@ void symR_reset(tap_dance_state_t *state, void *user_data);
 #    define _PR4_2_ KC_LGUI, KC_BTN3
 #    define _PR4_3_ _PR4_2_, MS_CSB1
 //
-#    define _POINTER_3x5_ _PL1_5_, _PR1_5_, _PL2_5_, _PR2_5_, _PL3_5_, _PR3_5_
-#    define _POINTER_3x6_ _PL1_6_, _PR1_6_, _PL2_6_, _PR2_6_, _PL3_6_, _PR3_6_
+#    define _POINT_3x5_ _PL1_5_, _PR1_5_, _PL2_5_, _PR2_5_, _PL3_5_, _PR3_5_
+#    define _POINT_3x6_ _PL1_6_, _PR1_6_, _PL2_6_, _PR2_6_, _PL3_6_, _PR3_6_
 #endif
 
 /* Attic: Adjustments and missing stuff
- * QBt│ECl│LAs│LAr│           ¡ │ ‹ │ « │ » │ ›
+ * QBt│ECl│LAs│LAr│APP        ¡ │ ‹ │ « │ » │ › │(§)
  * ───┼───┼───┼───┼───       ───┼───┼───┼───┼───
  * LyG│Ly←│Ly→│BsL│MDX        ¿ │ • │ ‚ │ ‘ │ ’ │(…)
  * ───┼───┼───┼───┼───       ───┼───┼───┼───┼───
- * R_T│R_M│R_M│R_M│R_M       n-–│m-—│ „ │ “ │ ”
+ * RGB│R_S│R_H│R_V│R_M       n-–│m-—│ „ │ “ │ ”
  *          ┌───┬───┬───┐ ┌───┬───┬───┐
  *          │LSf│Br-│(v)│ │(v)│Br+│RSf│
  *          └───┴───┴───┘ └───┴───┴───┘
  *            *                     *
  */
-#define _AL1_5_ QK_BOOT, EE_CLR, DL_ASET, DL_ARTS, KC_NO
+#define _AL1_5_ QK_BOOT, EE_CLR, DL_ASET, DL_ARTS, KC_APP
 #define _AL2_5_ DL_GAME, DL_PREV, DL_NEXT, DL_QWER, NO_MODS
 #define _AL3_5_ RGB_TOG, RGB_SAI, RGB_HUI, RGB_VAI, RGB_MOD
 #define _AR1_5_ DE_IEXL, DE_LSAQ, DE_LDAQ, DE_RDAQ, DE_RSAQ
@@ -462,7 +466,7 @@ void symR_reset(tap_dance_state_t *state, void *user_data);
 #define _AL1_6_ KC_NO, _AL1_5_
 #define _AL2_6_ KC_NO, _AL2_5_
 #define _AL3_6_ KC_NO, _AL3_5_
-#define _AR1_6_ _AR1_5_, KC_NO
+#define _AR1_6_ _AR1_5_, DE_SECT
 #define _AR2_6_ _AR2_5_, DE_ELLP
 #define _AR3_6_ _AR3_5_, KC_NO
 //
