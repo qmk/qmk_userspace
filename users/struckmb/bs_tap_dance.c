@@ -22,7 +22,7 @@ td_state_t cur_dance(tap_dance_state_t *state) {
 void symL_finished(tap_dance_state_t *state, void *user_data) {
     td_state = cur_dance(state);
     if (td_state == TD_SINGLE_HOLD) {
-        layer_on(LAYER_SYMBOL);
+        layer_on(LAYER_SYMBL);
         return;
     }
     uint8_t current_layer = get_highest_layer(default_layer_state);
@@ -65,7 +65,7 @@ void symL_finished(tap_dance_state_t *state, void *user_data) {
 
 void symL_reset(tap_dance_state_t *state, void *user_data) {
     if (td_state == TD_SINGLE_HOLD) {
-        layer_off(LAYER_SYMBOL);
+        layer_off(LAYER_SYMBL);
         return;
     }
     uint8_t current_layer = get_highest_layer(default_layer_state);
@@ -90,7 +90,7 @@ void symL_reset(tap_dance_state_t *state, void *user_data) {
 void symR_finished(tap_dance_state_t *state, void *user_data) {
     td_state = cur_dance(state);
     if (td_state == TD_SINGLE_HOLD) {
-        layer_on(LAYER_SYMBOL);
+        layer_on(LAYER_SYMBL);
         return;
     }
     uint8_t current_layer = get_highest_layer(default_layer_state);
@@ -133,7 +133,7 @@ void symR_finished(tap_dance_state_t *state, void *user_data) {
 
 void symR_reset(tap_dance_state_t *state, void *user_data) {
     if (td_state == TD_SINGLE_HOLD) {
-        layer_off(LAYER_SYMBOL);
+        layer_off(LAYER_SYMBL);
         return;
     }
     uint8_t current_layer = get_highest_layer(default_layer_state);
@@ -161,5 +161,4 @@ tap_dance_action_t tap_dance_actions[] = {
     [SYM_L] = ACTION_TAP_DANCE_FN_ADVANCED(NULL, symL_finished, symL_reset),
     [SYM_R] = ACTION_TAP_DANCE_FN_ADVANCED(NULL, symR_finished, symR_reset),
 };
-
 #endif // TAP_DANCE_ENABLE

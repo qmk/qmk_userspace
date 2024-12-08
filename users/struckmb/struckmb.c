@@ -7,31 +7,16 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
             case NO_MODS:
                 clear_oneshot_mods();
                 return false;
-#ifdef QWERTY_ENABLE
-            case DL_QWER:
-                set_single_persistent_default_layer(LAYER_QWERTY);
-                return false;
-#endif /* ifdef QWERTY_ENABLE */
-#ifdef BONE_ENABLE
-            case DL_BONE:
-                set_single_persistent_default_layer(LAYER_BONE);
-                return false;
-#endif /* ifdef BONE_ENABLE */
-#ifdef COLEMAK_DH_ENABLE
-            case DL_CODH:
-                set_single_persistent_default_layer(LAYER_COLEMAK_DH);
-                return false;
-#endif /* ifdef COLEMAK_DH_ENABLE */
             case DL_PREV:
                 if (get_highest_layer(default_layer_state) > 0) {
                     set_single_persistent_default_layer(get_highest_layer(default_layer_state) - 1);
                 } else {
-                    set_single_persistent_default_layer(LAYER_SYMBOL - 1);
+                    set_single_persistent_default_layer(LAYER_SYMBL - 1);
                 }
                 return false;
             case DL_NEXT:
                 // uint8_t next_default_layer = get_highest_layer(default_layer_state) + 1;
-                if (get_highest_layer(default_layer_state) + 1 < LAYER_SYMBOL) {
+                if (get_highest_layer(default_layer_state) + 1 < LAYER_SYMBL) {
                     set_single_persistent_default_layer(get_highest_layer(default_layer_state) + 1);
                 } else {
                     set_single_persistent_default_layer(0);
@@ -90,6 +75,7 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
             break;
 
         case OS_LINUX:
+        case OS_WINDOWS:
             switch (keycode) {
                 case DE_AT: // @
                     if (record->event.pressed) {
@@ -322,8 +308,8 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
             // ???
             break;
     }
-
 #endif /* ifdef OS_DETECTION_ENABLE */
+
     return
         //     process_record_keymap(keycode, record) &&
         // #ifdef ENCODER_ENABLE
