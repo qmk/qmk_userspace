@@ -301,10 +301,14 @@ void symR_reset(tap_dance_state_t *state, void *user_data);
  *  \ │ / │ { │ } │ *         ? │ ( │ ) │ - │ :
  * ───┼───┼───┼───┼───       ───┼───┼───┼───┼───
  *  # │ $ │ | │ ~ │ ´         + │ % │ " │ ' │ ;
+ *      (with dynamic tapping term enabled:)
  *          ┌───┬───┬───┐ ┌───┬───┬───┐
- *          │ ° │Sft│ ` │ │AGr│Sft│CWT│
+ *          │PTT│Sft│TT+│ │TT-│Spc│CWT│
  *          └───┴───┴───┘ └───┴───┴───┘
- *            *                     *
+ *            *    (otherwise:)     *
+ *          ┌───┬───┬───┐ ┌───┬───┬───┐
+ *          │ ° │Sft│ ` │ │AGr│Spc│CWT│
+ *          └───┴───┴───┘ └───┴───┴───┘
  */
 #define _SL1_5_ DE_AT, DE_UNDS, DE_LBRC, DE_RBRC, DE_CIRC
 #define _SL2_5_ DE_BSLS, DE_SLSH, DE_LCBR, DE_RCBR, DE_ASTR
@@ -320,9 +324,15 @@ void symR_reset(tap_dance_state_t *state, void *user_data);
 #define _SR2_6_ _SR2_5_, KC_RCTL
 #define _SR3_6_ _SR3_5_, KC_RGUI
 //
-#define _SL4_2_ KC_LSFT, DE_GRV
-#define _SL4_3_ DE_DEG, _SL4_2_
-#define _SR4_2_ KC_RALT, KC_LSFT
+#ifdef DYNAMIC_TAPPING_TERM_ENABLE
+#    define _SL4_2_ KC_LSFT, DT_DOWN
+#    define _SL4_3_ DT_PRNT, _SL4_2_
+#    define _SR4_2_ DT_UP, KC_SPC
+#else
+#    define _SL4_2_ KC_LSFT, DE_GRV
+#    define _SL4_3_ DE_DEG, _SL4_2_
+#    define _SR4_2_ KC_RALT, KC_SPC
+#endif // DYNAMIC_TAPPING_TERM_ENABLE
 #define _SR4_3_ _SR4_2_, CW_TOGG
 //
 #define _SYMBOLS_3x5_ _SL1_5_, _SR1_5_, _SL2_5_, _SR2_5_, _SL3_5_, _SR3_5_

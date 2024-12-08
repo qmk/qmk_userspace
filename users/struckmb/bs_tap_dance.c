@@ -29,32 +29,32 @@ void symL_finished(tap_dance_state_t *state, void *user_data) {
     switch (td_state) {
         case TD_SINGLE_TAP:
 #    ifdef QWERTY_ENABLE
-            if (LAYER_QWERTY == current_layer) register_code(DE_A);
+            if (LAYER_QWERTY == current_layer) register_code16(DE_A);
 #    endif // QWERTY_ENABLE
 #    ifdef BONE_ENABLE
-            if (LAYER_BONE == current_layer) register_code(DE_C);
+            if (LAYER_BONE == current_layer) register_code16(DE_C);
 #    endif // BONE_ENABLE
 #    ifdef COLEMAK_DH_ENABLE
-            if (LAYER_COLEMAK_DH == current_layer) register_code(DE_A);
+            if (LAYER_COLEMAK_DH == current_layer) register_code16(DE_A);
 #    endif // COLEMAK_DH_ENABLE
             break;
         case TD_DOUBLE_SINGLE_TAP: // Allow nesting of 2 parens `((` within tapping term
 #    ifdef QWERTY_ENABLE
             if (LAYER_QWERTY == current_layer) {
-                tap_code(DE_A);
-                register_code(DE_A);
+                tap_code16(DE_A);
+                register_code16(DE_A);
             }
 #    endif // QWERTY_ENABLE
 #    ifdef BONE_ENABLE
             if (LAYER_BONE == current_layer) {
-                tap_code(DE_C);
-                register_code(DE_C);
+                tap_code16(DE_C);
+                register_code16(DE_C);
             }
 #    endif // BONE_ENABLE
 #    ifdef COLEMAK_DH_ENABLE
             if (LAYER_COLEMAK_DH == current_layer) {
-                tap_code(DE_A);
-                register_code(DE_A);
+                tap_code16(DE_A);
+                register_code16(DE_A);
             }
 #    endif // COLEMAK_DH_ENABLE
             break;
@@ -73,13 +73,13 @@ void symL_reset(tap_dance_state_t *state, void *user_data) {
         case TD_SINGLE_TAP:
         case TD_DOUBLE_SINGLE_TAP:
 #    ifdef QWERTY_ENABLE
-            if (LAYER_QWERTY == current_layer) unregister_code(DE_A);
+            if (LAYER_QWERTY == current_layer) unregister_code16(DE_A);
 #    endif // QWERTY_ENABLE
 #    ifdef BONE_ENABLE
-            if (LAYER_BONE == current_layer) unregister_code(DE_C);
+            if (LAYER_BONE == current_layer) unregister_code16(DE_C);
 #    endif // BONE_ENABLE
 #    ifdef COLEMAK_DH_ENABLE
-            if (LAYER_COLEMAK_DH == current_layer) unregister_code(DE_A);
+            if (LAYER_COLEMAK_DH == current_layer) unregister_code16(DE_A);
 #    endif // COLEMAK_DH_ENABLE
             break;
         default:
@@ -97,32 +97,32 @@ void symR_finished(tap_dance_state_t *state, void *user_data) {
     switch (td_state) {
         case TD_SINGLE_TAP:
 #    ifdef QWERTY_ENABLE
-            if (LAYER_QWERTY == current_layer) register_code(DE_ODIA);
+            if (LAYER_QWERTY == current_layer) register_code16(DE_ODIA);
 #    endif // QWERTY_ENABLE
 #    ifdef BONE_ENABLE
-            if (LAYER_BONE == current_layer) register_code(DE_G);
+            if (LAYER_BONE == current_layer) register_code16(DE_G);
 #    endif // BONE_ENABLE
 #    ifdef COLEMAK_DH_ENABLE
-            if (LAYER_COLEMAK_DH == current_layer) register_code(DE_O);
+            if (LAYER_COLEMAK_DH == current_layer) register_code16(DE_O);
 #    endif // COLEMAK_DH_ENABLE
             break;
         case TD_DOUBLE_SINGLE_TAP: // Allow nesting of 2 key presses within tapping term
 #    ifdef QWERTY_ENABLE
             if (LAYER_QWERTY == current_layer) {
-                tap_code(DE_ODIA);
-                register_code(DE_ODIA);
+                tap_code16(DE_ODIA);
+                register_code16(DE_ODIA);
             }
 #    endif // QWERTY_ENABLE
 #    ifdef BONE_ENABLE
             if (LAYER_BONE == current_layer) {
-                tap_code(DE_G);
-                register_code(DE_G);
+                tap_code16(DE_G);
+                register_code16(DE_G);
             }
 #    endif // BONE_ENABLE
 #    ifdef COLEMAK_DH_ENABLE
             if (LAYER_COLEMAK_DH == current_layer) {
-                tap_code(DE_O);
-                register_code(DE_O);
+                tap_code16(DE_O);
+                register_code16(DE_O);
             }
 #    endif // COLEMAK_DH_ENABLE
             break;
@@ -141,13 +141,13 @@ void symR_reset(tap_dance_state_t *state, void *user_data) {
         case TD_SINGLE_TAP:
         case TD_DOUBLE_SINGLE_TAP:
 #    ifdef QWERTY_ENABLE
-            if (LAYER_QWERTY == current_layer) unregister_code(DE_A);
+            if (LAYER_QWERTY == current_layer) unregister_code16(DE_ODIA);
 #    endif // QWERTY_ENABLE
 #    ifdef BONE_ENABLE
-            if (LAYER_BONE == current_layer) unregister_code(DE_C);
+            if (LAYER_BONE == current_layer) unregister_code16(DE_G);
 #    endif // BONE_ENABLE
 #    ifdef COLEMAK_DH_ENABLE
-            if (LAYER_COLEMAK_DH == current_layer) unregister_code(DE_A);
+            if (LAYER_COLEMAK_DH == current_layer) unregister_code16(DE_O);
 #    endif // COLEMAK_DH_ENABLE
             break;
         default:
