@@ -82,7 +82,7 @@ enum keycodes {
 * `-----------------------------------------------------------------------------------'
 */
 #define LOWER_LAYER \
-  KC_F1,    KC_F2,    KC_F3,    KC_F4,    KC_F5,         KC_F6,    KC_F7,     KC_F8,           KC_F9,    KC_F10,   KC_F11,   KC_F12, \
+  KC_F1,    KC_F2,    KC_F3,    KC_F4,    KC_F5,         KC_F6,    KC_F7,    KC_F8,           KC_F9,    KC_F10,   KC_F11,   KC_F12, \
   XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX,  KC_EXLM,       KC_LBRC,  KC_RBRC,  KC_ASTR,         KC_AMPR,  KC_PIPE,  XXXXXXX,  KC_QUOT, \
   _______,  KC_AT,    KC_HASH,  KC_GRV,   KC_COLN,       KC_LPRN,  KC_RPRN,  KC_EQL,          KC_PLUS,  KC_DQUO,  XXXXXXX,  KC_DQUO, \
   KC_LSFT,  KC_CIRC,  KC_DLR,   KC_PERC,  KC_TILD,       KC_LCBR,  KC_RCBR,  KC_MINS,         KC_UNDS,  KC_BSLS,  XXXXXXX,  _______, \
