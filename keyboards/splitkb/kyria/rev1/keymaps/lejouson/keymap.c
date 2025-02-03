@@ -1,4 +1,4 @@
-// Copyright 2024 Jose Gisbert, aka lejouson <email@gont.es>
+// Copyright 2025 Jose Gisbert, aka lejouson <contacto@email.gont.es>
 // SPDX-License-Identifier: GPL-3.0-or-later
 
 #include QMK_KEYBOARD_H
@@ -43,7 +43,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  * ,-------------------------------------------.                              ,-------------------------------------------.
  * |        | Ct+Y | Ct+Z | Ct+V | Ct+C | Ct+V |                              | PageUp| Home |  Up  | End  | C+Hom|        |
  * |--------+------+------+------+------+------|                              |-------+------+------+------+------+--------|
- * |        | GUI  | Alt  | Ctrl |LShift|      |                              | PDown | Left | Down | Right| C+End|        |
+ * |        | GUI  | Alt  | Ctrl |LShift|      |                              | PDown | Left | Down | Right| C+End|Lay Lock|
  * |--------+------+------+------+------+------+-------------.  ,-------------+-------+------+------+------+------+--------|
  * |        |      |      |      |      |      |      |      |  |      |      |       |      |      |      |      |        |
  * `----------------------+------+------+------+------+------|  |------+------+-------+------+------+----------------------'
@@ -52,7 +52,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  */
     [_NAVI] = LAYOUT(
       _______, C(KC_Y),       C(KC_Z), C(KC_V), C(KC_C), C(KC_X),                                     KC_PGUP, KC_HOME, KC_UP,   KC_END,  C(KC_HOME), XXXXXXX,
-      XXXXXXX, KC_LGUI,       KC_LALT, KC_LCTL, KC_LSFT, XXXXXXX,                                     KC_PGDN, KC_LEFT, KC_DOWN, KC_RGHT, C(KC_END),  XXXXXXX,
+      XXXXXXX, KC_LGUI,       KC_LALT, KC_LCTL, KC_LSFT, XXXXXXX,                                     KC_PGDN, KC_LEFT, KC_DOWN, KC_RGHT, C(KC_END),  QK_LLCK,
       XXXXXXX, MO(_FUNCTION), XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, _______, _______, _______, _______, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,  XXXXXXX,   XXXXXXX,
                                        _______, _______, _______, _______, _______, _______, _______, _______, _______, C(KC_C)
     ),
@@ -72,7 +72,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  */
     [_FUNCTION] = LAYOUT(
       _______, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,                                     XXXXXXX, KC_F5,   KC_F11,  KC_F12,  XXXXXXX,  XXXXXXX,
-      XXXXXXX, _______, _______, _______, _______, XXXXXXX,                                     XXXXXXX, KC_F1,   KC_F2,   KC_F3,   A(KC_F4), XXXXXXX,
+      XXXXXXX, _______, _______, _______, _______, XXXXXXX,                                     XXXXXXX, KC_F1,   KC_F2,   KC_F3,   A(KC_F4), _______,
       XXXXXXX, _______, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, _______, _______, _______, _______, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,  XXXXXXX,
                                  _______, _______, _______, _______, _______, _______, _______, _______, _______, _______
     ),
@@ -91,7 +91,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  */
     [_SYMBOLS] = LAYOUT(
         _______, ES_PIPE, ES_AMPR, ES_LCBR, ES_RCBR, ES_DQUO,                                     ES_DLR,  ES_LBRC, ES_RBRC, ES_PERC, ES_AT,        XXXXXXX,
-        ES_MINS, ES_ASTR, ES_PLUS, ES_LPRN, ES_RPRN, ES_EQL,                                      ES_SCLN, ES_LABK, ES_RABK, ES_SLSH, ES_BSLS,      XXXXXXX,
+        ES_MINS, ES_ASTR, ES_PLUS, ES_LPRN, ES_RPRN, ES_EQL,                                      ES_SCLN, ES_LABK, ES_RABK, ES_SLSH, ES_BSLS,      _______,
         XXXXXXX, XXXXXXX, XXXXXXX, ES_TILD, ES_GRV,  ES_QUOT, _______, _______, _______, _______, ES_HASH, ES_CIRC, ES_EURO, XXXXXXX, MO(_NUMERIC), XXXXXXX,
                                    _______, _______, _______, _______, _______, _______, _______, _______, _______, _______
     ),
@@ -111,7 +111,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  */
     [_NUMERIC] = LAYOUT(
       _______, ES_6,    ES_7,    ES_8,    ES_9,    ES_0,                                        XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,
-      XXXXXXX, ES_1,    ES_2,    ES_3,    ES_4,    ES_5,                                        XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,
+      XXXXXXX, ES_1,    ES_2,    ES_3,    ES_4,    ES_5,                                        XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, _______,
       XXXXXXX, KC_PSLS, ES_COLN, KC_COMM, KC_PDOT, KC_PMNS, _______, _______, _______, _______, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, _______, XXXXXXX,
                                  _______, _______, _______, _______, _______, _______, _______, _______, _______, _______
     ),
@@ -131,7 +131,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  */
     [_CONFIG]= LAYOUT(
       _______, XXXXXXX, RGB_VAI, RGB_SAI, RGB_HUI, RGB_M_B,                                     XXXXXXX, KC_MNXT, KC_VOLU, XXXXXXX, XXXXXXX, XXXXXXX,
-      XXXXXXX, XXXXXXX, RGB_VAD, RGB_SAD, RGB_HUD, RGB_TOG,                                     XXXXXXX, KC_MPLY, KC_MUTE, XXXXXXX, XXXXXXX, XXXXXXX,
+      XXXXXXX, XXXXXXX, RGB_VAD, RGB_SAD, RGB_HUD, RGB_TOG,                                     XXXXXXX, KC_MPLY, KC_MUTE, XXXXXXX, XXXXXXX, _______,
       XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, RGB_M_P, _______, _______, _______, _______, XXXXXXX, KC_MPRV, KC_VOLD, XXXXXXX, XXXXXXX, XXXXXXX,
                                  _______, _______, _______, _______, _______, _______, _______, _______, _______, _______
     ),

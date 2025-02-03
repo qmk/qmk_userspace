@@ -1,4 +1,4 @@
-// Copyright 2024 Jose Gisbert, aka lejouson <email@gont.es>
+// Copyright 2025 Jose Gisbert, aka lejouson <contacto@email.gont.es>
 // SPDX-License-Identifier: GPL-3.0-or-later
 
 #pragma once
@@ -18,3 +18,5 @@
 #ifdef ENCODER_ENABLE
   #define ENCODER_RESOLUTION 2
 #endif
+
+#define LAYER_LOCK_IDLE_TIMEOUT 60000  // Turn off after 60 seconds.
