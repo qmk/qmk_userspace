@@ -42,3 +42,4 @@
 #define CTL_ESC LCTL_T(KC_ESC)
 #define SYM_ENT LT(_SYM, KC_ENT)
 #define NUM_SPC LT(_NUM, KC_SPC)
+#define NAV_ESC LT(_NAV, KC_ESC)
