@@ -1,6 +1,7 @@
 {
     "userspace_version": "1.1",
     "build_targets": [
-        ["atreus62", "rpw"]
+        ["atreus62", "rpw"],
+        ["sofle/rev1", "rpw"]
     ]
 }
