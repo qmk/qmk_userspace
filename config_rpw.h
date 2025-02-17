@@ -39,7 +39,14 @@
 #define ALT_L LALT_T(KC_L)
 #define CTL_SCLN RCTL_T(KC_SCLN)
 
+// Sym layer home row mods
+#define GUI_EQL  RGUI_T(KC_EQL)
+#define SFT_LBRC RSFT_T(KC_LBRC)
+#define ALT_RBRC LALT_T(KC_RBRC)
+#define CTL_BSLS RCTL_T(KC_BSLS)
+
 #define CTL_ESC LCTL_T(KC_ESC)
+
 #define SYM_ENT LT(_SYM, KC_ENT)
 #define NUM_SPC LT(_NUM, KC_SPC)
 #define NAV_ESC LT(_NAV, KC_ESC)
