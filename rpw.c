@@ -36,3 +36,16 @@ combo_t key_combos[] = {
     [COMBO_DEL] = COMBO(combo_del, KC_DEL)
 };
 #endif
+
+/*
+bool process_record_user(uint16_t keycode, keyrecord_t *record) {
+    switch (keycode) {
+      case LT(FN1, KC_NO):
+        if (record->tap.count && record->event.pressed) {
+          layer_invert(FN3);
+          return false;
+        }
+    }
+    return true;
+  }
+*/
