@@ -37,13 +37,15 @@
 #define GUI_J RGUI_T(KC_J)
 #define SFT_K RSFT_T(KC_K)
 #define ALT_L LALT_T(KC_L)
-#define CTL_SCLN RCTL_T(KC_SCLN)
+#define CTL_QUOT RCTL_T(KC_QUOT)
 
 // Sym layer home row mods
 #define GUI_EQL  RGUI_T(KC_EQL)
 #define SFT_LBRC RSFT_T(KC_LBRC)
 #define ALT_RBRC LALT_T(KC_RBRC)
 #define CTL_BSLS RCTL_T(KC_BSLS)
+
+#define CTL_SCLN RCTL_T(KC_SCLN)
 
 #define CTL_ESC LCTL_T(KC_ESC)
 
