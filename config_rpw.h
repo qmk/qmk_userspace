@@ -53,3 +53,4 @@
 #define NUM_SPC LT(_NUM, KC_SPC)
 #define NAV_ESC LT(_NAV, KC_ESC)
 #define EXT_TAB LT(_EXT, KC_TAB)
+#define NUM_TAB LT(_NUM, KC_TAB)
