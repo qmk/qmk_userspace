@@ -41,7 +41,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   _______,  KC_Q,   KC_W,    KC_E,    KC_R,    KC_T,                      KC_Y,    KC_U,    KC_I,    KC_O,    KC_P,  KC_BSPC,
   _______,  CTL_A,  ALT_S,   SFT_D,   GUI_F,   KC_G,                      KC_H,    GUI_J,   SFT_K,   ALT_L,  CTL_QUOT,  KC_QUOT,
   _______,  KC_Z,   KC_X,    KC_C,    KC_V,    KC_B, _______,    _______, KC_N,   KC_M,    KC_COMM,  KC_DOT, KC_SLSH,  KC_RSFT,
-                 KC_LGUI,KC_LALT,KC_LCTL, KC_TAB, SYM_ENT,        NUM_SPC, NAV_ESC, KC_RCTL, KC_RALT, KC_RGUI
+                 KC_LGUI,KC_LALT,KC_LCTL, NAV_TAB, MO(_SYM),        NUM_SPC, MO(_NAV), KC_RCTL, KC_RALT, KC_RGUI
 ),
 
 [_SYM] = LAYOUT(
@@ -54,32 +54,20 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
 [_NUM] = LAYOUT(
   _______, _______ , _______ , _______ , _______ , _______,                      _______,  _______  , _______,  _______ ,  _______ ,_______,
-  _______, KC_1,    KC_2,    KC_3,    KC_4,    KC_5,                             KC_6,    KC_7,    KC_8,    KC_9,    KC_0,  KC_F12,
-  _______, _______,  _______,  _______,  _______, _______,                       KC_TRNS, KC_RGUI, KC_RSFT, KC_RALT, CTL_SCLN, KC_BSPC,
+  _______, KC_1,    KC_2,    KC_3,    KC_4,    KC_5,                             KC_6,    KC_7,    KC_8,    KC_9,    KC_0,  _______,
+  _______, _______,  _______,  _______,  _______, _______,                       KC_TRNS, KC_RGUI, KC_RSFT, KC_RALT, CTL_SCLN, _______,
   _______, C(KC_Z), C(KC_X), C(KC_C), KC_TILD, XXXXXXX,  _______,       _______,  XXXXXXX, KC_LSTRT, XXXXXXX, KC_LEND,   XXXXXXX, _______,
                          _______, _______, _______, KC_TILD, KC_DEL,       _______, _______, _______, _______, _______
 ),
-/* ADJUST
- * ,-----------------------------------------.                    ,-----------------------------------------.
- * |      |      |      |      |      |      |                    |      |      |      |      |      |      |
- * |------+------+------+------+------+------|                    |------+------+------+------+------+------|
- * | QK_BOOT|      |QWERTY|COLEMAK|      |      |                    |      |      |      |      |      |      |
- * |------+------+------+------+------+------|                    |------+------+------+------+------+------|
- * |      |      |MACWIN|      |      |      |-------.    ,-------|      | VOLDO| MUTE | VOLUP|      |      |
- * |------+------+------+------+------+------|  MUTE |    |       |------+------+------+------+------+------|
- * |      |      |      |      |      |      |-------|    |-------|      | PREV | PLAY | NEXT |      |      |
- * `-----------------------------------------/       /     \      \-----------------------------------------'
- *            | LGUI | LAlt | LCTR |LOWER | /Enter  /       \Space \  |RAISE | RCTR | RAlt | RGUI |
- *            |      |      |      |      |/       /         \      \ |      |      |      |      |
- *            `----------------------------------'           '------''---------------------------'
- */
-  [_NAV] = LAYOUT(
-  XXXXXXX , XXXXXXX,  XXXXXXX ,  XXXXXXX , XXXXXXX, XXXXXXX,                     XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,
-  QK_BOOT  , XXXXXXX,XXXXXXX,XXXXXXX,CG_TOGG,XXXXXXX,                     XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,
-  XXXXXXX , XXXXXXX,CG_TOGG, XXXXXXX,    XXXXXXX,  XXXXXXX,                     KC_LEFT, KC_DOWN, KC_UP,   KC_RIGHT, XXXXXXX, XXXXXXX,
-  XXXXXXX , XXXXXXX, XXXXXXX, XXXXXXX,    XXXXXXX,  XXXXXXX, XXXXXXX,     XXXXXXX, XXXXXXX, KC_MPRV, KC_MPLY, KC_MNXT, XXXXXXX, XXXXXXX,
-                   _______, _______, _______, _______, _______,     _______, _______, _______, _______, _______
-  )
+
+[_NAV] = LAYOUT(
+  _______, _______ , _______ , _______ , _______ , _______,                      _______,  _______  , _______,  _______ ,  _______ ,_______,
+  _______, KC_TAB,    KC_2,    KC_3,    KC_4,    KC_5,                             KC_6,    KC_7,    KC_8,    KC_DEL,  KC_BSPC,  _______,
+  _______, QK_GESC,  _______,  _______,  _______, _______,                       KC_LEFT, RGUI_T(KC_DOWN), RSFT_T(KC_UP), LALT_T(KC_RIGHT), RCTL_T(KC_ENT),  KC_TRNS,
+  _______, C(KC_Z), C(KC_X), C(KC_C), KC_TILD, XXXXXXX,  _______,       _______,  XXXXXXX, KC_LSTRT, XXXXXXX, KC_LEND,   XXXXXXX, _______,
+                         _______, _______, _______, KC_TILD, KC_DEL,       _______, _______, _______, _______, _______
+)
+
 };
 
 bool process_record_user(uint16_t keycode, keyrecord_t *record) {
