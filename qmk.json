@@ -3,6 +3,7 @@
     "build_targets": [
         ["atreus62", "rpw"],
         ["sofle/rev1", "rpw"],
-        ["primekb/prime_e", "rpw"]
+        ["primekb/prime_e", "rpw"],
+        ["lily58/rev1", "rpw"]
     ]
 }
