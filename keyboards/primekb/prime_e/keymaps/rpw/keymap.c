@@ -19,7 +19,7 @@
 
 enum prime_e_layers {
     /* _M_XYZ = Mac Os, _W_XYZ = Win/Linux */
-    _QWERTY,
+    _QWR,
     _GAME,
     _NAV,
     _SYM,
@@ -31,7 +31,7 @@ enum prime_e_layers {
 };
 
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
-    [_QWERTY] = LAYOUT(
+    [_QWR] = LAYOUT(
       _______,  KC_Q,   KC_W,    KC_E,   KC_R,    KC_T,                     KC_Y,   KC_U,     KC_I,     KC_O,    KC_P,     _______, _______,
       _______,  CTL_A,  ALT_S,   SFT_D,  GUI_F,   KC_G,                     KC_H,   GUI_J,    SFT_K,    ALT_L,   CTL_SCLN, KC_QUOT,
       _______,  KC_Z,   KC_X,    KC_C,   KC_V,    KC_B,          MO(_PROG), KC_N,   KC_M,     KC_COMM,  KC_DOT,  KC_SLSH,  _______,
@@ -41,8 +41,8 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     [_GAME] = LAYOUT(
       KC_TAB,   KC_Q,   KC_W,    KC_E,   KC_R,    KC_T,                     KC_Y,   KC_U,     KC_I,     KC_O,    KC_P,     KC_BSLS, KC_BSPC,
       CTL_ESC,  KC_A,   KC_S,    KC_D,   KC_F,    KC_G,                     KC_H,   KC_J,     KC_K,     KC_L,    KC_SCLN,  KC_QUOT,
-      KC_LSFT,  KC_Z,   KC_X,    KC_C,   KC_V,    KC_B,          MO(_PROG), KC_N,   KC_M,     KC_COMM,  KC_DOT,  KC_SLSH,  MO(_APPS),
-      KC_LCTL,  KC_LOPT,         KC_LGUI,         KC_SPC,        NUM_SPC,           MO(_NAV),                    KC_TRNS,  KC_TRNS
+      KC_LSFT,  KC_Z,   KC_X,    KC_C,   KC_V,    KC_B,          MO(_PROG), KC_N,   KC_M,     KC_COMM,  KC_DOT,  KC_SLSH,  KC_RSFT,
+      KC_LCTL,  KC_LOPT,         KC_RGUI,         SYM_SPC,       NUM_SPC,           NAV_ENT,                    KC_TRNS,  KC_ENT
     ),
 
     // Navigation
@@ -85,7 +85,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     ),
 
     [_PROG] = LAYOUT(
-      QK_BOOT,   KC_1,      DF(_QWERTY), KC_3,      KC_4,       KC_5,                   KC_7,      KC_8,     KC_9,     KC_9,    DT_PRNT,  DT_UP, DT_DOWN,
+      QK_BOOT,   _______,   DF(_QWR), _______, _______,    _______,                KC_7,      KC_8,     KC_9,     KC_9,    DT_PRNT,  DT_UP, DT_DOWN,
       KC_TRNS,   KC_TRNS,   KC_TRNS,   KC_TRNS,   KC_TRNS,    DF(_GAME),              KC_4,      KC_5,     KC_6,     KC_TRNS, KC_TRNS,  KC_TRNS,
       KC_TRNS,   KC_TRNS,   KC_TRNS,   KC_TRNS,   KC_TRNS,    KC_TRNS,       KC_TRNS, KC_1,      KC_2,     KC_3,     KC_TRNS, KC_DOT,   KC_TRNS,
       BL_TOGG,   BL_STEP,                         KC_TRNS,    MO(_FUNC),	            KC_0,                KC_TRNS,           KC_TRNS,  KC_TRNS
