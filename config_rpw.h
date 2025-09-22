@@ -56,3 +56,5 @@
 #define NAV_ESC LT(_NAV, KC_ESC)
 #define NAV_TAB LT(_NAV, KC_TAB)
 #define NAV_ENT LT(_NAV, KC_ENT)
+
+#define L1_SPC LT(1, KC_SPC)
