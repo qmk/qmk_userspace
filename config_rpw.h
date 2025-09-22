@@ -43,10 +43,9 @@
 #define GUI_EQL  RGUI_T(KC_EQL)
 #define SFT_LBRC RSFT_T(KC_LBRC)
 #define ALT_RBRC LALT_T(KC_RBRC)
+
 #define CTL_BSLS RCTL_T(KC_BSLS)
-
 #define CTL_SCLN RCTL_T(KC_SCLN)
-
 #define CTL_ESC LCTL_T(KC_ESC)
 
 #define SYM_ENT LT(_SYM, KC_ENT)
@@ -56,5 +55,3 @@
 #define NAV_ESC LT(_NAV, KC_ESC)
 #define NAV_TAB LT(_NAV, KC_TAB)
 #define NAV_ENT LT(_NAV, KC_ENT)
-
-#define L1_SPC LT(1, KC_SPC)
