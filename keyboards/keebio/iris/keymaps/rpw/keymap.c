@@ -73,6 +73,8 @@ bool get_retro_tapping(uint16_t keycode, keyrecord_t *record) {
     switch (keycode) {
         case SYM_BSPC:
             return true;
+        case MEH_ENT:
+            return true;
         default:
             return false;
     }
