@@ -50,8 +50,6 @@
 
 #define SYM_ENT LT(_SYM, KC_ENT)
 #define SYM_SPC LT(_SYM, KC_SPC)
-
-#define NAV_SPC  LT(_NAV, KC_SPC)
 #define SYM_BSPC LT(_SYM, KC_BSPC)
 
 #define NUM_SPC LT(_NUM, KC_SPC)
@@ -61,3 +59,7 @@
 #define NAV_TAB LT(_NAV, KC_TAB)
 #define NAV_ENT LT(_NAV, KC_ENT)
 #define NAV_RGUI LT(_NAV, KC_RGUI)
+#define NAV_SPC  LT(_NAV, KC_SPC)
+#define NAV_BSPC  LT(_NAV, KC_BSPC)
+
+#define MEH_ENT LM(_QWR, MOD_LCTL | MOD_LALT | MOD_LGUI | MOD_LSHFT)
