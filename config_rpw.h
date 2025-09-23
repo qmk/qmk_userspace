@@ -50,6 +50,10 @@
 
 #define SYM_ENT LT(_SYM, KC_ENT)
 #define SYM_SPC LT(_SYM, KC_SPC)
+
+#define NAV_SPC  LT(_NAV, KC_SPC)
+#define SYM_BSPC LT(_SYM, KC_BSPC)
+
 #define NUM_SPC LT(_NUM, KC_SPC)
 #define EXT_TAB LT(_EXT, KC_TAB)
 
