@@ -472,6 +472,18 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
                     break;
             }
         }
+
+        // Handle Shift-only key repeat behavior for key overrides
+        // Key overrides happen after repeat key tracking, so we manually
+        // set what repeat should remember (the overridden output, not Shift+key)
+        if (shift_held && !alt_held && !(all_mods & MOD_MASK_CG)) {
+            switch(keycode) {
+                case KC_DOT:  // Shift+. → ,
+                    set_last_keycode(KC_COMMA);
+                    set_last_mods(0);
+                    break;
+            }
+        }
     }
 
     return true; // Continue normal processing
