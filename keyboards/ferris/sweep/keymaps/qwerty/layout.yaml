@@ -45,3 +45,4 @@ layers:
 combos:
   - {p: [0, 1], k: "Esc+Tab combo", l: ["BASE"], a: top}
   - {p: [8, 9], k: "Special combo", l: ["BASE"], a: top}
+  - {p: [12, 17, 33], k: "Cmd+Space (Spotlight)", l: ["BASE"], a: top}

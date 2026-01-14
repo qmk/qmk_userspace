@@ -244,8 +244,10 @@ const key_override_t *key_overrides[] = {
 };
 
 const uint16_t PROGMEM qwerty_combo[] = {KC_ESC, KC_TAB, KC_BSPC, COMBO_END};
+const uint16_t PROGMEM spotlight_combo[] = {MT(MOD_LGUI, KC_D), MT(MOD_RGUI, KC_K), KC_SPACE, COMBO_END};
 combo_t key_combos[] = {
-    COMBO(qwerty_combo, TO(0))
+    COMBO(qwerty_combo, TO(0)),
+    COMBO(spotlight_combo, LGUI(KC_SPACE))
 };
 
 #if defined(ENCODER_ENABLE) && defined(ENCODER_MAP_ENABLE)
