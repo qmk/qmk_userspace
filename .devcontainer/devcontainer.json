@@ -17,7 +17,7 @@
             ]
         }
     },
-    "postCreateCommand": "${containerWorkspaceFolder}/.devcontainer/setup.sh ${containerWorkspaceFolder}"
+    "postCreateCommand": "${containerWorkspaceFolder}/.devcontainer/setup.sh ${containerWorkspaceFolder}",
 
     // Features to add to the dev container. More info: https://containers.dev/features.
     // "features": {},
@@ -30,4 +30,10 @@
 
     // Uncomment to connect as root instead. More info: https://aka.ms/dev-containers-non-root.
     // "remoteUser": "root"
+    "runArgs": [
+        "--privileged"
+    ],
+    "mounts": [
+        "type=bind,source=/dev/bus/usb,target=/dev/bus/usb"
+    ]
 }
