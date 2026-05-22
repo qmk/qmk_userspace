@@ -1,6 +1,19 @@
 name: Build QMK firmware
 
-on: [push, workflow_dispatch]
+on:
+  push:
+    paths:
+      - 'keyboards/**'
+      - 'users/**'
+      - 'qmk.json'
+      - '.github/workflows/**'
+  pull_request:
+    paths:
+      - 'keyboards/**'
+      - 'users/**'
+      - 'qmk.json'
+      - '.github/workflows/**'
+  workflow_dispatch:
 
 permissions:
   contents: write
@@ -13,8 +26,116 @@ jobs:
       qmk_repo: qmk/qmk_firmware
       qmk_ref: master
 
+  generate_keymaps:
+    name: 'Generate Keymap Assets'
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout userspace
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Install QMK and keymap-drawer
+        run: pip install qmk keymap-drawer
+
+      - name: Set up QMK userspace overlay
+        run: |
+          qmk setup --yes qmk/qmk_firmware -b master
+          qmk config user.overlay_dir=$(realpath .)
+
+      - name: Generate keymap YAML/SVG files
+        run: |
+          mkdir -p layouts
+          qmk c2json --no-cpp keyboards/planck/rev6/keymaps/bridgkick/keymap.c -kb planck/rev6 -km bridgkick > layouts/planck.json
+          keymap parse -l QWERTY LOWER RAISE ADJUST -q layouts/planck.json > layouts/planck.yaml
+          keymap draw layouts/planck.yaml > layouts/planck.svg
+          qmk c2json --no-cpp keyboards/preonic/rev2/keymaps/bridgkick/keymap.c -kb preonic/rev2 -km bridgkick > layouts/preonic.json
+          keymap parse -l QWERTY LOWER RAISE ADJUST -q layouts/preonic.json > layouts/preonic.yaml
+          keymap draw layouts/preonic.yaml > layouts/preonic.svg
+
+      - name: Upload keymap assets
+        uses: actions/upload-artifact@v4
+        with:
+          name: Keymaps
+          path: |
+            layouts/*.svg
+            layouts/*.yaml
+          if-no-files-found: error
+
   publish:
     name: 'QMK Userspace Publish'
-    uses: qmk/.github/.github/workflows/qmk_userspace_publish.yml@main
-    if: always() && !cancelled()
-    needs: build
+    runs-on: ubuntu-latest
+    if: github.event_name == 'push' && github.ref == 'refs/heads/main' && !cancelled() && github.actor != 'github-actions[bot]'
+    needs:
+      - build
+      - generate_keymaps
+    steps:
+      - name: Download firmware artifacts
+        uses: actions/download-artifact@v4
+        with:
+          name: Firmware
+          path: artifacts/firmware
+
+      - name: Download keymap artifacts
+        uses: actions/download-artifact@v4
+        with:
+          name: Keymaps
+          path: artifacts/keymaps
+
+      - name: Build release metadata
+        id: meta
+        run: |
+          BUILD_DATE=$(date -u +%Y-%m-%d)
+          SHORT_SHA=${GITHUB_SHA::7}
+          TAG_NAME="${BUILD_DATE}-${SHORT_SHA}"
+          RELEASE_NAME="QMK Firmware ${BUILD_DATE} (${SHORT_SHA})"
+
+          echo "build_date=${BUILD_DATE}" >> "$GITHUB_OUTPUT"
+          echo "short_sha=${SHORT_SHA}" >> "$GITHUB_OUTPUT"
+          echo "tag_name=${TAG_NAME}" >> "$GITHUB_OUTPUT"
+          echo "release_name=${RELEASE_NAME}" >> "$GITHUB_OUTPUT"
+
+      - name: Generate release
+        uses: softprops/action-gh-release@v2
+        with:
+          token: ${{ github.token }}
+          name: ${{ steps.meta.outputs.release_name }}
+          tag_name: ${{ steps.meta.outputs.tag_name }}
+          target_commitish: ${{ github.sha }}
+          fail_on_unmatched_files: false
+          draft: false
+          prerelease: false
+          body: |
+            Automated QMK userspace build artifacts.
+            Commit: ${{ github.sha }}
+          files: |
+            artifacts/firmware/**/*.hex
+            artifacts/firmware/**/*.bin
+            artifacts/firmware/**/*.uf2
+            artifacts/keymaps/**/*.svg
+            artifacts/keymaps/**/*.yaml
+
+      - name: Prune old releases
+        env:
+          GITHUB_TOKEN: ${{ github.token }}
+        run: |
+          CUTOFF=$(date -u -d '30 days ago' +%Y-%m-%dT%H:%M:%SZ)
+          KEEP_COUNT=0
+
+          gh release list --limit 100 --json tagName,createdAt --jq '.[] | [.tagName, .createdAt] | @tsv' | while IFS=$'\t' read -r old_tag created_at; do
+            [ -z "$old_tag" ] && continue
+
+            if [ "$KEEP_COUNT" -lt 5 ]; then
+              KEEP_COUNT=$((KEEP_COUNT + 1))
+              continue
+            fi
+
+            if [[ "$created_at" > "$CUTOFF" ]]; then
+              continue
+            fi
+
+            gh release delete "$old_tag" --cleanup-tag --yes
+          done
