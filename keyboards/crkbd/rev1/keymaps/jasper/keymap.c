@@ -51,13 +51,15 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
                              KC_ESC, LT(NUM, KC_ENT), LT(SYM, KC_TAB),   LT(FUNC, KC_BSPC), LT(NAV,KC_SPC) , LT(5,KC_DEL)
                                       //`--------------------------'  `--------------------------'
   ),
+    // NUM: standard number row, in the same columns as the letters above them (1 under Q, 0 under P).
+    // Punctuation fills in the remaining rows in roughly the same spots you'd find them on a full-size board.
     [NUM] = LAYOUT_split_3x6_3(
  //,-----------------------------------------------------.                    ,-----------------------------------------------------.
-      _______, KC_GRV,   KC_7,    KC_8,   KC_9,   XXXXXXX,                      XXXXXXX, LSFT(KC_QUOT), KC_QUOT,  XXXXXXX, KC_PIPE,  KC_DEL,
+      KC_GRV,  KC_1,    KC_2,    KC_3,    KC_4,    KC_5,                        KC_6,    KC_7,    KC_8,    KC_9,   KC_0,  KC_BSPC,
   //|--------+--------+--------+--------+--------+--------|                    |--------+--------+--------+--------+--------+--------|
-      _______, XXXXXXX,  KC_4,    KC_5,   KC_6,    KC_0,                      XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,
+      _______, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,                     XXXXXXX, KC_MINS, KC_EQL,  KC_LBRC, KC_RBRC, KC_BSLS,
   //|--------+--------+--------+--------+--------+--------|                    |--------+--------+--------+--------+--------+--------|
-      _______, KC_TILD,  KC_1,    KC_2,   KC_3,    XXXXXXX,                     XXXXXXX, KC_PLUS,  KC_EQL,  KC_DOT,  KC_BSLS, XXXXXXX,
+      _______, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,                     XXXXXXX, XXXXXXX, KC_COMM, KC_DOT,  KC_SLSH, KC_SCLN,
   //|--------+--------+--------+--------+--------+--------+--------|  |--------+--------+--------+--------+--------+--------+--------|
                              KC_ESC, LT(NUM, KC_ENT), LT(SYM, KC_TAB),   LT(FUNC, KC_BSPC), _______ , LT(5,KC_DEL)
                                       //`--------------------------'  `--------------------------'
@@ -86,13 +88,15 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
                              KC_ESC, LT(NUM, KC_ENT), LT(SYM, KC_TAB),   _______, LT(NAV,KC_SPC) , LT(5,KC_DEL)
                                       //`--------------------------'  `--------------------------'
   ),
+    // SYM: shifted mirror of NUM. Everything sits directly above its NUM-layer counterpart,
+    // just like Shift+number does on a standard keyboard (!@#$%^&*() over 1234567890, etc).
     [SYM] = LAYOUT_split_3x6_3(
   //,-----------------------------------------------------.                    ,-----------------------------------------------------.
-      _______, XXXXXXX, XXXXXXX, KC_LBRC,  KC_RBRC, XXXXXXX,                      XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,
+      KC_TILD, KC_EXLM, KC_AT,   KC_HASH, KC_DLR,  KC_PERC,                     KC_CIRC, KC_AMPR, KC_ASTR, KC_LPRN, KC_RPRN, KC_DEL,
   //|--------+--------+-------|---------+--------+--------|                    |--------+--------+--------+--------+--------+--------|
-      _______, XXXXXXX, XXXXXXX, KC_LPRN,  KC_RPRN, XXXXXXX,                      XXXXXXX, KC_UNDS, KC_MINS, XXXXXXX, XXXXXXX, XXXXXXX,
+      _______, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,                     XXXXXXX, KC_UNDS, KC_PLUS, KC_LCBR, KC_RCBR, KC_PIPE,
   //|--------+--------+-------|---------+--------+--------|                    |--------+--------+--------+--------+--------+--------|
-      _______, XXXXXXX, XXXXXXX, KC_LCBR,  KC_RCBR, XXXXXXX,                      XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,
+      _______, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,                     XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, KC_COLN,
   //|--------+--------+--------+--------+--------+--------+--------|  |--------+--------+--------+--------+--------+--------+--------|
                              KC_ESC, LT(NUM, KC_ENT), _______,   LT(FUNC, KC_BSPC), LT(NAV,KC_SPC) , LT(5,KC_DEL)
                                       //`--------------------------'  `--------------------------'
@@ -112,61 +116,13 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
 
 
-const uint16_t PROGMEM JK_BSPC[] = {HOME_J, HOME_K, COMBO_END};
+// Non-symbol utility combos only. Backspace and symbol combos were removed
+// since the SYM layer now covers symbols directly.
 const uint16_t PROGMEM UI_CAPSWORD[] = {KC_U, KC_I, COMBO_END};
-// const uint16_t PROGMEM JK_PAREN[] = {HOME_J, HOME_K, COMBO_END};
-// const uint16_t PROGMEM DF_PAREN[] = {HOME_D, HOME_F, COMBO_END};
-// const uint16_t PROGMEM CV_BRACE[] = {KC_C, KC_V, COMBO_END};
-// const uint16_t PROGMEM RIGHT_BRACE[] = {KC_M, KC_COMM, COMBO_END};
-// const uint16_t PROGMEM ER_BRACKET[] = {KC_E, KC_R, COMBO_END};
-// const uint16_t PROGMEM UI_BRACKET[] = {KC_U, KC_I, COMBO_END};
-// const uint16_t PROGMEM COMBO_DASH[] = {HOME_K, HOME_L, COMBO_END};
-// const uint16_t PROGMEM COMBO_UNDS[] = {HOME_S, HOME_D, COMBO_END};
-// const uint16_t PROGMEM COMBO_ESC[] = {KC_W, KC_E, COMBO_END};
-
-// Symbol combos...
-const uint16_t PROGMEM COMBO_EXCL[] = {KC_Q, HOME_A, COMBO_END};
-const uint16_t PROGMEM COMBO_AT[] = {KC_W, HOME_S, COMBO_END};
-const uint16_t PROGMEM COMBO_HASH[] = {KC_E, HOME_D, COMBO_END};
-const uint16_t PROGMEM COMBO_DLR[] = {KC_R, HOME_F, COMBO_END};
-const uint16_t PROGMEM COMBO_PRC[] = {KC_T, KC_G, COMBO_END};
-const uint16_t PROGMEM COMBO_CARAT[] = {KC_Y, KC_H, COMBO_END};
-const uint16_t PROGMEM COMBO_AMP[] = {KC_U, HOME_J, COMBO_END};
-const uint16_t PROGMEM COMBO_STAR[] = {KC_I, HOME_K, COMBO_END};
-
-
 
 combo_t key_combos[] = {
-    // COMBO(DF_PAREN, KC_LPRN),
-    // COMBO(JK_PAREN, KC_RPRN),
-    // COMBO(CV_BRACE, KC_LCBR),
-    // COMBO(RIGHT_BRACE, KC_RCBR),
-    // COMBO(ER_BRACKET, KC_LBRC),
-    // COMBO(UI_BRACKET, KC_RBRC),
-    // COMBO(COMBO_DASH, KC_MINS),
-    // COMBO(COMBO_UNDS, KC_UNDS),
     COMBO(UI_CAPSWORD, CW_TOGG),
-    COMBO(JK_BSPC, KC_BSPC),
-    // Symbols
-    COMBO(COMBO_EXCL, KC_EXLM),
-    COMBO(COMBO_AT, KC_AT),
-    COMBO(COMBO_HASH, KC_HASH),
-    COMBO(COMBO_DLR, KC_DLR),
-    COMBO(COMBO_PRC, KC_PERC),
-    COMBO(COMBO_CARAT, KC_CIRC),
-    COMBO(COMBO_AMP, KC_AMPR),
-    COMBO(COMBO_STAR, KC_ASTR),
 };
-
-
-// void keyboard_post_init_user(void) {
-//   // Customise these values to desired behaviour
-//   debug_enable=true;
-//   debug_matrix=true;
-//   debug_keyboard=true;
-//   //debug_mouse=true;
-// }
-
 
 
 /* KEYBOARD PET START */
@@ -305,6 +261,12 @@ static void render_luna(int LUNA_X, int LUNA_Y) {
 }
 
 /* KEYBOARD PET END */
+oled_rotation_t oled_init_user(oled_rotation_t rotation) {
+    if (!is_keyboard_master()) {
+        return OLED_ROTATION_270;
+    }
+    return OLED_ROTATION_270;
+}
 
 bool oled_task_user(void) {
     /* KEYBOARD PET VARIABLES START */
