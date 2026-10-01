@@ -5,6 +5,7 @@ This is a template repository which allows for an external set of QMK keymaps to
 ## Howto configure your build targets
 
 1. Run the normal `qmk setup` procedure if you haven't already done so -- see [QMK Docs](https://docs.qmk.fm/#/newbs) for details.
+    * Confirm that `qmk --help` lists `new-keymap` and `userspace-add` before continuing. If not, verify `qmk config user.qmk_home` is set to the location of your QMK repository.
 1. Fork this repository
 1. Clone your fork to your local machine
 1. Enable userspace in QMK config using `qmk config user.overlay_dir="$(realpath qmk_userspace)"`
